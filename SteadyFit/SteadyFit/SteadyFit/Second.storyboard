@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uq-t7-cGg">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Group-->
+        <scene sceneID="lUp-ua-ONv">
+            <objects>
+                <viewController id="Vpa-yR-Th3" customClass="SecondViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IOn-kn-s12">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="98z-qN-5le">
+                                <rect key="frame" x="37" y="146" width="301" height="29"/>
+                                <segments>
+                                    <segment title="My Groups"/>
+                                    <segment title="Recommented Groups"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="groupSegmentedControl:" destination="Vpa-yR-Th3" eventType="valueChanged" id="Ch6-zk-Y4l"/>
+                                    <action selector="groupSwitch:" destination="Fpd-VJ-MVH" eventType="valueChanged" id="1bl-Fn-9Dj"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MmZ-BC-OAg">
+                                <rect key="frame" x="0.0" y="204" width="375" height="364"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groupCell" id="OVN-Ic-nfr">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OVN-Ic-nfr" id="gXa-lU-JjC">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Vpa-yR-Th3" id="vyf-Eh-3Zo"/>
+                                    <outlet property="delegate" destination="Vpa-yR-Th3" id="g0r-hY-bTn"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="98z-qN-5le" firstAttribute="top" secondItem="Vty-5k-4c4" secondAttribute="top" constant="30" id="6dD-qp-8ra"/>
+                            <constraint firstItem="MmZ-BC-OAg" firstAttribute="leading" secondItem="IOn-kn-s12" secondAttribute="leading" id="87h-ul-ptQ"/>
+                            <constraint firstItem="Vty-5k-4c4" firstAttribute="bottom" secondItem="MmZ-BC-OAg" secondAttribute="bottom" constant="50" id="GPT-fJ-ige"/>
+                            <constraint firstItem="MmZ-BC-OAg" firstAttribute="top" secondItem="98z-qN-5le" secondAttribute="bottom" constant="30" id="I2T-oH-GUS"/>
+                            <constraint firstItem="98z-qN-5le" firstAttribute="centerX" secondItem="MmZ-BC-OAg" secondAttribute="centerX" id="KbB-1H-tmD"/>
+                            <constraint firstAttribute="trailing" secondItem="MmZ-BC-OAg" secondAttribute="trailing" id="gke-dh-5Ey"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Vty-5k-4c4"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Group" largeTitleDisplayMode="always" id="Gof-KB-n7Q"/>
+                    <connections>
+                        <outlet property="groupTableView" destination="MmZ-BC-OAg" id="4Gt-kW-o5z"/>
+                        <segue destination="ogg-1p-siA" kind="show" identifier="showGroupDetail" id="bxI-GQ-4wX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7uo-G1-Zes" sceneMemberID="firstResponder"/>
+                <exit id="Fpd-VJ-MVH" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2415" y="174"/>
+        </scene>
+        <!--Group View Controller-->
+        <scene sceneID="pkt-ri-n3x">
+            <objects>
+                <viewController id="ogg-1p-siA" customClass="GroupViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x0J-uG-lKP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pt8-NW-vlC">
+                                <rect key="frame" x="10" y="136" width="355" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Pt8-NW-vlC" firstAttribute="leading" secondItem="R3p-a8-ltv" secondAttribute="leading" constant="10" id="CWx-2L-Wmm"/>
+                            <constraint firstItem="R3p-a8-ltv" firstAttribute="trailing" secondItem="Pt8-NW-vlC" secondAttribute="trailing" constant="10" id="MYb-cB-9q4"/>
+                            <constraint firstItem="Pt8-NW-vlC" firstAttribute="top" secondItem="R3p-a8-ltv" secondAttribute="top" constant="20" id="ypa-mK-hQz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="R3p-a8-ltv"/>
+                    </view>
+                    <connections>
+                        <outlet property="groupLabel" destination="Pt8-NW-vlC" id="3Sx-po-d21"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lBa-Df-iHY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3298" y="174"/>
+        </scene>
+        <!--Groups-->
+        <scene sceneID="wmd-BU-E43">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Uq-t7-cGg" userLabel="Groups" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Groups" id="hik-7R-fru"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qhI-x3-0Fj">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Vpa-yR-Th3" kind="relationship" relationship="rootViewController" id="daf-5C-i4k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gm2-sD-txK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1292" y="174"/>
+        </scene>
+    </scenes>
+</document>
