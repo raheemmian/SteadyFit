@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>778849550990-vsbo3bd79urqvob1pagli4hv0aidb2ui.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.778849550990-vsbo3bd79urqvob1pagli4hv0aidb2ui</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDgcB0SRoA6TxHKn2EblZKjjN_jwKQO2vk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>778849550990</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.SteadyFit</string>
+	<key>PROJECT_ID</key>
+	<string>steadyfit-2db3e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>steadyfit-2db3e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:778849550990:ios:d23664c1ecbee6c4</string>
+	<key>DATABASE_URL</key>
+	<string>https://steadyfit-2db3e.firebaseio.com</string>
+</dict>
+</plist>
