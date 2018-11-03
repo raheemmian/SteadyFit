@@ -8,19 +8,48 @@
 
 //Groups
 import UIKit
+import FirebaseDatabase
 
 class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    var sampleMyGroups = ["Group A", "Group B", "Group C"]
+    var sampleMyGroups = [String]() //= ["Group A", "Group B", "Group C"]
     var sampleSuggestedGroups = ["Group X", "Group Y", "Group Z"]
     var p: Int!
     
+    var queryMyGroups = [userGroup]()
+    var ref:DatabaseReference?
+    var refHandle:DatabaseHandle?
+
     @IBOutlet weak var groupTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        ref = Database.database().reference()
         
+        // load data from firebase ======
+        refHandle = ref?.child("Users/User1").child("Groups").observe(DataEventType.value, with: {
+            (snapshot) in
+            self.sampleMyGroups.removeAll()
+            self.queryMyGroups.removeAll()
+            for rest in snapshot.children.allObjects as! [DataSnapshot]{
+                guard let dictionary = rest.value as? [String: AnyObject] else {continue}
+                let myGroup = userGroup()
+                myGroup.name = dictionary["name"] as?String
+                myGroup.chatid = dictionary["name"] as?String
+                myGroup.GroupType = dictionary["GroupType"] as?String
+                
+                self.queryMyGroups.append(myGroup)
+                if myGroup.name != nil {
+                    let sampleGroup: String = myGroup.name!
+                    self.sampleMyGroups.append(sampleGroup)
+                }
+                
+                DispatchQueue.main.async{
+                    self.groupTableView.reloadData()
+                }
+            }
+        })
+        // end of load data from firebase ======
         p = 0
     }
     
@@ -87,4 +116,6 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         groupTableView.reloadData()
     }
 }
+
+
 
