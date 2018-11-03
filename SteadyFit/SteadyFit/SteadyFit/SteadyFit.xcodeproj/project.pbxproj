@@ -12,6 +12,8 @@
 		123B54A3218C1EA500646CEB /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 123B54A2218C1EA500646CEB /* Third.storyboard */; };
 		123B54A5218C36FA00646CEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 123B54A4218C36FA00646CEB /* GoogleService-Info.plist */; };
 		12A6E647218D0BE2003ED258 /* userGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E646218D0BE2003ED258 /* userGroup.swift */; };
+		12A6E64B218D7442003ED258 /* Fourth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A6E64A218D7442003ED258 /* Fourth.storyboard */; };
+		12A6E64D218D7480003ED258 /* Fifth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A6E64C218D7480003ED258 /* Fifth.storyboard */; };
 		6BEB4CE86D25B9F25E19AB27 /* Pods_SteadyFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345E59685D91B020FFE70273 /* Pods_SteadyFitTests.framework */; };
 		874B8185AEFA6EA89DC330A7 /* Pods_SteadyFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B965C2595CF769777BB4CC17 /* Pods_SteadyFitUITests.framework */; };
 		B5727A65217FEDED00AF9005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A64217FEDED00AF9005 /* AppDelegate.swift */; };
@@ -53,6 +55,8 @@
 		123B54A2218C1EA500646CEB /* Third.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
 		123B54A4218C36FA00646CEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		12A6E646218D0BE2003ED258 /* userGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userGroup.swift; sourceTree = "<group>"; };
+		12A6E64A218D7442003ED258 /* Fourth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Fourth.storyboard; sourceTree = "<group>"; };
+		12A6E64C218D7480003ED258 /* Fifth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Fifth.storyboard; sourceTree = "<group>"; };
 		345E59685D91B020FFE70273 /* Pods_SteadyFitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteadyFitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		524F9EF2FBCDEC79B4A3191F /* Pods_SteadyFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteadyFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E321E553C0E12A38F689D4 /* Pods-SteadyFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFit/Pods-SteadyFit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 				123B54A0218C1E7200646CEB /* First.storyboard */,
 				123B549E218C17FC00646CEB /* Second.storyboard */,
 				123B54A2218C1EA500646CEB /* Third.storyboard */,
+				12A6E64A218D7442003ED258 /* Fourth.storyboard */,
+				12A6E64C218D7480003ED258 /* Fifth.storyboard */,
 			);
 			path = SteadyFit;
 			sourceTree = "<group>";
@@ -328,7 +334,9 @@
 				B5727A6C217FEDED00AF9005 /* Main.storyboard in Resources */,
 				123B54A3218C1EA500646CEB /* Third.storyboard in Resources */,
 				D4D411FA218900930091D45F /* GroupCell.xib in Resources */,
+				12A6E64D218D7480003ED258 /* Fifth.storyboard in Resources */,
 				123B549F218C17FC00646CEB /* Second.storyboard in Resources */,
+				12A6E64B218D7442003ED258 /* Fourth.storyboard in Resources */,
 				123B54A1218C1E7200646CEB /* First.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
