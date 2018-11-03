@@ -10,8 +10,16 @@ import UIKit
 
 class GroupViewController: UIViewController {
     
+   
     @IBOutlet weak var groupLabel: UILabel!
+    @IBOutlet weak var groupDesc: UILabel!
+    @IBOutlet weak var groupDescInfo: UILabel!
+    @IBOutlet weak var activityLevel: UILabel!
+    @IBOutlet weak var activityLevelInfo: UILabel!
     
+    @IBOutlet weak var groupStatus: UILabel!
+    @IBOutlet weak var groupStatusInfo: UILabel!
+   
     var groupName: String!
     
     
@@ -19,6 +27,13 @@ class GroupViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         groupLabel.text = groupName
+        groupDesc.text = "Group Description:"
+        groupDescInfo.text = "(Group Description)"
+        activityLevel.text = "Activity Level:"
+        activityLevelInfo.text = "(activity level)"
+        groupStatus.text = "Group Status:"
+        groupStatusInfo.text = "(Group Status)"
+        
     }
     
     
