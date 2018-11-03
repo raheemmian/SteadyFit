@@ -37,11 +37,11 @@
             </objects>
             <point key="canvasLocation" x="95" y="24"/>
         </scene>
-        <!--Chats-->
+        <!--Friends-->
         <scene sceneID="x3C-oQ-R64">
             <objects>
                 <navigationController id="qo4-VK-SI2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chats" id="Pic-zJ-1VT"/>
+                    <tabBarItem key="tabBarItem" title="Friends" id="MFN-33-wmf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="V5L-Sd-Nxb">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
