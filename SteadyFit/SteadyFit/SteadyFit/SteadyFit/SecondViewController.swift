@@ -9,10 +9,11 @@
 //Groups
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var sampleMyGroups = [String]() //= ["Group A", "Group B", "Group C"]
-    var sampleSuggestedGroups = ["Group X", "Group Y", "Group Z"]
+    var myGroups = [String]() //= ["Group A", "Group B", "Group C"]
+    var suggestedGroups = ["Group X", "Group Y", "Group Z"]
     var p: Int!
     
     var queryMyGroups = [userGroup]()
@@ -26,10 +27,13 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view, typically from a nib.
         ref = Database.database().reference()
         
-        // load data from firebase ======
-        refHandle = ref?.child("Users/User1").child("Groups").observe(DataEventType.value, with: {
+        
+        
+         //=====manually copy this chunk of code, firebase stuff
+        let currentuserID = Auth.auth().currentUser?.uid
+        refHandle = ref?.child("Users").child(currentuserID!).child("Groups").observe(DataEventType.value, with: {
             (snapshot) in
-            self.sampleMyGroups.removeAll()
+            self.myGroups.removeAll()
             self.queryMyGroups.removeAll()
             for rest in snapshot.children.allObjects as! [DataSnapshot]{
                 guard let dictionary = rest.value as? [String: AnyObject] else {continue}
@@ -37,31 +41,30 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
                 myGroup.name = dictionary["name"] as?String
                 myGroup.chatid = dictionary["name"] as?String
                 myGroup.GroupType = dictionary["GroupType"] as?String
-                
                 self.queryMyGroups.append(myGroup)
                 if myGroup.name != nil {
                     let sampleGroup: String = myGroup.name!
-                    self.sampleMyGroups.append(sampleGroup)
+                    self.myGroups.append(sampleGroup)
                 }
-                
                 DispatchQueue.main.async{
                     self.groupTableView.reloadData()
                 }
             }
         })
         // end of load data from firebase ======
+        
         p = 0
     }
     
-    func tableView(_ groupTableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var returnValue = 0
         
         switch (p) {
         case 0:
-            returnValue = sampleMyGroups.count
+            returnValue = myGroups.count
             break
         case 1:
-            returnValue = sampleSuggestedGroups.count
+            returnValue = suggestedGroups.count
             break
         default:
             break
@@ -69,16 +72,15 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         return returnValue
     }
     
-    
-    func tableView(_ groupTableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = groupTableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
         
         switch (p) {
         case 0:
-            cell.textLabel!.text = sampleMyGroups[indexPath.row]
+            cell.textLabel!.text = myGroups[indexPath.row]
             break
         case 1:
-            cell.textLabel!.text = sampleSuggestedGroups[indexPath.row]
+            cell.textLabel!.text = suggestedGroups[indexPath.row]
             break
         default:
             break
@@ -87,28 +89,38 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    func tableView(_ groupTableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        groupTableView.deselectRow(at: indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showGroupDetail", sender: self)
+        groupTableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var indexPath = self.groupTableView.indexPathForSelectedRow!
         switch (p) {
         case 0:
-            if let destination = segue.destination as? GroupViewController{
-                destination.groupName = sampleMyGroups[(groupTableView.indexPathForSelectedRow?.row)!]
-            }
+            let destination = segue.destination as! GroupViewController
+            destination.navigationItem.title = myGroups[indexPath.row]
+            
+//            if let destination = segue.destination as? GroupViewController{
+//                destination.groupName = myGroups[(groupTableView.indexPathForSelectedRow?.row)!]
+//            }
             break
         case 1:
-            if let destination = segue.destination as? GroupViewController{
-                destination.groupName = sampleSuggestedGroups[(groupTableView.indexPathForSelectedRow?.row)!]
-            }
+            
+            let destination = segue.destination as! GroupViewController
+            destination.navigationItem.title = suggestedGroups[indexPath.row]
+//            if let destination = segue.destination as? GroupViewController{
+//                destination.groupName = suggestedGroups[(groupTableView.indexPathForSelectedRow?.row)!]
+//            }
             break
         default:
             break
         }
         
     }
+    
+    
+    
     
     
     @IBAction func groupSegmentedControl(_ sender: UISegmentedControl) {
