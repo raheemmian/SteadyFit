@@ -8,18 +8,17 @@
 
 //Home
 import UIKit
+import Foundation
 import MessageUI
 import MapKit
 import CoreLocation
+
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate{
     var myindex = 0;
     var locationManager = CLLocationManager()
-    
-    var groups = [[String]]()
-    let items = [ ["Histogram"] , ["dog", "cat", "cc"]]
+    let items = [ ["Histogram"] , ["Event A", "Event B", "Event C"]]
     let sections = ["Activity Tracker", "Events"]
-    
-
+    //var user:UserEventsViewController! = nil
     @IBAction func EmergencyButton(_ sender: Any) {sendText()}
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var city: UILabel!
@@ -27,26 +26,20 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var profilePicture: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //user = UserEventsViewController()
         myTableView.delegate = self
         myTableView.dataSource = self
         profilePicture.layer.cornerRadius = profilePicture.frame.size.width / 2
         profilePicture.clipsToBounds = true
-        self.locationManager.requestWhenInUseAuthorization()
+            locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-       // print("location = \(locValue.)
-    }
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
+    /*-----------------------------------Location----------------------------------------------------------------------*/
+    /*-----------------------------------Table----------------------------------------------------------------------*/
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -57,27 +50,45 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         return items[section].count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for:  indexPath)
         cell.textLabel?.text = items[indexPath.section][indexPath.row]
         return cell
     }
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: sections[indexPath.section], sender: self)
+        //items[indexPath.section][indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var indexPath = self.myTableView.indexPathForSelectedRow!
+        if(indexPath.section == 0){
+            let post = segue.destination as! HistogramViewController
+            post.navigationItem.title = items[indexPath.section][indexPath.row]
+        }
+        else{
+            let post = segue.destination as! UserEventsViewController
+            post.navigationItem.title = items[indexPath.section][indexPath.row]
+        }
+    }
+    /*-----------------------------------END OF Table----------------------------------------------------------------------*/
+    /*-----------------------------------Messaging----------------------------------------------------------------------*/
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
+    }
     func sendText() {
-        print("hi")
+        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+        //print("location = \(locValue.latitude)\(locValue.longitude)")
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
         composeVC.recipients = ["7788823644"]
-        composeVC.body = "test!"
+        composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
         if MFMessageComposeViewController.canSendText() {
             self.present(composeVC, animated: true, completion: nil)
         } else {
             print("Can't send messages.")
         }
     }
+     /*-----------------------------------END Messaging----------------------------------------------------------------------*/
 
 }
 
