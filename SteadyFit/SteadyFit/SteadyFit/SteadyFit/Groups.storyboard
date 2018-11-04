@@ -30,7 +30,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MmZ-BC-OAg">
-                                <rect key="frame" x="0.0" y="228" width="414" height="535"/>
+                                <rect key="frame" x="0.0" y="228" width="414" height="544"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groupCell" id="OVN-Ic-nfr">
@@ -47,15 +47,29 @@
                                     <outlet property="delegate" destination="Vpa-yR-Th3" id="g0r-hY-bTn"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luo-lr-o7B">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButton:" destination="Vpa-yR-Th3" eventType="touchUpInside" id="cLa-ld-Yd5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="98z-qN-5le" firstAttribute="top" secondItem="Vty-5k-4c4" secondAttribute="top" constant="30" id="6dD-qp-8ra"/>
                             <constraint firstItem="MmZ-BC-OAg" firstAttribute="leading" secondItem="IOn-kn-s12" secondAttribute="leading" id="87h-ul-ptQ"/>
-                            <constraint firstItem="Vty-5k-4c4" firstAttribute="bottom" secondItem="MmZ-BC-OAg" secondAttribute="bottom" constant="50" id="GPT-fJ-ige"/>
                             <constraint firstItem="MmZ-BC-OAg" firstAttribute="top" secondItem="98z-qN-5le" secondAttribute="bottom" constant="30" id="I2T-oH-GUS"/>
+                            <constraint firstItem="luo-lr-o7B" firstAttribute="bottom" secondItem="Vty-5k-4c4" secondAttribute="bottom" id="K9d-dY-x6u"/>
                             <constraint firstItem="98z-qN-5le" firstAttribute="centerX" secondItem="MmZ-BC-OAg" secondAttribute="centerX" id="KbB-1H-tmD"/>
+                            <constraint firstItem="luo-lr-o7B" firstAttribute="trailing" secondItem="Vty-5k-4c4" secondAttribute="trailing" id="fJS-vP-pvq"/>
                             <constraint firstAttribute="trailing" secondItem="MmZ-BC-OAg" secondAttribute="trailing" id="gke-dh-5Ey"/>
+                            <constraint firstItem="luo-lr-o7B" firstAttribute="leading" secondItem="Vty-5k-4c4" secondAttribute="leading" id="ka3-ZA-BNr"/>
+                            <constraint firstItem="luo-lr-o7B" firstAttribute="top" secondItem="MmZ-BC-OAg" secondAttribute="bottom" id="pkI-Gy-inG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vty-5k-4c4"/>
                     </view>
@@ -68,7 +82,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7uo-G1-Zes" sceneMemberID="firstResponder"/>
                 <exit id="Fpd-VJ-MVH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2415" y="174"/>
+            <point key="canvasLocation" x="2414.4927536231885" y="173.4375"/>
         </scene>
         <!--Groups-->
         <scene sceneID="wmd-BU-E43">

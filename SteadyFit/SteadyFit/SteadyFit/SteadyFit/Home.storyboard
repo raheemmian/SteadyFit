@@ -24,21 +24,6 @@
                                     <constraint firstAttribute="height" constant="100" id="Wcb-ZR-p1E"/>
                                 </constraints>
                             </imageView>
-                            <tabBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWb-cQ-OF5">
-                                <rect key="frame" x="0.0" y="720" width="414" height="49"/>
-                                <items/>
-                                <color key="barTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </tabBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fo9-DM-CCt">
-                                <rect key="frame" x="0.0" y="720" width="414" height="49"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="EMERGENCY">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="EmergencyButton:" destination="iKh-5u-Nl5" eventType="touchUpInside" id="ljD-jJ-VUX"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vancouver, BC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnC-2I-mbV">
                                 <rect key="frame" x="143.5" y="300" width="127" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -52,7 +37,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cDO-ay-zWA">
-                                <rect key="frame" x="0.0" y="339" width="414" height="381"/>
+                                <rect key="frame" x="0.0" y="339" width="414" height="390"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeTableCell" id="v4p-Uw-Emk">
@@ -65,6 +50,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fo9-DM-CCt">
+                                <rect key="frame" x="0.0" y="728" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="EmergencyButton:" destination="iKh-5u-Nl5" eventType="touchUpInside" id="ljD-jJ-VUX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -72,21 +68,18 @@
                             <constraint firstItem="cDO-ay-zWA" firstAttribute="top" secondItem="pnC-2I-mbV" secondAttribute="bottom" constant="15" id="52w-v2-nEq"/>
                             <constraint firstItem="fo9-DM-CCt" firstAttribute="leading" secondItem="Mgi-9j-gwN" secondAttribute="leading" id="5tK-9L-2Ks"/>
                             <constraint firstItem="fo9-DM-CCt" firstAttribute="centerX" secondItem="pnC-2I-mbV" secondAttribute="centerX" id="61l-LZ-nOR"/>
-                            <constraint firstItem="fo9-DM-CCt" firstAttribute="trailing" secondItem="sWb-cQ-OF5" secondAttribute="trailing" id="6ec-jC-vtM"/>
-                            <constraint firstItem="fo9-DM-CCt" firstAttribute="leading" secondItem="sWb-cQ-OF5" secondAttribute="leading" id="8F8-we-ZSG"/>
+                            <constraint firstItem="MJG-4b-Tif" firstAttribute="bottom" secondItem="cDO-ay-zWA" secondAttribute="bottom" constant="40" id="6XP-iq-iUK"/>
                             <constraint firstItem="pnC-2I-mbV" firstAttribute="centerX" secondItem="MJG-4b-Tif" secondAttribute="centerX" id="ExC-eV-4AZ"/>
-                            <constraint firstItem="fo9-DM-CCt" firstAttribute="top" secondItem="sWb-cQ-OF5" secondAttribute="top" id="FDj-56-bmH"/>
                             <constraint firstItem="fo9-DM-CCt" firstAttribute="bottom" secondItem="MJG-4b-Tif" secondAttribute="bottom" id="Hd3-2X-fuo"/>
                             <constraint firstItem="m6z-Vu-KrR" firstAttribute="centerX" secondItem="MJG-4b-Tif" secondAttribute="centerX" id="NcI-t6-mh8"/>
-                            <constraint firstItem="fo9-DM-CCt" firstAttribute="bottom" secondItem="sWb-cQ-OF5" secondAttribute="bottom" id="Rqx-1l-iMc"/>
                             <constraint firstItem="cDO-ay-zWA" firstAttribute="leading" secondItem="MJG-4b-Tif" secondAttribute="leading" id="VVP-39-Rey"/>
                             <constraint firstItem="6Cd-cy-3WU" firstAttribute="top" secondItem="m6z-Vu-KrR" secondAttribute="bottom" constant="8" id="efG-rd-3Ur"/>
                             <constraint firstItem="6Cd-cy-3WU" firstAttribute="centerX" secondItem="MJG-4b-Tif" secondAttribute="centerX" id="fYi-st-Gaq"/>
-                            <constraint firstItem="fo9-DM-CCt" firstAttribute="top" secondItem="cDO-ay-zWA" secondAttribute="bottom" id="hqc-do-rUs"/>
                             <constraint firstItem="6Cd-cy-3WU" firstAttribute="centerX" secondItem="m6z-Vu-KrR" secondAttribute="centerX" id="ij1-mN-8Rf"/>
                             <constraint firstItem="cDO-ay-zWA" firstAttribute="trailing" secondItem="MJG-4b-Tif" secondAttribute="trailing" id="s85-PY-dip"/>
                             <constraint firstItem="m6z-Vu-KrR" firstAttribute="top" secondItem="MJG-4b-Tif" secondAttribute="top" constant="15" id="sES-Ai-SBw"/>
                             <constraint firstItem="pnC-2I-mbV" firstAttribute="centerX" secondItem="m6z-Vu-KrR" secondAttribute="centerX" id="vg8-Lc-EHM"/>
+                            <constraint firstItem="fo9-DM-CCt" firstAttribute="bottom" secondItem="MJG-4b-Tif" secondAttribute="bottom" id="yhV-WI-xlL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MJG-4b-Tif"/>
                     </view>

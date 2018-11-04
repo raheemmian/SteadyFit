@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X4B-cf-fRm">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="633"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="friendCell" id="Bnf-la-eYS">
@@ -56,10 +56,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUW-YL-jUC">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="EmergencyButton:" destination="PCa-rF-jhF" eventType="touchUpInside" id="WRt-Pb-Tp4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="X4B-cf-fRm" firstAttribute="bottom" secondItem="Qr0-4d-Q9V" secondAttribute="bottom" id="C5Z-Nh-4kj"/>
+                            <constraint firstItem="Qr0-4d-Q9V" firstAttribute="bottom" secondItem="X4B-cf-fRm" secondAttribute="bottom" constant="40" id="0CW-F4-We9"/>
+                            <constraint firstItem="kUW-YL-jUC" firstAttribute="trailing" secondItem="Qr0-4d-Q9V" secondAttribute="trailing" id="1b2-Ut-23f"/>
+                            <constraint firstItem="kUW-YL-jUC" firstAttribute="leading" secondItem="Qr0-4d-Q9V" secondAttribute="leading" id="2vd-ws-OfF"/>
+                            <constraint firstItem="kUW-YL-jUC" firstAttribute="bottom" secondItem="Qr0-4d-Q9V" secondAttribute="bottom" id="qCv-E4-Wol"/>
                             <constraint firstItem="X4B-cf-fRm" firstAttribute="leading" secondItem="Qr0-4d-Q9V" secondAttribute="leading" id="vwT-Y1-mtO"/>
                             <constraint firstItem="X4B-cf-fRm" firstAttribute="top" secondItem="Qr0-4d-Q9V" secondAttribute="top" id="vzr-55-6BZ"/>
                             <constraint firstItem="X4B-cf-fRm" firstAttribute="trailing" secondItem="Qr0-4d-Q9V" secondAttribute="trailing" id="xx5-ZD-O2x"/>
@@ -73,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8h-lC-229" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-327" y="24"/>
+            <point key="canvasLocation" x="-327.536231884058" y="23.4375"/>
         </scene>
         <!--Friend Profile View Controller-->
         <scene sceneID="ZVv-u7-qts">
