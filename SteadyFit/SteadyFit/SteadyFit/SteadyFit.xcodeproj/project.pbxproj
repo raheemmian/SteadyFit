@@ -30,6 +30,9 @@
 		B57302AF2188181700CD06D3 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57302AE2188181700CD06D3 /* EmergencyViewController.swift */; };
 		D43B7CF4218E6E8C0099C159 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */; };
 		D43B7CF8218E74420099C159 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF7218E74420099C159 /* EventViewController.swift */; };
+		B5F54D21218E48D000D0214D /* UserEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D20218E48D000D0214D /* UserEventsViewController.swift */; };
+		B5F54D23218E663400D0214D /* HistogramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D22218E663400D0214D /* HistogramViewController.swift */; };
+		B5F54D25218E6D5F00D0214D /* friendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D24218E6D5F00D0214D /* friendProfileViewController.swift */; };
 		D4B0F1F62188D29E0060EA22 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0F1F52188D29E0060EA22 /* GroupViewController.swift */; };
 		D4D411F9218900930091D45F /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D411F7218900930091D45F /* GroupCell.swift */; };
 		D4D411FA218900930091D45F /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D411F8218900930091D45F /* GroupCell.xib */; };
@@ -86,6 +89,9 @@
 		B5727A9A217FF71600AF9005 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		B57302AC2186D0A300CD06D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B57302AE2188181700CD06D3 /* EmergencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyViewController.swift; sourceTree = "<group>"; };
+		B5F54D20218E48D000D0214D /* UserEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventsViewController.swift; sourceTree = "<group>"; };
+		B5F54D22218E663400D0214D /* HistogramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramViewController.swift; sourceTree = "<group>"; };
+		B5F54D24218E6D5F00D0214D /* friendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendProfileViewController.swift; sourceTree = "<group>"; };
 		B965C2595CF769777BB4CC17 /* Pods_SteadyFitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteadyFitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC196ED42956309F7A7CACE /* Pods-SteadyFitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitUITests/Pods-SteadyFitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9E952BF25F86290D84D1FDC /* Pods-SteadyFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitTests/Pods-SteadyFitTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -185,10 +191,12 @@
 				D4D411F6218900700091D45F /* groupCell */,
 				B5727A64217FEDED00AF9005 /* AppDelegate.swift */,
 				B5727A66217FEDED00AF9005 /* FirstViewController.swift */,
+				B5F54D24218E6D5F00D0214D /* friendProfileViewController.swift */,
 				B5727A68217FEDED00AF9005 /* SecondViewController.swift */,
 				D4B0F1F52188D29E0060EA22 /* GroupViewController.swift */,
 				125AAD4C218D9A1800CC5FCD /* LoginViewController.swift */,
 				B5727A9A217FF71600AF9005 /* ThirdViewController.swift */,
+				B5F54D20218E48D000D0214D /* UserEventsViewController.swift */,
 				B57302AE2188181700CD06D3 /* EmergencyViewController.swift */,
 				D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */,
 				B57302AC2186D0A300CD06D3 /* Assets.xcassets */,
@@ -198,6 +206,7 @@
 				125AAD44218D8C3000CC5FCD /* Login.storyboard */,
 				B5727A6A217FEDED00AF9005 /* Main.storyboard */,
 				123B54A0218C1E7200646CEB /* First.storyboard */,
+				B5F54D22218E663400D0214D /* HistogramViewController.swift */,
 				123B549E218C17FC00646CEB /* Second.storyboard */,
 				D43B7CF7218E74420099C159 /* EventViewController.swift */,
 				D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */,
@@ -477,8 +486,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F54D25218E6D5F00D0214D /* friendProfileViewController.swift in Sources */,
 				125AAD4D218D9A1800CC5FCD /* LoginViewController.swift in Sources */,
+				B5F54D23218E663400D0214D /* HistogramViewController.swift in Sources */,
 				D4D411F9218900930091D45F /* GroupCell.swift in Sources */,
+				B5F54D21218E48D000D0214D /* UserEventsViewController.swift in Sources */,
 				D4B0F1F62188D29E0060EA22 /* GroupViewController.swift in Sources */,
 				B5727A69217FEDED00AF9005 /* SecondViewController.swift in Sources */,
 				12A6E647218D0BE2003ED258 /* userGroup.swift in Sources */,
@@ -671,7 +683,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -690,7 +702,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
