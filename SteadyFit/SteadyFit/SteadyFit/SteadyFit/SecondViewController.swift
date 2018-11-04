@@ -9,6 +9,7 @@
 //Groups
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var myGroups = [String]() //= ["Group A", "Group B", "Group C"]
@@ -26,8 +27,11 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view, typically from a nib.
         ref = Database.database().reference()
         
-        // load data from firebase ======
-        refHandle = ref?.child("Users/User1").child("Groups").observe(DataEventType.value, with: {
+        
+        
+         //=====manually copy this chunk of code, firebase stuff
+        let currentuserID = Auth.auth().currentUser?.uid
+        refHandle = ref?.child("Users").child(currentuserID!).child("Groups").observe(DataEventType.value, with: {
             (snapshot) in
             self.myGroups.removeAll()
             self.queryMyGroups.removeAll()
@@ -37,49 +41,18 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
                 myGroup.name = dictionary["name"] as?String
                 myGroup.chatid = dictionary["name"] as?String
                 myGroup.GroupType = dictionary["GroupType"] as?String
-                
                 self.queryMyGroups.append(myGroup)
                 if myGroup.name != nil {
                     let sampleGroup: String = myGroup.name!
                     self.myGroups.append(sampleGroup)
                 }
-                
                 DispatchQueue.main.async{
                     self.groupTableView.reloadData()
                 }
             }
         })
-        
-        
-        /*
-         //=====manually copy this chunk of code, firebase stuff
-                         let currentuserID = Auth.auth().currentUser?.uid
-                         refHandle = ref?.child("Users").child(currentuserID!).child("Groups").observe(DataEventType.value, with: {
-                                 (snapshot) in
-                                 self.sampleMyGroups.removeAll()
-                                 self.queryMyGroups.removeAll()
-                                 for rest in snapshot.children.allObjects as! [DataSnapshot]{
-                                         guard let dictionary = rest.value as? [String: AnyObject] else {continue}
-                                         let myGroup = userGroup()
-                                         myGroup.name = dictionary["name"] as?String
-                                         myGroup.chatid = dictionary["name"] as?String
-                                         myGroup.GroupType = dictionary["GroupType"] as?String
-                                         
-                                         self.queryMyGroups.append(myGroup)
-                                         if myGroup.name != nil {
-                                                 let sampleGroup: String = myGroup.name!
-                                                 self.sampleMyGroups.append(sampleGroup)
-                                         }
-                                         
-                                         DispatchQueue.main.async{
-                                                 self.groupTableView.reloadData()
-                                         }
-                                 }
-                         })
-                         // end of load data from firebase ======
-         */
-        
         // end of load data from firebase ======
+        
         p = 0
     }
     
