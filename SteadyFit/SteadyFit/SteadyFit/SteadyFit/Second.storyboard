@@ -74,7 +74,7 @@
         <scene sceneID="wmd-BU-E43">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Uq-t7-cGg" userLabel="Groups" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Groups" id="hik-7R-fru"/>
+                    <tabBarItem key="tabBarItem" title="Groups" image="group" selectedImage="group" id="hik-7R-fru"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qhI-x3-0Fj">
@@ -325,5 +325,6 @@
     </scenes>
     <resources>
         <image name="ProfilePic" width="660" height="658"/>
+        <image name="group" width="32" height="32"/>
     </resources>
 </document>

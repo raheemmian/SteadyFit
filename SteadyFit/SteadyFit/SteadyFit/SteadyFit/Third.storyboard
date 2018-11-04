@@ -13,7 +13,7 @@
         <scene sceneID="x3C-oQ-R64">
             <objects>
                 <navigationController id="qo4-VK-SI2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" id="MFN-33-wmf"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="friend" selectedImage="friend" id="MFN-33-wmf"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="V5L-Sd-Nxb">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -39,9 +39,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X4B-cf-fRm">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X4B-cf-fRm">
                                 <rect key="frame" x="0.0" y="140" width="375" height="589"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="friendCell" id="Bnf-la-eYS">
@@ -59,6 +58,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="X4B-cf-fRm" firstAttribute="bottom" secondItem="Qr0-4d-Q9V" secondAttribute="bottom" id="C5Z-Nh-4kj"/>
+                            <constraint firstItem="X4B-cf-fRm" firstAttribute="leading" secondItem="Qr0-4d-Q9V" secondAttribute="leading" id="vwT-Y1-mtO"/>
+                            <constraint firstItem="X4B-cf-fRm" firstAttribute="top" secondItem="Qr0-4d-Q9V" secondAttribute="top" id="vzr-55-6BZ"/>
+                            <constraint firstItem="X4B-cf-fRm" firstAttribute="trailing" secondItem="Qr0-4d-Q9V" secondAttribute="trailing" id="xx5-ZD-O2x"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Qr0-4d-Q9V"/>
                     </view>
                     <navigationItem key="navigationItem" title="Friends" id="JNe-PV-DOg"/>
@@ -95,4 +100,7 @@
             <point key="canvasLocation" x="548" y="24"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="friend" width="32" height="32"/>
+    </resources>
 </document>

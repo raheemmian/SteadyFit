@@ -40,7 +40,7 @@
         <scene sceneID="yfg-Yy-hoT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U7g-Bv-fzg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="P4f-QY-MNl"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="setting" selectedImage="setting" id="P4f-QY-MNl"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="qDL-fL-lzv">
@@ -65,9 +65,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="41H-Nr-D5I">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="41H-Nr-D5I">
                                 <rect key="frame" x="0.0" y="116" width="375" height="502"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="106" id="zEI-T1-FnM" customClass="ViewControllerTableViewCell" customModule="SteadyFit" customModuleProvider="target">
@@ -124,6 +123,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="41H-Nr-D5I" firstAttribute="leading" secondItem="VMJ-j9-jjX" secondAttribute="leading" id="Rfs-vn-Mmp"/>
+                            <constraint firstItem="41H-Nr-D5I" firstAttribute="trailing" secondItem="VMJ-j9-jjX" secondAttribute="trailing" id="UV7-FZ-MeH"/>
+                            <constraint firstItem="41H-Nr-D5I" firstAttribute="bottom" secondItem="VMJ-j9-jjX" secondAttribute="bottom" id="nVy-rO-56b"/>
+                            <constraint firstItem="41H-Nr-D5I" firstAttribute="top" secondItem="VMJ-j9-jjX" secondAttribute="top" id="rJM-38-h9a"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="VMJ-j9-jjX"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="5Ew-ee-Zpk"/>
@@ -133,4 +138,7 @@
             <point key="canvasLocation" x="80.799999999999997" y="626.53673163418296"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="setting" width="32" height="32"/>
+    </resources>
 </document>
