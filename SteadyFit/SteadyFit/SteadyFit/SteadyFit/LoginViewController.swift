@@ -7,18 +7,60 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
-
-    @IBAction func SignInRegisterSelector(_ sender: Any) {
-    }
+    @IBOutlet weak var signInRegister: UISegmentedControl!
+    @IBOutlet weak var btnSignIn: UIButton!
+    @IBOutlet weak var txtEmail: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
+    
+    var isSignIn:Bool = true;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func SignInSelectorChanged(_ sender: UISegmentedControl) {
+        isSignIn = !isSignIn
+        if isSignIn {
+            btnSignIn.setTitle("Sign In", for: .normal)
+        }
+        else{
+            btnSignIn.setTitle("Register", for: .normal)
+        }
+    }
+    
+    
+    @IBAction func signInButtonClicked(_ sender: UIButton) {
+        if let email = txtEmail.text, let pass = txtPassword.text{
+            if isSignIn{ // sign in user
+                Auth.auth().signIn(withEmail: email, password: pass, completion: { (user, error) in
+                    if let u = user {
+                        // user is found, go to home screen
+                        self.performSegue(withIdentifier: "GoToHome", sender: self)
+                    }
+                    else{
+                        //error, no existing user
+                    }
+                    
+                })
+            }
+            else{ // register user
+                Auth.auth().createUser(withEmail: email, password: pass) { (authResult, error) in
+                    // ...
+                    guard let u = authResult?.user else { return /*error, user is nil*/}
+                    //TO DO for version 2: create user in firebase database
+    
+                    self.performSegue(withIdentifier: "GoToHome", sender: self)
+                    
+                }
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
