@@ -26,7 +26,7 @@
                                 </segments>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IGg-Ry-ryk">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="632"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="chatCell" id="nMm-Wg-Fvc">
@@ -43,13 +43,27 @@
                                     <outlet property="delegate" destination="DF2-k9-aHW" id="P3R-WZ-x3M"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2NV-Dw-Acc">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButton:" destination="DF2-k9-aHW" eventType="touchUpInside" id="bd8-ai-AW4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IGg-Ry-ryk" firstAttribute="leading" secondItem="4m6-Ys-eUb" secondAttribute="leading" id="I2b-by-t0F"/>
-                            <constraint firstItem="IGg-Ry-ryk" firstAttribute="top" secondItem="4m6-Ys-eUb" secondAttribute="top" id="W0n-KR-ebI"/>
-                            <constraint firstItem="4m6-Ys-eUb" firstAttribute="trailing" secondItem="IGg-Ry-ryk" secondAttribute="trailing" id="dMq-oQ-PyV"/>
-                            <constraint firstItem="4m6-Ys-eUb" firstAttribute="bottom" secondItem="IGg-Ry-ryk" secondAttribute="bottom" id="mG8-SO-MDd"/>
+                            <constraint firstItem="2NV-Dw-Acc" firstAttribute="leading" secondItem="4m6-Ys-eUb" secondAttribute="leading" id="FAr-PL-qXF"/>
+                            <constraint firstItem="IGg-Ry-ryk" firstAttribute="trailing" secondItem="4m6-Ys-eUb" secondAttribute="trailing" id="MUI-cs-49U"/>
+                            <constraint firstItem="4m6-Ys-eUb" firstAttribute="bottom" secondItem="2NV-Dw-Acc" secondAttribute="bottom" id="TbK-tH-axn"/>
+                            <constraint firstItem="IGg-Ry-ryk" firstAttribute="leading" secondItem="4m6-Ys-eUb" secondAttribute="leading" id="clI-AG-Qdo"/>
+                            <constraint firstAttribute="trailing" secondItem="2NV-Dw-Acc" secondAttribute="trailing" id="d3b-Y5-GyD"/>
+                            <constraint firstItem="IGg-Ry-ryk" firstAttribute="top" secondItem="4m6-Ys-eUb" secondAttribute="top" id="lB6-R5-m9S"/>
+                            <constraint firstItem="2NV-Dw-Acc" firstAttribute="top" secondItem="IGg-Ry-ryk" secondAttribute="bottom" id="viX-wz-7E8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4m6-Ys-eUb"/>
                     </view>
@@ -61,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ipl-Dy-c6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-558" y="-1013"/>
+            <point key="canvasLocation" x="-559.4202898550725" y="-1013.1696428571428"/>
         </scene>
         <!--Private Chat View Controller-->
         <scene sceneID="YeD-aa-ftT">
@@ -93,11 +107,13 @@
             </objects>
             <point key="canvasLocation" x="401" y="-1015"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Chats-->
         <scene sceneID="Auc-6Y-BKF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xOD-FP-9ty" sceneMemberID="viewController">
+                <navigationController id="xOD-FP-9ty" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Chats" image="chat" selectedImage="chat" id="D6d-Rb-M5F"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="XuY-Sh-6WX">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -113,4 +129,7 @@
             <point key="canvasLocation" x="-1410" y="-1011"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chat" width="32" height="32"/>
+    </resources>
 </document>

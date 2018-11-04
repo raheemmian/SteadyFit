@@ -13,8 +13,11 @@
 //
 
 import UIKit
+import MessageUI
+import CoreLocation
 
-class GroupProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+class GroupProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var groupDesc: UILabel!
     @IBOutlet weak var groupDescInfo: UILabel!
@@ -24,7 +27,9 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var groupStatusInfo: UILabel!
     @IBOutlet weak var eventTableView: UITableView!
     
-    var groupName: String!
+    @IBAction func emergencyButton(_ sender: UIButton) {sendText()}
+    var locationManager = CLLocationManager()
+//    var groupName: String!
     var groupTableSections = ["Members", "Events"]
     var groupTableContents = [["More"], ["A Event on Jan 1, 2018", "B Event on Feb 1, 2018", "C Event on Mar 1, 2018"]]
     
@@ -74,4 +79,28 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
         }
     }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func sendText() {
+        let composeVC = MFMessageComposeViewController()
+        if(CLLocationManager.locationServicesEnabled()){
+            locationManager.startUpdatingLocation()
+            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+            composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
+        }
+        else{
+            composeVC.body = "I need help!"
+        }
+        composeVC.messageComposeDelegate = self
+        composeVC.recipients = ["7788823644"]
+        if MFMessageComposeViewController.canSendText() {
+            self.present(composeVC, animated: true, completion: nil)
+        } else {
+            print("Can't send messages.")
+        }
+    }
+    
 }

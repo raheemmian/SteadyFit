@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import MessageUI
+import CoreLocation
 
-class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
     
     var chatListTitle = ["Private Chats", "Group Chats"]
     var chatListContent = [["Chat a", "Chat b"], ["Chat X", "Chat Y"]]
-    
-    
     @IBOutlet weak var chatListTableView: UITableView!
-    
+    @IBAction func emergencyButton(_ sender: Any) {sendText()}
+    var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,5 +53,28 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         var indexPath = self.chatListTableView.indexPathForSelectedRow!
         let post = segue.destination as! PrivateChatViewController
         post.navigationItem.title = chatListContent[indexPath.section][indexPath.row]
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func sendText() {
+        let composeVC = MFMessageComposeViewController()
+        if(CLLocationManager.locationServicesEnabled()){
+            locationManager.startUpdatingLocation()
+            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+            composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
+        }
+        else{
+            composeVC.body = "I need help!"
+        }
+        composeVC.messageComposeDelegate = self
+        composeVC.recipients = ["7788823644"]
+        if MFMessageComposeViewController.canSendText() {
+            self.present(composeVC, animated: true, completion: nil)
+        } else {
+            print("Can't send messages.")
+        }
     }
 }

@@ -170,7 +170,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AaJ-aH-dox">
-                                <rect key="frame" x="0.0" y="295" width="414" height="498"/>
+                                <rect key="frame" x="0.0" y="295" width="414" height="477"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="memberCell" id="EN1-N6-bYE">
@@ -183,14 +183,30 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uyt-OR-869">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButton:" destination="Vpa-yR-Th3" eventType="touchUpInside" id="2O8-ar-xcK"/>
+                                    <action selector="emergencyButton:" destination="wNr-fw-8la" eventType="touchUpInside" id="U1r-ii-LXL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yxY-Tg-IOB" firstAttribute="bottom" secondItem="AaJ-aH-dox" secondAttribute="bottom" constant="20" id="DFU-n5-kFv"/>
+                            <constraint firstItem="Uyt-OR-869" firstAttribute="top" secondItem="AaJ-aH-dox" secondAttribute="bottom" id="CNg-sp-Wmv"/>
+                            <constraint firstItem="AaJ-aH-dox" firstAttribute="top" secondItem="qGB-fg-KJf" secondAttribute="bottom" id="Don-m1-Rd1"/>
                             <constraint firstItem="yxY-Tg-IOB" firstAttribute="trailing" secondItem="AaJ-aH-dox" secondAttribute="trailing" id="HA9-Hl-t9J"/>
+                            <constraint firstItem="Uyt-OR-869" firstAttribute="leading" secondItem="yxY-Tg-IOB" secondAttribute="leading" id="VG0-bR-r2c"/>
                             <constraint firstItem="yxY-Tg-IOB" firstAttribute="trailing" secondItem="qGB-fg-KJf" secondAttribute="trailing" constant="20" id="cxP-xi-W4t"/>
                             <constraint firstItem="AaJ-aH-dox" firstAttribute="leading" secondItem="yxY-Tg-IOB" secondAttribute="leading" id="dWG-BD-eB8"/>
                             <constraint firstItem="AaJ-aH-dox" firstAttribute="top" secondItem="qGB-fg-KJf" secondAttribute="bottom" constant="20" id="hNT-gI-xzT"/>
+                            <constraint firstItem="Uyt-OR-869" firstAttribute="trailing" secondItem="yxY-Tg-IOB" secondAttribute="trailing" id="rFa-H0-2SH"/>
+                            <constraint firstItem="Uyt-OR-869" firstAttribute="bottom" secondItem="yxY-Tg-IOB" secondAttribute="bottom" id="taS-FA-wYl"/>
                             <constraint firstItem="qGB-fg-KJf" firstAttribute="top" secondItem="yxY-Tg-IOB" secondAttribute="top" constant="20" id="vWP-iY-7yW"/>
                             <constraint firstItem="qGB-fg-KJf" firstAttribute="leading" secondItem="yxY-Tg-IOB" secondAttribute="leading" constant="20" id="yw0-8e-Wr5"/>
                         </constraints>
@@ -304,11 +320,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFE-Xk-A0y">
+                                <rect key="frame" x="0.0" y="728" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButton:" destination="Vpa-yR-Th3" eventType="touchUpInside" id="b3U-3V-Ksc"/>
+                                    <action selector="emergencyButton:" destination="zA1-bZ-3Dh" eventType="touchUpInside" id="ifi-Jh-kct"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hm7-nh-Jbb" firstAttribute="centerX" secondItem="5dK-ow-vDP" secondAttribute="centerX" id="2fB-7c-EOI"/>
                             <constraint firstItem="3mq-Ua-1aJ" firstAttribute="centerX" secondItem="5dK-ow-vDP" secondAttribute="centerX" id="3Wr-gL-jUK"/>
+                            <constraint firstItem="5dK-ow-vDP" firstAttribute="trailing" secondItem="aFE-Xk-A0y" secondAttribute="trailing" id="LtJ-tt-hfM"/>
                             <constraint firstItem="hm7-nh-Jbb" firstAttribute="top" secondItem="ONA-7E-cVc" secondAttribute="bottom" constant="8" id="O28-nA-9y0"/>
                             <constraint firstItem="hm7-nh-Jbb" firstAttribute="centerX" secondItem="Eco-1a-arZ" secondAttribute="centerX" id="Ocn-gq-qJn"/>
                             <constraint firstItem="ONA-7E-cVc" firstAttribute="centerX" secondItem="Eco-1a-arZ" secondAttribute="centerX" id="Qlp-CM-lGr"/>
@@ -316,6 +345,8 @@
                             <constraint firstItem="Eco-1a-arZ" firstAttribute="centerX" secondItem="5dK-ow-vDP" secondAttribute="centerX" id="hG1-Ae-Z4X"/>
                             <constraint firstItem="ONA-7E-cVc" firstAttribute="centerX" secondItem="5dK-ow-vDP" secondAttribute="centerX" id="l1u-K4-XKS"/>
                             <constraint firstItem="Eco-1a-arZ" firstAttribute="top" secondItem="5dK-ow-vDP" secondAttribute="top" constant="15" id="s6o-1k-65e"/>
+                            <constraint firstItem="5dK-ow-vDP" firstAttribute="bottom" secondItem="aFE-Xk-A0y" secondAttribute="bottom" id="taG-vP-25n"/>
+                            <constraint firstItem="aFE-Xk-A0y" firstAttribute="leading" secondItem="h5x-yh-KG1" secondAttribute="leading" id="wTn-vl-sKl"/>
                             <constraint firstItem="3mq-Ua-1aJ" firstAttribute="centerY" secondItem="5dK-ow-vDP" secondAttribute="centerY" id="waL-q1-iH4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5dK-ow-vDP"/>
