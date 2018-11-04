@@ -4,7 +4,8 @@
 //
 //  Created by Raheem Mian on 2018-11-03.
 //  Copyright © 2018 Daycar. All rights reserved.
-//
+//SettingsViewController allows for editting personal information, notification settings, emergency button settings, and help settings.
+//  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
 
 import UIKit
 import MessageUI

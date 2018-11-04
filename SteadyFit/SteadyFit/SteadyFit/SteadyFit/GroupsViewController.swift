@@ -11,6 +11,7 @@
 //  List of Changes: added segmented control, table and arrays for table, created segues for table view, added database automatic population for user "My Group"
 //
 //  GroupsViewController.swift is connected to Groups section of the UI, which shows user joined groups and recommmented groups by toggling on segmented control
+//  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
 //
 
 
