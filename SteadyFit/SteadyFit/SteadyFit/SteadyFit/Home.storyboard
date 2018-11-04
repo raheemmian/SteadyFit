@@ -12,7 +12,7 @@
         <!--Home-->
         <scene sceneID="xZh-f8-7Ly">
             <objects>
-                <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="iKh-5u-Nl5" customClass="FirstViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="iKh-5u-Nl5" customClass="HomeViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mgi-9j-gwN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

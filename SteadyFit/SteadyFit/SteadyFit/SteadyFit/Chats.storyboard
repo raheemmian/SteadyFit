@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Chats-->
         <scene sceneID="R1i-O9-L1a">
             <objects>
-                <tableViewController id="6u0-Xk-zQE" sceneMemberID="viewController">
+                <tableViewController id="6u0-Xk-zQE" customClass="ChatsTableViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JkG-Rg-F7M">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -38,7 +38,7 @@
                             <outlet property="delegate" destination="6u0-Xk-zQE" id="S3U-Nh-58p"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="VmT-ev-OZb"/>
+                    <navigationItem key="navigationItem" title="Chats" id="VmT-ev-OZb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1CG-Rx-l6H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

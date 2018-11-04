@@ -1,15 +1,15 @@
 //
-//  FirstViewController.swift
+//  HomeViewController.swift
 //  SteadyFit
 //
 //  Created by Raheem Mian on 2018-10-23.
-//  Copyright © 2018 Raheem Mian. All rights reserved.
+//  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
 //  Edited by: Raheem Mian, Akshay Kumar, Dickson Chum
 //  List of Changes: added labels, table and arrays for table, created segues for table view, implemented to obtain GPS coordinate from device and bring up iPhone Messages with default message.
 //
-//  FirstViewController.swift is connected to the first Home Screen of the UI, which shows the User's profile, activity tracker, events and emergency button.
+//  HomeViewController.swift is connected to the first Home Screen of the UI, which shows the User's profile, activity tracker, events and emergency button.
 //  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
 //
 
@@ -19,7 +19,7 @@ import MessageUI
 import MapKit
 import CoreLocation
 
-class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate{
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate{
     var myindex = 0;
     var locationManager = CLLocationManager()
     let homeTableSections = ["Activity Tracker", "Events"]

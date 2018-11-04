@@ -34,7 +34,7 @@
         <!--Friends List-->
         <scene sceneID="WCl-EM-ZUt">
             <objects>
-                <viewController title="Friends List" id="PCa-rF-jhF" customClass="ThirdViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Friends List" id="PCa-rF-jhF" customClass="FriendsViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oj8-en-4tA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Settings Editior View Controller-->
         <scene sceneID="Z19-KS-bSb">
             <objects>
-                <viewController id="JHu-S5-a6R" sceneMemberID="viewController">
+                <viewController id="JHu-S5-a6R" customClass="SettingsEditiorViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3U9-G2-gFY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@
         <!--Settings-->
         <scene sceneID="QWP-hf-w2z">
             <objects>
-                <viewController id="pWU-qe-Bd1" customClass="FifthViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pWU-qe-Bd1" customClass="SettingsViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jJg-W5-YDZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,7 +69,7 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="106" id="zEI-T1-FnM" customClass="ViewControllerTableViewCell" customModule="SteadyFit" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="106" id="zEI-T1-FnM" customClass="SettingsTableViewCell" customModule="SteadyFit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zEI-T1-FnM" id="afU-d8-K9E">
@@ -84,13 +84,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVt-wV-iGP">
-                                                    <rect key="frame" x="85" y="17" width="242" height="18"/>
+                                                    <rect key="frame" x="85" y="17" width="281" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSI-JX-oqG">
-                                                    <rect key="frame" x="85" y="51" width="244" height="14.333333333333329"/>
+                                                    <rect key="frame" x="85" y="51" width="283" height="14.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -109,9 +109,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="DetailInfo" destination="ZSI-JX-oqG" id="deA-9X-NnM"/>
-                                            <outlet property="TitleName" destination="oVt-wV-iGP" id="6j2-Pv-ckN"/>
+                                            <outlet property="detailInfo" destination="ZSI-JX-oqG" id="fmd-hy-0zG"/>
                                             <outlet property="imageIcon" destination="fdk-QL-h9w" id="QDe-79-HyK"/>
+                                            <outlet property="titleName" destination="oVt-wV-iGP" id="hYc-cE-U4D"/>
                                             <segue destination="JHu-S5-a6R" kind="show" identifier="settingNavigation" trigger="accessoryAction" id="m21-OZ-L1I"/>
                                         </connections>
                                     </tableViewCell>

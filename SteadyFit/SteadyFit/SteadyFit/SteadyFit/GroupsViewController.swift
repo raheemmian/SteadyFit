@@ -1,23 +1,32 @@
 //
-//  SecondViewController.swift
+//  GroupsViewController.swift
 //  SteadyFit
 //
 //  Created by Raheem Mian on 2018-10-23.
-//  Copyright © 2018 Raheem Mian. All rights reserved.
+//  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
 //
 //  Edited by: Dickson Chum, Alexa Chen
 //  List of Changes: added segmented control, table and arrays for table, created segues for table view, added database automatic population for user "My Group"
 //
-//  SecondViewController.swift is connected to Groups section of the UI, which shows user joined groups and recommmented groups by toggling on segmented control
+//  GroupsViewController.swift is connected to Groups section of the UI, which shows user joined groups and recommmented groups by toggling on segmented control
 //
+
+
+//    func groupInit(text: String){
+//        self.groupName.text = text
+//        self.groupName.textColor = UIColor.black
+//        self.contentView.backgroundColor = UIColor.lightGray
+//    }
+
+
 
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var myGroups = [String]()
     var suggestedGroups = ["Group X", "Group Y", "Group Z"]
     var p: Int!
@@ -102,17 +111,18 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
         var indexPath = self.groupTableView.indexPathForSelectedRow!
         switch (p) {
         case 0:
-            let destination = segue.destination as! GroupViewController
+            let destination = segue.destination as! GroupProfileViewController
             destination.navigationItem.title = myGroups[indexPath.row]
             break
         case 1:
-            let destination = segue.destination as! GroupViewController
+            let destination = segue.destination as! GroupProfileViewController
             destination.navigationItem.title = suggestedGroups[indexPath.row]
             break
         default:
             break
         }
     }
+    
 }
 
 

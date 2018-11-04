@@ -1,14 +1,14 @@
 //
-//  ThirdViewController.swift
+//  FriendsViewController.swift
 //  SteadyFit
 //
 //  Created by Raheem Mian on 2018-10-23.
-//  Copyright © 2018 Raheem Mian. All rights reserved.
+//  Copyright © 2018 Daycar. All rights reserved.
 //
 
 import UIKit
 
-class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let friendList = ["Friend A", "Friend B", "Friend C", "Friend D"]
     @IBOutlet weak var friendTableView: UITableView!

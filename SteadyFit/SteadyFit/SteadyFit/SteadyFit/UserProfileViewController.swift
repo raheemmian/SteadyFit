@@ -3,7 +3,7 @@
 //  SteadyFit
 //
 //  Created by Dickson Chum on 2018-11-03.
-//  Copyright © 2018 Raheem Mian. All rights reserved.
+//  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
 //  Edited by: Dickson Chum

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Group-->
+        <!--Groups-->
         <scene sceneID="lUp-ua-ONv">
             <objects>
-                <viewController id="Vpa-yR-Th3" customClass="SecondViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Vpa-yR-Th3" customClass="GroupsViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IOn-kn-s12">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,7 +59,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vty-5k-4c4"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Group" largeTitleDisplayMode="always" id="Gof-KB-n7Q"/>
+                    <navigationItem key="navigationItem" title="Groups" largeTitleDisplayMode="always" id="Gof-KB-n7Q"/>
                     <connections>
                         <outlet property="groupTableView" destination="MmZ-BC-OAg" id="4Gt-kW-o5z"/>
                         <segue destination="wNr-fw-8la" kind="show" identifier="showGroupDetail" id="ODv-Kb-jVd"/>
@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="1530" y="173"/>
         </scene>
-        <!--Group View Controller-->
+        <!--Group Profile View Controller-->
         <scene sceneID="MgD-lk-l7c">
             <objects>
-                <viewController id="wNr-fw-8la" customClass="GroupViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wNr-fw-8la" customClass="GroupProfileViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A0J-Wu-DHh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

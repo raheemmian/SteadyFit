@@ -1,20 +1,20 @@
 //
-//  GroupViewController.swift
+//  GroupProfileViewController.swift
 //  SteadyFit
 //
 //  Created by Dickson Chum on 2018-10-28.
-//  Copyright © 2018 Raheem Mian. All rights reserved.
+//  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
 //  Edited by: Dickson Chum
 //  List of Changes: added labels, table and arrays for table, created segues for table view
 //
-//  GroupViewController.swift is linked to Group Profile of the UI, which shows group information.
+//  GroupProfileViewController.swift is linked to Group Profile of the UI, which shows group information.
 //
 
 import UIKit
 
-class GroupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GroupProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var groupDesc: UILabel!
     @IBOutlet weak var groupDescInfo: UILabel!

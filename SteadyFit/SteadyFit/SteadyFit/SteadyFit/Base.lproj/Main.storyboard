@@ -30,55 +30,55 @@
             </objects>
             <point key="canvasLocation" x="-199" y="0.0"/>
         </scene>
-        <!--Third-->
+        <!--Friends-->
         <scene sceneID="2wf-yL-y94">
             <objects>
-                <viewControllerPlaceholder storyboardName="Third" id="f0d-WD-Z1B" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Friends" id="f0d-WD-Z1B" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chats" id="bxo-Eu-jS7"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NyX-kR-6iK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="826" y="-56"/>
+            <point key="canvasLocation" x="850" y="0.0"/>
         </scene>
-        <!--Fourth-->
+        <!--Chats-->
         <scene sceneID="H0P-NM-Llz">
             <objects>
-                <viewControllerPlaceholder storyboardName="Fourth" id="Qlt-wS-HC6" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Chats" id="Qlt-wS-HC6" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="ZEy-rQ-U6q"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hF-P8-qC7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="28"/>
+            <point key="canvasLocation" x="842" y="142"/>
         </scene>
-        <!--Fifth-->
+        <!--Settings-->
         <scene sceneID="ulL-X2-98U">
             <objects>
-                <viewControllerPlaceholder storyboardName="Fifth" id="6cA-nC-dXl" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Settings" id="6cA-nC-dXl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="QWn-7A-cQ4"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUf-c8-wVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="831" y="107"/>
+            <point key="canvasLocation" x="854" y="296"/>
         </scene>
-        <!--First-->
+        <!--Home-->
         <scene sceneID="baO-cd-i6q">
             <objects>
-                <viewControllerPlaceholder storyboardName="First" id="mWa-TD-IFw" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Home" id="mWa-TD-IFw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="buF-rK-aK3"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nFn-5V-Rfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="725" y="-333"/>
+            <point key="canvasLocation" x="842" y="-290"/>
         </scene>
-        <!--Second-->
+        <!--Groups-->
         <scene sceneID="w4r-AM-WFm">
             <objects>
-                <viewControllerPlaceholder storyboardName="Second" id="dlQ-vg-Ws8" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Groups" id="dlQ-vg-Ws8" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Groups" id="6Rl-35-kW3"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yA1-ew-t8y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="739" y="-290"/>
+            <point key="canvasLocation" x="842" y="-161"/>
         </scene>
         <!--Login-->
         <scene sceneID="VRw-L3-DRM">
