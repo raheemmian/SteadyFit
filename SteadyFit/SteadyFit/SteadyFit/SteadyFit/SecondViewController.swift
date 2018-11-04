@@ -4,7 +4,7 @@
 //
 //  Created by Raheem Mian on 2018-10-23.
 //  Copyright © 2018 Raheem Mian. All rights reserved.
-//
+//  V2: Alexa Chen: added database automatic population for user group 
 
 //Groups
 import UIKit
