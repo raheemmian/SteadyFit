@@ -35,8 +35,9 @@
 		D43B7CF4218E6E8C0099C159 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */; };
 		D43B7CF8218E74420099C159 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF7218E74420099C159 /* EventViewController.swift */; };
 		D4B0F1F62188D29E0060EA22 /* GroupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0F1F52188D29E0060EA22 /* GroupProfileViewController.swift */; };
+		D4CB0275218F949000503EC3 /* PrivateChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB0274218F949000503EC3 /* PrivateChatViewController.swift */; };
+		D4CB0277218F94D500503EC3 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB0276218F94D500503EC3 /* ChatsViewController.swift */; };
 		D4F05D07218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */; };
-		D4F0EEFB218EDE4D0053C1A8 /* ChatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0EEFA218EDE4D0053C1A8 /* ChatsTableViewController.swift */; };
 		D4F0EEFD218EDEC60053C1A8 /* SettingsEditiorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */; };
 		F8C3D1F1CFDE408C81CE4DA4 /* Pods_SteadyFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524F9EF2FBCDEC79B4A3191F /* Pods_SteadyFit.framework */; };
 /* End PBXBuildFile section */
@@ -100,8 +101,9 @@
 		D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		D43B7CF7218E74420099C159 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		D4B0F1F52188D29E0060EA22 /* GroupProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupProfileViewController.swift; sourceTree = "<group>"; };
+		D4CB0274218F949000503EC3 /* PrivateChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateChatViewController.swift; sourceTree = "<group>"; };
+		D4CB0276218F94D500503EC3 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberListTableViewController.swift; sourceTree = "<group>"; };
-		D4F0EEFA218EDE4D0053C1A8 /* ChatsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewController.swift; sourceTree = "<group>"; };
 		D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEditiorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,7 +204,8 @@
 				D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */,
 				B5727A9A217FF71600AF9005 /* FriendsViewController.swift */,
 				B5F54D24218E6D5F00D0214D /* FriendProfileViewController.swift */,
-				D4F0EEFA218EDE4D0053C1A8 /* ChatsTableViewController.swift */,
+				D4CB0276218F94D500503EC3 /* ChatsViewController.swift */,
+				D4CB0274218F949000503EC3 /* PrivateChatViewController.swift */,
 				B5F54D26218E75D200D0214D /* SettingsViewController.swift */,
 				B5F54D28218E85F500D0214D /* SettingsTableViewCell.swift */,
 				D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */,
@@ -481,6 +484,7 @@
 			files = (
 				B5F54D25218E6D5F00D0214D /* FriendProfileViewController.swift in Sources */,
 				125AAD4D218D9A1800CC5FCD /* LoginViewController.swift in Sources */,
+				D4CB0277218F94D500503EC3 /* ChatsViewController.swift in Sources */,
 				B5F54D23218E663400D0214D /* HistogramViewController.swift in Sources */,
 				B5F54D21218E48D000D0214D /* UserEventsViewController.swift in Sources */,
 				D4B0F1F62188D29E0060EA22 /* GroupProfileViewController.swift in Sources */,
@@ -491,12 +495,12 @@
 				D4F05D07218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift in Sources */,
 				B5727A65217FEDED00AF9005 /* AppDelegate.swift in Sources */,
 				B5F54D27218E75D200D0214D /* SettingsViewController.swift in Sources */,
-				D4F0EEFB218EDE4D0053C1A8 /* ChatsTableViewController.swift in Sources */,
 				B5727A9B217FF71600AF9005 /* FriendsViewController.swift in Sources */,
 				B5727A67217FEDED00AF9005 /* HomeViewController.swift in Sources */,
 				D43B7CF4218E6E8C0099C159 /* UserProfileViewController.swift in Sources */,
 				D4F0EEFD218EDEC60053C1A8 /* SettingsEditiorViewController.swift in Sources */,
 				B57302AF2188181700CD06D3 /* EmergencyViewController.swift in Sources */,
+				D4CB0275218F949000503EC3 /* PrivateChatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
