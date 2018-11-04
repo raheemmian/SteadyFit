@@ -79,23 +79,23 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
         }
     }
-    /*-----------------------------------END OF Table-------------------------------------------------------------*/
     /*-----------------------------------Messaging----------------------------------------------------------------*/
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         controller.dismiss(animated: true, completion: nil)
     }
     
     func sendText() {
-        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-//        let myLocation = CLLocationCoordinate2D(latitude: -1, longitude: -1)
-//        let locValue:CLLocationCoordinate2D = locationManager
-//        if (locationManager.location != nil) {
-//            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-//        }
         let composeVC = MFMessageComposeViewController()
+        if(CLLocationManager.locationServicesEnabled()){
+            locationManager.startUpdatingLocation()
+            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+             composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
+        }
+        else{
+            composeVC.body = "I need help!"
+        }
         composeVC.messageComposeDelegate = self
         composeVC.recipients = ["7788823644"]
-        composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
         if MFMessageComposeViewController.canSendText() {
             self.present(composeVC, animated: true, completion: nil)
         } else {
