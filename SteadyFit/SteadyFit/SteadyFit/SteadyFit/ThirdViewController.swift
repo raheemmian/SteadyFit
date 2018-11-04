@@ -15,9 +15,9 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        friendTableView.tableFooterView = UIView(frame: .zero)
         friendTableView.delegate = self
         friendTableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -25,9 +25,9 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = friendTableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath)
-        cell.textLabel?.text = friendList[indexPath.row]
-        return cell
+        let tableCell = friendTableView.dequeueReusableCell(withIdentifier: "friendCell", for: indexPath)
+        tableCell.textLabel?.text = friendList[indexPath.row]
+        return tableCell
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

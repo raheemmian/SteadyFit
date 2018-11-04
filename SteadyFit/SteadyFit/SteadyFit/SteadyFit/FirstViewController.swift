@@ -18,7 +18,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     var locationManager = CLLocationManager()
     let items = [ ["Histogram"] , ["Event A", "Event B", "Event C"]]
     let sections = ["Activity Tracker", "Events"]
-    //var user:UserEventsViewController! = nil
     @IBAction func EmergencyButton(_ sender: Any) {sendText()}
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var city: UILabel!
@@ -26,7 +25,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var profilePicture: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //user = UserEventsViewController()
+        myTableView.tableFooterView = UIView(frame: .zero)
         myTableView.delegate = self
         myTableView.dataSource = self
         profilePicture.layer.cornerRadius = profilePicture.frame.size.width / 2
