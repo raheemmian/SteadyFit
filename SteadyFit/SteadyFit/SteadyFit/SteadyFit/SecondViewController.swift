@@ -49,6 +49,36 @@ class SecondViewController: UIViewController, UITableViewDataSource, UITableView
                 }
             }
         })
+        
+        
+        /*
+         //=====manually copy this chunk of code, firebase stuff
+                         let currentuserID = Auth.auth().currentUser?.uid
+                         refHandle = ref?.child("Users").child(currentuserID!).child("Groups").observe(DataEventType.value, with: {
+                                 (snapshot) in
+                                 self.sampleMyGroups.removeAll()
+                                 self.queryMyGroups.removeAll()
+                                 for rest in snapshot.children.allObjects as! [DataSnapshot]{
+                                         guard let dictionary = rest.value as? [String: AnyObject] else {continue}
+                                         let myGroup = userGroup()
+                                         myGroup.name = dictionary["name"] as?String
+                                         myGroup.chatid = dictionary["name"] as?String
+                                         myGroup.GroupType = dictionary["GroupType"] as?String
+                                         
+                                         self.queryMyGroups.append(myGroup)
+                                         if myGroup.name != nil {
+                                                 let sampleGroup: String = myGroup.name!
+                                                 self.sampleMyGroups.append(sampleGroup)
+                                         }
+                                         
+                                         DispatchQueue.main.async{
+                                                 self.groupTableView.reloadData()
+                                         }
+                                 }
+                         })
+                         // end of load data from firebase ======
+         */
+        
         // end of load data from firebase ======
         p = 0
     }

@@ -28,11 +28,11 @@
 		B5727A9B217FF71600AF9005 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A9A217FF71600AF9005 /* ThirdViewController.swift */; };
 		B57302AD2186D0A300CD06D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57302AC2186D0A300CD06D3 /* Assets.xcassets */; };
 		B57302AF2188181700CD06D3 /* EmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57302AE2188181700CD06D3 /* EmergencyViewController.swift */; };
-		D43B7CF4218E6E8C0099C159 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */; };
-		D43B7CF8218E74420099C159 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF7218E74420099C159 /* EventViewController.swift */; };
 		B5F54D21218E48D000D0214D /* UserEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D20218E48D000D0214D /* UserEventsViewController.swift */; };
 		B5F54D23218E663400D0214D /* HistogramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D22218E663400D0214D /* HistogramViewController.swift */; };
 		B5F54D25218E6D5F00D0214D /* friendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D24218E6D5F00D0214D /* friendProfileViewController.swift */; };
+		D43B7CF4218E6E8C0099C159 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */; };
+		D43B7CF8218E74420099C159 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF7218E74420099C159 /* EventViewController.swift */; };
 		D4B0F1F62188D29E0060EA22 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0F1F52188D29E0060EA22 /* GroupViewController.swift */; };
 		D4D411F9218900930091D45F /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D411F7218900930091D45F /* GroupCell.swift */; };
 		D4D411FA218900930091D45F /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D411F8218900930091D45F /* GroupCell.xib */; };
@@ -677,13 +677,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84YU56BXWK;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SteadyFit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -696,13 +696,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84YU56BXWK;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SteadyFit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

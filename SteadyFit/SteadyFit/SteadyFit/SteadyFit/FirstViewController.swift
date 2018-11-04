@@ -76,7 +76,11 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         controller.dismiss(animated: true, completion: nil)
     }
     func sendText() {
-        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+        let myLocation = CLLocationCoordinate2D(latitude: -1, longitude: -1)
+        let locValue:CLLocationCoordinate2D = myLocation
+        if (locationManager.location != nil) {
+            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+        }
         //print("location = \(locValue.latitude)\(locValue.longitude)")
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
