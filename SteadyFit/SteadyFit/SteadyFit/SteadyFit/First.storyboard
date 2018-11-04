@@ -12,7 +12,6 @@
         <!--Home-->
         <scene sceneID="xZh-f8-7Ly">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LsE-3v-4uE" sceneMemberID="firstResponder"/>
                 <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="iKh-5u-Nl5" customClass="FirstViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mgi-9j-gwN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -103,13 +102,14 @@
                         <segue destination="8cX-Ae-iip" kind="show" identifier="Events" id="DzN-Ry-f4m"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LsE-3v-4uE" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2075.36231884058" y="-1097.5446428571429"/>
         </scene>
-        <!--View Controller-->
+        <!--Histogram View Controller-->
         <scene sceneID="sWG-Fl-OGR">
             <objects>
-                <viewController id="u86-X4-rc0" sceneMemberID="viewController">
+                <viewController id="u86-X4-rc0" customClass="HistogramViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I8K-kr-CUH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,10 +130,10 @@
             </objects>
             <point key="canvasLocation" x="3116" y="-1236"/>
         </scene>
-        <!--View Controller-->
+        <!--User Events View Controller-->
         <scene sceneID="sSp-dF-M9V">
             <objects>
-                <viewController id="8cX-Ae-iip" sceneMemberID="viewController">
+                <viewController id="8cX-Ae-iip" customClass="UserEventsViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ctL-J3-7dH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
