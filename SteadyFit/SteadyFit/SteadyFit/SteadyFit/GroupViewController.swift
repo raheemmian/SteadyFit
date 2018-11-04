@@ -23,8 +23,8 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var groupName: String!
     
-    var sampleTitle = ["Members", "Events"]
-    var sampleContent = [["More"], ["A Event on Jan 1, 2018", "B Event on Feb 1, 2018", "C Event on Mar 1, 2018"]]
+    var tableTitle = ["Members", "Events"]
+    var tableContent = [["More"], ["A Event on Jan 1, 2018", "B Event on Feb 1, 2018", "C Event on Mar 1, 2018"]]
     
     
     override func viewDidLoad() {
@@ -43,37 +43,42 @@ class GroupViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sampleTitle.count
+        return tableTitle.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sampleTitle[section]
+        return tableTitle[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sampleContent[section].count
+        return tableContent[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell  = eventTableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath)
-        cell.textLabel?.text = sampleContent[indexPath.section][indexPath.row]
+        cell.textLabel?.text = tableContent[indexPath.section][indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: sampleTitle[indexPath.section], sender: self)
+        performSegue(withIdentifier: tableTitle[indexPath.section], sender: self)
         eventTableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var indexPath = self.eventTableView.indexPathForSelectedRow!
+        if(indexPath.section == 0){
+            let post = segue.destination as! GroupMemberListTableViewController
+            post.navigationItem.title = tableContent[indexPath.section][indexPath.row]
+        }
+        else{
+            let post = segue.destination as! EventViewController
+            post.navigationItem.title = tableContent[indexPath.section][indexPath.row]
+        }
+    }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        var indexPath = self.eventTableView.
+//    }
     
 }
