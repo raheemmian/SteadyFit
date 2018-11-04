@@ -5,8 +5,14 @@
 //  Created by Raheem Mian on 2018-10-23.
 //  Copyright © 2018 Raheem Mian. All rights reserved.
 //
+//  Team Daycar
+//  Edited by: Raheem Mian, Akshay Kumar, Dickson Chum
+//  List of Changes: added labels, table and arrays for table, created segues for table view, implemented to obtain GPS coordinate from device and bring up iPhone Messages with default message.
+//
+//  FirstViewController.swift is connected to the first Home Screen of the UI, which shows the User's profile, activity tracker, events and emergency button.
+//  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
+//
 
-//Home
 import UIKit
 import Foundation
 import MessageUI
@@ -16,8 +22,8 @@ import CoreLocation
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate{
     var myindex = 0;
     var locationManager = CLLocationManager()
-    let items = [ ["Histogram"] , ["Event A", "Event B", "Event C"]]
-    let sections = ["Activity Tracker", "Events"]
+    let homeTableSections = ["Activity Tracker", "Events"]
+    let homeTableContents = [ ["Histogram"] , ["Event A", "Event B", "Event C"]]
     @IBAction func EmergencyButton(_ sender: Any) {sendText()}
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var city: UILabel!
@@ -37,48 +43,54 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             locationManager.startUpdatingLocation()
         }
     }
-    /*-----------------------------------Location----------------------------------------------------------------------*/
-    /*-----------------------------------Table----------------------------------------------------------------------*/
+    /*-----------------------------------Location-------------------------------------------------------------*/
+    /*-----------------------------------Table----------------------------------------------------------------*/
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return homeTableSections.count
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
+        return homeTableSections[section]
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items[section].count
+        return homeTableContents[section].count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell  = tableView.dequeueReusableCell(withIdentifier: "cell", for:  indexPath)
-        cell.textLabel?.text = items[indexPath.section][indexPath.row]
+        let cell  = tableView.dequeueReusableCell(withIdentifier: "homeTableCell", for:  indexPath)
+        cell.textLabel?.text = homeTableContents[indexPath.section][indexPath.row]
         return cell
     }
+    
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: sections[indexPath.section], sender: self)
-        //items[indexPath.section][indexPath.row]
+        performSegue(withIdentifier: homeTableSections[indexPath.section], sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var indexPath = self.myTableView.indexPathForSelectedRow!
         if(indexPath.section == 0){
-            let post = segue.destination as! HistogramViewController
-            post.navigationItem.title = items[indexPath.section][indexPath.row]
+            let destination = segue.destination as! HistogramViewController
+            destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
         }
         else{
-            let post = segue.destination as! UserEventsViewController
-            post.navigationItem.title = items[indexPath.section][indexPath.row]
+            let destination = segue.destination as! UserEventsViewController
+            destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
         }
     }
-    /*-----------------------------------END OF Table----------------------------------------------------------------------*/
-    /*-----------------------------------Messaging----------------------------------------------------------------------*/
+    /*-----------------------------------END OF Table-------------------------------------------------------------*/
+    /*-----------------------------------Messaging----------------------------------------------------------------*/
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         controller.dismiss(animated: true, completion: nil)
     }
+    
     func sendText() {
-      //  let myLocation = CLLocationCoordinate2D(latitude: -1, longitude: -1)
+        let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+//        let myLocation = CLLocationCoordinate2D(latitude: -1, longitude: -1)
 //        let locValue:CLLocationCoordinate2D = locationManager
 //        if (locationManager.location != nil) {
-            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
+//            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
 //        }
         let composeVC = MFMessageComposeViewController()
         composeVC.messageComposeDelegate = self
@@ -93,4 +105,3 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
      /*-----------------------------------END Messaging----------------------------------------------------------------------*/
 
 }
-

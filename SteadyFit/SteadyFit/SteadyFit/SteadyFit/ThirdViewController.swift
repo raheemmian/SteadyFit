@@ -36,7 +36,7 @@ class ThirdViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var indexPath = self.friendTableView.indexPathForSelectedRow!
-            let post = segue.destination as! friendProfileViewController
+            let post = segue.destination as! FriendProfileViewController
             post.navigationItem.title = friendList[indexPath.row]
     }
     

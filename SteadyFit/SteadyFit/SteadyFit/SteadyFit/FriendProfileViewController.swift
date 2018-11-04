@@ -1,5 +1,5 @@
 //
-//  friendProfileViewController.swift
+//  FriendProfileViewController.swift
 //  SteadyFit
 //
 //  Created by Raheem Mian on 2018-11-03.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class friendProfileViewController: UIViewController {
+class FriendProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
