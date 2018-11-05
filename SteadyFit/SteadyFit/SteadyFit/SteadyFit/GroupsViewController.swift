@@ -39,16 +39,18 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         groupTableView.reloadData()
     }
     var locationManager = CLLocationManager()
-    @IBAction func emergencyButton(_ sender: Any) {sendText()}
+    @IBAction func emergencyButton(_ sender: Any) {
+        sendText()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        groupTableView.tableFooterView = UIView(frame: .zero)
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
-        
         //  Database initialization
         ref = Database.database().reference()
         
