@@ -28,12 +28,6 @@ class FriendsInterfaceTest: XCTestCase {
 
     func testFriends() {
         let app = XCUIApplication()
-        let emailTextField = app.textFields["Email"]
-        emailTextField.tap()
-        emailTextField.typeText("cmpt275daycar@hotmail.com")
-        let passwordSecureTextField = app.secureTextFields["Password"]
-        passwordSecureTextField.tap()
-        passwordSecureTextField.typeText("herberttsang275")
         app.otherElements.containing(.button, identifier:"Sign in").children(matching: .button)["Sign in"].tap()
         app.tabBars.buttons["Friends"].tap()
         let tablesQuery = app.tables

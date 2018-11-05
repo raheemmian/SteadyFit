@@ -11,7 +11,7 @@
 //
 //  HomeViewController.swift is connected to the first Home Screen of the UI, which shows the User's profile, activity tracker, events and emergency button.
 //  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
-//
+//  Make sure you test the emergency button when you download the app on your mobile device
 
 import UIKit
 import Foundation

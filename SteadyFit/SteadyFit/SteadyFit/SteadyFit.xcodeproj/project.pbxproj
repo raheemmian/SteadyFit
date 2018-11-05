@@ -26,6 +26,7 @@
 		B5727A87217FEDEE00AF9005 /* SteadyFitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A86217FEDEE00AF9005 /* SteadyFitUITests.swift */; };
 		B5727A9B217FF71600AF9005 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A9A217FF71600AF9005 /* FriendsViewController.swift */; };
 		B57302AD2186D0A300CD06D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57302AC2186D0A300CD06D3 /* Assets.xcassets */; };
+		B58574E321910CD1009AAB09 /* ChatInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58574E221910CD1009AAB09 /* ChatInterfaceTest.swift */; };
 		B5BE5D142190C7CA009290C9 /* HomePageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE5D132190C7CA009290C9 /* HomePageTest.swift */; };
 		B5BE5D222190C8B7009290C9 /* GroupInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE5D212190C8B7009290C9 /* GroupInterfaceTest.swift */; };
 		B5BE5D3E2190C9CB009290C9 /* FriendsInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE5D3D2190C9CB009290C9 /* FriendsInterfaceTest.swift */; };
@@ -56,6 +57,13 @@
 			remoteInfo = SteadyFit;
 		};
 		B5727A83217FEDEE00AF9005 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5727A59217FEDED00AF9005 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5727A60217FEDED00AF9005;
+			remoteInfo = SteadyFit;
+		};
+		B58574E521910CD1009AAB09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B5727A59217FEDED00AF9005 /* Project object */;
 			proxyType = 1;
@@ -122,6 +130,9 @@
 		B5727A88217FEDEE00AF9005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5727A9A217FF71600AF9005 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		B57302AC2186D0A300CD06D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B58574E021910CD1009AAB09 /* ChatInterfaceTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatInterfaceTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B58574E221910CD1009AAB09 /* ChatInterfaceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceTest.swift; sourceTree = "<group>"; };
+		B58574E421910CD1009AAB09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5BE5D112190C7C9009290C9 /* HomePageTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomePageTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BE5D132190C7CA009290C9 /* HomePageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTest.swift; sourceTree = "<group>"; };
 		B5BE5D152190C7CA009290C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -175,6 +186,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				874B8185AEFA6EA89DC330A7 /* Pods_SteadyFitUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B58574DD21910CD1009AAB09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +269,7 @@
 				B5BE5D202190C8B7009290C9 /* GroupInterfaceTest */,
 				B5BE5D3C2190C9CB009290C9 /* FriendsInterfaceTest */,
 				B5BE5D4A2190CA6C009290C9 /* SettingInterfaceTest */,
+				B58574E121910CD1009AAB09 /* ChatInterfaceTest */,
 				B5727A62217FEDED00AF9005 /* Products */,
 				B5727A85217FEDEE00AF9005 /* SteadyFitUITests */,
 				5CFADD59FCA25E7E1C569B59 /* Pods */,
@@ -268,6 +287,7 @@
 				B5BE5D1F2190C8B7009290C9 /* GroupInterfaceTest.xctest */,
 				B5BE5D3B2190C9CB009290C9 /* FriendsInterfaceTest.xctest */,
 				B5BE5D492190CA6C009290C9 /* SettingInterfaceTest.xctest */,
+				B58574E021910CD1009AAB09 /* ChatInterfaceTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -323,6 +343,15 @@
 				B5727A88217FEDEE00AF9005 /* Info.plist */,
 			);
 			path = SteadyFitUITests;
+			sourceTree = "<group>";
+		};
+		B58574E121910CD1009AAB09 /* ChatInterfaceTest */ = {
+			isa = PBXGroup;
+			children = (
+				B58574E221910CD1009AAB09 /* ChatInterfaceTest.swift */,
+				B58574E421910CD1009AAB09 /* Info.plist */,
+			);
+			path = ChatInterfaceTest;
 			sourceTree = "<group>";
 		};
 		B5BE5D122190C7CA009290C9 /* HomePageTest */ = {
@@ -421,6 +450,24 @@
 			productReference = B5727A82217FEDEE00AF9005 /* SteadyFitUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		B58574DF21910CD1009AAB09 /* ChatInterfaceTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B58574E721910CD1009AAB09 /* Build configuration list for PBXNativeTarget "ChatInterfaceTest" */;
+			buildPhases = (
+				B58574DC21910CD1009AAB09 /* Sources */,
+				B58574DD21910CD1009AAB09 /* Frameworks */,
+				B58574DE21910CD1009AAB09 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B58574E621910CD1009AAB09 /* PBXTargetDependency */,
+			);
+			name = ChatInterfaceTest;
+			productName = ChatInterfaceTest;
+			productReference = B58574E021910CD1009AAB09 /* ChatInterfaceTest.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		B5BE5D102190C7C9009290C9 /* HomePageTest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B5BE5D1A2190C7CA009290C9 /* Build configuration list for PBXNativeTarget "HomePageTest" */;
@@ -514,6 +561,10 @@
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = B5727A60217FEDED00AF9005;
 					};
+					B58574DF21910CD1009AAB09 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = B5727A60217FEDED00AF9005;
+					};
 					B5BE5D102190C7C9009290C9 = {
 						CreatedOnToolsVersion = 10.0;
 						TestTargetID = B5727A60217FEDED00AF9005;
@@ -552,6 +603,7 @@
 				B5BE5D1E2190C8B7009290C9 /* GroupInterfaceTest */,
 				B5BE5D3A2190C9CB009290C9 /* FriendsInterfaceTest */,
 				B5BE5D482190CA6C009290C9 /* SettingInterfaceTest */,
+				B58574DF21910CD1009AAB09 /* ChatInterfaceTest */,
 			);
 		};
 /* End PBXProject section */
@@ -581,6 +633,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B5727A80217FEDEE00AF9005 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B58574DE21910CD1009AAB09 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -760,6 +819,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B58574DC21910CD1009AAB09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B58574E321910CD1009AAB09 /* ChatInterfaceTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B5BE5D0D2190C7C9009290C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -804,6 +871,11 @@
 			isa = PBXTargetDependency;
 			target = B5727A60217FEDED00AF9005 /* SteadyFit */;
 			targetProxy = B5727A83217FEDEE00AF9005 /* PBXContainerItemProxy */;
+		};
+		B58574E621910CD1009AAB09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5727A60217FEDED00AF9005 /* SteadyFit */;
+			targetProxy = B58574E521910CD1009AAB09 /* PBXContainerItemProxy */;
 		};
 		B5BE5D172190C7CA009290C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1083,6 +1155,42 @@
 			};
 			name = Release;
 		};
+		B58574E821910CD1009AAB09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ChatInterfaceTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ChatInterfaceTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SteadyFit;
+			};
+			name = Debug;
+		};
+		B58574E921910CD1009AAB09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ChatInterfaceTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ChatInterfaceTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SteadyFit;
+			};
+			name = Release;
+		};
 		B5BE5D182190C7CA009290C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1264,6 +1372,15 @@
 			buildConfigurations = (
 				B5727A92217FEDEE00AF9005 /* Debug */,
 				B5727A93217FEDEE00AF9005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B58574E721910CD1009AAB09 /* Build configuration list for PBXNativeTarget "ChatInterfaceTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B58574E821910CD1009AAB09 /* Debug */,
+				B58574E921910CD1009AAB09 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

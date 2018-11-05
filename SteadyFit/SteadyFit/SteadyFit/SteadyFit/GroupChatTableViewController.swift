@@ -14,8 +14,8 @@
 //  Order of messages may not show properly based on timestamps, need further implementation on reading current time.
 //  Message will bleed out on the bubble chat box, need further implementation to get proper height for each message
 //  Message from other senders does not align on the left side, need further implementation for such
-//  Sender is hard coded with test account, Herbert, need further implementation on getting current user ID
-//
+//  If you download it on a iphone device the keyboard doesnt send the message after pressing return on the keyboard and the chat
+//  bar doesnt show on the keyboard
 //  GroupChatTableViewController.swift is created for chat UI with the help of the following YouTube Channel: Lets Build That App
 //  URL: www.youtube.com/playlist?list=PL0dzCUj1L5JEfHqwjBV0XFb9qx9cGXwkq
 //

@@ -1,0 +1,25 @@
+Every word in a file name are capitalized
+
+All view controllers will start with a short descriptor word for the controller followed by "ViewController" 
+eg. A game main lobby view controller would be named MainLobbyViewController
+
+All storyboards should just be named their main identity
+eg. A game main lobby storyboard will be called MainLobby
+
+object names such as buttons, labels, tableviews will start with 1 to 3 words describing what the objects functions followed by the objects name.
+eg. emergency button is named emergencyButton
+
+All functions, for loops and if statements must be laid out like: 
+for statement {
+   print("Hi"), 
+}
+
+if statement {
+   print("hi")
+},
+
+func name() {
+   print("HI")
+}
+
+function names should use camel casing

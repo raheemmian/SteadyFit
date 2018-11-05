@@ -1,6 +1,6 @@
 //
-//  FriendsTest.swift
-//  FriendsTest
+//  ChatInterfaceTest.swift
+//  ChatInterfaceTest
 //
 //  Created by Raheem Mian on 2018-11-05.
 //  Copyright © 2018 Daycar. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class FriendsTest: XCTestCase {
+class ChatInterfaceTest: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -27,6 +27,14 @@ class FriendsTest: XCTestCase {
     }
 
     func testExample() {
+        
+        let app = XCUIApplication()
+        app.otherElements.containing(.button, identifier:"Sign in").children(matching: .button)["Sign in"].tap()
+        app.tabBars.buttons["Chats"].tap()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["Public: Vancouver, Light"]/*[[".cells.staticTexts[\"Public: Vancouver, Light\"]",".staticTexts[\"Public: Vancouver, Light\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.textFields["Enter message..."].tap()
+        app.buttons["Send"].tap()
+        app.navigationBars["Public Group: Vancouver, light"].buttons["Chat"].tap()
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
