@@ -4,9 +4,10 @@
 //
 //  Created by Alexa Chen on 2018-11-03.
 //  Copyright © 2018 Daycar. All rights reserved.
-//modified by Raheem : added error message when the login fails
-//This view controller is for email authetication to login into the application
-
+//
+//  Modified by Raheem : added error message when the login fails
+//  This view controller is for email authetication to login into the application
+//
 
 import UIKit
 import FirebaseAuth
@@ -35,7 +36,6 @@ class LoginViewController: UIViewController {
             btnSignIn.setTitle("Register", for: .normal)
         }
     }
-    
     
     @IBAction func signInButtonClicked(_ sender: UIButton) {
         if let email = txtEmail.text, let pass = txtPassword.text{
@@ -66,15 +66,5 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

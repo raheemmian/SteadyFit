@@ -10,6 +10,9 @@
 //  Edited by: Dickson Chum, Alexa Chen
 //  List of Changes: added segmented control, table and arrays for table, created segues for table view, added database automatic population for user "My Group"
 //
+//  List of Bugs:
+//  When group node changes in database, the view append groups, hence create duplicate groups.
+//
 //  GroupsViewController.swift is connected to Groups section of the UI, which shows user joined groups and recommmented groups by toggling on segmented control
 //  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
 //
@@ -25,7 +28,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     var suggestedGroups = ["Group X", "Group Y", "Group Z"]
     var p: Int!
     
-    var queryMyGroups = [userGroup]()
+    var queryMyGroups = [UserGroup]()
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
     var groupsRef:DatabaseReference?
@@ -59,7 +62,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         let currentuserID = Auth.auth().currentUser?.uid
         refHandle = ref?.child("Users").child(currentuserID!).observe(DataEventType.value, with: {
             (snapshot) in
-            // clear group lists
+            // Clear group lists
             self.myGroups.removeAll()
             self.queryMyGroups.removeAll()
             self.suggestedGroups.removeAll()
@@ -67,7 +70,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             // get user groups
             for rest in snapshot.childSnapshot(forPath: "Groups").children.allObjects as! [DataSnapshot]{
                 guard let dictionary = rest.value as? [String: AnyObject] else {continue}
-                let myGroup = userGroup()
+                let myGroup = UserGroup()
                 myGroup.name = dictionary["name"] as?String
                 myGroup.chatid = dictionary["name"] as?String
                 myGroup.GroupType = dictionary["GroupType"] as?String
@@ -77,7 +80,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
                     self.myGroups.append(sampleGroup)
                 }
             }
-            // get user city and activity level for recommending algorithm
+            // Get user city and activity level for recommending algorithm
             if let dictionary2 = snapshot.value as? [String: AnyObject]{
                 let myCity = dictionary2["city"] as?String
                 let myActivityLevel = dictionary2["activitylevel"] as?String
@@ -89,14 +92,14 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
                 }
             }
             
-            // recommend user with groups from the same location, TO DO: algorithm to be improved!!!
+            //  Recommend user with groups from the same location,
+            //  TO DO: algorithm to be improved!!!
             self.groupsHandle = self.ref?.child("Groups").queryOrdered(byChild: "location").queryEqual(toValue:self.currentUserCity!).observe(DataEventType.value, with: {
                 (groupsnapshot) in
-                print(groupsnapshot)
+                self.suggestedGroups.removeAll()
                 for rest in groupsnapshot.children.allObjects as! [DataSnapshot] {
                     guard let checkUserdictionary = rest.childSnapshot(forPath: "users").childSnapshot(forPath: currentuserID!).value as? [String:AnyObject] else {continue}
                     guard let Groupdictionary = rest.value as? [String: AnyObject] else {continue}
-                    print(checkUserdictionary)
                     let myUserJoined = checkUserdictionary["joined"] as?Int
                     //check if any of the groups are in user's groups, if yes append
                     if myUserJoined != nil && myUserJoined == 0
@@ -113,33 +116,6 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             }
         })
         // End of Database initialization
-        
-        
-        /*
-        let currentuserID = Auth.auth().currentUser?.uid
-        refHandle = ref?.child("Users").child(currentuserID!).child("Groups").observe(DataEventType.value, with: {
-            (snapshot) in
-            self.myGroups.removeAll()
-            self.queryMyGroups.removeAll()
-            for rest in snapshot.children.allObjects as! [DataSnapshot]{
-                guard let dictionary = rest.value as? [String: AnyObject] else {continue}
-                let myGroup = userGroup()
-                myGroup.name = dictionary["name"] as?String
-                myGroup.chatid = dictionary["name"] as?String
-                myGroup.GroupType = dictionary["GroupType"] as?String
-                self.queryMyGroups.append(myGroup)
-                if myGroup.name != nil {
-                    let sampleGroup: String = myGroup.name!
-                    self.myGroups.append(sampleGroup)
-                }
-                DispatchQueue.main.async{
-                    self.groupTableView.reloadData()
-                }
-            }
-        })
-        //  End of Database initialization
-         */
-        
         p = 0
     }
     

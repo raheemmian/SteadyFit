@@ -2,9 +2,16 @@
 //  ChatsViewController.swift
 //  SteadyFit
 //
-//  Created by Akshay Kumor on 2018-11-03.
+//  Created by Dickson Chum on 2018-11-03.
 //  Copyright © 2018 Daycar. All rights reserved.
 //
+//  Team Daycar
+//  Edited by: Dickson Chum, Raheem Mian, Alexa Chen
+//  List of Changes: added arrays, table for chat, added emergency button and GPS related code
+//
+//  ChatsViewController.swift is linked to a view controller which shows the list of chat group the user is in.
+//
+
 
 import UIKit
 import MessageUI
@@ -13,7 +20,7 @@ import CoreLocation
 class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
     
     var chatListTitle = ["Private Chats", "Group Chats"]
-    var chatListContent = [["Chat A", "Chat B"], ["Chat Y", "Chat Z"]]
+    var chatListContent = [[], ["Public: Vancouver, Light"]]
     @IBOutlet weak var chatListTableView: UITableView!
     @IBAction func emergencyButton(_ sender: Any) {sendText()}
     var locationManager = CLLocationManager()
@@ -23,7 +30,6 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         // Do any additional setup after loading the view.
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return chatListTitle.count
@@ -47,6 +53,7 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         performSegue(withIdentifier: "showGroupChat", sender: self)
         chatListTableView.deselectRow(at: indexPath, animated: true)
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var indexPath = self.chatListTableView.indexPathForSelectedRow!
