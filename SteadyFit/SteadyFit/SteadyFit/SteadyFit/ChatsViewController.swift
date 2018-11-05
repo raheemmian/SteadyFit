@@ -13,7 +13,7 @@ import CoreLocation
 class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
     
     var chatListTitle = ["Private Chats", "Group Chats"]
-    var chatListContent = [["Chat a", "Chat b"], ["Chat X", "Chat Y"]]
+    var chatListContent = [["Chat A", "Chat B"], ["Chat Y", "Chat Z"]]
     @IBOutlet weak var chatListTableView: UITableView!
     @IBAction func emergencyButton(_ sender: Any) {sendText()}
     var locationManager = CLLocationManager()
@@ -44,13 +44,13 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showChat", sender: self)
+        performSegue(withIdentifier: "showGroupChat", sender: self)
         chatListTableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var indexPath = self.chatListTableView.indexPathForSelectedRow!
-        let post = segue.destination as! PrivateChatViewController
+        let post = segue.destination as! GroupChatTableViewController
         post.navigationItem.title = chatListContent[indexPath.section][indexPath.row]
     }
     

@@ -71,11 +71,40 @@
                     <connections>
                         <outlet property="chatListTableView" destination="IGg-Ry-ryk" id="XAB-ay-lxh"/>
                         <segue destination="gMo-gf-5om" kind="show" identifier="showChat" id="NNL-ZL-iIP"/>
+                        <segue destination="coq-Ir-RDf" kind="show" identifier="showGroupChat" id="MFW-Fe-Lbc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ipl-Dy-c6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-559.4202898550725" y="-1013.1696428571428"/>
+        </scene>
+        <!--Group Chat Table View Controller-->
+        <scene sceneID="KSp-nq-BgN">
+            <objects>
+                <tableViewController id="9Ox-N8-SbD" customClass="GroupChatTableViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6q3-pL-dNY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="F9N-4c-hSd">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F9N-4c-hSd" id="Vkc-bR-mLw">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9Ox-N8-SbD" id="LMV-Mv-e4z"/>
+                            <outlet property="delegate" destination="9Ox-N8-SbD" id="EdM-eQ-39w"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ntE-gs-X0d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="-1759"/>
         </scene>
         <!--Private Chat View Controller-->
         <scene sceneID="YeD-aa-ftT">
@@ -99,13 +128,45 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bOE-a2-sYe"/>
                     </view>
-                    <connections>
-                        <outlet property="chatWip" destination="Ysh-NC-al7" id="hJa-Ts-i19"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9f-nZ-YCv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="401" y="-1015"/>
+        </scene>
+        <!--Group Chat Table View Controller-->
+        <scene sceneID="EcC-O7-vYE">
+            <objects>
+                <collectionViewController id="coq-Ir-RDf" customClass="GroupChatTableViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="kA4-qR-WTG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g0P-A3-199">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UhQ-Dr-wuD">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="coq-Ir-RDf" id="7sC-Hd-Lsm"/>
+                            <outlet property="delegate" destination="coq-Ir-RDf" id="8x4-Y3-XFX"/>
+                        </connections>
+                    </collectionView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h7V-qn-Cya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-559" y="-1707"/>
         </scene>
         <!--Chats-->
         <scene sceneID="Auc-6Y-BKF">

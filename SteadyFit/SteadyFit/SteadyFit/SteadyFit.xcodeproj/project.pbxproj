@@ -31,7 +31,7 @@
 		B5F54D25218E6D5F00D0214D /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D24218E6D5F00D0214D /* FriendProfileViewController.swift */; };
 		B5F54D27218E75D200D0214D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D26218E75D200D0214D /* SettingsViewController.swift */; };
 		B5F54D29218E85F500D0214D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D28218E85F500D0214D /* SettingsTableViewCell.swift */; };
-		D41383E321902B950076031B /* GroupChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41383E221902B950076031B /* GroupChatViewController.swift */; };
+		D41383E321902B950076031B /* GroupChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41383E221902B950076031B /* GroupChatTableViewController.swift */; };
 		D43B7CF4218E6E8C0099C159 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */; };
 		D43B7CF8218E74420099C159 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF7218E74420099C159 /* EventViewController.swift */; };
 		D4B0F1F62188D29E0060EA22 /* GroupProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B0F1F52188D29E0060EA22 /* GroupProfileViewController.swift */; };
@@ -100,7 +100,7 @@
 		B965C2595CF769777BB4CC17 /* Pods_SteadyFitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteadyFitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC196ED42956309F7A7CACE /* Pods-SteadyFitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitUITests/Pods-SteadyFitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9E952BF25F86290D84D1FDC /* Pods-SteadyFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitTests/Pods-SteadyFitTests.release.xcconfig"; sourceTree = "<group>"; };
-		D41383E221902B950076031B /* GroupChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatViewController.swift; sourceTree = "<group>"; };
+		D41383E221902B950076031B /* GroupChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatTableViewController.swift; sourceTree = "<group>"; };
 		D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		D43B7CF7218E74420099C159 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		D4B0F1F52188D29E0060EA22 /* GroupProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupProfileViewController.swift; sourceTree = "<group>"; };
@@ -215,7 +215,7 @@
 				B5F54D24218E6D5F00D0214D /* FriendProfileViewController.swift */,
 				D4CB0276218F94D500503EC3 /* ChatsViewController.swift */,
 				D4CB0274218F949000503EC3 /* PrivateChatViewController.swift */,
-				D41383E221902B950076031B /* GroupChatViewController.swift */,
+				D41383E221902B950076031B /* GroupChatTableViewController.swift */,
 				B5F54D26218E75D200D0214D /* SettingsViewController.swift */,
 				B5F54D28218E85F500D0214D /* SettingsTableViewCell.swift */,
 				D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */,
@@ -515,7 +515,7 @@
 				B5727A69217FEDED00AF9005 /* GroupsViewController.swift in Sources */,
 				12A6E647218D0BE2003ED258 /* userGroup.swift in Sources */,
 				D4CA2C68218FD6E8000C9A39 /* Contants.swift in Sources */,
-				D41383E321902B950076031B /* GroupChatViewController.swift in Sources */,
+				D41383E321902B950076031B /* GroupChatTableViewController.swift in Sources */,
 				D4CA2C66218FD2FF000C9A39 /* Extension.swift in Sources */,
 				D43B7CF8218E74420099C159 /* EventViewController.swift in Sources */,
 				D4F05D07218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift in Sources */,
