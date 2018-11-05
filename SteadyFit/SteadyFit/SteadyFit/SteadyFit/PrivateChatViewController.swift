@@ -7,11 +7,13 @@
 //
 
 import UIKit
-//import MessageKit
+import MessageKit
 
-class PrivateChatViewController: UIViewController {
+class PrivateChatViewController: MessagesViewController {
 
     @IBOutlet weak var chatWip: UILabel!
+//    private var messages = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

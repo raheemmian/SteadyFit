@@ -37,6 +37,10 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
     var queryMyGroups = [userGroup]()
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
+    var groupsRef:DatabaseReference?
+    var groupsHandle:DatabaseHandle?
+    var currentUserCity: String?
+    var currentUserActivityLevel: String?
 
     @IBOutlet weak var groupTableView: UITableView!
     @IBAction func groupSegmentedControl(_ sender: UISegmentedControl) {
@@ -53,8 +57,72 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
+        
         //  Database initialization
         ref = Database.database().reference()
+        
+        //  Firebase fetch start
+        //  Get current authenticated user
+        let currentuserID = Auth.auth().currentUser?.uid
+        refHandle = ref?.child("Users").child(currentuserID!).observe(DataEventType.value, with: {
+            (snapshot) in
+            // clear group lists
+            self.myGroups.removeAll()
+            self.queryMyGroups.removeAll()
+            self.suggestedGroups.removeAll()
+            
+            // get user groups
+            for rest in snapshot.childSnapshot(forPath: "Groups").children.allObjects as! [DataSnapshot]{
+                guard let dictionary = rest.value as? [String: AnyObject] else {continue}
+                let myGroup = userGroup()
+                myGroup.name = dictionary["name"] as?String
+                myGroup.chatid = dictionary["name"] as?String
+                myGroup.GroupType = dictionary["GroupType"] as?String
+                self.queryMyGroups.append(myGroup)
+                if myGroup.name != nil {
+                    let sampleGroup: String = myGroup.name!
+                    self.myGroups.append(sampleGroup)
+                }
+            }
+            // get user city and activity level for recommending algorithm
+            if let dictionary2 = snapshot.value as? [String: AnyObject]{
+                let myCity = dictionary2["city"] as?String
+                let myActivityLevel = dictionary2["activitylevel"] as?String
+                if myCity != nil{
+                    self.currentUserCity = myCity
+                }
+                if myActivityLevel != nil{
+                    self.currentUserActivityLevel = myActivityLevel
+                }
+            }
+            
+            // recommend user with groups from the same location, TO DO: algorithm to be improved!!!
+            self.groupsHandle = self.ref?.child("Groups").queryOrdered(byChild: "location").queryEqual(toValue:self.currentUserCity!).observe(DataEventType.value, with: {
+                (groupsnapshot) in
+                print(groupsnapshot)
+                for rest in groupsnapshot.children.allObjects as! [DataSnapshot] {
+                    guard let checkUserdictionary = rest.childSnapshot(forPath: "users").childSnapshot(forPath: currentuserID!).value as? [String:AnyObject] else {continue}
+                    guard let Groupdictionary = rest.value as? [String: AnyObject] else {continue}
+                    print(checkUserdictionary)
+                    let myUserJoined = checkUserdictionary["joined"] as?Int
+                    //check if any of the groups are in user's groups, if yes append
+                    if myUserJoined != nil && myUserJoined == 0
+                    {
+                        let myRecommendedGroup = Groupdictionary["name"] as?String
+                        if myRecommendedGroup != nil{
+                            self.suggestedGroups.append(myRecommendedGroup!)
+                        }
+                    }
+                }
+            })
+            DispatchQueue.main.async{
+                self.groupTableView.reloadData()
+            }
+        })
+        // End of Database initialization
+        
+        
+        /*
         let currentuserID = Auth.auth().currentUser?.uid
         refHandle = ref?.child("Users").child(currentuserID!).child("Groups").observe(DataEventType.value, with: {
             (snapshot) in
@@ -77,6 +145,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             }
         })
         //  End of Database initialization
+         */
         
         p = 0
     }
@@ -155,6 +224,3 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
 }
-
-
-

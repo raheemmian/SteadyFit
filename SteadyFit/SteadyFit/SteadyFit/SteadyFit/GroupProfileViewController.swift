@@ -16,7 +16,6 @@ import UIKit
 import MessageUI
 import CoreLocation
 
-
 class GroupProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var groupDesc: UILabel!
@@ -29,7 +28,6 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     
     @IBAction func emergencyButton(_ sender: UIButton) {sendText()}
     var locationManager = CLLocationManager()
-//    var groupName: String!
     var groupTableSections = ["Members", "Events"]
     var groupTableContents = [["More"], ["A Event on Jan 1, 2018", "B Event on Feb 1, 2018", "C Event on Mar 1, 2018"]]
     
