@@ -8,9 +8,10 @@
 //  Team Daycar
 //  Edited by: Dickson Chum
 //  List of Changes: Work in Progress
-//  added labels and image view
+//  Added labels and image view, added emergency button and GPS related code
 //
 //  UserProfileViewController.swift is linked to an User Profile Page, which shows the user's information.
+//  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
 //
 
 import UIKit

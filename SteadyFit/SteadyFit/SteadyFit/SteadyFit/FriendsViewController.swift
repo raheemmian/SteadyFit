@@ -4,8 +4,15 @@
 //
 //  Created by Raheem Mian on 2018-10-23.
 //  Copyright © 2018 Daycar. All rights reserved.
-//Friends View controller displays all of the users friends in a list, and clicking on their friends leads to their friends personal profile.
+//
+//  Team Daycar
+//  Edited by: Raheem Mian, Yimin Long
+//  List of Changes: Work in Progress
+//  Created table, array for friend list, added emergency button and GPS related code
+//
+//  Friends View controller displays all of the users friends in a list, and clicking on their friends leads to their friends personal profile.
 //  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
+//
 
 import UIKit
 import MessageUI

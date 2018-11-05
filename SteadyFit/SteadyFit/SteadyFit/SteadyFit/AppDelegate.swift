@@ -5,6 +5,12 @@
 //  Created by Raheem Mian on 2018-10-23.
 //  Copyright © 2018 Daycar. All rights reserved.
 //
+//  Team Daycar
+//  Edited by: Raheem Mian, Alexa Chen
+//  List of Changes: created along with project creation, added Firebase needed code for connection.
+//
+//  AppDelegate.swift is created along with project creation. It is needed for the app to launch properly.
+//
 
 import UIKit
 import Firebase
@@ -39,7 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
 }
 

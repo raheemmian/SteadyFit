@@ -7,9 +7,10 @@
 //
 //  Team Daycar
 //  Edited by: Dickson Chum
-//  List of Changes: added labels, table and arrays for table, created segues for table view
+//  List of Changes: added labels, table and arrays for table, created segues for table view, added emergency button and GPS related code
 //
 //  GroupProfileViewController.swift is linked to Group Profile of the UI, which shows group information.
+//  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
 //
 
 import UIKit
