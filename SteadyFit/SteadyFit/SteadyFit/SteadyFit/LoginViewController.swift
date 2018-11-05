@@ -4,7 +4,9 @@
 //
 //  Created by Alexa Chen on 2018-11-03.
 //  Copyright © 2018 Daycar. All rights reserved.
-//
+//modified by Raheem : added error message when the login fails
+//This view controller is for email authetication to login into the application
+
 
 import UIKit
 import FirebaseAuth
@@ -14,12 +16,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btnSignIn: UIButton!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var errorMessage: UILabel!
     
     var isSignIn:Bool = true;
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        errorMessage.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -44,6 +47,9 @@ class LoginViewController: UIViewController {
                     }
                     else{
                         //error, no existing user
+                        self.errorMessage.isHidden = false
+                        self.errorMessage.text = "Incorrect email or password"
+                        
                     }
                     
                 })

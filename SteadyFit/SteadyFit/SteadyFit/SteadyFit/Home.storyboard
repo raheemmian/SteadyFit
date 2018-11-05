@@ -58,7 +58,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="EmergencyButton:" destination="iKh-5u-Nl5" eventType="touchUpInside" id="ljD-jJ-VUX"/>
+                                    <action selector="emergencyButton:" destination="iKh-5u-Nl5" eventType="touchUpInside" id="jYc-Lz-KrS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -90,7 +90,7 @@
                         <outlet property="city" destination="pnC-2I-mbV" id="bhw-9g-7mj"/>
                         <outlet property="myTableView" destination="cDO-ay-zWA" id="ZDU-XH-OgJ"/>
                         <outlet property="name" destination="6Cd-cy-3WU" id="tXw-aq-hkg"/>
-                        <outlet property="profilePicture" destination="m6z-Vu-KrR" id="Jqy-W9-SQ3"/>
+                        <outlet property="profilePictureImage" destination="m6z-Vu-KrR" id="H58-nm-HNj"/>
                         <segue destination="u86-X4-rc0" kind="show" identifier="Activity Tracker" id="env-89-E9p"/>
                         <segue destination="8cX-Ae-iip" kind="show" identifier="Events" id="DzN-Ry-f4m"/>
                     </connections>

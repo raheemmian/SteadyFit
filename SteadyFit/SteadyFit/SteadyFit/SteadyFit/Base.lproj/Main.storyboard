@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3lh-tW-YIg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3lh-tW-YIg">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -151,24 +151,35 @@
                                     <action selector="signInbutton:" destination="sqO-iD-YmF" eventType="touchUpInside" id="aAm-Nn-Jut"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJG-gl-W9I">
+                                <rect key="frame" x="50" y="228.66666666666666" width="275" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1490499377" green="0.54758834840000004" blue="0.98500114679999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AqR-Xt-XcJ" firstAttribute="trailing" secondItem="hQh-sU-FEd" secondAttribute="trailing" constant="30" id="DJH-2D-jKZ"/>
                             <constraint firstItem="AqR-Xt-XcJ" firstAttribute="trailing" secondItem="QqO-BA-6Qb" secondAttribute="trailing" constant="50" id="G5v-dZ-p5K"/>
                             <constraint firstItem="tES-sM-5Nw" firstAttribute="leading" secondItem="AqR-Xt-XcJ" secondAttribute="leading" constant="40" id="IcV-iY-DJj"/>
+                            <constraint firstItem="dJG-gl-W9I" firstAttribute="leading" secondItem="AqR-Xt-XcJ" secondAttribute="leading" constant="50" id="LSS-aG-8Df"/>
                             <constraint firstItem="QqO-BA-6Qb" firstAttribute="leading" secondItem="AqR-Xt-XcJ" secondAttribute="leading" constant="50" id="QAl-I4-8vp"/>
+                            <constraint firstItem="hQh-sU-FEd" firstAttribute="top" secondItem="dJG-gl-W9I" secondAttribute="bottom" constant="23" id="Qwy-SN-8aJ"/>
                             <constraint firstItem="tES-sM-5Nw" firstAttribute="top" secondItem="AqR-Xt-XcJ" secondAttribute="top" constant="50" id="SCp-IE-1Jd"/>
                             <constraint firstItem="AqR-Xt-XcJ" firstAttribute="trailing" secondItem="tES-sM-5Nw" secondAttribute="trailing" constant="40" id="ZN6-1W-yLp"/>
                             <constraint firstItem="hQh-sU-FEd" firstAttribute="leading" secondItem="AqR-Xt-XcJ" secondAttribute="leading" constant="30" id="ijS-3G-ru1"/>
                             <constraint firstItem="QqO-BA-6Qb" firstAttribute="top" secondItem="hQh-sU-FEd" secondAttribute="bottom" constant="30" id="ivC-mt-NSF"/>
+                            <constraint firstItem="AqR-Xt-XcJ" firstAttribute="trailing" secondItem="dJG-gl-W9I" secondAttribute="trailing" constant="50" id="pTp-nE-DK4"/>
                             <constraint firstItem="hQh-sU-FEd" firstAttribute="top" secondItem="tES-sM-5Nw" secondAttribute="bottom" constant="150" id="tjl-st-d1c"/>
+                            <constraint firstItem="dJG-gl-W9I" firstAttribute="centerX" secondItem="AqR-Xt-XcJ" secondAttribute="centerX" id="vK8-fu-8Hi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AqR-Xt-XcJ"/>
                     </view>
                     <connections>
                         <outlet property="SignInRegister" destination="tES-sM-5Nw" id="ddJ-tW-m0V"/>
                         <outlet property="btnSignIn" destination="QqO-BA-6Qb" id="O2o-E2-RFs"/>
+                        <outlet property="errorMessage" destination="dJG-gl-W9I" id="yfz-gi-Job"/>
                         <outlet property="signInRegister" destination="tES-sM-5Nw" id="2lb-H0-1qo"/>
                         <outlet property="txtEmail" destination="Rjh-1v-Cuu" id="vvc-vz-NSi"/>
                         <outlet property="txtPassword" destination="SZX-P4-3B3" id="TMu-CA-Bwq"/>

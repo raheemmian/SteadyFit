@@ -19,8 +19,8 @@ class PrivateChatViewController: MessagesViewController {
     @IBOutlet weak var chatWip: UILabel!
     var messages: [Message] = []
     var member: Member!
-    private let db = Firestore.firestore()
-    private var reference: CollectionReference?
+    //private let db = Firestore.firestore()
+    //private var reference: CollectionReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()

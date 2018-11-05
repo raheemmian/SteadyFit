@@ -146,6 +146,9 @@
                         <viewLayoutGuide key="safeArea" id="VMJ-j9-jjX"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="5Ew-ee-Zpk"/>
+                    <connections>
+                        <outlet property="settingTableView" destination="41H-Nr-D5I" id="u11-lE-DOl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDI-We-fzv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
