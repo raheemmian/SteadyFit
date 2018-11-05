@@ -14,15 +14,6 @@
 //  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
 //
 
-
-//    func groupInit(text: String){
-//        self.groupName.text = text
-//        self.groupName.textColor = UIColor.black
-//        self.contentView.backgroundColor = UIColor.lightGray
-//    }
-
-
-
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth

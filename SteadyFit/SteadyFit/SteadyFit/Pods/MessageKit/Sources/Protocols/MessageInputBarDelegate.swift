@@ -54,7 +54,8 @@ public protocol MessageInputBarDelegate: AnyObject {
 
 public extension MessageInputBarDelegate {
     
-    func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {}
+    func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
+    }
     
     func messageInputBar(_ inputBar: MessageInputBar, didChangeIntrinsicContentTo size: CGSize) {}
     

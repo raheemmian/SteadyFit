@@ -33,7 +33,6 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         return chatListTitle[section]
     }
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chatListContent[section].count
     }
