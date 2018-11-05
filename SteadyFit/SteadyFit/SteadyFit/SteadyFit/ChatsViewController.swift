@@ -48,7 +48,6 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         chatListTableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var indexPath = self.chatListTableView.indexPathForSelectedRow!
         let post = segue.destination as! GroupChatTableViewController
