@@ -30,9 +30,11 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
     var getMessageHandle:DatabaseHandle?
-    var chatID:String = "Chat2"
+    var chatID:String = ""//"Chat2s
 //    var myUserID:String = "9mE5Dy4k35XsG57FXYmRPMr5giI3"    // Hard code for key of Herbert's account
-    let myUserID = (Auth.auth().currentUser?.uid)!
+    //let myUserID = (Auth.auth().currentUser?.uid)!
+    var myUserID = ""
+    var myUserName:String = ""//"Alexa"
     var rawMessages = [MessageLine]()
     let cellID = "cellID"
     
@@ -56,39 +58,71 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         collectionView?.alwaysBounceVertical = true
         setupInputComponents()
         
-        
-        getMessageHandle = self.ref?.child("Chats").child(chatID).child("Senders").observe(DataEventType.value, with: {
-            (receivesnapshot) in
-            // reset messages
-            self.rawMessages.removeAll()
-            //loops through all the senders to get all their messages
-            for Senders in receivesnapshot.children.allObjects as! [DataSnapshot] {
-                let mysenderID = Senders.key
-                guard let senderdictionary = Senders.value as? [String: AnyObject] else {continue}
-                let test = senderdictionary["senderName"] as?String
-                for chatLines in Senders.childSnapshot(forPath: "MessageLines").children.allObjects as! [DataSnapshot]{
-                    // TO DO: filter out messages that are old
-                    guard let myline = chatLines.value as? [String: AnyObject] else {continue}
-                    let myChatLine = MessageLine()
-                    myChatLine.senderID = mysenderID as? String
-                    myChatLine.senderName = senderdictionary["senderName"] as?String
-                    myChatLine.message = myline["message"] as?String
-                    myChatLine.timeStamp = myline["date"] as?String
-                    self.rawMessages.append(myChatLine)
+        if chatID == "Chat2"{ // to be deleted after TA has marked V1 source code
+            getMessageHandle = self.ref?.child("Chats").child(chatID).child("Senders").observe(DataEventType.value, with: {
+                (receivesnapshot) in
+                // reset messages
+                self.rawMessages.removeAll()
+                //loops through all the senders to get all their messages
+                for Senders in receivesnapshot.children.allObjects as! [DataSnapshot] {
+                    let mysenderID = Senders.key
+                    guard let senderdictionary = Senders.value as? [String: AnyObject] else {continue}
+                    let test = senderdictionary["senderName"] as?String
+                    for chatLines in Senders.childSnapshot(forPath: "MessageLines").children.allObjects as! [DataSnapshot]{
+                        // TO DO: filter out messages that are old
+                        guard let myline = chatLines.value as? [String: AnyObject] else {continue}
+                        let myChatLine = MessageLine()
+                        myChatLine.senderID = mysenderID
+                        myChatLine.senderName = senderdictionary["senderName"] as?String
+                        myChatLine.message = myline["message"] as?String
+                        myChatLine.timeStamp = myline["date"] as?String
+                        self.rawMessages.append(myChatLine)
+                    }
                 }
-            }
-            
-            // SORT message by time stamp
-            self.rawMessages.sort(by: { $0.timeStamp!.compare($1.timeStamp!) == .orderedAscending })
-            // raw messages is now sorted
-            // testing to see if sort worked
-            for obj in self.rawMessages {
-                print(obj.timeStamp!)
-            }
-            DispatchQueue.main.async(){
-                self.collectionView?.reloadData()
-            }
-        })
+                
+                // SORT message by time stamp
+                self.rawMessages.sort(by: { $0.timeStamp!.compare($1.timeStamp!) == .orderedAscending })
+                // raw messages is now sorted
+                // testing to see if sort worked
+                for obj in self.rawMessages {
+                    print(obj.timeStamp!)
+                }
+                DispatchQueue.main.async(){
+                    self.collectionView?.reloadData()
+                }
+            })
+        }
+        else{ // keep after TA has marked the source code
+            getMessageHandle = self.ref?.child("Chats").child(chatID).child("Messages").observe(DataEventType.value, with: {
+                (receivesnapshot) in
+                // reset messages
+                self.rawMessages.removeAll()
+                //loops all messages
+                for messages in receivesnapshot.children.allObjects as! [DataSnapshot] {
+                        // TO DO: filter out messages that are old
+                    print (messages)
+                        guard let myline = messages.value as? [String: AnyObject] else {continue}
+                        let myChatLine = MessageLine()
+                        myChatLine.senderID = myline["senderID"] as?String
+                        myChatLine.senderName = myline["senderName"] as?String
+                        myChatLine.message = myline["message"] as?String
+                        myChatLine.timeStamp = myline["date"] as?String
+                        self.rawMessages.append(myChatLine)
+                }
+                
+                // SORT message by time stamp
+                self.rawMessages.sort(by: { $0.timeStamp!.compare($1.timeStamp!) == .orderedAscending })
+                // raw messages is now sorted
+                // testing to see if sort worked
+                for obj in self.rawMessages {
+                    print(obj.timeStamp!)
+                }
+                DispatchQueue.main.async(){
+                    self.collectionView?.reloadData()
+                }
+            })
+        }
+
         
     }
     
@@ -161,12 +195,22 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     
     // This function is called when "Send" is clicked
     @objc func sendAction(){
-        let key:String = (ref!.child("Chats/\(chatID)/Senders/\(myUserID)/MessageLines").childByAutoId().key)!
-        let post = ["date": getTodayString() ,
-                    "message": inputTextField.text as Any] as [String : Any]
-        let childUpdates = ["/Chats/\(chatID)/Senders/\(myUserID)/MessageLines/\(key)/": post]
-        ref?.updateChildValues(childUpdates)
-        
+        if chatID == "Chat2"{// to be DELETED after TA has marked V1 source code
+            let key:String = (ref!.child("Chats/\(chatID)/Senders/\(myUserID)/MessageLines").childByAutoId().key)!
+            let post = ["date": getTodayString() ,
+                        "message": inputTextField.text as Any] as [String : Any]
+            let childUpdates = ["/Chats/\(chatID)/Senders/\(myUserID)/MessageLines/\(key)/": post]
+            ref?.updateChildValues(childUpdates)
+        }
+        else{ // KEEP
+            let key:String = (ref!.child("Chats/\(chatID)/Messages").childByAutoId().key)!
+            let post = ["date": getTodayString() ,
+                        "senderID": myUserID,
+                        "senderName": myUserName,
+                        "message": inputTextField.text as Any] as [String : Any]
+            let childUpdates = ["/Chats/\(chatID)/Messages/\(key)/": post]
+            ref?.updateChildValues(childUpdates)
+        }
         self.inputTextField.text = nil
     }
     
@@ -184,7 +228,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         let minute = components.minute
         let second = components.second
         
-        let today_string = String(year!) + "-" + String(month!) + "-" + String(day!) + " " + String(hour!)  + ":" + String(minute!) + ":" +  String(second!)
+        let today_string = String(year!) + "-" + String(format: "%02d",month!) + "-" + String(format: "%02d",day!) + " " + String(format: "%02d",hour!)  + ":" + String(format: "%02d",minute!) + ":" +  String(format: "%02d",second!)
         
         return today_string
     }
