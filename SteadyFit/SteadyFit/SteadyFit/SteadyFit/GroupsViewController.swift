@@ -72,7 +72,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
                 guard let dictionary = rest.value as? [String: AnyObject] else {continue}
                 let myGroup = UserGroup()
                 myGroup.name = dictionary["name"] as?String
-                myGroup.chatid = dictionary["name"] as?String
+                myGroup.chatid = dictionary["chatid"] as?String
                 myGroup.GroupType = dictionary["GroupType"] as?String
                 self.queryMyGroups.append(myGroup)
                 if myGroup.name != nil {
@@ -97,13 +97,24 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             self.groupsHandle = self.ref?.child("Groups").queryOrdered(byChild: "location").queryEqual(toValue:self.currentUserCity!).observe(DataEventType.value, with: {
                 (groupsnapshot) in
                 self.suggestedGroups.removeAll()
+                //check if any of the groups are in user's groups, if yes append
                 for rest in groupsnapshot.children.allObjects as! [DataSnapshot] {
-                    guard let checkUserdictionary = rest.childSnapshot(forPath: "users").childSnapshot(forPath: currentuserID!).value as? [String:AnyObject] else {continue}
                     guard let Groupdictionary = rest.value as? [String: AnyObject] else {continue}
-                    let myUserJoined = checkUserdictionary["joined"] as?Int
-                    //check if any of the groups are in user's groups, if yes append
-                    if myUserJoined != nil && myUserJoined == 0
-                    {
+                    // if user requested to join group, but not yet accepted
+                    if rest.childSnapshot(forPath: "users").hasChild(currentuserID!){
+                        guard let checkUserdictionary = rest.childSnapshot(forPath: "users").childSnapshot(forPath: currentuserID!).value as? [String:AnyObject] else {continue}
+                        
+                        let myUserJoined = checkUserdictionary["joined"] as?Int
+                        if myUserJoined != nil &&  myUserJoined == 0
+                        {
+                            let myRecommendedGroup = Groupdictionary["name"] as?String
+                            if myRecommendedGroup != nil{
+                                self.suggestedGroups.append(myRecommendedGroup!)
+                            }
+                        }
+                    }
+                    // if user is not in the group and never requested to join group
+                    else{
                         let myRecommendedGroup = Groupdictionary["name"] as?String
                         if myRecommendedGroup != nil{
                             self.suggestedGroups.append(myRecommendedGroup!)
