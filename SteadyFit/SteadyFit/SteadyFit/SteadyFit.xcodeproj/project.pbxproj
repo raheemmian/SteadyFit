@@ -552,33 +552,41 @@
 				TargetAttributes = {
 					B5727A60217FEDED00AF9005 = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 					};
 					B5727A76217FEDEE00AF9005 = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = B5727A60217FEDED00AF9005;
 					};
 					B5727A81217FEDEE00AF9005 = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = B5727A60217FEDED00AF9005;
 					};
 					B58574DF21910CD1009AAB09 = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = B5727A60217FEDED00AF9005;
 					};
 					B5BE5D102190C7C9009290C9 = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = B5727A60217FEDED00AF9005;
 					};
 					B5BE5D1E2190C8B7009290C9 = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = B5727A60217FEDED00AF9005;
 					};
 					B5BE5D3A2190C9CB009290C9 = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = B5727A60217FEDED00AF9005;
 					};
 					B5BE5D482190CA6C009290C9 = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
 						TestTargetID = B5727A60217FEDED00AF9005;
 					};
 				};
@@ -1043,6 +1051,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SteadyFit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1062,6 +1071,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SteadyFit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

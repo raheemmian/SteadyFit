@@ -107,6 +107,9 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         }
         else{
             // Incoming message with green chat box and black text color
+//            cell.bubbleView.leftAnchor.constraint(equalTo: collectionView.leftAnchor).isActive = true
+//            cell.bubbleView.rightAnchor.constraint(equalTo: collectionView.rightAnchor).isActive = false
+            
             cell.bubbleView.backgroundColor = UIColor.green
             cell.textView.textColor = UIColor.black
         }
