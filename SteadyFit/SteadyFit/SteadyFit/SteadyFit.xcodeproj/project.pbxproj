@@ -15,6 +15,8 @@
 		12A6E647218D0BE2003ED258 /* UserGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A6E646218D0BE2003ED258 /* UserGroup.swift */; };
 		12A6E64B218D7442003ED258 /* Chats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A6E64A218D7442003ED258 /* Chats.storyboard */; };
 		12A6E64D218D7480003ED258 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A6E64C218D7480003ED258 /* Settings.storyboard */; };
+		12D1D5062195874B0051633F /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D1D5052195874B0051633F /* EventPage.storyboard */; };
+		12D1D508219589410051633F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D1D507219589410051633F /* Profile.storyboard */; };
 		6BEB4CE86D25B9F25E19AB27 /* Pods_SteadyFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345E59685D91B020FFE70273 /* Pods_SteadyFitTests.framework */; };
 		874B8185AEFA6EA89DC330A7 /* Pods_SteadyFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B965C2595CF769777BB4CC17 /* Pods_SteadyFitUITests.framework */; };
 		B5727A65217FEDED00AF9005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A64217FEDED00AF9005 /* AppDelegate.swift */; };
@@ -109,6 +111,8 @@
 		12A6E646218D0BE2003ED258 /* UserGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroup.swift; sourceTree = "<group>"; };
 		12A6E64A218D7442003ED258 /* Chats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chats.storyboard; sourceTree = "<group>"; };
 		12A6E64C218D7480003ED258 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		12D1D5052195874B0051633F /* EventPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EventPage.storyboard; sourceTree = "<group>"; };
+		12D1D507219589410051633F /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		345E59685D91B020FFE70273 /* Pods_SteadyFitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteadyFitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		524F9EF2FBCDEC79B4A3191F /* Pods_SteadyFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteadyFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87E321E553C0E12A38F689D4 /* Pods-SteadyFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFit/Pods-SteadyFit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -320,6 +324,8 @@
 				B5727A6A217FEDED00AF9005 /* Main.storyboard */,
 				123B54A0218C1E7200646CEB /* Home.storyboard */,
 				123B549E218C17FC00646CEB /* Groups.storyboard */,
+				12D1D507219589410051633F /* Profile.storyboard */,
+				12D1D5052195874B0051633F /* EventPage.storyboard */,
 				123B54A2218C1EA500646CEB /* Friends.storyboard */,
 				12A6E64A218D7442003ED258 /* Chats.storyboard */,
 				12A6E64C218D7480003ED258 /* Settings.storyboard */,
@@ -622,7 +628,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5727A71217FEDEE00AF9005 /* LaunchScreen.storyboard in Resources */,
+				12D1D508219589410051633F /* Profile.storyboard in Resources */,
 				123B54A5218C36FA00646CEB /* GoogleService-Info.plist in Resources */,
+				12D1D5062195874B0051633F /* EventPage.storyboard in Resources */,
 				B57302AD2186D0A300CD06D3 /* Assets.xcassets in Resources */,
 				B5727A6C217FEDED00AF9005 /* Main.storyboard in Resources */,
 				123B54A3218C1EA500646CEB /* Friends.storyboard in Resources */,
