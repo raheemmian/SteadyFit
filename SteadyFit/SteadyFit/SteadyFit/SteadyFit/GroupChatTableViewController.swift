@@ -57,7 +57,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 10  , left: 0, bottom: 55, right: 0)
         collectionView?.alwaysBounceVertical = true
         setupInputComponents()
-        
+        /*
         if chatID == "Chat2"{ // to be deleted after TA has marked V1 source code
             getMessageHandle = self.ref?.child("Chats").child(chatID).child("Senders").observe(DataEventType.value, with: {
                 (receivesnapshot) in
@@ -91,8 +91,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
                     self.collectionView?.reloadData()
                 }
             })
-        }
-        else{ // keep after TA has marked the source code
+            */
             getMessageHandle = self.ref?.child("Chats").child(chatID).child("Messages").observe(DataEventType.value, with: {
                 (receivesnapshot) in
                 // reset messages
@@ -121,7 +120,6 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
                     self.collectionView?.reloadData()
                 }
             })
-        }
 
         
     }
@@ -198,22 +196,22 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     
     // This function is called when "Send" is clicked
     @objc func sendAction(){
+        /*
         if chatID == "Chat2"{// to be DELETED after TA has marked V1 source code
             let key:String = (ref!.child("Chats/\(chatID)/Senders/\(myUserID)/MessageLines").childByAutoId().key)!
             let post = ["date": getTodayString() ,
                         "message": inputTextField.text as Any] as [String : Any]
             let childUpdates = ["/Chats/\(chatID)/Senders/\(myUserID)/MessageLines/\(key)/": post]
             ref?.updateChildValues(childUpdates)
-        }
-        else{ // KEEP
-            let key:String = (ref!.child("Chats/\(chatID)/Messages").childByAutoId().key)!
-            let post = ["date": getTodayString() ,
-                        "senderID": myUserID,
-                        "senderName": myUserName,
-                        "message": inputTextField.text as Any] as [String : Any]
-            let childUpdates = ["/Chats/\(chatID)/Messages/\(key)/": post]
-            ref?.updateChildValues(childUpdates)
-        }
+        }*/
+        let key:String = (ref!.child("Chats/\(chatID)/Messages").childByAutoId().key)!
+        let post = ["date": getTodayString() ,
+                    "senderID": myUserID,
+                    "senderName": myUserName,
+                    "message": inputTextField.text as Any] as [String : Any]
+        let childUpdates = ["/Chats/\(chatID)/Messages/\(key)/": post]
+        ref?.updateChildValues(childUpdates)
+        
         self.inputTextField.text = nil
     }
     
