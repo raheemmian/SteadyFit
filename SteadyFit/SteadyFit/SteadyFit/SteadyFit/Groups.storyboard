@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -221,12 +222,20 @@
                         <outlet property="groupStatus" destination="4hh-QS-icg" id="fFD-yq-9ph"/>
                         <outlet property="groupStatusInfo" destination="0ed-Ku-ps1" id="2LL-bb-5Qh"/>
                         <segue destination="BiE-8c-2XE" kind="show" identifier="Members" id="Xkd-V0-TXE"/>
-                        <segue destination="Ffo-p6-dEc" kind="show" identifier="Events" id="6xi-qt-0oo"/>
+                        <segue destination="ati-0J-zIT" kind="show" identifier="Events" id="mw7-hv-VFr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19y-gP-U2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3471" y="173"/>
+        </scene>
+        <!--EventPage-->
+        <scene sceneID="kWa-zE-gu2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventPage" id="ati-0J-zIT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JQp-wx-HOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4338" y="391"/>
         </scene>
         <!--Group Member List Table View Controller-->
         <scene sceneID="s70-nr-USs">
@@ -253,120 +262,23 @@
                     </tableView>
                     <connections>
                         <outlet property="memberListTableView" destination="syo-0R-0xv" id="VZi-kg-rgB"/>
-                        <segue destination="zA1-bZ-3Dh" kind="show" identifier="showProfile" id="bb7-K9-Xdu"/>
+                        <segue destination="8cW-ov-Gi3" kind="show" identifier="showProfile" id="Aau-rG-QLF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRY-8V-zQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4388" y="-94"/>
         </scene>
-        <!--Event View Controller-->
-        <scene sceneID="2Jb-Re-45Q">
-            <objects>
-                <viewController id="Ffo-p6-dEc" customClass="EventViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ym7-rQ-q0x">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Detail - Work in Progress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEc-Bf-MFq">
-                                <rect key="frame" x="88.5" y="466.5" width="237.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="sEc-Bf-MFq" firstAttribute="centerX" secondItem="NZl-tQ-dDV" secondAttribute="centerX" id="iXf-ca-4zS"/>
-                            <constraint firstItem="sEc-Bf-MFq" firstAttribute="centerY" secondItem="NZl-tQ-dDV" secondAttribute="centerY" id="sZH-TI-DBM"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="NZl-tQ-dDV"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jek-rl-fFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4388" y="664"/>
-        </scene>
         <!--Profile-->
-        <scene sceneID="Ses-4q-NjY">
+        <scene sceneID="iPF-TR-slb">
             <objects>
-                <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="zA1-bZ-3Dh" customClass="UserProfileViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="h5x-yh-KG1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="Eco-1a-arZ">
-                                <rect key="frame" x="157" y="155" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="30g-Hv-Fld"/>
-                                    <constraint firstAttribute="width" constant="100" id="hIi-4D-LSp"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vancouver, BC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hm7-nh-Jbb">
-                                <rect key="frame" x="143.5" y="300" width="127" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONA-7E-cVc">
-                                <rect key="frame" x="157.5" y="263" width="99" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Profile - Work in Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mq-Ua-1aJ">
-                                <rect key="frame" x="110" y="438" width="195" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFE-Xk-A0y">
-                                <rect key="frame" x="0.0" y="728" width="414" height="41"/>
-                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="EMERGENCY">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="emergencyButton:" destination="Vpa-yR-Th3" eventType="touchUpInside" id="b3U-3V-Ksc"/>
-                                    <action selector="emergencyButton:" destination="zA1-bZ-3Dh" eventType="touchUpInside" id="ifi-Jh-kct"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="hm7-nh-Jbb" firstAttribute="centerX" secondItem="5dK-ow-vDP" secondAttribute="centerX" id="2fB-7c-EOI"/>
-                            <constraint firstItem="3mq-Ua-1aJ" firstAttribute="centerX" secondItem="5dK-ow-vDP" secondAttribute="centerX" id="3Wr-gL-jUK"/>
-                            <constraint firstItem="5dK-ow-vDP" firstAttribute="trailing" secondItem="aFE-Xk-A0y" secondAttribute="trailing" id="LtJ-tt-hfM"/>
-                            <constraint firstItem="hm7-nh-Jbb" firstAttribute="top" secondItem="ONA-7E-cVc" secondAttribute="bottom" constant="8" id="O28-nA-9y0"/>
-                            <constraint firstItem="hm7-nh-Jbb" firstAttribute="centerX" secondItem="Eco-1a-arZ" secondAttribute="centerX" id="Ocn-gq-qJn"/>
-                            <constraint firstItem="ONA-7E-cVc" firstAttribute="centerX" secondItem="Eco-1a-arZ" secondAttribute="centerX" id="Qlp-CM-lGr"/>
-                            <constraint firstItem="ONA-7E-cVc" firstAttribute="top" secondItem="Eco-1a-arZ" secondAttribute="bottom" constant="8" id="deb-WE-oQN"/>
-                            <constraint firstItem="Eco-1a-arZ" firstAttribute="centerX" secondItem="5dK-ow-vDP" secondAttribute="centerX" id="hG1-Ae-Z4X"/>
-                            <constraint firstItem="ONA-7E-cVc" firstAttribute="centerX" secondItem="5dK-ow-vDP" secondAttribute="centerX" id="l1u-K4-XKS"/>
-                            <constraint firstItem="Eco-1a-arZ" firstAttribute="top" secondItem="5dK-ow-vDP" secondAttribute="top" constant="15" id="s6o-1k-65e"/>
-                            <constraint firstItem="5dK-ow-vDP" firstAttribute="bottom" secondItem="aFE-Xk-A0y" secondAttribute="bottom" id="taG-vP-25n"/>
-                            <constraint firstItem="aFE-Xk-A0y" firstAttribute="leading" secondItem="h5x-yh-KG1" secondAttribute="leading" id="wTn-vl-sKl"/>
-                            <constraint firstItem="3mq-Ua-1aJ" firstAttribute="centerY" secondItem="5dK-ow-vDP" secondAttribute="centerY" id="waL-q1-iH4"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="5dK-ow-vDP"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="9Zu-JG-L0Z" colorLabel="IBBuiltInLabel-Blue"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="location" destination="hm7-nh-Jbb" id="eDx-7U-Ti2"/>
-                        <outlet property="name" destination="ONA-7E-cVc" id="a0Y-vp-ICT"/>
-                        <outlet property="profilePic" destination="Eco-1a-arZ" id="5J9-Hh-WT3"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="laE-qX-MIt" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Profile" id="8cW-ov-Gi3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="74e-2I-5lj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5304" y="-94"/>
+            <point key="canvasLocation" x="5085" y="-82"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ProfilePic" width="660" height="658"/>
-        <image name="group" width="32" height="32"/>
+        <image name="group" width="24" height="24"/>
     </resources>
 </document>

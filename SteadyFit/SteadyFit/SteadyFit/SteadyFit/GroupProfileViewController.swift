@@ -74,7 +74,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
         }
         else{
-            let post = segue.destination as! EventViewController
+            let post = segue.destination as! UserEventsViewController
             post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
         }
     }

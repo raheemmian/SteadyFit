@@ -60,7 +60,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         /*provide the title for the navigation bar based on the row selected*/
         var indexPath = self.friendTableView.indexPathForSelectedRow!
-        let post = segue.destination as! FriendProfileViewController
+        let post = segue.destination as! UserProfileViewController
         post.navigationItem.title = friendList[indexPath.row]
     }
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
