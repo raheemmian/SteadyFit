@@ -14,10 +14,34 @@ import UIKit
 
 class SettingsEditiorViewController: UIViewController {
 
+//    var name: String!
+//    name = "John Doe"
+    
+    @IBAction func saveButton(_ sender: UIButton) {
+//        writeToFirebace()
+    }
+    @IBAction func nameTextFile(_ sender: UITextField) {
+        
+    }
+    
+    @IBAction func logoutButton(_ sender: UIButton) {
+        // logout function
+        
+    }
+    
+    @IBOutlet weak var nameLabel: UILabel!
+
+    
+//    func writeToFirebase(){
+//
+//
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+        
         // Do any additional setup after loading the view.
     }
 
+    
 }

@@ -15,7 +15,10 @@ import UIKit
 class HistogramViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
 }
+
+
+
