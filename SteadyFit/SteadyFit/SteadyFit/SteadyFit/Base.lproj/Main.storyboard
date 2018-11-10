@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3lh-tW-YIg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3lh-tW-YIg">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -59,6 +60,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUf-c8-wVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="854" y="296"/>
+        </scene>
+        <!--Init User Info View Controller-->
+        <scene sceneID="5rI-Jz-sIi">
+            <objects>
+                <viewController id="SZn-LS-PYh" customClass="InitUserInfoViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fvP-Q9-SQR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="sNT-zo-0x2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W2M-fJ-AQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-39" y="-783"/>
         </scene>
         <!--Home-->
         <scene sceneID="baO-cd-i6q">
@@ -184,6 +200,7 @@
                         <outlet property="txtEmail" destination="Rjh-1v-Cuu" id="vvc-vz-NSi"/>
                         <outlet property="txtPassword" destination="SZX-P4-3B3" id="TMu-CA-Bwq"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="GoToHome" id="e5L-t9-FOy"/>
+                        <segue destination="SZn-LS-PYh" kind="show" identifier="showInitUserInfo" id="9Au-BD-Jvo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rB-Xj-TBy" userLabel="First Responder" sceneMemberID="firstResponder"/>

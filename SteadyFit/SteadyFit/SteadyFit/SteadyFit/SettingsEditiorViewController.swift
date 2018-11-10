@@ -23,7 +23,6 @@ class SettingsEditiorViewController: UIViewController {
     @IBAction func nameTextFile(_ sender: UITextField) {
         
     }
-    
     @IBAction func logoutButton(_ sender: UIButton) {
         // logout function
         

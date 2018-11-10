@@ -11,8 +11,11 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
+    
+    var ref:DatabaseReference?
     @IBOutlet weak var signInRegister: UISegmentedControl!
     @IBOutlet weak var btnSignIn: UIButton!
     @IBOutlet weak var txtEmail: UITextField!
@@ -24,6 +27,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         errorMessage.isHidden = true
+        ref = Database.database().reference()
         // Do any additional setup after loading the view.
     }
     
@@ -58,10 +62,19 @@ class LoginViewController: UIViewController {
                 Auth.auth().createUser(withEmail: email, password: pass) { (authResult, error) in
                     // ...
                     guard let u = authResult?.user else { return /*error, user is nil*/}
-                    //TO DO for version 2: create user in firebase database
-    
-                    self.performSegue(withIdentifier: "GoToHome", sender: self)
                     
+                    //TO DO for version 2: create user in firebase database
+                    let newUserID = (Auth.auth().currentUser?.uid)!
+
+//                    let key:String = (self.ref!.child("Users/\(newUserID)").key)!
+
+                    let post = ["email": email,
+                                "password": pass] as [String : Any]
+                    let childUpdates = ["/Users/\(newUserID)": post]
+                    self.ref?.updateChildValues(childUpdates)
+
+                    // lead to next UI for inputting user info
+                    self.performSegue(withIdentifier: "showInitUserInfo", sender: self)
                 }
             }
         }
