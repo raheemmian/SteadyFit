@@ -18,6 +18,7 @@
 		12D1D508219589410051633F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D1D507219589410051633F /* Profile.storyboard */; };
 		12D1D50A21960B120051633F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12D1D50921960B120051633F /* GoogleService-Info.plist */; };
 		6BEB4CE86D25B9F25E19AB27 /* Pods_SteadyFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345E59685D91B020FFE70273 /* Pods_SteadyFitTests.framework */; };
+		80CDBC54219641E600642D46 /* AddActivityEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */; };
 		874B8185AEFA6EA89DC330A7 /* Pods_SteadyFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B965C2595CF769777BB4CC17 /* Pods_SteadyFitUITests.framework */; };
 		B5727A65217FEDED00AF9005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A64217FEDED00AF9005 /* AppDelegate.swift */; };
 		B5727A67217FEDED00AF9005 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A66217FEDED00AF9005 /* HomeViewController.swift */; };
@@ -115,6 +116,7 @@
 		12D1D50921960B120051633F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		345E59685D91B020FFE70273 /* Pods_SteadyFitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteadyFitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		524F9EF2FBCDEC79B4A3191F /* Pods_SteadyFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteadyFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityEventViewController.swift; sourceTree = "<group>"; };
 		87E321E553C0E12A38F689D4 /* Pods-SteadyFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFit/Pods-SteadyFit.debug.xcconfig"; sourceTree = "<group>"; };
 		99421C9E7AC24DBBF3447B92 /* Pods-SteadyFitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitUITests/Pods-SteadyFitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9DCB980D16CCE1AAF00B2201 /* Pods-SteadyFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFit/Pods-SteadyFit.release.xcconfig"; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				12A6E645218D0B3B003ED258 /* Model */,
 				B5727A64217FEDED00AF9005 /* AppDelegate.swift */,
 				125AAD4C218D9A1800CC5FCD /* LoginViewController.swift */,
+				80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */,
 				B5727A66217FEDED00AF9005 /* HomeViewController.swift */,
 				B5F54D22218E663400D0214D /* HistogramViewController.swift */,
 				B5F54D20218E48D000D0214D /* UserEventsViewController.swift */,
@@ -809,6 +812,7 @@
 				D4C471B02190F087003C182B /* ChatMessageCollectionViewCell.swift in Sources */,
 				D41383E321902B950076031B /* GroupChatTableViewController.swift in Sources */,
 				D43B7CF8218E74420099C159 /* EventViewController.swift in Sources */,
+				80CDBC54219641E600642D46 /* AddActivityEventViewController.swift in Sources */,
 				D4F05D07218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift in Sources */,
 				B5727A65217FEDED00AF9005 /* AppDelegate.swift in Sources */,
 				B5F54D27218E75D200D0214D /* SettingsViewController.swift in Sources */,
@@ -1057,7 +1061,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5J25Q69SAB;
 				INFOPLIST_FILE = SteadyFit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1077,7 +1081,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5J25Q69SAB;
 				INFOPLIST_FILE = SteadyFit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
