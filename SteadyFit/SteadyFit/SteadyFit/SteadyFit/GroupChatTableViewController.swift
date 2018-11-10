@@ -31,9 +31,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     var refHandle:DatabaseHandle?
     var getMessageHandle:DatabaseHandle?
     var chatID:String = ""//"Chat2s
-//    var myUserID:String = "9mE5Dy4k35XsG57FXYmRPMr5giI3"    // Hard code for key of Herbert's account
-    //let myUserID = (Auth.auth().currentUser?.uid)!
-    var myUserID = ""
+    var myUserID = (Auth.auth().currentUser?.uid)
     var myUserName:String = ""//"Alexa"
     var rawMessages = [MessageLine]()
     let cellID = "cellID"
@@ -54,7 +52,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ChatMessageCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 60, right: 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 10  , left: 0, bottom: 55, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 0, bottom: 55, right: 0)
         collectionView?.alwaysBounceVertical = true
         setupInputComponents()
         /*
@@ -120,7 +118,6 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
                     self.collectionView?.reloadData()
                 }
             })
-
         
     }
     
@@ -131,25 +128,42 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! ChatMessageCollectionViewCell
         let msg = rawMessages[indexPath.item]
-        cell.textView.text = String(msg.senderName!) + "\n" + String(msg.message!)
+        // print name per message
+        // need to get rid of the name part once done
+//        cell.textView.text = String(msg.senderName!) + "\n" + String(msg.message!)
+        cell.textView.text = String(msg.message!)
+        cell.bubbleWidth?.constant = estimateFrameSize(text: msg.message!).width + 30
+        setupCell(cell: cell, message: msg)
         
-        if msg.senderID == myUserID{
+        return cell
+    }
+    private func setupCell(cell: ChatMessageCollectionViewCell, message: MessageLine){
+        if message.senderID == myUserID{
             // Outgoing message with blue chat box
             cell.bubbleView.backgroundColor = UIColor.blue
+            cell.textView.textColor = UIColor.white
         }
         else{
             // Incoming message with green chat box and black text color
-//            cell.bubbleView.leftAnchor.constraint(equalTo: collectionView.leftAnchor).isActive = true
-//            cell.bubbleView.rightAnchor.constraint(equalTo: collectionView.rightAnchor).isActive = false
-            
-            cell.bubbleView.backgroundColor = UIColor.green
+            cell.bubbleView.backgroundColor = UIColor.lightGray
             cell.textView.textColor = UIColor.black
         }
-        return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 60)
+        var height: CGFloat = 60
+        if let text = rawMessages[indexPath.item].message{
+            height = estimateFrameSize(text: text).height + 18
+        }
+        return CGSize(width: view.frame.width, height: height)
+    }
+    
+    // Work in progress, trying to get estimate height and width for each chat box
+    private func estimateFrameSize(text: String) -> CGRect{
+        let size = CGSize(width: 200, height: 1000)
+        let option = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        return NSString(string: text).boundingRect(with: size, options: option, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18)], context: nil)
     }
     
     func setupInputComponents(){
@@ -204,15 +218,20 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
             let childUpdates = ["/Chats/\(chatID)/Senders/\(myUserID)/MessageLines/\(key)/": post]
             ref?.updateChildValues(childUpdates)
         }*/
-        let key:String = (ref!.child("Chats/\(chatID)/Messages").childByAutoId().key)!
-        let post = ["date": getTodayString() ,
-                    "senderID": myUserID,
-                    "senderName": myUserName,
-                    "message": inputTextField.text as Any] as [String : Any]
-        let childUpdates = ["/Chats/\(chatID)/Messages/\(key)/": post]
-        ref?.updateChildValues(childUpdates)
-        
-        self.inputTextField.text = nil
+        if inputTextField.text != "" {
+            let key:String = (ref!.child("Chats/\(chatID)/Messages").childByAutoId().key)!
+            let post = ["date": getTodayString() ,
+                        "senderID": myUserID!,
+                        "senderName": myUserName,
+                        "message": inputTextField.text as Any] as [String : Any]
+            let childUpdates = ["/Chats/\(chatID)/Messages/\(key)/": post]
+            ref?.updateChildValues(childUpdates)
+            // Clear text field once sent
+            self.inputTextField.text = nil
+        }
+        else{
+            print("No message")
+        }
     }
     
     //  Get timestamp when message is sent
