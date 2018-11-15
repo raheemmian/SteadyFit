@@ -87,6 +87,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
         }
     }
+    
+   /* func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        let button = UIButton(type: .system)
+        button.frame = CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 50)
+        button.setTitle("Open", for: .normal)
+        button.backgroundColor = .black
+        button.addTarget(self, action: Selector(("SegueToEvents:")), for: UIControl.Event.touchUpInside)
+        view.addSubview(button)
+        return view
+    }
+    func SegueToEvents(sender: AnyObject){
+        print("Hi")
+    }*/
     /*-----------------------------------Messaging----------------------------------------------------------------*/
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         /*The message controller is dismissed once the message is either sent or the cancel button is pressed. It segues back
