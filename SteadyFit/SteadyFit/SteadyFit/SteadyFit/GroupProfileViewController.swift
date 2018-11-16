@@ -31,6 +31,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     var locationManager = CLLocationManager()
     var groupTableSections = ["Members", "Events"]
     var groupTableContents = [["More"], ["A Event on Jan 1, 2018", "B Event on Feb 1, 2018", "C Event on Mar 1, 2018"]]
+    var isAddEvent: Bool = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,15 +69,46 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var indexPath = self.eventTableView.indexPathForSelectedRow!
-        if(indexPath.section == 0){
-            let post = segue.destination as! GroupMemberListTableViewController
-            post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+        if isAddEvent == false {
+            var indexPath = self.eventTableView.indexPathForSelectedRow!
+            if(indexPath.section == 0){
+                let post = segue.destination as! GroupMemberListTableViewController
+                post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+            }
+            else{
+                let post = segue.destination as! UserEventsViewController
+                post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+            }
         }
         else{
-            let post = segue.destination as! UserEventsViewController
-            post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+            isAddEvent = false
         }
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+        let label = UILabel()
+        label.text = groupTableSections[section]
+        label.frame = CGRect(x: 10, y: 0, width: 100, height: 22)
+        headerView.addSubview(label)
+        if section == 1{
+            let image = UIImage(named: "plus")
+            let button = UIButton()
+            button.frame = CGRect(x:350, y: 0, width: 22, height: 22)
+            button.setImage(image, for: .normal)
+            button.layer.borderWidth = 1
+            button.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+            button.addTarget(self, action: #selector(addEventsButtonPressed), for: .touchUpInside)
+            headerView.addSubview(button)
+        }
+        return headerView
+    }
+    @objc func addEventsButtonPressed(sender: UIButton!){
+        isAddEvent = true;
+        performSegue(withIdentifier: "AddEvents" , sender: self)
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 22
     }
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
