@@ -7,22 +7,29 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var eventNameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var startDateTextField: UITextField!
-    @IBOutlet weak var endDateTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
-    
+    @IBOutlet weak var durationTextField: UITextField!
+    var ref:DatabaseReference? = Database.database().reference()
+    var refHandle:DatabaseHandle?
+    var groupID = ""
+    var myUserID = (Auth.auth().currentUser?.uid)!
+    var myUserName: String = ""
     let startDatePicker = UIDatePicker()
     let endDatePicker = UIDatePicker()
     var activeTextField : UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         startDateTextField.delegate = self
-        endDateTextField.delegate = self
+        durationTextField.delegate = self
         descriptionTextView.delegate = self
         eventNameTextField.delegate = self
         locationTextField.delegate = self
@@ -33,27 +40,76 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         eventNameTextField.layer.borderWidth = 1
         locationTextField.layer.borderWidth = 1
         startDateTextField.layer.borderWidth = 1
-        endDateTextField.layer.borderWidth = 1
+        durationTextField.layer.borderWidth = 1
         
+        ref?.child("Users").child(myUserID).child("name").observeSingleEvent(of: .value, with: {(snapshot) in
+            self.myUserName = (snapshot.value as? String)!
+        })
     }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeTextField = textField
-        
-    }
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
-            textView.text = nil
-            textView.textColor = UIColor.black
-        }
-    }
+
     @IBAction func saveButton(_ sender: Any) {
         //save the information into the database
-        //redirect to the group page
+        //redirect to the group page:done
         //
+        /*let key:String = (ref!.child("Activities_Events").childByAutoId().key)!
+        let postParticipant = [myUserID: ["name": myUserName]]
+        let post = ["Participants": postParticipant,
+                    "date": startDateTextField.text ?? "nothing",
+                    "description": descriptionTextView.text,
+                    "duration_minute": durationTextField.text ?? "nothing",
+                    "groupid": groupID,
+                    "intensity": 3,
+                    "isPersonal": 0,
+                    "location": locationTextField.text ?? "nothing"
+            ] as [String : Any]*/
+        
+        /*let childUpdates = ["/Chats/\(chatID)/Messages/\(key)/": post]
+        ref?.updateChildValues(childUpdates)
+        // Clear text field once sent
+        self.inputTextField.text = nil*/
+        
+        //goes back to previous view controller
+        navigationController?.popViewController(animated: true)
+    }
+
+    func createDatePicker(){
+        startDateTextField.inputView = startDatePicker
+        endDatePicker.datePickerMode = .countDownTimer
+        durationTextField.inputView = endDatePicker
+        let datePickerToolBar = UIToolbar()
+        datePickerToolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneClicked))
+        datePickerToolBar.setItems([doneButton], animated: true)
+        startDateTextField.inputAccessoryView = datePickerToolBar
+        durationTextField.inputAccessoryView = datePickerToolBar
+    }
+    
+   @objc func doneClicked() {
+        let startDateFormat = DateFormatter()
+        let durationDateFormat = DateFormatter()
+        durationDateFormat.timeStyle = .medium
+        startDateFormat.dateFormat = "yyyy-MM-dd HH:mm"
+        if(activeTextField == startDateTextField){
+            startDateTextField.text = startDateFormat.string(from: startDatePicker.date)
+        }
+        else{
+            durationTextField.text = String(Int(endDatePicker.countDownDuration / 60))
+        }
+        self.view.endEditing(true)
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        if(textField == durationTextField){
+            durationTextField.text = durationTextField?.text ?? "5" + "minutes"
+        }
         return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        durationTextField.resignFirstResponder()
+        eventNameTextField.resignFirstResponder()
+        startDateTextField.resignFirstResponder()
+        locationTextField.resignFirstResponder()
+        descriptionTextView.resignFirstResponder()
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
@@ -62,27 +118,28 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         }
         return true
     }
-    func createDatePicker(){
-        startDateTextField.inputView = startDatePicker
-        endDateTextField.inputView = endDatePicker
-        let datePickerToolBar = UIToolbar()
-        datePickerToolBar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneClicked))
-        datePickerToolBar.setItems([doneButton], animated: true)
-        startDateTextField.inputAccessoryView = datePickerToolBar
-        endDateTextField.inputAccessoryView = datePickerToolBar
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeTextField = textField
     }
-    
-   @objc func doneClicked() {
-        let dateFormat = DateFormatter()
-        dateFormat.dateStyle = .medium
-        dateFormat.timeStyle = .short
-        if activeTextField == startDateTextField {
-            startDateTextField.text = dateFormat.string(from: startDatePicker.date)
-        } else if activeTextField == endDateTextField {
-           endDateTextField.text = dateFormat.string(from: endDatePicker.date)
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
         }
-        self.view.endEditing(true)
-        
+        if(textView == descriptionTextView){
+            moveTextView(textView, moveDistance: -250, up: true)
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        moveTextView(textView, moveDistance: -250, up: false)
+    }
+    func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
     }
 }
