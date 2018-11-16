@@ -16,6 +16,9 @@
 import UIKit
 import MessageUI
 import CoreLocation
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class GroupProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
     
@@ -28,21 +31,51 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var eventTableView: UITableView!
     
     @IBAction func emergencyButton(_ sender: UIButton) {sendText()}
+    var ref:DatabaseReference? = Database.database().reference()
+    var refHandle:DatabaseHandle?
     var locationManager = CLLocationManager()
+    var groupID : String!
     var groupTableSections = ["Members", "Events"]
     var groupTableContents = [["More"], ["A Event on Jan 1, 2018", "B Event on Feb 1, 2018", "C Event on Mar 1, 2018"]]
-    var isAddEvent: Bool = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         eventTableView.delegate = self
         eventTableView.dataSource = self
-        groupDesc.text = "Group Description:"
-        groupDescInfo.text = "(Group Description)"
-        activityLevel.text = "Activity Level:"
-        activityLevelInfo.text = "(Activity Level)"
-        groupStatus.text = "Group Status:"
-        groupStatusInfo.text = "(Group Status)"
+        
+        groupID = "Group2"
+        
+        //let currentuserID = Auth.auth().currentUser?.uid
+        refHandle = self.ref?.child("Groups").child(groupID).observe(DataEventType.value, with: { (snapshot) in
+            
+            if let groupInfo = snapshot.value as? [String: AnyObject]{
+                let myGroupInfo = GroupInfo()
+                myGroupInfo.activityLevel = groupInfo["activitylevel"] as?String
+                myGroupInfo.chatId = groupInfo["chatid"] as?String
+                myGroupInfo.groupDescription = groupInfo["description"] as?String
+                myGroupInfo.events = groupInfo["events"] as?String
+                myGroupInfo.groupType = groupInfo["grouptype"] as?String
+                myGroupInfo.location = groupInfo["location"] as?String
+                myGroupInfo.name = groupInfo["location"] as?String
+                myGroupInfo.users = groupInfo["users"] as?String
+                
+                //if (groupInfo["users"] != nil){
+                //}
+                
+                //print(myGroupInfo.events)
+                //print(myGroupInfo.chatId)
+                //print(myGroupInfo.users)
+                //print(myGroupInfo.location)
+                
+                self.groupDesc.text = "Group Description:"
+                self.groupDescInfo.text = myGroupInfo.groupDescription
+                self.activityLevel.text = "Activity Level:"
+                self.activityLevelInfo.text = myGroupInfo.activityLevel
+                self.groupStatus.text = "Group Status:"
+                self.groupStatusInfo.text = myGroupInfo.groupType
+            }
+            
+        })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,46 +102,15 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if isAddEvent == false {
-            var indexPath = self.eventTableView.indexPathForSelectedRow!
-            if(indexPath.section == 0){
-                let post = segue.destination as! GroupMemberListTableViewController
-                post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
-            }
-            else{
-                let post = segue.destination as! UserEventsViewController
-                post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
-            }
+        var indexPath = self.eventTableView.indexPathForSelectedRow!
+        if(indexPath.section == 0){
+            let post = segue.destination as! GroupMemberListTableViewController
+            post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
         }
         else{
-            isAddEvent = false
+            let post = segue.destination as! UserEventsViewController
+            post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
         }
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-        let label = UILabel()
-        label.text = groupTableSections[section]
-        label.frame = CGRect(x: 10, y: 0, width: 100, height: 22)
-        headerView.addSubview(label)
-        if section == 1{
-            let image = UIImage(named: "plus")
-            let button = UIButton()
-            button.frame = CGRect(x:350, y: 0, width: 22, height: 22)
-            button.setImage(image, for: .normal)
-            button.layer.borderWidth = 1
-            button.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-            button.addTarget(self, action: #selector(addEventsButtonPressed), for: .touchUpInside)
-            headerView.addSubview(button)
-        }
-        return headerView
-    }
-    @objc func addEventsButtonPressed(sender: UIButton!){
-        isAddEvent = true;
-        performSegue(withIdentifier: "AddEvents" , sender: self)
-    }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 22
     }
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
