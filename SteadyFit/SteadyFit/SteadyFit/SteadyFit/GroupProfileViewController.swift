@@ -16,6 +16,10 @@
 import UIKit
 import MessageUI
 import CoreLocation
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
+
 
 class GroupProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
     
@@ -28,7 +32,10 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var eventTableView: UITableView!
     
     @IBAction func emergencyButton(_ sender: UIButton) {sendText()}
+    var ref:DatabaseReference? = Database.database().reference()
+    var refHandle:DatabaseHandle?
     var locationManager = CLLocationManager()
+    var groupID : String!
     var groupTableSections = ["Members", "Events"]
     var groupTableContents = [["More"], ["A Event on Jan 1, 2018", "B Event on Feb 1, 2018", "C Event on Mar 1, 2018"]]
     var isAddEvent: Bool = false;
@@ -37,12 +44,40 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
         eventTableView.delegate = self
         eventTableView.dataSource = self
-        groupDesc.text = "Group Description:"
-        groupDescInfo.text = "(Group Description)"
-        activityLevel.text = "Activity Level:"
-        activityLevelInfo.text = "(Activity Level)"
-        groupStatus.text = "Group Status:"
-        groupStatusInfo.text = "(Group Status)"
+        
+        groupID = "Group2"
+        
+        //let currentuserID = Auth.auth().currentUser?.uid
+        refHandle = self.ref?.child("Groups").child(groupID).observe(DataEventType.value, with: { (snapshot) in
+            
+            if let groupInfo = snapshot.value as? [String: AnyObject]{
+                let myGroupInfo = GroupInfo()
+                myGroupInfo.activityLevel = groupInfo["activitylevel"] as?String
+                myGroupInfo.chatId = groupInfo["chatid"] as?String
+                myGroupInfo.groupDescription = groupInfo["description"] as?String
+                myGroupInfo.events = groupInfo["events"] as?String
+                myGroupInfo.groupType = groupInfo["grouptype"] as?String
+                myGroupInfo.location = groupInfo["location"] as?String
+                myGroupInfo.name = groupInfo["location"] as?String
+                myGroupInfo.users = groupInfo["users"] as?String
+                
+                //if (groupInfo["users"] != nil){
+                //}
+                
+                //print(myGroupInfo.events)
+                //print(myGroupInfo.chatId)
+                //print(myGroupInfo.users)
+                //print(myGroupInfo.location)
+                
+                self.groupDesc.text = "Group Description:"
+                self.groupDescInfo.text = myGroupInfo.groupDescription
+                self.activityLevel.text = "Activity Level:"
+                self.activityLevelInfo.text = myGroupInfo.activityLevel
+                self.groupStatus.text = "Group Status:"
+                self.groupStatusInfo.text = myGroupInfo.groupType
+            }
+            
+        })
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
