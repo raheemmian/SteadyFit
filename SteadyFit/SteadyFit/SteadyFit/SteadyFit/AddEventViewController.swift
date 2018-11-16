@@ -51,7 +51,8 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         //save the information into the database
         //redirect to the group page:done
         //
-        /*let key:String = (ref!.child("Activities_Events").childByAutoId().key)!
+        /*
+        let key:String = (ref!.child("Activities_Events").childByAutoId().key)!
         let postParticipant = [myUserID: ["name": myUserName]]
         let post = ["Participants": postParticipant,
                     "date": startDateTextField.text ?? "nothing",
@@ -61,12 +62,10 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
                     "intensity": 3,
                     "isPersonal": 0,
                     "location": locationTextField.text ?? "nothing"
-            ] as [String : Any]*/
+            ] as [String : Any]
         
-        /*let childUpdates = ["/Chats/\(chatID)/Messages/\(key)/": post]
-        ref?.updateChildValues(childUpdates)
-        // Clear text field once sent
-        self.inputTextField.text = nil*/
+        let childUpdates = ["/Activities_Events/\(key)/": post]
+        ref?.updateChildValues(childUpdates)*/
         
         //goes back to previous view controller
         navigationController?.popViewController(animated: true)

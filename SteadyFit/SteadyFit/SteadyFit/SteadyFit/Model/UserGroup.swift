@@ -15,6 +15,7 @@
 import UIKit
 
 class UserGroup: NSObject {
+    var groupID: String?
     var name: String?
     var chatid: String?
     var GroupType: String?
