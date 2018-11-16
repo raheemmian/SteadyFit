@@ -264,11 +264,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="End Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iIj-Xm-g4h">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iIj-Xm-g4h">
                                 <rect key="frame" x="20" y="373" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4cl-Gf-7aH">
                                 <rect key="frame" x="20" y="445" width="374" height="122"/>
@@ -318,7 +318,7 @@
                     </view>
                     <connections>
                         <outlet property="descriptionTextView" destination="4cl-Gf-7aH" id="1Qw-KM-h3I"/>
-                        <outlet property="endDateTextField" destination="iIj-Xm-g4h" id="3cu-ye-lCJ"/>
+                        <outlet property="durationTextField" destination="iIj-Xm-g4h" id="WkP-Ae-bvv"/>
                         <outlet property="eventNameTextField" destination="2j9-qO-uF6" id="JVo-Y7-nlT"/>
                         <outlet property="locationTextField" destination="25J-d8-IPD" id="deB-KL-alp"/>
                         <outlet property="startDateTextField" destination="Dhc-ZH-vrH" id="EJO-8H-lvi"/>
