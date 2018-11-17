@@ -65,10 +65,13 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
             self.chatListContent = [self.privateGroupList, self.publicGroupList]
             DispatchQueue.main.async() {
+                // Check how many times the table is loaded
+                print ("loaded table\n")
                 self.chatListTableView.reloadData()
             }
         })
     }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return chatListTitle.count

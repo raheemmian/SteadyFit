@@ -48,6 +48,9 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         // Hard code title
+        //        navigationController?.navigationBar.barTintColor = UIColor.white
+        tabBarController?.tabBar.backgroundColor = UIColor.white
+        tabBarController?.tabBar.barTintColor = UIColor.white
         navigationItem.title = "Public Group: Vancouver, light"
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(ChatMessageCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
@@ -55,69 +58,48 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 0, bottom: 55, right: 0)
         collectionView?.alwaysBounceVertical = true
         setupInputComponents()
-        /*
-        if chatID == "Chat2"{ // to be deleted after TA has marked V1 source code
-            getMessageHandle = self.ref?.child("Chats").child(chatID).child("Senders").observe(DataEventType.value, with: {
-                (receivesnapshot) in
-                // reset messages
-                self.rawMessages.removeAll()
-                //loops through all the senders to get all their messages
-                for Senders in receivesnapshot.children.allObjects as! [DataSnapshot] {
-                    let mysenderID = Senders.key
-                    guard let senderdictionary = Senders.value as? [String: AnyObject] else {continue}
-                    let test = senderdictionary["senderName"] as?String
-                    for chatLines in Senders.childSnapshot(forPath: "MessageLines").children.allObjects as! [DataSnapshot]{
-                        // TO DO: filter out messages that are old
-                        guard let myline = chatLines.value as? [String: AnyObject] else {continue}
-                        let myChatLine = MessageLine()
-                        myChatLine.senderID = mysenderID
-                        myChatLine.senderName = senderdictionary["senderName"] as?String
-                        myChatLine.message = myline["message"] as?String
-                        myChatLine.timeStamp = myline["date"] as?String
-                        self.rawMessages.append(myChatLine)
-                    }
-                }
-                
-                // SORT message by time stamp
-                self.rawMessages.sort(by: { $0.timeStamp!.compare($1.timeStamp!) == .orderedAscending })
-                // raw messages is now sorted
-                // testing to see if sort worked
-                for obj in self.rawMessages {
-                    print(obj.timeStamp!)
-                }
-                DispatchQueue.main.async(){
-                    self.collectionView?.reloadData()
-                }
-            })
-            */
-            getMessageHandle = self.ref?.child("Chats").child(chatID).child("Messages").observe(DataEventType.value, with: {
-                (receivesnapshot) in
-                // reset messages
-                self.rawMessages.removeAll()
-                //loops all messages
-                for messages in receivesnapshot.children.allObjects as! [DataSnapshot] {
-                        // TO DO: filter out messages that are old
-                    print (messages)
-                        guard let myline = messages.value as? [String: AnyObject] else {continue}
-                        let myChatLine = MessageLine()
-                        myChatLine.senderID = myline["senderID"] as?String
-                        myChatLine.senderName = myline["senderName"] as?String
-                        myChatLine.message = myline["message"] as?String
-                        myChatLine.timeStamp = myline["date"] as?String
-                        self.rawMessages.append(myChatLine)
-                }
-                
-                // SORT message by time stamp
-                self.rawMessages.sort(by: { $0.timeStamp!.compare($1.timeStamp!) == .orderedAscending })
-                // raw messages is now sorted
-                // testing to see if sort worked
-                for obj in self.rawMessages {
-                    print(obj.timeStamp!)
-                }
-                DispatchQueue.main.async(){
-                    self.collectionView?.reloadData()
-                }
-            })
+        setupKeyboard()
+        getMessageHandle = self.ref?.child("Chats").child(chatID).child("Messages").observe(DataEventType.value, with: {
+            (receivesnapshot) in
+            // reset messages
+            self.rawMessages.removeAll()
+            //loops all messages
+            for messages in receivesnapshot.children.allObjects as! [DataSnapshot] {
+                // TO DO: filter out messages that are old
+                print (messages)
+                guard let myline = messages.value as? [String: AnyObject] else {continue}
+                let myChatLine = MessageLine()
+                myChatLine.senderID = myline["senderID"] as?String
+                myChatLine.senderName = myline["senderName"] as?String
+                myChatLine.message = myline["message"] as?String
+                myChatLine.timeStamp = myline["date"] as?String
+                self.rawMessages.append(myChatLine)
+            }
+            
+            // SORT message by time stamp
+            self.rawMessages.sort(by: { $0.timeStamp!.compare($1.timeStamp!) == .orderedAscending })
+            // raw messages is now sorted
+            // testing to see if sort worked
+            for obj in self.rawMessages {
+                print(obj.timeStamp!)
+            }
+            DispatchQueue.main.async(){
+                self.collectionView?.reloadData()
+            }
+        })
+        
+    }
+    
+    func setupKeyboard(){
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+    }
+    
+    @objc func handleKeyboard(notifiction: NSNotification){
+        let keyboardFrame = (notifiction.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        print(keyboardFrame?.height as Any)
+        
+        
         
     }
     
@@ -130,25 +112,33 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         let msg = rawMessages[indexPath.item]
         // print name per message
         // need to get rid of the name part once done
-//        cell.textView.text = String(msg.senderName!) + "\n" + String(msg.message!)
+        //        cell.textView.text = String(msg.senderName!) + "\n" + String(msg.message!)
         cell.textView.text = String(msg.message!)
-        cell.bubbleWidth?.constant = estimateFrameSize(text: msg.message!).width + 30
+        cell.bubbleWidthAnchor?.constant = estimateFrameSize(text: msg.message!).width + 30
         setupCell(cell: cell, message: msg)
         
         return cell
     }
+    
     private func setupCell(cell: ChatMessageCollectionViewCell, message: MessageLine){
         if message.senderID == myUserID{
-            // Outgoing message with blue chat box
+            // Outgoing message
             cell.bubbleView.backgroundColor = UIColor.blue
             cell.textView.textColor = UIColor.white
+            cell.bubbleLeftAnchor?.isActive = false
+            cell.bubbleRightAnchor?.isActive = true
+            cell.profilePicView.isHidden = true
         }
         else{
-            // Incoming message with green chat box and black text color
+            // Incoming message
             cell.bubbleView.backgroundColor = UIColor.lightGray
             cell.textView.textColor = UIColor.black
+            cell.bubbleLeftAnchor?.isActive = true
+            cell.bubbleRightAnchor?.isActive = false
+            cell.profilePicView.isHidden = false
+            cell.senderNameView.text = message.senderName
+            print(cell.senderNameView.text)
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -211,13 +201,13 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     // This function is called when "Send" is clicked
     @objc func sendAction(){
         /*
-        if chatID == "Chat2"{// to be DELETED after TA has marked V1 source code
-            let key:String = (ref!.child("Chats/\(chatID)/Senders/\(myUserID)/MessageLines").childByAutoId().key)!
-            let post = ["date": getTodayString() ,
-                        "message": inputTextField.text as Any] as [String : Any]
-            let childUpdates = ["/Chats/\(chatID)/Senders/\(myUserID)/MessageLines/\(key)/": post]
-            ref?.updateChildValues(childUpdates)
-        }*/
+         if chatID == "Chat2"{// to be DELETED after TA has marked V1 source code
+         let key:String = (ref!.child("Chats/\(chatID)/Senders/\(myUserID)/MessageLines").childByAutoId().key)!
+         let post = ["date": getTodayString() ,
+         "message": inputTextField.text as Any] as [String : Any]
+         let childUpdates = ["/Chats/\(chatID)/Senders/\(myUserID)/MessageLines/\(key)/": post]
+         ref?.updateChildValues(childUpdates)
+         }*/
         if inputTextField.text != "" {
             let key:String = (ref!.child("Chats/\(chatID)/Messages").childByAutoId().key)!
             let post = ["date": getTodayString() ,
