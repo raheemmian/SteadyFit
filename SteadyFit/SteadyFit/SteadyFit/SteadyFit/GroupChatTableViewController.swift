@@ -35,6 +35,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     var myUserName:String = ""//"Alexa"
     var rawMessages = [MessageLine]()
     let cellID = "cellID"
+    var containerViewBottomAnchor: NSLayoutConstraint?
     
     // Take message from user and return
     lazy var inputTextField: UITextField = {
@@ -91,16 +92,67 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     }
     
     func setupKeyboard(){
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
-    @objc func handleKeyboard(notifiction: NSNotification){
-        let keyboardFrame = (notifiction.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-        print(keyboardFrame?.height as Any)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        if textView.textColor == UIColor.lightGray {
+//            textView.text = nil
+//            textView.textColor = UIColor.black
+//        }
+//        if(textView == descriptionTextView){
+//            moveTextView(textView, moveDistance: -250, up: true)
+//        }
+//    }
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        moveTextView(textView, moveDistance: -250, up: false)
+//    }
+    
+    
+    @objc func showKeyboard(notification: NSNotification){
+//        if let keyboardFrame: NSValue = notifiction.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRectangle = keyboardFrame.cgRectValue
+//            let keyboardHeight = keyboardRectangle.height
+//        }
+//        let keyboardFrame: NSValue = notifiction.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue{
+//            let keyboardHeight = keyboar
+//        }
+//
+        let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        let keyboardHeight = keyboardFrame?.height
         
         
+        if #available(iOS 11.0, *) {
+            super.viewSafeAreaInsetsDidChange()
+//            var frameH = collectionView.adjustedContentInset.bottom - collectionView.contentInset.bottom
+            let bottomInset = view.safeAreaInsets.bottom
+            print(bottomInset)
+        }
         
+//        print(keyboardHeight)
+        let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+
+        
+        containerViewBottomAnchor?.constant = 0 - keyboardHeight!
+        UIView.animate(withDuration: keyboardDuration!){
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func hideKeyboard(notification: NSNotification){
+        let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+        
+        containerViewBottomAnchor?.constant = 0
+        UIView.animate(withDuration: keyboardDuration!){
+            self.view.layoutIfNeeded()
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -157,13 +209,16 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     }
     
     func setupInputComponents(){
-        // Add UIView and set constraint
+        // Add UIView and set constraint, x,y,w,h
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.backgroundColor = UIColor.white
+        
         view.addSubview(containerView)
+        
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        containerViewBottomAnchor?.isActive = true
         containerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
