@@ -18,5 +18,30 @@ class UserGroup: NSObject {
     var groupID: String?
     var name: String?
     var chatid: String?
-    var GroupType: String?
+    var grouptype: String?
+    var activitylevel: String?
+    var acivitylevelInt: Int?
+    var city: String?
+    
+    func setActivityLevel (level:String){
+        activitylevel = level
+        if level == "Very light"{
+            acivitylevelInt = 1
+        }
+        else if level == "Light"{
+            acivitylevelInt = 2
+        }
+        else if level == "Moderate"{
+            acivitylevelInt = 3
+        }
+        else if level == "Intense"{
+            acivitylevelInt = 4
+        }
+        else if level == "Very Intense"{
+            acivitylevelInt = 5
+        }
+        else{
+            acivitylevelInt = 6
+        }
+    }
 }

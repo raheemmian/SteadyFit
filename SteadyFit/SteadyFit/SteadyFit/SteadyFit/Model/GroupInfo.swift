@@ -9,6 +9,7 @@
 import UIKit
 
 class GroupInfo : NSObject {
+    var groupId: String?
     var activityLevel : String?
     var chatId : String?
     var groupDescription : String?
