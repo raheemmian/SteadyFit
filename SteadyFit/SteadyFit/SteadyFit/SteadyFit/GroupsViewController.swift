@@ -12,6 +12,7 @@
 //
 //  List of Bugs:
 //  When group node changes in database, the view append groups, hence create duplicate groups.
+//  When the list of groups become too long, there is no scrolling implemented in the page
 //
 //  GroupsViewController.swift is connected to Groups section of the UI, which shows user joined groups and recommmented groups by toggling on segmented control
 //  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
@@ -24,14 +25,16 @@ import CoreLocation
 import MessageUI
 
 class GroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
-    var myGroups = [String]()
-    var suggestedGroups = ["Group X", "Group Y", "Group Z"]
+    var queryMyGroups = [UserGroup]()
+    var suggestedGroups = [UserGroup]()
+    var sameProvinceGroups = [UserGroup]()
+    var sameActivityLevelGroups = [UserGroup]()
+    var restoftheGroups = [UserGroup]()
     var p: Int!
     
-    var queryMyGroups = [UserGroup]()
+    
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
-    var groupsRef:DatabaseReference?
     var groupsHandle:DatabaseHandle?
     var currentUserCity: String?
     var currentUserActivityLevel: String?
@@ -63,22 +66,17 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         refHandle = ref?.child("Users").child(currentuserID!).observe(DataEventType.value, with: {
             (snapshot) in
             // Clear group lists
-            self.myGroups.removeAll()
             self.queryMyGroups.removeAll()
-            self.suggestedGroups.removeAll()
             
             // get user groups
             for rest in snapshot.childSnapshot(forPath: "Groups").children.allObjects as! [DataSnapshot]{
                 guard let dictionary = rest.value as? [String: AnyObject] else {continue}
                 let myGroup = UserGroup()
+                myGroup.groupID = rest.key
                 myGroup.name = dictionary["name"] as?String
                 myGroup.chatid = dictionary["chatid"] as?String
-                myGroup.GroupType = dictionary["GroupType"] as?String
+                myGroup.grouptype = dictionary["GroupType"] as?String
                 self.queryMyGroups.append(myGroup)
-                if myGroup.name != nil {
-                    let sampleGroup: String = myGroup.name!
-                    self.myGroups.append(sampleGroup)
-                }
             }
             // Get user city and activity level for recommending algorithm
             if let dictionary2 = snapshot.value as? [String: AnyObject]{
@@ -94,38 +92,52 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             
             //  Recommend user with groups from the same location,
             //  TO DO: algorithm to be improved!!!
-            self.groupsHandle = self.ref?.child("Groups").queryOrdered(byChild: "location").queryEqual(toValue:self.currentUserCity!).observe(DataEventType.value, with: {
+            self.groupsHandle = self.ref!.child("Groups").queryOrdered(byChild: "grouptype").queryEqual(toValue:"Public").observe(DataEventType.value, with: {
                 (groupsnapshot) in
                 self.suggestedGroups.removeAll()
+                self.sameProvinceGroups.removeAll()
+                self.sameActivityLevelGroups.removeAll()
+                self.restoftheGroups.removeAll()
                 //check if any of the groups are in user's groups, if yes append
                 for rest in groupsnapshot.children.allObjects as! [DataSnapshot] {
                     guard let Groupdictionary = rest.value as? [String: AnyObject] else {continue}
-                    // if user requested to join group, but not yet accepted
-                    if rest.childSnapshot(forPath: "users").hasChild(currentuserID!){
-                        guard let checkUserdictionary = rest.childSnapshot(forPath: "users").childSnapshot(forPath: currentuserID!).value as? [String:AnyObject] else {continue}
-                        
-                        let myUserJoined = checkUserdictionary["joined"] as?Int
-                        if myUserJoined != nil &&  myUserJoined == 0
-                        {
-                            let myRecommendedGroup = Groupdictionary["name"] as?String
-                            if myRecommendedGroup != nil{
-                                self.suggestedGroups.append(myRecommendedGroup!)
-                            }
+                    let checkUserdictionary = rest.childSnapshot(forPath: "users").childSnapshot(forPath: currentuserID!).value as? [String:AnyObject]
+                    let myUserJoined = checkUserdictionary?["joined"] as?Int
+                    let tempGroup = UserGroup();
+                    // check if user is already in group or requested to join
+                    if (myUserJoined != nil &&  myUserJoined == 0) || myUserJoined == nil
+                    {
+                        tempGroup.name = Groupdictionary["name"] as?String ?? "NA"
+                        tempGroup.groupID = rest.key
+                        tempGroup.chatid = Groupdictionary["chatid"] as?String ?? "NA"
+                        tempGroup.grouptype = Groupdictionary["grouptype"] as?String
+                        let levelString = Groupdictionary["activitylevel"] as?String
+                        tempGroup.setActivityLevel(level: levelString!)
+                        tempGroup.city = Groupdictionary["location"] as?String
+                        if tempGroup.city == self.currentUserCity{
+                            self.sameProvinceGroups.append(tempGroup)
                         }
-                    }
-                    // if user is not in the group and never requested to join group
-                    else{
-                        let myRecommendedGroup = Groupdictionary["name"] as?String
-                        if myRecommendedGroup != nil{
-                            self.suggestedGroups.append(myRecommendedGroup!)
+                        else if tempGroup.activitylevel == self.currentUserActivityLevel {
+                            self.sameActivityLevelGroups.append(tempGroup)
+                        }
+                        else{
+                            self.restoftheGroups.append(tempGroup)
                         }
                     }
                 }
+                self.sameProvinceGroups.sort(by: { $0.acivitylevelInt! < $1.acivitylevelInt!})
+                self.sameActivityLevelGroups.sort(by: { $0.city!.compare($1.city!) == .orderedAscending })
+                self.restoftheGroups.sort(by: { ($0.city! == $1.city!) ? ($0.acivitylevelInt! < $1.acivitylevelInt!) : ($0.city!.compare($1.city!) == .orderedAscending) })
+                self.suggestedGroups.append(contentsOf: self.sameProvinceGroups)
+                self.suggestedGroups.append(contentsOf: self.sameActivityLevelGroups)
+                self.suggestedGroups.append(contentsOf: self.restoftheGroups)
+                DispatchQueue.main.async{
+                    self.groupTableView.reloadData()
+                }
+                
             })
-            DispatchQueue.main.async{
-                self.groupTableView.reloadData()
-            }
         })
+        
         // End of Database initialization
         p = 0
     }
@@ -134,7 +146,7 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         var returnValue = 0
         switch (p) {
         case 0:
-            returnValue = myGroups.count
+            returnValue = queryMyGroups.count
             break
         case 1:
             returnValue = suggestedGroups.count
@@ -149,10 +161,10 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = groupTableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
         switch (p) {
         case 0:
-            cell.textLabel?.text = myGroups[indexPath.row]
+            cell.textLabel?.text = queryMyGroups[indexPath.row].name
             break
         case 1:
-            cell.textLabel?.text = suggestedGroups[indexPath.row]
+            cell.textLabel?.text = suggestedGroups[indexPath.row].name
             break
         default:
             break
@@ -170,11 +182,11 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         switch (p) {
         case 0:
             let destination = segue.destination as! GroupProfileViewController
-            destination.navigationItem.title = myGroups[indexPath.row]
+            destination.navigationItem.title = queryMyGroups[indexPath.row].name
             break
         case 1:
             let destination = segue.destination as! GroupProfileViewController
-            destination.navigationItem.title = suggestedGroups[indexPath.row]
+            destination.navigationItem.title = suggestedGroups[indexPath.row].name
             break
         default:
             break
