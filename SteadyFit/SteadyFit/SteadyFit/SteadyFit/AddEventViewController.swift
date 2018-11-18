@@ -58,8 +58,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
                     "event_name": eventNameTextField.text ?? "nothing",
                     "description": descriptionTextView.text,
                     "duration_minute": durationTextField.text ?? "nothing",
-                    "groupid": groupID, //have to grav this from somewhere
-                    "intensity": 3, //have to grab this from somewhere
+                    "groupid": groupID, //have to grab this from somewhere
                     "isPersonal": 0,
                     "location": locationTextField.text ?? "nothing"
             ] as [String : Any]
