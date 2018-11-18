@@ -52,6 +52,7 @@
 		D4F05D07218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */; };
 		D4F0EEFD218EDEC60053C1A8 /* SettingsEditiorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */; };
 		F8C3D1F1CFDE408C81CE4DA4 /* Pods_SteadyFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524F9EF2FBCDEC79B4A3191F /* Pods_SteadyFit.framework */; };
+		FDB5663421A0E5560050C7B6 /* SettingsEmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5663321A0E5560050C7B6 /* SettingsEmergencyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +175,7 @@
 		D4CB0276218F94D500503EC3 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberListTableViewController.swift; sourceTree = "<group>"; };
 		D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEditiorViewController.swift; sourceTree = "<group>"; };
+		FDB5663321A0E5560050C7B6 /* SettingsEmergencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEmergencyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +331,7 @@
 				B5F54D26218E75D200D0214D /* SettingsViewController.swift */,
 				B5F54D28218E85F500D0214D /* SettingsTableViewCell.swift */,
 				D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */,
+				FDB5663321A0E5560050C7B6 /* SettingsEmergencyViewController.swift */,
 				B57302AC2186D0A300CD06D3 /* Assets.xcassets */,
 				B5727A72217FEDEE00AF9005 /* Info.plist */,
 				12D1D50921960B120051633F /* GoogleService-Info.plist */,
@@ -823,6 +826,7 @@
 				12A6E647218D0BE2003ED258 /* UserGroup.swift in Sources */,
 				D4C471B02190F087003C182B /* ChatMessageCollectionViewCell.swift in Sources */,
 				D41383E321902B950076031B /* GroupChatTableViewController.swift in Sources */,
+				FDB5663421A0E5560050C7B6 /* SettingsEmergencyViewController.swift in Sources */,
 				D43B7CF8218E74420099C159 /* EventViewController.swift in Sources */,
 				80CDBC54219641E600642D46 /* AddActivityEventViewController.swift in Sources */,
 				D4F05D07218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift in Sources */,
