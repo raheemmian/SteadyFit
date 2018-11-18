@@ -18,8 +18,8 @@ class AddActivityEventViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    private var datePicker: UIDatePicker?
-    private var durationPicker: UIDatePicker?
+    let datePicker = UIDatePicker()
+    let durationPicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,39 +27,39 @@ class AddActivityEventViewController: UIViewController, UITextFieldDelegate {
         DescriptionActivitytextfield.delegate = self
         
         //DTfield
-        datePicker=UIDatePicker()
-        datePicker?.datePickerMode = .dateAndTime
-        datePicker?.addTarget(self, action: #selector(AddActivityEventViewController.dateChanged(datePicker:)), for: .valueChanged)
+      //  datePicker=UIDatePicker()
+        datePicker.datePickerMode = .dateAndTime
+            DTAddActivitytextfield.inputView=datePicker
+        datePicker.addTarget(self, action: #selector(AddActivityEventViewController.dateChanged(datePicker:)), for: .valueChanged)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddActivityEventViewController.viewTapped(gestureRecognizer:)))
         
         view.addGestureRecognizer(tapGesture)
         
-    DTAddActivitytextfield.inputView=datePicker
+
     //DTfield
         //Durationfield
-        durationPicker = UIDatePicker()
-        durationPicker?.datePickerMode = .countDownTimer
-        durationPicker?.addTarget(self, action: #selector(AddActivityEventViewController.dateChanged1(datePicker:)), for: .valueChanged)
+       // durationPicker = UIDatePicker()
+        durationPicker.datePickerMode = .countDownTimer
+        DurationActivitytextfield.inputView = durationPicker
+        durationPicker.addTarget(self, action: #selector(AddActivityEventViewController.dateChanged1(datePicker:)), for: .valueChanged)
         
         _ = UITapGestureRecognizer(target: self, action: #selector(AddActivityEventViewController.viewTapped(gestureRecognizer:)))
         
         view.addGestureRecognizer(tapGesture)
         
-        DurationActivitytextfield.inputView=durationPicker
+        
     //Durationfield
-        
     //Inputs in String format
-        
         var name: String? = NameActivityTextField.text
         var Description: String? = DescriptionActivitytextfield.text
         var Datetime: String? = DTAddActivitytextfield.text
         var Duration: String? = DurationActivitytextfield.text
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
+
         return true
     }
     
@@ -71,17 +71,18 @@ class AddActivityEventViewController: UIViewController, UITextFieldDelegate {
     
     @objc func dateChanged(datePicker : UIDatePicker){
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "hh:mm mm/dd/yy"
+        dateFormat.dateFormat = "yyyy-MM-dd HH:mm"
         DTAddActivitytextfield.text = dateFormat.string(from: datePicker.date)
         
         
     }
     @objc func dateChanged1(datePicker : UIDatePicker){
         let dateFormat = DateFormatter()
-        dateFormat.dateFormat = "hh:mm"
-        DurationActivitytextfield.text = dateFormat.string(from: (durationPicker?.date)!)
+        dateFormat.timeStyle = .medium
+        DurationActivitytextfield.text = String(Int(durationPicker.countDownDuration / 60))
         
         
     }
+
 
 }
