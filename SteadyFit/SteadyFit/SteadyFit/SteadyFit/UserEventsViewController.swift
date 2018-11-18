@@ -49,7 +49,6 @@ class UserEventsViewController: UIViewController, UITableViewDelegate, UITableVi
         ref?.child("Activities_Events").observe(DataEventType.value, with: { (snapshot) in
             print(snapshot.value)
             print(snapshot.childrenCount)
-        
             if snapshot.childrenCount > 0 {
                 self.eventInfo.removeAll()
                 for events in snapshot.children.allObjects as! [DataSnapshot]{
