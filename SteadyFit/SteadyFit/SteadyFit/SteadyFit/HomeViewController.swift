@@ -18,11 +18,16 @@ import Foundation
 import MessageUI
 import MapKit
 import CoreLocation
+import Firebase
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate{
+    var ref:DatabaseReference?
+    var eventIDs = [String]()
+    let currentuserID = (Auth.auth().currentUser?.uid)!
+    
     var locationManager = CLLocationManager()
     let homeTableSections = ["Activity Tracker", "Events"]
-    let homeTableContents = [ ["Histogram"] , ["Event A", "Event B", "Event C"]]
+    var homeTableContents = [ ["Histogram"] , ["Event A", "Event B", "Event C"]]
     @IBAction func emergencyButton(_ sender: Any) {
         sendText()
     }
@@ -44,6 +49,32 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
+        
+        
+        ref = Database.database().reference()
+        self.ref?.child("Users/\(currentuserID)").observe(DataEventType.value, with: {
+            (userSnapshot) in
+            if userSnapshot.value != nil{
+                let userDictionary = userSnapshot.value as? [String: AnyObject]
+                self.name.text = userDictionary!["name"] as? String
+                self.city.text = userDictionary!["city"] as? String
+            }
+        })
+        self.ref?.child("Activities_Events").observe(DataEventType.value, with: {
+            (snapshot) in
+            self.eventIDs.removeAll()
+            self.homeTableContents[1].removeAll()
+            for sessionSnapshot in snapshot.children.allObjects as! [DataSnapshot] {
+                if sessionSnapshot.childSnapshot(forPath: "Participants/\(self.currentuserID)").value != nil{
+                    guard let sessionDictionary = sessionSnapshot.value as? [String: AnyObject] else {continue}
+                    self.homeTableContents[1].append((sessionDictionary["event_name"] as? String)!)
+                    self.eventIDs.append(sessionSnapshot.key)
+                }
+            }
+            DispatchQueue.main.async() {
+                self.myTableView.reloadData()
+            }
+        })
     }
     /*-----------------------------------Location-------------------------------------------------------------*/
     /*-----------------------------------Table----------------------------------------------------------------*/
@@ -85,6 +116,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else{
             let destination = segue.destination as! UserEventsViewController
             destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
+            //destination.eventId = eventIDs[indexPath.row] // Raheem, if you have a variable called eventId in the UserEventsViewController, just uncomment this line and it will set the variable to the correct value
+            
         }
     }
     
