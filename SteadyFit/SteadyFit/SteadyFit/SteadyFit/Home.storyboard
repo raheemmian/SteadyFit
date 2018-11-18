@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KMX-RW-3ba">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KMX-RW-3ba">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -108,26 +108,23 @@
             </objects>
             <point key="canvasLocation" x="2797" y="-934"/>
         </scene>
-        <!--Histogram View Controller-->
+        <!--Activity Tracker-->
         <scene sceneID="sWG-Fl-OGR">
             <objects>
-                <viewController id="u86-X4-rc0" customClass="HistogramViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Activity Tracker" id="u86-X4-rc0" customClass="HistogramViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I8K-kr-CUH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Histogram - Work in Progress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpc-3e-5OG">
-                                <rect key="frame" x="71" y="429" width="273" height="38"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ste-lP-6RV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agI-91-T9D" customClass="BarChartActivityTracker" customModule="SteadyFit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="174" width="414" height="414"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ste-lP-6RV">
                                 <rect key="frame" x="0.0" y="140" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <navigationItem id="Dbd-Jd-7Ir">
+                                    <navigationItem title="Active Hours" id="Dbd-Jd-7Ir">
                                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="bWC-ez-5Pe">
                                             <connections>
                                                 <segue destination="6uU-ZU-HXh" kind="show" id="nWq-UK-JGk"/>
@@ -136,14 +133,52 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rky-li-DXa">
+                                <rect key="frame" x="161" y="640" width="92" height="30"/>
+                                <state key="normal" title="Sort by Week"/>
+                                <connections>
+                                    <segue destination="qO3-Cy-nSC" kind="show" id="uBl-fe-Ixi"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NZf-ie-6Ce">
+                                <rect key="frame" x="158" y="678" width="98" height="30"/>
+                                <state key="normal" title="Sort by Month"/>
+                                <connections>
+                                    <segue destination="Igj-HP-g9Y" kind="show" id="5ZS-zn-oQv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily View (Scroll right)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWJ-Tk-ahM">
+                                <rect key="frame" x="0.0" y="584" width="414" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Q4G-pf-cLN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vpc-3e-5OG" firstAttribute="centerY" secondItem="Oks-Ub-mR7" secondAttribute="centerY" id="J6H-OT-Z7c"/>
-                            <constraint firstItem="vpc-3e-5OG" firstAttribute="centerX" secondItem="Oks-Ub-mR7" secondAttribute="centerX" id="ZDC-FI-m1E"/>
+                            <constraint firstItem="ste-lP-6RV" firstAttribute="trailing" secondItem="agI-91-T9D" secondAttribute="trailing" id="8Qz-wN-Diz"/>
+                            <constraint firstItem="eWJ-Tk-ahM" firstAttribute="centerX" secondItem="Rky-li-DXa" secondAttribute="centerX" id="D0e-Rk-UkM"/>
+                            <constraint firstItem="Rky-li-DXa" firstAttribute="centerX" secondItem="NZf-ie-6Ce" secondAttribute="centerX" id="DFk-GS-Ga4"/>
+                            <constraint firstItem="NZf-ie-6Ce" firstAttribute="top" secondItem="Rky-li-DXa" secondAttribute="bottom" constant="8" symbolic="YES" id="Duf-Fv-jJg"/>
+                            <constraint firstItem="ste-lP-6RV" firstAttribute="top" secondItem="Oks-Ub-mR7" secondAttribute="top" id="Ef9-lf-cgS"/>
+                            <constraint firstItem="Rky-li-DXa" firstAttribute="top" secondItem="eWJ-Tk-ahM" secondAttribute="bottom" constant="8" symbolic="YES" id="OD2-Ro-YhD"/>
+                            <constraint firstItem="Oks-Ub-mR7" firstAttribute="bottom" secondItem="NZf-ie-6Ce" secondAttribute="bottom" constant="61" id="Vma-UJ-JDO"/>
+                            <constraint firstItem="Rky-li-DXa" firstAttribute="top" secondItem="agI-91-T9D" secondAttribute="bottom" constant="52" id="X6L-Dn-Sj0"/>
+                            <constraint firstItem="agI-91-T9D" firstAttribute="leading" secondItem="eWJ-Tk-ahM" secondAttribute="leading" id="XhV-0Z-cPP"/>
+                            <constraint firstAttribute="trailing" secondItem="ste-lP-6RV" secondAttribute="trailing" id="aek-gC-wdI"/>
+                            <constraint firstItem="agI-91-T9D" firstAttribute="top" secondItem="Oks-Ub-mR7" secondAttribute="top" constant="34" id="d2D-iA-gz3"/>
+                            <constraint firstItem="ste-lP-6RV" firstAttribute="leading" secondItem="agI-91-T9D" secondAttribute="leading" id="dDa-Hp-Thz"/>
+                            <constraint firstItem="ste-lP-6RV" firstAttribute="leading" secondItem="I8K-kr-CUH" secondAttribute="leading" id="edZ-6g-ped"/>
+                            <constraint firstItem="agI-91-T9D" firstAttribute="trailing" secondItem="eWJ-Tk-ahM" secondAttribute="trailing" id="ua0-Uu-LfV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Oks-Ub-mR7"/>
                     </view>
+                    <connections>
+                        <outlet property="ATBarweekly" destination="agI-91-T9D" id="AFc-Xm-4Gj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4K-iX-dfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -263,6 +298,48 @@
             </objects>
             <point key="canvasLocation" x="4114" y="-1379"/>
         </scene>
+        <!--Active Hours (Weekly)-->
+        <scene sceneID="BJF-be-jnj">
+            <objects>
+                <viewController title="Active Hours (Weekly)" id="qO3-Cy-nSC" customClass="WeeklyHistogramViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4RS-Kb-NGD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heD-Xu-qC9" customClass="BarChartActivityTracker" customModule="SteadyFit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="140" width="414" height="454"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly Average View (Scroll right)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVt-yf-aML">
+                                <rect key="frame" x="0.0" y="622" width="414" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="h9z-BU-txd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qVt-yf-aML" firstAttribute="leading" secondItem="heD-Xu-qC9" secondAttribute="leading" id="37f-oB-cYK"/>
+                            <constraint firstItem="heD-Xu-qC9" firstAttribute="top" secondItem="Mpe-QZ-yeu" secondAttribute="top" id="AuW-1u-2fE"/>
+                            <constraint firstItem="heD-Xu-qC9" firstAttribute="leading" secondItem="4RS-Kb-NGD" secondAttribute="leading" id="XkN-0x-XC4"/>
+                            <constraint firstItem="Mpe-QZ-yeu" firstAttribute="bottom" secondItem="qVt-yf-aML" secondAttribute="bottom" constant="99" id="Y2W-le-mdE"/>
+                            <constraint firstItem="qVt-yf-aML" firstAttribute="trailing" secondItem="heD-Xu-qC9" secondAttribute="trailing" id="ltx-Hq-EaO"/>
+                            <constraint firstAttribute="trailing" secondItem="heD-Xu-qC9" secondAttribute="trailing" id="oA6-lu-24E"/>
+                            <constraint firstItem="qVt-yf-aML" firstAttribute="top" secondItem="heD-Xu-qC9" secondAttribute="bottom" constant="28" id="xg9-Wx-SMU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mpe-QZ-yeu"/>
+                    </view>
+                    <connections>
+                        <outlet property="ATBarweekly" destination="heD-Xu-qC9" id="7zx-HD-wqg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NYv-NN-7YO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4008.6956521739135" y="-658.25892857142856"/>
+        </scene>
         <!--Home-->
         <scene sceneID="PS9-sl-Q8o">
             <objects>
@@ -286,6 +363,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0K-ff-LSZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1137" y="-1096"/>
+        </scene>
+        <!--Active Hours (Monthly)-->
+        <scene sceneID="gTT-ED-nyI">
+            <objects>
+                <viewController title="Active Hours (Monthly)" id="Igj-HP-g9Y" customClass="MonthlyHistogramViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0W1-JZ-uFq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jf8-f3-bCa" customClass="BarChartActivityTracker" customModule="SteadyFit" customModuleProvider="target">
+                                <rect key="frame" x="3" y="140" width="414" height="452"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly Average View (Scroll right)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOE-hn-klK">
+                                <rect key="frame" x="0.0" y="621" width="414" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="KT7-8c-ke7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yOE-hn-klK" firstAttribute="top" secondItem="jf8-f3-bCa" secondAttribute="bottom" constant="29" id="EPf-EP-Yit"/>
+                            <constraint firstItem="jf8-f3-bCa" firstAttribute="leading" secondItem="dnC-Yb-4GX" secondAttribute="leading" constant="3" id="II4-6B-cJK"/>
+                            <constraint firstItem="jf8-f3-bCa" firstAttribute="top" secondItem="dnC-Yb-4GX" secondAttribute="top" id="U35-Z2-LOV"/>
+                            <constraint firstItem="yOE-hn-klK" firstAttribute="leading" secondItem="0W1-JZ-uFq" secondAttribute="leading" id="cLb-jr-MNs"/>
+                            <constraint firstAttribute="trailing" secondItem="yOE-hn-klK" secondAttribute="trailing" id="guG-pd-JTD"/>
+                            <constraint firstItem="dnC-Yb-4GX" firstAttribute="bottom" secondItem="yOE-hn-klK" secondAttribute="bottom" constant="100" id="hMf-ie-9Bw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jf8-f3-bCa" secondAttribute="trailing" constant="-23" id="rgd-t0-Uw9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dnC-Yb-4GX"/>
+                    </view>
+                    <connections>
+                        <outlet property="ATBarmonthly" destination="jf8-f3-bCa" id="mDQ-eM-fn7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yVZ-7X-9CW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3266.666666666667" y="-658.25892857142856"/>
         </scene>
     </scenes>
     <resources>

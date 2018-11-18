@@ -1,27 +1,23 @@
 //
-//  HistogramViewController.swift
+//  WeeklyHistogramViewController.swift
 //  SteadyFit
 //
-//  Created by Akshay Kumar on 2018-11-16.
+//  Created by Akshay Kumar on 11/17/18.
 //  Copyright © 2018 Daycar. All rights reserved.
 //
-//  Team Daycar
-//  Edited by: Akshay Kumar
-//  List of Changes: N/A - Work in Progress
-// Initiali
 
 import UIKit
 
-class HistogramViewController: UIViewController {
+class WeeklyHistogramViewController: UIViewController {
+
     @IBOutlet weak var ATBarweekly: BarChartActivityTracker!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     override func viewDidAppear(_ animated: Bool) {
         let dataEntries = generateDataEntries()
-        ATBarweekly.dataEntries = dataEntries
+       ATBarweekly.dataEntries = dataEntries
         
     }
     
@@ -40,11 +36,9 @@ class HistogramViewController: UIViewController {
         }
         
         return result
-    
+        
         
     }
     
 }
-
-
 
