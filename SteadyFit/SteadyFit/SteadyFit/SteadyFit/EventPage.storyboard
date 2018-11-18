@@ -18,18 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eventBanner" translatesAutoresizingMaskIntoConstraints="NO" id="zPQ-dm-jPQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="114"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="114" id="7Uu-cA-jnq"/>
-                                    <constraint firstAttribute="width" constant="414" id="F2y-AQ-Ai4"/>
-                                </constraints>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kBe-jA-Vc5">
-                                <rect key="frame" x="0.0" y="158" width="414" height="132"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="132"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="132" id="A0k-zI-Oqy"/>
+                                    <constraint firstAttribute="height" constant="132" id="vcE-wJ-6Wz"/>
+                                    <constraint firstAttribute="width" constant="414" id="zCG-ee-PM2"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventDescriptionTableCell" id="DuM-5S-mjW">
@@ -43,35 +37,31 @@
                                 </prototypes>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YD8-sc-Itc">
-                                <rect key="frame" x="0.0" y="290" width="414" height="128"/>
+                                <rect key="frame" x="0.0" y="176" width="414" height="165"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="da9-n7-WTL"/>
+                                    <constraint firstAttribute="height" constant="165" id="2Uc-l5-FfW"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="YD8-sc-Itc" firstAttribute="leading" secondItem="DP5-F3-OhZ" secondAttribute="leading" id="8Xp-au-yL0"/>
-                            <constraint firstItem="kBe-jA-Vc5" firstAttribute="leading" secondItem="DP5-F3-OhZ" secondAttribute="leading" id="ANa-4C-cIG"/>
-                            <constraint firstItem="kBe-jA-Vc5" firstAttribute="trailing" secondItem="DP5-F3-OhZ" secondAttribute="trailing" id="Bwb-9K-Ko3"/>
-                            <constraint firstItem="zPQ-dm-jPQ" firstAttribute="leading" secondItem="DP5-F3-OhZ" secondAttribute="leading" id="C6Q-hi-LU0"/>
-                            <constraint firstItem="DP5-F3-OhZ" firstAttribute="bottom" secondItem="zPQ-dm-jPQ" secondAttribute="bottom" constant="704" id="D3i-b3-XOY"/>
-                            <constraint firstItem="zPQ-dm-jPQ" firstAttribute="top" secondItem="DP5-F3-OhZ" secondAttribute="top" id="E7d-aa-P5q"/>
-                            <constraint firstItem="kBe-jA-Vc5" firstAttribute="top" secondItem="zPQ-dm-jPQ" secondAttribute="bottom" id="JKx-mF-Kro"/>
-                            <constraint firstItem="zPQ-dm-jPQ" firstAttribute="trailing" secondItem="DP5-F3-OhZ" secondAttribute="trailing" id="dcD-WO-Yw2"/>
-                            <constraint firstItem="DP5-F3-OhZ" firstAttribute="trailing" secondItem="YD8-sc-Itc" secondAttribute="trailing" id="qCU-0U-pgj"/>
-                            <constraint firstItem="YD8-sc-Itc" firstAttribute="top" secondItem="kBe-jA-Vc5" secondAttribute="bottom" id="vK4-61-Aej"/>
+                            <constraint firstItem="YD8-sc-Itc" firstAttribute="trailing" secondItem="DP5-F3-OhZ" secondAttribute="trailing" id="MjE-mt-ed2"/>
+                            <constraint firstItem="YD8-sc-Itc" firstAttribute="leading" secondItem="DP5-F3-OhZ" secondAttribute="leading" id="NvA-bJ-UQB"/>
+                            <constraint firstItem="kBe-jA-Vc5" firstAttribute="leading" secondItem="DP5-F3-OhZ" secondAttribute="leading" id="e7g-o6-k0B"/>
+                            <constraint firstItem="YD8-sc-Itc" firstAttribute="top" secondItem="kBe-jA-Vc5" secondAttribute="bottom" id="hL0-g4-cdZ"/>
+                            <constraint firstItem="kBe-jA-Vc5" firstAttribute="trailing" secondItem="DP5-F3-OhZ" secondAttribute="trailing" id="kkx-g6-yhk"/>
+                            <constraint firstItem="kBe-jA-Vc5" firstAttribute="top" secondItem="DP5-F3-OhZ" secondAttribute="top" id="wbz-4F-SCe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DP5-F3-OhZ"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="descriptionTextView" destination="YD8-sc-Itc" id="pgl-pJ-Q8V"/>
-                        <outlet property="eventsTableView" destination="kBe-jA-Vc5" id="nRj-CT-Dpb"/>
+                        <outlet property="eventsTableView" destination="kBe-jA-Vc5" id="ZUF-fk-BlB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pe7-aZ-rhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -79,7 +69,4 @@
             <point key="canvasLocation" x="2415.9420289855075" y="-626.78571428571422"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="eventBanner" width="440" height="114"/>
-    </resources>
 </document>
