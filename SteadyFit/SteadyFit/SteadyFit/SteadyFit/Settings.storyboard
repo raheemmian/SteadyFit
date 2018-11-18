@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U7g-Bv-fzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U7g-Bv-fzg">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,7 +47,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="bic-jz-FCA">
                                         <rect key="frame" x="0.0" y="4" width="97.333333333333329" height="207"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-W8-nTg">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthdate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-W8-nTg">
                                                 <rect key="frame" x="0.0" y="0.0" width="97.333333333333329" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -85,7 +85,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Ozb-b3-R5A">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Ozb-b3-R5A" userLabel="userInfoView">
                                         <rect key="frame" x="117.33333333333336" y="0.0" width="217.66666666666663" height="215"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q5A-ed-jqD">
@@ -104,6 +104,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <action selector="CityTextField:" destination="JHu-S5-a6R" eventType="editingDidEnd" id="Dty-p5-fpN"/>
+                                                    <outlet property="delegate" destination="JHu-S5-a6R" id="CMc-fO-t6N"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="48B-av-rBH">
@@ -166,13 +167,98 @@
                         <viewLayoutGuide key="safeArea" id="fux-3d-n2R"/>
                     </view>
                     <connections>
+                        <outlet property="activityLevelTextBox" destination="IEE-nZ-wYn" id="TTQ-Kt-t78"/>
+                        <outlet property="bioTextBox" destination="SQX-AS-4ly" id="EYu-rK-DoP"/>
+                        <outlet property="cityTextBox" destination="Whj-xJ-4kA" id="MRi-rY-lNw"/>
                         <outlet property="editProfileDatePicker" destination="Q5A-ed-jqD" id="ifi-3N-fQ3"/>
+                        <outlet property="genderTextBox" destination="fRT-Xu-XZZ" id="l36-oi-HLy"/>
                         <outlet property="nameLabel" destination="bic-jz-FCA" id="Ol3-L3-5my"/>
+                        <outlet property="provinceTextBox" destination="48B-av-rBH" id="GQb-2c-hkh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOa-oJ-p6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="920.79999999999995" y="625.86206896551732"/>
+        </scene>
+        <!--Edit Emergency-->
+        <scene sceneID="iWs-TH-WSc">
+            <objects>
+                <viewController title="Edit Emergency" id="At6-Qh-7os" customClass="SettingsEmergencyViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4U5-IL-cBG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency Contect Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5z-Oq-45p">
+                                <rect key="frame" x="16" y="157" width="331" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="i4D-Vu-Mhi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mMv-tl-7M5">
+                                <rect key="frame" x="16" y="202" width="331" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="emergencyContectNumberTextField:" destination="At6-Qh-7os" eventType="editingDidEnd" id="vsS-Cr-4ta"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbG-HI-CVT">
+                                <rect key="frame" x="16" y="259" width="331" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c2P-r3-Bft">
+                                <rect key="frame" x="16" y="304" width="331" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="EmergencyMessageTextField:" destination="At6-Qh-7os" eventType="editingDidEnd" id="zH0-iF-DJB"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuH-UF-Gaw">
+                                <rect key="frame" x="60" y="391" width="251" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="v2R-DU-Qvy"/>
+                                </constraints>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencySaveButton:" destination="At6-Qh-7os" eventType="touchUpInside" id="rpU-gd-Sa7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="c2P-r3-Bft" firstAttribute="trailing" secondItem="mMv-tl-7M5" secondAttribute="trailing" id="0wa-Kh-b11"/>
+                            <constraint firstItem="I5z-Oq-45p" firstAttribute="top" secondItem="A3H-j7-K0H" secondAttribute="top" constant="17" id="1Of-Nl-LxI"/>
+                            <constraint firstItem="A3H-j7-K0H" firstAttribute="trailing" secondItem="cuH-UF-Gaw" secondAttribute="trailing" constant="64" id="9Kg-eR-neW"/>
+                            <constraint firstItem="mMv-tl-7M5" firstAttribute="top" secondItem="I5z-Oq-45p" secondAttribute="bottom" constant="8" symbolic="YES" id="9eh-xp-xUn"/>
+                            <constraint firstItem="A3H-j7-K0H" firstAttribute="bottom" secondItem="cuH-UF-Gaw" secondAttribute="bottom" constant="298" id="Ehh-42-ggO"/>
+                            <constraint firstItem="c2P-r3-Bft" firstAttribute="leading" secondItem="vbG-HI-CVT" secondAttribute="leading" id="HIs-Me-0vA"/>
+                            <constraint firstItem="mMv-tl-7M5" firstAttribute="trailing" secondItem="I5z-Oq-45p" secondAttribute="trailing" id="I0B-ul-UnX"/>
+                            <constraint firstItem="c2P-r3-Bft" firstAttribute="trailing" secondItem="vbG-HI-CVT" secondAttribute="trailing" id="XlC-hX-aVh"/>
+                            <constraint firstItem="cuH-UF-Gaw" firstAttribute="top" secondItem="c2P-r3-Bft" secondAttribute="bottom" constant="57" id="bQp-3A-XWy"/>
+                            <constraint firstItem="c2P-r3-Bft" firstAttribute="top" secondItem="vbG-HI-CVT" secondAttribute="bottom" constant="25" id="buu-Hu-YkQ"/>
+                            <constraint firstItem="cuH-UF-Gaw" firstAttribute="leading" secondItem="A3H-j7-K0H" secondAttribute="leading" constant="60" id="gFl-Bi-S8B"/>
+                            <constraint firstItem="A3H-j7-K0H" firstAttribute="trailing" secondItem="I5z-Oq-45p" secondAttribute="trailing" constant="28" id="kah-Jz-Zq5"/>
+                            <constraint firstItem="mMv-tl-7M5" firstAttribute="leading" secondItem="I5z-Oq-45p" secondAttribute="leading" id="o3S-d5-t8M"/>
+                            <constraint firstItem="c2P-r3-Bft" firstAttribute="leading" secondItem="mMv-tl-7M5" secondAttribute="leading" id="tYD-AF-Mom"/>
+                            <constraint firstItem="I5z-Oq-45p" firstAttribute="leading" secondItem="4U5-IL-cBG" secondAttribute="leadingMargin" id="xsi-OK-pV3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A3H-j7-K0H"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gZs-BK-Y3C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.79999999999995" y="1353.6945812807883"/>
         </scene>
         <!--Settings-->
         <scene sceneID="yfg-Yy-hoT">
@@ -214,20 +300,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="105.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdk-QL-h9w">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fdk-QL-h9w">
                                                     <rect key="frame" x="7" y="11" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="0F6-6D-Ssn"/>
                                                         <constraint firstAttribute="width" constant="70" id="dZK-7D-raz"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVt-wV-iGP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVt-wV-iGP">
                                                     <rect key="frame" x="85" y="17" width="247" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSI-JX-oqG">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSI-JX-oqG">
                                                     <rect key="frame" x="85" y="51" width="249" height="14.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -286,6 +372,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="5Ew-ee-Zpk"/>
                     <connections>
                         <outlet property="settingTableView" destination="41H-Nr-D5I" id="u11-lE-DOl"/>
+                        <segue destination="At6-Qh-7os" kind="show" identifier="emergency" id="kIo-EC-Oxj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDI-We-fzv" userLabel="First Responder" sceneMemberID="firstResponder"/>
