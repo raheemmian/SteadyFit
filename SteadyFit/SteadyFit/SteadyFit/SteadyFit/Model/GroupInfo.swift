@@ -9,13 +9,13 @@
 import UIKit
 
 class GroupInfo : NSObject {
-    var groupId: String?
+    var groupId : String?
     var activityLevel : String?
     var chatId : String?
     var groupDescription : String?
-    var events : String?
+    var events = [String?]()
     var groupType : String?
     var location : String?
     var name : String?
-    var users : String?
+    var users = [String?]()
 }

@@ -35,39 +35,56 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
     var locationManager = CLLocationManager()
-    var groupID : String!
+    var groupId : String!
     var groupTableSections = ["Members", "Events"]
-    var groupTableContents = [["More"], ["A Event on Jan 1, 2018", "B Event on Feb 1, 2018", "C Event on Mar 1, 2018"]]
+    var groupTableContents = [["More"], []]
     var isAddEvent: Bool = false;
+    var userList = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         eventTableView.delegate = self
         eventTableView.dataSource = self
         
-        groupID = "Group2"
+        refHandle = self.ref?.child("Groups").child(groupId).observe(DataEventType.value, with: { (snapshot) in
         
-        //let currentuserID = Auth.auth().currentUser?.uid
-        refHandle = self.ref?.child("Groups").child(groupID).observe(DataEventType.value, with: { (snapshot) in
-            
             if let groupInfo = snapshot.value as? [String: AnyObject]{
                 let myGroupInfo = GroupInfo()
                 myGroupInfo.activityLevel = groupInfo["activitylevel"] as?String
                 myGroupInfo.chatId = groupInfo["chatid"] as?String
                 myGroupInfo.groupDescription = groupInfo["description"] as?String
-                myGroupInfo.events = groupInfo["events"] as?String
+                
+                if (groupInfo["events"] != nil){
+                    for sessionSnapshot in snapshot.childSnapshot(forPath: "events").children.allObjects as![DataSnapshot]{
+                        let myGroupEvents = GroupEvents()
+                        myGroupEvents.sessionId = sessionSnapshot.key
+                        myGroupEvents.eventName = sessionSnapshot.value as?String
+                        myGroupInfo.events.append(myGroupEvents.eventName)
+                    }
+                }
+                
+                for events in myGroupInfo.events{
+                    self.groupTableContents[1].append((events)!)
+                }
+                
                 myGroupInfo.groupType = groupInfo["grouptype"] as?String
                 myGroupInfo.location = groupInfo["location"] as?String
-                myGroupInfo.name = groupInfo["location"] as?String
-                myGroupInfo.users = groupInfo["users"] as?String
+                myGroupInfo.name = groupInfo["name"] as?String
                 
-                //if (groupInfo["users"] != nil){
-                //}
+                if (groupInfo["users"] != nil){
+                    for userSnapshot in snapshot.childSnapshot(forPath: "users").children.allObjects as![DataSnapshot]{
+                        if let groupUser = userSnapshot.value as? [String : AnyObject] {
+                            let myGroupUser = GroupUser()
+                            myGroupUser.joined = (groupUser["joined"] as!Int)
+                            myGroupUser.userName = groupUser["name"] as?String
+                            if (myGroupUser.joined == 1){
+                                myGroupInfo.users.append(myGroupUser.userName)
+                            }
+                        }
+                    }
+                }
                 
-                //print(myGroupInfo.events)
-                //print(myGroupInfo.chatId)
-                //print(myGroupInfo.users)
-                //print(myGroupInfo.location)
+                self.userList = myGroupInfo.users as! [String]
                 
                 self.groupDesc.text = "Group Description:"
                 self.groupDescInfo.text = myGroupInfo.groupDescription
@@ -76,7 +93,9 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
                 self.groupStatus.text = "Group Status:"
                 self.groupStatusInfo.text = myGroupInfo.groupType
             }
-            
+            DispatchQueue.main.async{
+                self.eventTableView.reloadData()
+            }
         })
     }
     
@@ -109,6 +128,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             if(indexPath.section == 0){
                 let post = segue.destination as! GroupMemberListTableViewController
                 post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+                post.memberList = userList
             }
             else{
                 let post = segue.destination as! UserEventsViewController

@@ -16,7 +16,7 @@ import UIKit
 
 class GroupMemberListTableViewController: UITableViewController {
     
-    var memberList = ["Person A", "Person B", "Person C"]
+    var memberList = [String]()
     
     @IBOutlet weak var memberListTableView: UITableView!
     

@@ -17,6 +17,12 @@
 		12D1D5062195874B0051633F /* EventPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D1D5052195874B0051633F /* EventPage.storyboard */; };
 		12D1D508219589410051633F /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12D1D507219589410051633F /* Profile.storyboard */; };
 		12D1D50A21960B120051633F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12D1D50921960B120051633F /* GoogleService-Info.plist */; };
+		60E6AD2421A0EE9800429419 /* GroupEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2321A0EE9800429419 /* GroupEvents.swift */; };
+		60E6AD2621A0EEC100429419 /* GroupUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2521A0EEC100429419 /* GroupUser.swift */; };
+		60E6AD2821A0F13F00429419 /* BarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2721A0F13F00429419 /* BarEntry.swift */; };
+		60E6AD2A21A0F15B00429419 /* BarChartActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2921A0F15B00429419 /* BarChartActivityTracker.swift */; };
+		60E6AD2C21A0F1E900429419 /* WeeklyHistogramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2B21A0F1E900429419 /* WeeklyHistogramViewController.swift */; };
+		60E6AD2E21A0F1F700429419 /* MonthlyHistogramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2D21A0F1F700429419 /* MonthlyHistogramViewController.swift */; };
 		6BEB4CE86D25B9F25E19AB27 /* Pods_SteadyFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345E59685D91B020FFE70273 /* Pods_SteadyFitTests.framework */; };
 		80CDBC54219641E600642D46 /* AddActivityEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */; };
 		874B8185AEFA6EA89DC330A7 /* Pods_SteadyFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B965C2595CF769777BB4CC17 /* Pods_SteadyFitUITests.framework */; };
@@ -41,6 +47,7 @@
 		B5F54D27218E75D200D0214D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D26218E75D200D0214D /* SettingsViewController.swift */; };
 		B5F54D29218E85F500D0214D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D28218E85F500D0214D /* SettingsTableViewCell.swift */; };
 		D41383E321902B950076031B /* GroupChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41383E221902B950076031B /* GroupChatTableViewController.swift */; };
+		D4203DA121A0F7390087304D /* ChatCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4203DA021A0F7390087304D /* ChatCollectionView.swift */; };
 		D43B7CF4218E6E8C0099C159 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */; };
 		D43B7CF8218E74420099C159 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF7218E74420099C159 /* EventViewController.swift */; };
 		D44A89A721968CF200D760CE /* InitUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A89A621968CF200D760CE /* InitUserInfoViewController.swift */; };
@@ -120,6 +127,12 @@
 		12D1D50921960B120051633F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		345E59685D91B020FFE70273 /* Pods_SteadyFitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteadyFitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		524F9EF2FBCDEC79B4A3191F /* Pods_SteadyFit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SteadyFit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60E6AD2321A0EE9800429419 /* GroupEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEvents.swift; sourceTree = "<group>"; };
+		60E6AD2521A0EEC100429419 /* GroupUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUser.swift; sourceTree = "<group>"; };
+		60E6AD2721A0F13F00429419 /* BarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarEntry.swift; sourceTree = "<group>"; };
+		60E6AD2921A0F15B00429419 /* BarChartActivityTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarChartActivityTracker.swift; path = SteadyFit/BarChartActivityTracker.swift; sourceTree = SOURCE_ROOT; };
+		60E6AD2B21A0F1E900429419 /* WeeklyHistogramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyHistogramViewController.swift; sourceTree = "<group>"; };
+		60E6AD2D21A0F1F700429419 /* MonthlyHistogramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyHistogramViewController.swift; sourceTree = "<group>"; };
 		80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityEventViewController.swift; sourceTree = "<group>"; };
 		87E321E553C0E12A38F689D4 /* Pods-SteadyFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFit/Pods-SteadyFit.debug.xcconfig"; sourceTree = "<group>"; };
 		99421C9E7AC24DBBF3447B92 /* Pods-SteadyFitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitUITests/Pods-SteadyFitUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +178,7 @@
 		BEC196ED42956309F7A7CACE /* Pods-SteadyFitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitUITests/Pods-SteadyFitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9E952BF25F86290D84D1FDC /* Pods-SteadyFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitTests/Pods-SteadyFitTests.release.xcconfig"; sourceTree = "<group>"; };
 		D41383E221902B950076031B /* GroupChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatTableViewController.swift; sourceTree = "<group>"; };
+		D4203DA021A0F7390087304D /* ChatCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCollectionView.swift; sourceTree = "<group>"; };
 		D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		D43B7CF7218E74420099C159 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		D44A89A621968CF200D760CE /* InitUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitUserInfoViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +262,9 @@
 				D4C471AD2190F086003C182B /* MessageLine.swift */,
 				12A6E646218D0BE2003ED258 /* UserGroup.swift */,
 				D4A9CA4D219E54FB008E4A90 /* GroupInfo.swift */,
+				60E6AD2321A0EE9800429419 /* GroupEvents.swift */,
+				60E6AD2521A0EEC100429419 /* GroupUser.swift */,
+				60E6AD2721A0F13F00429419 /* BarEntry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -318,6 +335,7 @@
 				B53F5B72219D48BC00A17265 /* AddEventViewController.swift */,
 				B5727A66217FEDED00AF9005 /* HomeViewController.swift */,
 				B5F54D22218E663400D0214D /* HistogramViewController.swift */,
+				60E6AD2921A0F15B00429419 /* BarChartActivityTracker.swift */,
 				B5F54D20218E48D000D0214D /* UserEventsViewController.swift */,
 				B5727A68217FEDED00AF9005 /* GroupsViewController.swift */,
 				D4B0F1F52188D29E0060EA22 /* GroupProfileViewController.swift */,
@@ -326,8 +344,11 @@
 				D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */,
 				B5727A9A217FF71600AF9005 /* FriendsViewController.swift */,
 				B5F54D24218E6D5F00D0214D /* FriendProfileViewController.swift */,
+				60E6AD2D21A0F1F700429419 /* MonthlyHistogramViewController.swift */,
+				60E6AD2B21A0F1E900429419 /* WeeklyHistogramViewController.swift */,
 				D4CB0276218F94D500503EC3 /* ChatsViewController.swift */,
 				D41383E221902B950076031B /* GroupChatTableViewController.swift */,
+				D4203DA021A0F7390087304D /* ChatCollectionView.swift */,
 				B5F54D26218E75D200D0214D /* SettingsViewController.swift */,
 				B5F54D28218E85F500D0214D /* SettingsTableViewCell.swift */,
 				D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */,
@@ -813,17 +834,24 @@
 			files = (
 				B53F5B73219D48BC00A17265 /* AddEventViewController.swift in Sources */,
 				B5F54D25218E6D5F00D0214D /* FriendProfileViewController.swift in Sources */,
+				60E6AD2C21A0F1E900429419 /* WeeklyHistogramViewController.swift in Sources */,
 				D4C471AF2190F087003C182B /* MessageLine.swift in Sources */,
+				60E6AD2421A0EE9800429419 /* GroupEvents.swift in Sources */,
 				125AAD4D218D9A1800CC5FCD /* LoginViewController.swift in Sources */,
 				D4CB0277218F94D500503EC3 /* ChatsViewController.swift in Sources */,
+				60E6AD2E21A0F1F700429419 /* MonthlyHistogramViewController.swift in Sources */,
 				B5F54D23218E663400D0214D /* HistogramViewController.swift in Sources */,
 				B5F54D21218E48D000D0214D /* UserEventsViewController.swift in Sources */,
+				D4203DA121A0F7390087304D /* ChatCollectionView.swift in Sources */,
 				D4B0F1F62188D29E0060EA22 /* GroupProfileViewController.swift in Sources */,
 				B5F54D29218E85F500D0214D /* SettingsTableViewCell.swift in Sources */,
 				D44A89A721968CF200D760CE /* InitUserInfoViewController.swift in Sources */,
 				B5727A69217FEDED00AF9005 /* GroupsViewController.swift in Sources */,
+				60E6AD2A21A0F15B00429419 /* BarChartActivityTracker.swift in Sources */,
+				60E6AD2821A0F13F00429419 /* BarEntry.swift in Sources */,
 				D4A9CA4E219E54FB008E4A90 /* GroupInfo.swift in Sources */,
 				12A6E647218D0BE2003ED258 /* UserGroup.swift in Sources */,
+				60E6AD2621A0EEC100429419 /* GroupUser.swift in Sources */,
 				D4C471B02190F087003C182B /* ChatMessageCollectionViewCell.swift in Sources */,
 				D41383E321902B950076031B /* GroupChatTableViewController.swift in Sources */,
 				FDB5663421A0E5560050C7B6 /* SettingsEmergencyViewController.swift in Sources */,
@@ -1077,14 +1105,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84YU56BXWK;
+				DEVELOPMENT_TEAM = K6R68YU4MK;
 				INFOPLIST_FILE = SteadyFit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit321;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1097,14 +1125,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84YU56BXWK;
+				DEVELOPMENT_TEAM = K6R68YU4MK;
 				INFOPLIST_FILE = SteadyFit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit321;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -35,6 +35,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     var myUserName:String = ""//"Alexa"
     var rawMessages = [MessageLine]()
     let cellID = "cellID"
+    var containerViewBottomAnchor: NSLayoutConstraint?
     
     // Take message from user and return
     lazy var inputTextField: UITextField = {
@@ -47,18 +48,29 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+//        self.backgroundColor = UIColor.white
         // Hard code title
-        //        navigationController?.navigationBar.barTintColor = UIColor.white
-        tabBarController?.tabBar.backgroundColor = UIColor.white
-        tabBarController?.tabBar.barTintColor = UIColor.white
         navigationItem.title = "Public Group: Vancouver, light"
-        collectionView?.backgroundColor = UIColor.white
+        tabBarController?.tabBar.isHidden = true
+        collectionView.backgroundColor = UIColor.white
         collectionView?.register(ChatMessageCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
         collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 60, right: 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 0, bottom: 55, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 0, bottom: 60, right: 0)
         collectionView?.alwaysBounceVertical = true
-        setupInputComponents()
+        collectionView?.keyboardDismissMode = .interactive
+        
+
+//        view.addSubview(msgInputContainerView)
+//        msgInputContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//        msgInputContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//        msgInputContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+//        msgInputContainerView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         setupKeyboard()
+        
+        setupInputComponents()
+        
         getMessageHandle = self.ref?.child("Chats").child(chatID).child("Messages").observe(DataEventType.value, with: {
             (receivesnapshot) in
             // reset messages
@@ -90,17 +102,147 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         
     }
     
+    /*
+    
+    lazy var inputContainerView: UIView = {
+        let containerView = UIView()
+//        let yHeight = UIApplication.shared.statusBarFrame.height + self.navigationController!.navigationBar.frame.height
+//        view.addSubview(containerView)
+        containerView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60)
+        containerView.backgroundColor = UIColor.black
+        
+//        containerView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+//        containerView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+//        containerView.widthAnchor.constraint(equalTo: self.view.widthAnchor).isActive = true
+//        containerView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        let textField = UITextField()
+        textField.placeholder = "Enter message..."
+        containerView.addSubview(textField)
+        textField.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50)
+        
+        // Add button and set constraint
+        let sendButton = UIButton(type: .system)
+        sendButton.setTitle("Send", for: .normal)
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        sendButton.addTarget(self, action: #selector(sendAction), for: UIControl.Event.touchUpInside)
+        containerView.addSubview(sendButton)
+        sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+        sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        sendButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        containerView.addSubview(self.inputTextField)
+        
+        self.inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 10).isActive = true
+        self.inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+        self.inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor).isActive = true
+        self.inputTextField.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        // Add a line to separate input box and the view above, and set constraint
+        let separatorLine = UIView()
+        separatorLine.backgroundColor = UIColor.darkGray
+        separatorLine.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addSubview(separatorLine)
+        
+        separatorLine.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+        separatorLine.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        separatorLine.widthAnchor.constraint(equalTo: containerView.widthAnchor).isActive = true
+        separatorLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        return containerView
+    }()
+ 
+    override var inputAccessoryView: UIView? {
+        get {
+//            return inputContainerView
+//        }
+            let containerView = UIView()
+//            containerView.translatesAutoresizingMaskIntoConstraints = false
+            containerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+            containerView.backgroundColor = UIColor.black
+
+            let textField = UITextField()
+            textField.placeholder = "Enter message..."
+            containerView.addSubview(textField)
+            textField.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+
+            return containerView
+        }
+
+    }
+    override func becomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    */
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//
+//        DispatchQueue.main.async {
+//            self.inputAccessoryView?.becomeFirstResponder()
+//        }
+//
+//    }
+    
     func setupKeyboard(){
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
-    @objc func handleKeyboard(notifiction: NSNotification){
-        let keyboardFrame = (notifiction.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-        print(keyboardFrame?.height as Any)
+    
+    @objc func showKeyboard(notification: NSNotification){
+        
+        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        containerViewBottomAnchor?.constant = -keyboardRect.height
+        
+        let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
         
         
+//        let keyboardHeight = keyboardFrame?.height
+//        var safeAreaHeight: CGFloat?
+//        if #available(iOS 11.0, *) {
+//            super.viewSafeAreaInsetsDidChange()
+////            var frameH = collectionView.adjustedContentInset.bottom - collectionView.contentInset.bottom
+//            safeAreaHeight = view.safeAreaInsets.top - view.safeAreaInsets.bottom
+////            let bottomAnchor = view.safeAreaLayoutGuide.bottomAnchor
+////            let topAnchor = view.safeAreaLayoutGuide.topAnchor
+////            let frameHeightAnchor = topAnchor.value(forKey: String) - bottomAnchor.value(forKey: String)
+//            print("frame height is %f", safeAreaHeight as Any)
+////            print("anchor height is %f", frameHeightAnchor)
+//        }
+//        else {
+//            safeAreaHeight = 0
+//        }
+//        let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+
         
+//        containerViewBottomAnchor?.constant = 0 - keyboardHeight! + safeAreaHeight!
+//        print(containerViewBottomAnchor?.constant)
+        UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: {(completed) in
+            let indexPath = IndexPath(item: self.rawMessages.count - 1, section: 0)
+            self.collectionView?.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.bottom, animated: true)
+        })
+    }
+    
+    @objc func hideKeyboard(notification: NSNotification){
+        containerViewBottomAnchor?.constant = 0
+        UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: {(completed) in
+            let indexPath = IndexPath(item: self.rawMessages.count - 1, section: 0)
+            self.collectionView?.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.bottom, animated: true)
+        })
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        inputTextField.endEditing(true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -128,6 +270,8 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
             cell.bubbleLeftAnchor?.isActive = false
             cell.bubbleRightAnchor?.isActive = true
             cell.profilePicView.isHidden = true
+            cell.senderNameView.text = ""
+            cell.senderNameView.isHidden = true
         }
         else{
             // Incoming message
@@ -157,15 +301,18 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     }
     
     func setupInputComponents(){
-        // Add UIView and set constraint
+        // Add UIView and set constraint, x,y,w,h
         let containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.backgroundColor = UIColor.white
+        
         view.addSubview(containerView)
+        
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        containerViewBottomAnchor?.isActive = true
         containerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         // Add button and set constraint
         let sendButton = UIButton(type: .system)
@@ -176,7 +323,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
         sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         sendButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        sendButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        sendButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         
         containerView.addSubview(inputTextField)
         

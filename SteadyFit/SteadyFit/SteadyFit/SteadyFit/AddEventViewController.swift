@@ -18,11 +18,13 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var durationTextField: UITextField!
+    /*------------------database stuff-----------*/
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
     var groupID = ""
     var myUserID = (Auth.auth().currentUser?.uid)!
     var myUserName: String = ""
+    /*-----------------------------*/
     let startDatePicker = UIDatePicker()
     let endDatePicker = UIDatePicker()
     var activeTextField : UITextField!
@@ -33,7 +35,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         descriptionTextView.delegate = self
         eventNameTextField.delegate = self
         locationTextField.delegate = self
-        self.createDatePicker()
+        createDatePicker()
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.text = "Description"
         descriptionTextView.textColor = UIColor.lightGray
@@ -41,32 +43,33 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         locationTextField.layer.borderWidth = 1
         startDateTextField.layer.borderWidth = 1
         durationTextField.layer.borderWidth = 1
-        
         ref?.child("Users").child(myUserID).child("name").observeSingleEvent(of: .value, with: {(snapshot) in
             self.myUserName = (snapshot.value as? String)!
         })
     }
 
     @IBAction func saveButton(_ sender: Any) {
-        //save the information into the database
+        //function: save the information into the database
         //redirect to the group page:done
         //
-        /*
         let key:String = (ref!.child("Activities_Events").childByAutoId().key)!
-        let postParticipant = [myUserID: ["name": myUserName]]
-        let post = ["Participants": postParticipant,
+        let post = ["Participants": [myUserID: ["name": myUserName]],
                     "date": startDateTextField.text ?? "nothing",
+                    "event_name": eventNameTextField.text ?? "nothing",
                     "description": descriptionTextView.text,
                     "duration_minute": durationTextField.text ?? "nothing",
-                    "groupid": groupID,
-                    "intensity": 3,
+                    "groupid": groupID, //have to grab this from somewhere
                     "isPersonal": 0,
                     "location": locationTextField.text ?? "nothing"
             ] as [String : Any]
         
         let childUpdates = ["/Activities_Events/\(key)/": post]
-        ref?.updateChildValues(childUpdates)*/
-        
+        ref?.updateChildValues(childUpdates)
+        //====
+        /*let newParticipantPost = ["name": myUserName]
+        var currentSessionId: String?
+        let addParticipant = ["/Activities_Events/\(currentSessionId)/Participants/\(myUserID)/" : newParticipantPost]*/
+        //=====
         //goes back to previous view controller
         navigationController?.popViewController(animated: true)
     }
