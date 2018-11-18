@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
         if let email = txtEmail.text, let pass = txtPassword.text{
             if isSignIn{ // sign in user
                 Auth.auth().signIn(withEmail: email, password: pass, completion: { (user, error) in
-                    if let u = user {
+                    if user != nil {
                         // user is found, go to home screen
                         self.performSegue(withIdentifier: "GoToHome", sender: self)
                     }
