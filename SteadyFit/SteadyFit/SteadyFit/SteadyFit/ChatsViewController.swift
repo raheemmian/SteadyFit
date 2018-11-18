@@ -36,9 +36,14 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     let groupsRef:DatabaseReference? = Database.database().reference()
     var currentUserName: String = ""
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        self.hidesBottomBarWhenPushed = true
         // Do any additional setup after loading the view.
         // get all the groups the current user has
         self.groupsRef?.child("Users").child(currentUserID).observe(DataEventType.value, with: {

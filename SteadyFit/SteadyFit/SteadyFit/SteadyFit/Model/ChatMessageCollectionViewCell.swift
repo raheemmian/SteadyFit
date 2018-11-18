@@ -42,7 +42,7 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         let senderBubble = UIView()
         senderBubble.backgroundColor = UIColor.red
         senderBubble.translatesAutoresizingMaskIntoConstraints = false
-        //        senderBubble.layer.cornerRadius = 12
+        //        senderBubble.layer.coœnerRadius = 12
         senderBubble.layer.masksToBounds = true
         return senderBubble
     }()
@@ -50,6 +50,7 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
     let senderNameView: UITextView = {
         let senderName = UITextView()
         senderName.text = "John Doe"
+        
         senderName.font = UIFont.systemFont(ofSize: 10)
         senderName.translatesAutoresizingMaskIntoConstraints = false
         senderName.backgroundColor = UIColor.red
@@ -67,6 +68,7 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         return profilePic
     }()
     var testContrainst: NSLayoutConstraint?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(senderBubbleView)
