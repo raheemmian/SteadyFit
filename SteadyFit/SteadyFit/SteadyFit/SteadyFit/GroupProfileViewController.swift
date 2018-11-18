@@ -128,6 +128,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             if(indexPath.section == 0){
                 let post = segue.destination as! GroupMemberListTableViewController
                 post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+                post.memberList = userList
             }
             else{
                 let post = segue.destination as! UserEventsViewController
