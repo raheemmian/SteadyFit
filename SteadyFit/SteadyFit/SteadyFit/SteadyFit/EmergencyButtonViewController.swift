@@ -24,6 +24,7 @@ class EmergencyButtonViewController: UIViewController, MFMessageComposeViewContr
     @IBOutlet weak var emergencyButton: UIButton!
     
     @IBAction func emergencyButtonPressed(){
+        /*this is called everytime the emergency button from any view controller is pressed*/
         personalref = Database.database().reference()
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
@@ -39,6 +40,7 @@ class EmergencyButtonViewController: UIViewController, MFMessageComposeViewContr
                 self.currentUserEmergencyNum = userDictionary!["emergencycontact"] as? String
                 self.emergencyMessage = userDictionary!["emergencymessage"] as? String
             }
+            /*had to put sendtext function in here because the send text was happening before querying the database*/
             self.sendText()
         })
 
@@ -58,6 +60,7 @@ class EmergencyButtonViewController: UIViewController, MFMessageComposeViewContr
             locationManager.startUpdatingLocation()
             let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
             let gpsMessage = " This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
+            /*if the emeregency message is set or not */
             if self.emergencyMessage != nil {
                  composeVC.body = self.emergencyMessage! + gpsMessage
             }
