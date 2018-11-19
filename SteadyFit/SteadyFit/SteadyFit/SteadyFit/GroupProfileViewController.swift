@@ -32,8 +32,9 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     @IBOutlet weak var eventTableView: UITableView!
     
     @IBAction func joinGroup(_ sender: UIButton) {joinThisGroup()}
-    var personalref:DatabaseReference? = Database.database().reference()
-    var personalrefHandle:DatabaseHandle?
+    @IBAction func emergencyButton(_ sender: UIButton) {sendText()}
+    var ref:DatabaseReference? = Database.database().reference()
+    var refHandle:DatabaseHandle?
     var groupId : String!
     var groupTableSections = ["Members", "Events"]
     var groupTableContents = [["More"], []]
@@ -47,7 +48,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         eventTableView.delegate = self
         eventTableView.dataSource = self
         
-        personalrefHandle = self.personalref?.child("Groups").child(groupId).observe(DataEventType.value, with: { (snapshot) in
+        refHandle = self.ref?.child("Groups").child(groupId).observe(DataEventType.value, with: { (snapshot) in
         
             if let groupInfo = snapshot.value as? [String: AnyObject]{
                 let myGroupInfo = GroupInfo()
@@ -175,15 +176,16 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
 
     func joinThisGroup() {
         let currentuserID = Auth.auth().currentUser?.uid
-        self.personalref?.child("Users").child(currentuserID!).child("name").observe(.value, with: { snapshot in
+        self.ref?.child("Users").child(currentuserID!).child("name").observe(.value, with: { snapshot in
             guard let userName = snapshot.value as? String else {
                 return
             }
-            self.personalref?.child("Groups").child(self.groupId).child("users")
+            self.ref?.child("Groups").child(self.groupId).child("users")
                 .child(currentuserID!).setValue(["joined" : 1, "name" : userName])
-            self.personalref?.child("Users").child(currentuserID!).child("Groups").child(self.groupId)
+            self.ref?.child("Users").child(currentuserID!).child("Groups").child(self.groupId)
                 .setValue(["chatid": self.groupInfo?.chatId, "grouptype": self.groupInfo?.groupType, "name": self.groupInfo?.name])
         })
     }
+
     
 }

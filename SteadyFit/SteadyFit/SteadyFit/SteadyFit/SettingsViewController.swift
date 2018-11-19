@@ -24,7 +24,6 @@ class SettingsViewController: EmergencyButtonViewController, UITableViewDelegate
     var titleNameArr = ["John Doe", "Notification", "Emergency Button", "Help"]
     var detailArr = ["Edit profile, change password, or log out", "Toggle notfications for vents and groups", "Adjust the message sent to emergency contact", "How-to guides and support"]
     var imageNames = ["Profile", "Notification", "Ambulance", "Help"]
-    @IBAction func EmergencyButton(_ sender: Any) {sendText()}
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTableView.tableFooterView = UIView(frame: .zero)

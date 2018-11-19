@@ -34,8 +34,8 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
     var p: Int!
     
     
-    var personalref:DatabaseReference?
-    var personalrefHandle:DatabaseHandle?
+    var ref:DatabaseReference?
+    var refHandle:DatabaseHandle?
     var groupsHandle:DatabaseHandle?
     var currentUserCity: String?
     var currentUserActivityLevel: String?
@@ -50,12 +50,12 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
         groupTableView.tableFooterView = UIView(frame: .zero)
     
         //  Database initialization
-        personalref = Database.database().reference()
+        ref = Database.database().reference()
         
         //  Firebase fetch start
         //  Get current authenticated user
         let currentuserID = Auth.auth().currentUser?.uid
-        personalrefHandle = personalref?.child("Users").child(currentuserID!).observe(DataEventType.value, with: {
+        refHandle = ref?.child("Users").child(currentuserID!).observe(DataEventType.value, with: {
             (snapshot) in
             // Clear group lists
             self.queryMyGroups.removeAll()
@@ -84,7 +84,7 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
             
             //  Recommend user with groups from the same location,
             //  TO DO: algorithm to be improved!!!
-            self.groupsHandle = self.personalref!.child("Groups").queryOrdered(byChild: "grouptype").queryEqual(toValue:"Public").observe(DataEventType.value, with: {
+            self.groupsHandle = self.ref!.child("Groups").queryOrdered(byChild: "grouptype").queryEqual(toValue:"Public").observe(DataEventType.value, with: {
                 (groupsnapshot) in
                 self.suggestedGroups.removeAll()
                 self.sameProvinceGroups.removeAll()
