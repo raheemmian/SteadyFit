@@ -17,8 +17,15 @@
 import UIKit
 import MessageUI
 import CoreLocation
+import FirebaseAuth
+import FirebaseDatabase
 
 class FriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate{
+    
+    var ref:DatabaseReference?
+    var refHandle:DatabaseHandle?
+    let currentuserID = (Auth.auth().currentUser?.uid)!
+    var currentUserEmergencyNum: String?
     
     let friendList = ["Friend A", "Friend B", "Friend C", "Friend D"]
     @IBOutlet weak var friendTableView: UITableView!
@@ -38,7 +45,26 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
+        ref = Database.database().reference()
+        self.ref!.child("Users").child(currentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
+            
+            let userDictionary = snapshot.value as? [String: AnyObject]
+            print (snapshot)
+            
+            if userDictionary != nil{
+                self.currentUserEmergencyNum = userDictionary!["emergencycontact"] as? String
+                print(self.currentUserEmergencyNum)
+            }
+            
+        })
+        
+        
     }
+    
+    //func getEmergencyContact(){
+    //var emergencyContact =
+    
+    //}
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         /*return the number of rows in the table*/
@@ -84,7 +110,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             composeVC.body = "I need help!"
         }
         composeVC.messageComposeDelegate = self
-        composeVC.recipients = ["7788823644"]
+        composeVC.recipients = [self.currentUserEmergencyNum] as? [String]
         if (MFMessageComposeViewController.canSendText()) {
             /*if the message view controller is available then send the text*/
             self.present(composeVC, animated: true, completion: nil)
