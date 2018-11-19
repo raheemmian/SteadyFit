@@ -6,6 +6,11 @@
 //  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
+
+//This functionality was implemented with the help of Minh Nguyen's tutorial at medium along with
+//modifications to suit our implemention, the tutorial can be found at:
+//https://medium.com/@leonardnguyen/build-your-own-chart-in-ios-part-1-bar-chart-e1b7f4789d70
+
 //  Edited by: Akshay Kumar
 //  List of Changes: Set up graph structure with hard code data
 //
