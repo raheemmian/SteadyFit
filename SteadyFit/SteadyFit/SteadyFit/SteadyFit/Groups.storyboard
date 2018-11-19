@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uq-t7-cGg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uq-t7-cGg">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -298,16 +298,28 @@
                                     <action selector="saveButton:" destination="a7v-Zh-tzd" eventType="touchUpInside" id="shJ-gN-enD"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: not all fields filled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDq-x9-qcS">
+                                <rect key="frame" x="117" y="763" width="180" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="JnK-4W-Myc"/>
+                                    <constraint firstAttribute="width" constant="180" id="sxv-ud-1nw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4cl-Gf-7aH" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" constant="20" id="2Am-qW-lG3"/>
                             <constraint firstItem="szg-FP-hBl" firstAttribute="trailing" secondItem="iIj-Xm-g4h" secondAttribute="trailing" constant="20" id="32K-1q-Tcp"/>
                             <constraint firstItem="SN8-Cq-6gM" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" constant="147" id="39W-hI-60o"/>
+                            <constraint firstItem="MDq-x9-qcS" firstAttribute="centerX" secondItem="mjx-KX-Ks9" secondAttribute="centerX" id="3X8-2c-JSL"/>
                             <constraint firstItem="25J-d8-IPD" firstAttribute="top" secondItem="2j9-qO-uF6" secondAttribute="bottom" constant="30" id="8qS-e3-8ie"/>
                             <constraint firstItem="Dhc-ZH-vrH" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" constant="20" id="8zU-Kl-QcG"/>
                             <constraint firstItem="iIj-Xm-g4h" firstAttribute="top" secondItem="Dhc-ZH-vrH" secondAttribute="bottom" constant="30" id="9Aw-Vi-CFu"/>
                             <constraint firstItem="4cl-Gf-7aH" firstAttribute="top" secondItem="iIj-Xm-g4h" secondAttribute="bottom" constant="42" id="BtA-uF-mEK"/>
+                            <constraint firstItem="szg-FP-hBl" firstAttribute="bottom" secondItem="MDq-x9-qcS" secondAttribute="bottom" constant="29" id="Div-ah-DD2"/>
                             <constraint firstItem="2j9-qO-uF6" firstAttribute="top" secondItem="szg-FP-hBl" secondAttribute="top" constant="53" id="FWn-ah-f3B"/>
                             <constraint firstItem="25J-d8-IPD" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" constant="20" id="I94-i7-QUY"/>
                             <constraint firstItem="Dhc-ZH-vrH" firstAttribute="top" secondItem="25J-d8-IPD" secondAttribute="bottom" constant="30" id="LL9-OP-URS"/>
@@ -329,6 +341,7 @@
                     <connections>
                         <outlet property="descriptionTextView" destination="4cl-Gf-7aH" id="1Qw-KM-h3I"/>
                         <outlet property="durationTextField" destination="iIj-Xm-g4h" id="WkP-Ae-bvv"/>
+                        <outlet property="errorLabel" destination="MDq-x9-qcS" id="pZX-DS-otc"/>
                         <outlet property="eventNameTextField" destination="2j9-qO-uF6" id="JVo-Y7-nlT"/>
                         <outlet property="locationTextField" destination="25J-d8-IPD" id="deB-KL-alp"/>
                         <outlet property="startDateTextField" destination="Dhc-ZH-vrH" id="EJO-8H-lvi"/>
@@ -380,6 +393,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="group" width="24" height="24"/>
+        <image name="group" width="32" height="32"/>
     </resources>
 </document>

@@ -18,10 +18,11 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var durationTextField: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     /*------------------database stuff-----------*/
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
-    var groupID = ""
+    var groupID: String = ""
     var myUserID = (Auth.auth().currentUser?.uid)!
     var myUserName: String = ""
     /*-----------------------------*/
@@ -36,6 +37,7 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
         eventNameTextField.delegate = self
         locationTextField.delegate = self
         createDatePicker()
+        errorLabel.isHidden = true
         descriptionTextView.layer.borderWidth = 1
         descriptionTextView.text = "Description"
         descriptionTextView.textColor = UIColor.lightGray
@@ -49,29 +51,24 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
     }
 
     @IBAction func saveButton(_ sender: Any) {
-        //function: save the information into the database
-        //redirect to the group page:done
-        //
-        let key:String = (ref!.child("Activities_Events").childByAutoId().key)!
-        let post = ["Participants": [myUserID: ["name": myUserName]],
-                    "date": startDateTextField.text ?? "nothing",
-                    "event_name": eventNameTextField.text ?? "nothing",
-                    "description": descriptionTextView.text,
-                    "duration_minute": durationTextField.text ?? "nothing",
-                    "groupid": groupID, //have to grab this from somewhere
-                    "isPersonal": 0,
-                    "location": locationTextField.text ?? "nothing"
+        /*function: save the information into the database
+          redirect to the group page:done*/
+        if((startDateTextField.text?.isEmpty)! || (eventNameTextField.text?.isEmpty)! || groupID == "" || (durationTextField.text?.isEmpty)! || descriptionTextView.text.isEmpty || (locationTextField.text?.isEmpty)!) {self.errorLabel.isHidden = false}
+        else{
+            let key:String = (ref!.child("Activities_Events").childByAutoId().key)!
+            let post = ["/Activities_Events/\(key)/Participants": [myUserID: ["name": myUserName]],
+            "/Activities_Events/\(key)/date": startDateTextField.text ?? "nothing",
+            "/Activities_Events/\(key)/event_name": eventNameTextField.text ?? "nothing",
+            "/Activities_Events/\(key)/description": descriptionTextView.text,
+            "/Activities_Events/\(key)/duration_minute": durationTextField.text ?? "nothing",
+            "/Activities_Events/\(key)/groupid": groupID, //have to grab this from somewhere
+            "/Activities_Events/\(key)/isPersonal": 0,
+            "/Activities_Events/\(key)/location": locationTextField.text ?? "nothing",
+            "/Groups/\(groupID)/events/\(key)" : eventNameTextField.text ?? "nothing"
             ] as [String : Any]
-        
-        let childUpdates = ["/Activities_Events/\(key)/": post]
-        ref?.updateChildValues(childUpdates)
-        //====
-        /*let newParticipantPost = ["name": myUserName]
-        var currentSessionId: String?
-        let addParticipant = ["/Activities_Events/\(currentSessionId)/Participants/\(myUserID)/" : newParticipantPost]*/
-        //=====
-        //goes back to previous view controller
-        navigationController?.popViewController(animated: true)
+            ref?.updateChildValues(post)        //goes back to previous view controller
+            navigationController?.popViewController(animated: true)
+        }
     }
 
     func createDatePicker(){
