@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var ref:DatabaseReference?
     var eventIDs = [String]()
     let currentuserID = (Auth.auth().currentUser?.uid)!
+    var activity_day: [String: Int] = [:]
     
     var locationManager = CLLocationManager()
     let homeTableSections = ["Activity Tracker", "Events"]
@@ -60,17 +61,35 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.city.text = userDictionary!["city"] as? String
             }
         })
-        self.ref?.child("Activities_Events").observe(DataEventType.value, with: {
+        self.ref?.child("Activities_Events").queryOrdered(byChild: "date").observe(DataEventType.value, with: {
             (snapshot) in
             self.eventIDs.removeAll()
             self.homeTableContents[1].removeAll()
+            var childIndex = 0
+            
+            print(snapshot)
+                
             for sessionSnapshot in snapshot.children.allObjects as! [DataSnapshot] {
+                childIndex += 1
+                if childIndex == 1 {
+                    guard let oldestActivityDictionary = sessionSnapshot.value as? [String:AnyObject] else {continue}
+                    guard let tempOldestDate = oldestActivityDictionary["date"] as? String else {continue}
+                    self.createActivityArrays(oldestDate: tempOldestDate)
+                }
+                
                 if sessionSnapshot.childSnapshot(forPath: "Participants/\(self.currentuserID)").value != nil{
                     guard let sessionDictionary = sessionSnapshot.value as? [String: AnyObject] else {continue}
-                    self.homeTableContents[1].append((sessionDictionary["event_name"] as? String)!)
-                    self.eventIDs.append(sessionSnapshot.key)
+                    guard let isPersonal = sessionDictionary["isPersonal"] as? Int else {continue}
+                    if isPersonal == 0{
+                        self.homeTableContents[1].append((sessionDictionary["event_name"] as? String)!)
+                        self.eventIDs.append(sessionSnapshot.key)
+                    }
+                    guard let tempEventDate = sessionDictionary["date"] as? String else {continue}
+                    guard let tempEventDuration = sessionDictionary["duration_minute"] as? String else {continue}
+                    self.appendActivity(key: tempEventDate, value: Int(tempEventDuration)!)
                 }
             }
+            print (self.activity_day)
             DispatchQueue.main.async() {
                 self.myTableView.reloadData()
             }
@@ -112,6 +131,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if(indexPath.section == 0){
             let destination = segue.destination as! HistogramViewController
             destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
+            destination.histogram_data = activity_day
         }
         else{
             let destination = segue.destination as! UserEventsViewController
@@ -166,5 +186,51 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
      /*-----------------------------------END Messaging----------------------------------------------------------------------*/
+    
+    func appendActivity(key: String, value: Int){
+        
+        let dateFormatter = DateFormatter()
+        if key.count > 10 {
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        }
+        else{
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+        }
+        dateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")! as TimeZone
+        let inputDate = dateFormatter.date(from: key)
+        
+        if inputDate! <= Date(){
+            var day_key:String = key
+            if key.count > 10 {
+                day_key.removeLast(6)
+            }
+            let day_value = (activity_day[day_key] ?? 0) + value
+            activity_day[day_key] = day_value
+        }
+    }
+    
+    func createActivityArrays(oldestDate :String){
+        activity_day.removeAll()
+        
+        var oldestDate_formatted:String = oldestDate
+        if oldestDate.count > 10 {
+            oldestDate_formatted.removeLast(6)
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let oldest = dateFormatter.date(from: oldestDate_formatted)
+        let today = Date()
+        let components = Calendar.current.dateComponents([.day], from: oldest!, to: today)
+        let activity_day_count = (components.day ?? 0)
+        
+        for i in 0...activity_day_count{
+            let tempDate:Date = Calendar.current.date(byAdding: .day, value: i, to: oldest!)!
+            let tempDateString = dateFormatter.string(from: tempDate)
+            activity_day[tempDateString] = 0
+        }
+        print (activity_day)
+    }
 
 }
