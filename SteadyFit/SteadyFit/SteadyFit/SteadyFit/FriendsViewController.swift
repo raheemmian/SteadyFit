@@ -20,7 +20,7 @@ import CoreLocation
 import FirebaseAuth
 import FirebaseDatabase
 
-class FriendsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate{
+class FriendsViewController: EmergencyButtonViewController, UITableViewDataSource, UITableViewDelegate{
     
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
@@ -30,22 +30,13 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     let friendList = ["Friend A", "Friend B", "Friend C", "Friend D"]
     @IBOutlet weak var friendTableView: UITableView!
-    var locationManager = CLLocationManager()
-    @IBAction func EmergencyButton(_ sender: Any) {
-        sendText()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         /*initializing the tables and locations*/
         friendTableView.tableFooterView = UIView(frame: .zero)
         friendTableView.delegate = self
         friendTableView.dataSource = self
-        locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-        }
+       
         ref = Database.database().reference()
         self.ref!.child("Users").child(currentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
             
@@ -82,35 +73,5 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         var indexPath = self.friendTableView.indexPathForSelectedRow!
         let post = segue.destination as! UserProfileViewController
         post.navigationItem.title = friendList[indexPath.row]
-    }
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        /*The message controller is dismissed once the message is either sent or the cancel button is pressed. It segues back
-         to the screen where the emergency button was pressed*/
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func sendText() {
-        /*This function is for bringing up the messsage controller once the emergency button is pressed
-         and automatically putting a custom message and current location*/
-        let composeVC = MFMessageComposeViewController()
-        if(CLLocationManager.locationServicesEnabled()){
-            /*get the coordinates for the person and put into a google link */
-            locationManager.startUpdatingLocation()
-            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-            composeVC.body = self.emergencyMessage! + "This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
-        }
-        else{
-            /*if location services is not enabled*/
-            composeVC.body = self.emergencyMessage!
-        }
-        composeVC.messageComposeDelegate = self
-        composeVC.recipients = [self.currentUserEmergencyNum] as? [String]
-        if (MFMessageComposeViewController.canSendText()) {
-            /*if the message view controller is available then send the text*/
-            self.present(composeVC, animated: true, completion: nil)
-        } else {
-            /*error message - cannot send text on simulator have to use a apple mobile device*/
-            print("Can't send messages.")
-        }
     }
 }

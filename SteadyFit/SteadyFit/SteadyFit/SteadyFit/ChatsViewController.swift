@@ -19,13 +19,13 @@ import CoreLocation
 import FirebaseDatabase
 import FirebaseAuth
 
-class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
+class ChatsViewController: EmergencyButtonViewController, UITableViewDataSource, UITableViewDelegate{
     
     var chatListTitle = ["Private Chats", "Group Chats"]
     var chatListContent = [[String](), [String]()]
     @IBOutlet weak var chatListTableView: UITableView!
     @IBAction func emergencyButton(_ sender: Any) {sendText()}
-    var locationManager = CLLocationManager()
+
     
     var chatIDList = [String]()
     var publicGroupList = [String]()
@@ -106,28 +106,5 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         post.chatID = chatIDList[indexPath.row]
         post.myUserName = currentUserName
         post.myUserID = currentUserID
-    }
-    
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func sendText() {
-        let composeVC = MFMessageComposeViewController()
-        if(CLLocationManager.locationServicesEnabled()){
-            locationManager.startUpdatingLocation()
-            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-            composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
-        }
-        else{
-            composeVC.body = "I need help!"
-        }
-        composeVC.messageComposeDelegate = self
-        composeVC.recipients = ["7788823644"]
-        if MFMessageComposeViewController.canSendText() {
-            self.present(composeVC, animated: true, completion: nil)
-        } else {
-            print("Can't send messages.")
-        }
     }
 }
