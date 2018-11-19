@@ -182,7 +182,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             self.ref?.child("Groups").child(self.groupId).child("users")
                 .child(currentuserID!).setValue(["joined" : 1, "name" : userName])
             self.ref?.child("Users").child(currentuserID!).child("Groups").child(self.groupId)
-                .setValue(["chatId": self.groupInfo?.chatId, "groupType": self.groupInfo?.groupType, "name": self.groupInfo?.name])
+                .setValue(["chatid": self.groupInfo?.chatId, "grouptype": self.groupInfo?.groupType, "name": self.groupInfo?.name])
         })
     }
 
