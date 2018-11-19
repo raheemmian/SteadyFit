@@ -157,7 +157,8 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-Ry-VX6">
-                                <rect key="frame" x="170" y="745" width="35" height="30"/>
+                                <rect key="frame" x="150" y="705" width="75" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveInitUserInfo:" destination="SZn-LS-PYh" eventType="touchUpInside" id="nb1-3d-Mi8"/>
@@ -166,12 +167,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1490499377" green="0.54758834840000004" blue="0.98500114679999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="sNT-zo-0x2" firstAttribute="trailing" secondItem="ee8-Ry-VX6" secondAttribute="trailing" constant="150" id="8Lv-Bb-cy5"/>
                             <constraint firstAttribute="trailing" secondItem="A0s-Se-cGb" secondAttribute="trailing" constant="30" id="K4E-5l-t2u"/>
                             <constraint firstItem="A0s-Se-cGb" firstAttribute="top" secondItem="sNT-zo-0x2" secondAttribute="top" constant="60" id="P1m-N6-vCr"/>
-                            <constraint firstItem="sNT-zo-0x2" firstAttribute="trailing" secondItem="ee8-Ry-VX6" secondAttribute="trailing" constant="170" id="PCD-g4-OVn"/>
                             <constraint firstItem="A0s-Se-cGb" firstAttribute="leading" secondItem="sNT-zo-0x2" secondAttribute="leading" constant="30" id="UMV-1X-2cb"/>
-                            <constraint firstItem="ee8-Ry-VX6" firstAttribute="leading" secondItem="sNT-zo-0x2" secondAttribute="leading" constant="170" id="WqU-jN-ddZ"/>
-                            <constraint firstItem="ee8-Ry-VX6" firstAttribute="top" secondItem="A0s-Se-cGb" secondAttribute="bottom" constant="60" id="dmx-z8-11P"/>
+                            <constraint firstItem="ee8-Ry-VX6" firstAttribute="top" secondItem="A0s-Se-cGb" secondAttribute="bottom" constant="20" id="V4R-Yv-hqj"/>
+                            <constraint firstItem="ee8-Ry-VX6" firstAttribute="leading" secondItem="sNT-zo-0x2" secondAttribute="leading" constant="150" id="kOi-a9-tlc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sNT-zo-0x2"/>
                     </view>
