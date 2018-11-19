@@ -17,6 +17,7 @@ class EmergencyButtonViewController: UIViewController, MFMessageComposeViewContr
     @IBOutlet weak var emergencyButton: UIButton!
     
     @IBAction func emergencyButtonPressed(){
+        locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
