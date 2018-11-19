@@ -10,20 +10,37 @@ import UIKit
 import MessageUI
 import MapKit
 import CoreLocation
-
+import FirebaseAuth
+import FirebaseDatabase
 class EmergencyButtonViewController: UIViewController, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
+    var personalref:DatabaseReference?
+    var personalrefHandle:DatabaseHandle?
+    let personalcurrentuserID = (Auth.auth().currentUser?.uid)!
+    var currentUserEmergencyNum: String?
+    var emergencyMessage: String?
     
     var locationManager = CLLocationManager()
     @IBOutlet weak var emergencyButton: UIButton!
     
     @IBAction func emergencyButtonPressed(){
+        personalref = Database.database().reference()
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
-        sendText()
+        self.personalref!.child("Users").child(personalcurrentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
+            
+            let userDictionary = snapshot.value as? [String: AnyObject]
+
+            if userDictionary != nil{
+                self.currentUserEmergencyNum = userDictionary!["emergencycontact"] as? String
+                self.emergencyMessage = userDictionary!["emergencymessage"] as? String
+            }
+            self.sendText()
+        })
+
     }
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         /*The message controller is dismissed once the message is either sent or the cancel button is pressed. It segues back
@@ -39,7 +56,13 @@ class EmergencyButtonViewController: UIViewController, MFMessageComposeViewContr
             /*get the coordinates for the person and put into a google link */
             locationManager.startUpdatingLocation()
             let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-            composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
+            let gpsMessage = " This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
+            if self.emergencyMessage != nil {
+                 composeVC.body = self.emergencyMessage! + gpsMessage
+            }
+            else{
+               composeVC.body = "I need help!" + gpsMessage
+            }
         }
         else{
             /*if location services is not enabled*/

@@ -25,8 +25,6 @@ class FriendsViewController: EmergencyButtonViewController, UITableViewDataSourc
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
     let currentuserID = (Auth.auth().currentUser?.uid)!
-    var currentUserEmergencyNum: String?
-    var emergencyMessage: String?
     
     let friendList = ["Friend A", "Friend B", "Friend C", "Friend D"]
     @IBOutlet weak var friendTableView: UITableView!
