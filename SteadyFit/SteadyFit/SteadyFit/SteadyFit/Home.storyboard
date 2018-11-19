@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KMX-RW-3ba">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KMX-RW-3ba">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -256,7 +256,19 @@
                                 <rect key="frame" x="143" y="543" width="129" height="102"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="6uU-ZU-HXh" eventType="touchUpInside" id="fRY-iX-MJN"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: not all field are filled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Orc-q2-9f9">
+                                <rect key="frame" x="102" y="693" width="210" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="210" id="WR5-Mb-1Mn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -274,7 +286,9 @@
                             <constraint firstItem="Kej-b5-OkO" firstAttribute="leading" secondItem="ZKa-Xl-P2G" secondAttribute="leading" constant="143" id="Pxe-Iu-ELn"/>
                             <constraint firstItem="qCH-FH-cRB" firstAttribute="leading" secondItem="eyF-nA-ntg" secondAttribute="leading" id="S2n-0D-D9n"/>
                             <constraint firstItem="U3k-nM-co3" firstAttribute="top" secondItem="Bxf-w9-5lr" secondAttribute="bottom" constant="8" symbolic="YES" id="SVB-h2-mKU"/>
+                            <constraint firstItem="ZKa-Xl-P2G" firstAttribute="bottom" secondItem="Orc-q2-9f9" secondAttribute="bottom" constant="55" id="cJN-fD-XJ5"/>
                             <constraint firstItem="U3k-nM-co3" firstAttribute="centerX" secondItem="Kej-b5-OkO" secondAttribute="centerX" id="inZ-Wj-vQZ"/>
+                            <constraint firstItem="Orc-q2-9f9" firstAttribute="centerX" secondItem="a5b-av-zed" secondAttribute="centerX" id="kVS-iQ-q7b"/>
                             <constraint firstItem="crz-Fr-UMz" firstAttribute="leading" secondItem="eET-DF-ge1" secondAttribute="leading" id="loc-SY-wX0"/>
                             <constraint firstItem="Yqp-Hc-gFR" firstAttribute="leading" secondItem="qCH-FH-cRB" secondAttribute="leading" id="m5M-gq-BxT"/>
                             <constraint firstItem="qCH-FH-cRB" firstAttribute="top" secondItem="Yqp-Hc-gFR" secondAttribute="bottom" constant="33" id="mv1-Mg-fqU"/>
@@ -292,11 +306,12 @@
                         <outlet property="DescriptionActivitytextfield" destination="Yqp-Hc-gFR" id="ueX-44-TYN"/>
                         <outlet property="DurationActivitytextfield" destination="U3k-nM-co3" id="6ez-0b-uLK"/>
                         <outlet property="NameActivityTextField" destination="crz-Fr-UMz" id="6Og-NI-nlj"/>
+                        <outlet property="errorLabel" destination="Orc-q2-9f9" id="G9b-VO-e09"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rv-0B-QCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4114" y="-1379"/>
+            <point key="canvasLocation" x="4113.04347826087" y="-1379.4642857142856"/>
         </scene>
         <!--Active Hours (Weekly)-->
         <scene sceneID="BJF-be-jnj">
