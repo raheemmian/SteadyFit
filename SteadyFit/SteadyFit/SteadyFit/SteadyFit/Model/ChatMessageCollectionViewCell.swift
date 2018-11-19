@@ -17,10 +17,11 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
     let textView: UITextView = {
         let text = UITextView()
         text.text = "Sample Message"
-        text.font = UIFont.systemFont(ofSize: 18)
+        text.font = UIFont.systemFont(ofSize: 16)
         text.translatesAutoresizingMaskIntoConstraints = false
         text.backgroundColor = UIColor.clear
         text.textColor = UIColor.white
+        text.isEditable = false
         return text
     }()
     
@@ -38,23 +39,14 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         return bubble
     }()
     
-    let senderBubbleView: UIView = {
-        let senderBubble = UIView()
-        senderBubble.backgroundColor = UIColor.red
-        senderBubble.translatesAutoresizingMaskIntoConstraints = false
-        //        senderBubble.layer.coœnerRadius = 12
-        senderBubble.layer.masksToBounds = true
-        return senderBubble
-    }()
-    
-    let senderNameView: UITextView = {
-        let senderName = UITextView()
+    let senderNameView: UILabel = {
+        let senderName = UILabel()
         senderName.text = "John Doe"
-        
+        senderName.isHidden = false
         senderName.font = UIFont.systemFont(ofSize: 10)
         senderName.translatesAutoresizingMaskIntoConstraints = false
-        senderName.backgroundColor = UIColor.red
-        senderName.textColor = UIColor.black
+        senderName.backgroundColor = UIColor.clear
+        senderName.textColor = UIColor.lightGray
         return senderName
     }()
     
@@ -71,17 +63,16 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(senderBubbleView)
         addSubview(senderNameView)
         addSubview(bubbleView)
         addSubview(textView)
         addSubview(profilePicView)
         
-        //  Set contrainst
-        textView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 8).isActive = true
-        textView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
-        textView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        textView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        // Set contrainst
+        senderNameView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor).isActive = true
+        senderNameView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor, constant: -5).isActive = true
+        senderNameView.bottomAnchor.constraint(equalTo: bubbleView.topAnchor, constant: -2).isActive = true
+        senderNameView.heightAnchor.constraint(equalToConstant: 10).isActive = true
         
         bubbleLeftAnchor = bubbleView.leftAnchor.constraint(equalTo: profilePicView.rightAnchor, constant: 8)
         bubbleLeftAnchor?.isActive = false
@@ -92,32 +83,15 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         bubbleView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         bubbleView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
-        //        testContrainst = senderBubbleView.heightAnchor.constraint(equalTo: senderNameView.heightAnchor)
-        
-        
-        //        testContrainst?.isActive = true
-        //        print(testContrainst?.constant as Any)
-        senderBubbleView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor).isActive = true
-        senderBubbleView.bottomAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
-        senderBubbleView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor).isActive = true
-        senderBubbleView.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        
-        
-        senderNameView.leftAnchor.constraint(equalTo: senderBubbleView.leftAnchor).isActive = true
-        senderNameView.rightAnchor.constraint(equalTo: senderBubbleView.rightAnchor).isActive = true
-        senderNameView.topAnchor.constraint(equalTo: senderBubbleView.topAnchor).isActive = true
-        senderNameView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        //        senderNameView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        
-        // fix sendername view to show name in chat
-        
-        
+        textView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 8).isActive = true
+        textView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
+        textView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        textView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
         profilePicView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8).isActive = true
-        profilePicView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        profilePicView.bottomAnchor.constraint(equalTo: bubbleView.bottomAnchor).isActive = true
         profilePicView.widthAnchor.constraint(equalToConstant: 35).isActive = true
         profilePicView.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
