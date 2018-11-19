@@ -2,9 +2,15 @@
 //  InitUserInfoViewController.swift
 //  SteadyFit
 //
-//  Created by Dickson Chum on 2018-11-09.
+//  Created by Dickson Chum on 2018-11-18.
 //  Copyright © 2018 Daycar. All rights reserved.
+//  Modified by: Alexa Chen
+//  implemented UI and database writing logic for registering new user info
 //
+//  List of Bugs:
+//  UI constraint issues with the save button in shorter iPhone screens
+//  user could potentially input the wrong format for date, activity level etc.
+//  scroll view is not user friendly, especially when there is only one element in the list
 
 import UIKit
 import FirebaseAuth

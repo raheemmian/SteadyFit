@@ -9,7 +9,8 @@
 //
 //  Edited by: Dickson Chum, Alexa Chen
 //  List of Changes: added segmented control, table and arrays for table, created segues for table view, added database automatic population for user "My Group"
-//
+//  Edited by: Alexa Chen on 2018-11-14
+//  List of Changes: improved recommendation algorithm
 //  List of Bugs:
 //  When group node changes in database, the view append groups, hence create duplicate groups.
 //  When the list of groups become too long, there is no scrolling implemented in the page
