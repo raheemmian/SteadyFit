@@ -21,18 +21,18 @@ import MapKit
 import CoreLocation
 import Firebase
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate{
+class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, UITableViewDelegate{
     var ref:DatabaseReference?
     var eventIDs = [String]()
     let currentuserID = (Auth.auth().currentUser?.uid)!
     var activity_day: [String: Int] = [:]
     
-    var locationManager = CLLocationManager()
+   // var locationManager = CLLocationManager()
     let homeTableSections = ["Activity Tracker", "Events"]
     var homeTableContents = [ ["Histogram"] , ["Event A", "Event B", "Event C"]]
-    @IBAction func emergencyButton(_ sender: Any) {
+   /* @IBAction func emergencyButton(_ sender: Any) {
         sendText()
-    }
+    }*/
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var name: UILabel!
@@ -46,11 +46,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         profilePictureImage.layer.cornerRadius = profilePictureImage.frame.size.width / 2
         profilePictureImage.clipsToBounds = true
             locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
+       /* if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
-        }
+        }*/
         
         
         ref = Database.database().reference()
@@ -156,7 +156,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("Hi")
     }*/
     /*-----------------------------------Messaging----------------------------------------------------------------*/
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+   /* func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         /*The message controller is dismissed once the message is either sent or the cancel button is pressed. It segues back
          to the screen where the emergency button was pressed*/
         controller.dismiss(animated: true, completion: nil)
@@ -185,7 +185,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
             print("Can't send messages.")
         }
-    }
+    }*/
      /*-----------------------------------END Messaging----------------------------------------------------------------------*/
     
     func appendActivity(key: String, value: Int){
