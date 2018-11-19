@@ -22,9 +22,9 @@ import CoreLocation
 import Firebase
 
 class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, UITableViewDelegate{
-    var ref:DatabaseReference?
+    var personalref:DatabaseReference?
     var eventIDs = [String]()
-    let currentuserID = (Auth.auth().currentUser?.uid)!
+    let personalcurrentuserID = (Auth.auth().currentUser?.uid)!
     var activity_day: [String: Int] = [:]
     
     let homeTableSections = ["Activity Tracker", "Events"]
@@ -42,8 +42,8 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
         profilePictureImage.layer.cornerRadius = profilePictureImage.frame.size.width / 2
         profilePictureImage.clipsToBounds = true
         
-        ref = Database.database().reference()
-        self.ref?.child("Users/\(currentuserID)").observe(DataEventType.value, with: {
+        personalref = Database.database().reference()
+        self.personalref?.child("Users/\(personalcurrentuserID)").observe(DataEventType.value, with: {
             (userSnapshot) in
             if userSnapshot.value != nil{
                 let userDictionary = userSnapshot.value as? [String: AnyObject]
@@ -51,7 +51,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
                 self.city.text = userDictionary!["city"] as? String
             }
         })
-        self.ref?.child("Activities_Events").queryOrdered(byChild: "date").observe(DataEventType.value, with: {
+        self.personalref?.child("Activities_Events").queryOrdered(byChild: "date").observe(DataEventType.value, with: {
             (snapshot) in
             self.eventIDs.removeAll()
             self.homeTableContents[1].removeAll()
@@ -67,7 +67,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
                     self.createActivityArrays(oldestDate: tempOldestDate)
                 }
                 
-                if sessionSnapshot.childSnapshot(forPath: "Participants/\(self.currentuserID)").value != nil{
+                if sessionSnapshot.childSnapshot(forPath: "Participants/\(self.personalcurrentuserID)").value != nil{
                     guard let sessionDictionary = sessionSnapshot.value as? [String: AnyObject] else {continue}
                     guard let isPersonal = sessionDictionary["isPersonal"] as? Int else {continue}
                     if isPersonal == 0{

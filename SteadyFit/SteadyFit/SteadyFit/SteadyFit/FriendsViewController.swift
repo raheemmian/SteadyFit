@@ -22,11 +22,6 @@ import FirebaseDatabase
 
 class FriendsViewController: EmergencyButtonViewController, UITableViewDataSource, UITableViewDelegate{
     
-    var ref:DatabaseReference?
-    var refHandle:DatabaseHandle?
-    let currentuserID = (Auth.auth().currentUser?.uid)!
-    var currentUserEmergencyNum: String?
-    var emergencyMessage: String?
     
     let friendList = ["Friend A", "Friend B", "Friend C", "Friend D"]
     @IBOutlet weak var friendTableView: UITableView!
@@ -36,19 +31,6 @@ class FriendsViewController: EmergencyButtonViewController, UITableViewDataSourc
         friendTableView.tableFooterView = UIView(frame: .zero)
         friendTableView.delegate = self
         friendTableView.dataSource = self
-       
-        ref = Database.database().reference()
-        self.ref!.child("Users").child(currentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
-            
-            let userDictionary = snapshot.value as? [String: AnyObject]
-            print (snapshot)
-            
-            if userDictionary != nil{
-                self.currentUserEmergencyNum = userDictionary!["emergencycontact"] as? String
-                self.emergencyMessage = userDictionary!["emergencymessage"] as? String
-                print(self.currentUserEmergencyNum)
-            }
-        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -74,4 +56,5 @@ class FriendsViewController: EmergencyButtonViewController, UITableViewDataSourc
         let post = segue.destination as! UserProfileViewController
         post.navigationItem.title = friendList[indexPath.row]
     }
+
 }

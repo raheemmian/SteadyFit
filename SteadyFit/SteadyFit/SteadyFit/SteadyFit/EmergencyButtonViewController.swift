@@ -10,13 +10,30 @@ import UIKit
 import MessageUI
 import MapKit
 import CoreLocation
+import FirebaseAuth
+import FirebaseDatabase
 
 class EmergencyButtonViewController: UIViewController, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
-    
+    var ref:DatabaseReference?
+    var refHandle:DatabaseHandle?
+    let currentuserID = (Auth.auth().currentUser?.uid)!
+    var currentUserEmergencyNum: String?
+    var emergencyMessage: String?
     var locationManager = CLLocationManager()
     @IBOutlet weak var emergencyButton: UIButton!
     
     @IBAction func emergencyButtonPressed(){
+        ref = Database.database().reference()
+        self.ref!.child("Users").child(currentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
+            
+            let userDictionary = snapshot.value as? [String: AnyObject]
+            print (snapshot)
+            
+            if userDictionary != nil{
+                self.currentUserEmergencyNum = userDictionary!["emergencycontact"] as? String
+                self.emergencyMessage = userDictionary!["emergencymessage"] as? String
+            }
+        })
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -39,14 +56,14 @@ class EmergencyButtonViewController: UIViewController, MFMessageComposeViewContr
             /*get the coordinates for the person and put into a google link */
             locationManager.startUpdatingLocation()
             let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-            composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
+            composeVC.body = self.emergencyMessage ?? "I need Help!" + " This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
         }
         else{
             /*if location services is not enabled*/
-            composeVC.body = "I need help!"
+            composeVC.body = self.emergencyMessage ?? "I need Help!"
         }
         composeVC.messageComposeDelegate = self
-        composeVC.recipients = ["7788823644"]
+        composeVC.recipients = [self.currentUserEmergencyNum] as? [String]
         if MFMessageComposeViewController.canSendText() {
             /*if the message view controller is available then send the text*/
             self.present(composeVC, animated: true, completion: nil)
