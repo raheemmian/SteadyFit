@@ -21,8 +21,6 @@
 		60E6AD2621A0EEC100429419 /* GroupUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2521A0EEC100429419 /* GroupUser.swift */; };
 		60E6AD2821A0F13F00429419 /* BarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2721A0F13F00429419 /* BarEntry.swift */; };
 		60E6AD2A21A0F15B00429419 /* BarChartActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2921A0F15B00429419 /* BarChartActivityTracker.swift */; };
-		60E6AD2C21A0F1E900429419 /* WeeklyHistogramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2B21A0F1E900429419 /* WeeklyHistogramViewController.swift */; };
-		60E6AD2E21A0F1F700429419 /* MonthlyHistogramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2D21A0F1F700429419 /* MonthlyHistogramViewController.swift */; };
 		6BEB4CE86D25B9F25E19AB27 /* Pods_SteadyFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345E59685D91B020FFE70273 /* Pods_SteadyFitTests.framework */; };
 		80CDBC54219641E600642D46 /* AddActivityEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */; };
 		874B8185AEFA6EA89DC330A7 /* Pods_SteadyFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B965C2595CF769777BB4CC17 /* Pods_SteadyFitUITests.framework */; };
@@ -131,8 +129,6 @@
 		60E6AD2521A0EEC100429419 /* GroupUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUser.swift; sourceTree = "<group>"; };
 		60E6AD2721A0F13F00429419 /* BarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarEntry.swift; sourceTree = "<group>"; };
 		60E6AD2921A0F15B00429419 /* BarChartActivityTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarChartActivityTracker.swift; path = SteadyFit/BarChartActivityTracker.swift; sourceTree = SOURCE_ROOT; };
-		60E6AD2B21A0F1E900429419 /* WeeklyHistogramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyHistogramViewController.swift; sourceTree = "<group>"; };
-		60E6AD2D21A0F1F700429419 /* MonthlyHistogramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthlyHistogramViewController.swift; sourceTree = "<group>"; };
 		80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityEventViewController.swift; sourceTree = "<group>"; };
 		87E321E553C0E12A38F689D4 /* Pods-SteadyFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFit/Pods-SteadyFit.debug.xcconfig"; sourceTree = "<group>"; };
 		99421C9E7AC24DBBF3447B92 /* Pods-SteadyFitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitUITests/Pods-SteadyFitUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -345,8 +341,6 @@
 				D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */,
 				B5727A9A217FF71600AF9005 /* FriendsViewController.swift */,
 				B5F54D24218E6D5F00D0214D /* FriendProfileViewController.swift */,
-				60E6AD2D21A0F1F700429419 /* MonthlyHistogramViewController.swift */,
-				60E6AD2B21A0F1E900429419 /* WeeklyHistogramViewController.swift */,
 				D4CB0276218F94D500503EC3 /* ChatsViewController.swift */,
 				D41383E221902B950076031B /* GroupChatTableViewController.swift */,
 				B5F54D26218E75D200D0214D /* SettingsViewController.swift */,
@@ -834,12 +828,10 @@
 			files = (
 				B53F5B73219D48BC00A17265 /* AddEventViewController.swift in Sources */,
 				B5F54D25218E6D5F00D0214D /* FriendProfileViewController.swift in Sources */,
-				60E6AD2C21A0F1E900429419 /* WeeklyHistogramViewController.swift in Sources */,
 				D4C471AF2190F087003C182B /* MessageLine.swift in Sources */,
 				60E6AD2421A0EE9800429419 /* GroupEvents.swift in Sources */,
 				125AAD4D218D9A1800CC5FCD /* LoginViewController.swift in Sources */,
 				D4CB0277218F94D500503EC3 /* ChatsViewController.swift in Sources */,
-				60E6AD2E21A0F1F700429419 /* MonthlyHistogramViewController.swift in Sources */,
 				B5F54D23218E663400D0214D /* HistogramViewController.swift in Sources */,
 				B5F54D21218E48D000D0214D /* UserEventsViewController.swift in Sources */,
 				D4B0F1F62188D29E0060EA22 /* GroupProfileViewController.swift in Sources */,
