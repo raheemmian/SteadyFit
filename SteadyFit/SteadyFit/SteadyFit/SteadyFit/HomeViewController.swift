@@ -61,23 +61,23 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
                 
             for sessionSnapshot in snapshot.children.allObjects as! [DataSnapshot] {
                 childIndex += 1
+                guard let isUserInEvent = sessionSnapshot.childSnapshot(forPath: "Participants/\(self.currentuserID)").value as? [String:AnyObject] else {continue}
                 if childIndex == 1 {
                     guard let oldestActivityDictionary = sessionSnapshot.value as? [String:AnyObject] else {continue}
                     guard let tempOldestDate = oldestActivityDictionary["date"] as? String else {continue}
                     self.createActivityArrays(oldestDate: tempOldestDate)
                 }
                 
-                if sessionSnapshot.childSnapshot(forPath: "Participants/\(self.currentuserID)").value != nil{
-                    guard let sessionDictionary = sessionSnapshot.value as? [String: AnyObject] else {continue}
-                    guard let isPersonal = sessionDictionary["isPersonal"] as? Int else {continue}
-                    if isPersonal == 0{
-                        self.homeTableContents[1].append((sessionDictionary["event_name"] as? String)!)
-                        self.eventIDs.append(sessionSnapshot.key)
-                    }
-                    guard let tempEventDate = sessionDictionary["date"] as? String else {continue}
-                    guard let tempEventDuration = sessionDictionary["duration_minute"] as? String else {continue}
-                    self.appendActivity(key: tempEventDate, value: Int(tempEventDuration)!)
+                guard let sessionDictionary = sessionSnapshot.value as? [String: AnyObject] else {continue}
+                guard let isPersonal = sessionDictionary["isPersonal"] as? Int else {continue}
+                if isPersonal == 0{
+                    self.homeTableContents[1].append((sessionDictionary["event_name"] as? String)!)
+                    self.eventIDs.append(sessionSnapshot.key)
                 }
+                guard let tempEventDate = sessionDictionary["date"] as? String else {continue}
+                guard let tempEventDuration = sessionDictionary["duration_minute"] as? String else {continue}
+                self.appendActivity(key: tempEventDate, value: Int(tempEventDuration)!)
+                
             }
             print (self.activity_day)
             DispatchQueue.main.async() {
