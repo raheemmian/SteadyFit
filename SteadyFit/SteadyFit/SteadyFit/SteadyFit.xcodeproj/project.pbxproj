@@ -25,6 +25,7 @@
 		80CDBC54219641E600642D46 /* AddActivityEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */; };
 		874B8185AEFA6EA89DC330A7 /* Pods_SteadyFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B965C2595CF769777BB4CC17 /* Pods_SteadyFitUITests.framework */; };
 		B5114C3621A23474004E2CED /* ParticipantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5114C3521A23474004E2CED /* ParticipantsViewController.swift */; };
+		B5114C3821A33C06004E2CED /* EmergencyButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5114C3721A33C06004E2CED /* EmergencyButtonViewController.swift */; };
 		B53F5B73219D48BC00A17265 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53F5B72219D48BC00A17265 /* AddEventViewController.swift */; };
 		B5727A65217FEDED00AF9005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A64217FEDED00AF9005 /* AppDelegate.swift */; };
 		B5727A67217FEDED00AF9005 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A66217FEDED00AF9005 /* HomeViewController.swift */; };
@@ -135,6 +136,7 @@
 		9DCB980D16CCE1AAF00B2201 /* Pods-SteadyFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFit/Pods-SteadyFit.release.xcconfig"; sourceTree = "<group>"; };
 		B47CA2799C0522C138F83B37 /* Pods-SteadyFitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitTests/Pods-SteadyFitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B5114C3521A23474004E2CED /* ParticipantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsViewController.swift; sourceTree = "<group>"; };
+		B5114C3721A33C06004E2CED /* EmergencyButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyButtonViewController.swift; sourceTree = "<group>"; };
 		B53F5B72219D48BC00A17265 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B5727A61217FEDED00AF9005 /* SteadyFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SteadyFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5727A64217FEDED00AF9005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */,
 				D43B7CF7218E74420099C159 /* EventViewController.swift */,
 				D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */,
+				B5114C3721A33C06004E2CED /* EmergencyButtonViewController.swift */,
 				B5727A9A217FF71600AF9005 /* FriendsViewController.swift */,
 				B5F54D24218E6D5F00D0214D /* FriendProfileViewController.swift */,
 				D4CB0276218F94D500503EC3 /* ChatsViewController.swift */,
@@ -829,6 +832,7 @@
 				B53F5B73219D48BC00A17265 /* AddEventViewController.swift in Sources */,
 				B5F54D25218E6D5F00D0214D /* FriendProfileViewController.swift in Sources */,
 				D4C471AF2190F087003C182B /* MessageLine.swift in Sources */,
+				B5114C3821A33C06004E2CED /* EmergencyButtonViewController.swift in Sources */,
 				60E6AD2421A0EE9800429419 /* GroupEvents.swift in Sources */,
 				125AAD4D218D9A1800CC5FCD /* LoginViewController.swift in Sources */,
 				D4CB0277218F94D500503EC3 /* ChatsViewController.swift in Sources */,
@@ -1097,14 +1101,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K6R68YU4MK;
+				DEVELOPMENT_TEAM = 84YU56BXWK;
 				INFOPLIST_FILE = SteadyFit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1117,14 +1121,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K6R68YU4MK;
+				DEVELOPMENT_TEAM = 84YU56BXWK;
 				INFOPLIST_FILE = SteadyFit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.SteadyFit123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

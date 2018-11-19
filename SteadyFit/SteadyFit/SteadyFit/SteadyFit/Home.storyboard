@@ -59,7 +59,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="emergencyButton:" destination="iKh-5u-Nl5" eventType="touchUpInside" id="jYc-Lz-KrS"/>
+                                    <action selector="emergencyButtonPressed" destination="iKh-5u-Nl5" eventType="touchUpInside" id="J0r-IC-70C"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -89,6 +89,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="city" destination="pnC-2I-mbV" id="bhw-9g-7mj"/>
+                        <outlet property="emergencyButton" destination="fo9-DM-CCt" id="xNe-A4-rha"/>
                         <outlet property="myTableView" destination="cDO-ay-zWA" id="ZDU-XH-OgJ"/>
                         <outlet property="name" destination="6Cd-cy-3WU" id="tXw-aq-hkg"/>
                         <outlet property="profilePictureImage" destination="m6z-Vu-KrR" id="H58-nm-HNj"/>

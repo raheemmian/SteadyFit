@@ -56,7 +56,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="emergencyButton:" destination="Vpa-yR-Th3" eventType="touchUpInside" id="cLa-ld-Yd5"/>
+                                    <action selector="emergencyButtonPressed" destination="Vpa-yR-Th3" eventType="touchUpInside" id="ANM-3v-AxY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,6 +76,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Groups" largeTitleDisplayMode="always" id="Gof-KB-n7Q"/>
                     <connections>
+                        <outlet property="emergencyButton" destination="luo-lr-o7B" id="82Q-Us-miH"/>
                         <outlet property="groupTableView" destination="MmZ-BC-OAg" id="4Gt-kW-o5z"/>
                         <segue destination="wNr-fw-8la" kind="show" identifier="showGroupDetail" id="ODv-Kb-jVd"/>
                     </connections>
@@ -201,8 +202,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="emergencyButton:" destination="Vpa-yR-Th3" eventType="touchUpInside" id="2O8-ar-xcK"/>
-                                    <action selector="emergencyButton:" destination="wNr-fw-8la" eventType="touchUpInside" id="U1r-ii-LXL"/>
+                                    <action selector="emergencyButtonPressed" destination="wNr-fw-8la" eventType="touchUpInside" id="Hhu-x6-mQ1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -226,6 +226,7 @@
                     <connections>
                         <outlet property="activityLevel" destination="bF8-dF-JUi" id="0GM-dJ-aMq"/>
                         <outlet property="activityLevelInfo" destination="tSv-Ad-jFu" id="19z-br-HLI"/>
+                        <outlet property="emergencyButton" destination="Uyt-OR-869" id="3nr-NJ-EKz"/>
                         <outlet property="eventTableView" destination="AaJ-aH-dox" id="EyU-30-EEH"/>
                         <outlet property="groupDesc" destination="ZpO-rF-6bI" id="kqv-cc-h9O"/>
                         <outlet property="groupDescInfo" destination="DPb-gF-4Kq" id="1on-Xa-43z"/>

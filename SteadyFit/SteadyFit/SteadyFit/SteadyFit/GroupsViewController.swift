@@ -25,7 +25,7 @@ import FirebaseAuth
 import CoreLocation
 import MessageUI
 
-class GroupsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
+class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource, UITableViewDelegate {
     var queryMyGroups = [UserGroup]()
     var suggestedGroups = [UserGroup]()
     var sameProvinceGroups = [UserGroup]()
@@ -45,19 +45,14 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
         p = sender.selectedSegmentIndex
         groupTableView.reloadData()
     }
-    var locationManager = CLLocationManager()
+
     @IBAction func emergencyButton(_ sender: Any) {
         sendText()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         groupTableView.tableFooterView = UIView(frame: .zero)
-        locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-        }
+    
         //  Database initialization
         ref = Database.database().reference()
         
@@ -193,29 +188,6 @@ class GroupsViewController: UIViewController, UITableViewDataSource, UITableView
             break
         default:
             break
-        }
-    }
-    
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func sendText() {
-        let composeVC = MFMessageComposeViewController()
-        if(CLLocationManager.locationServicesEnabled()){
-            locationManager.startUpdatingLocation()
-            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-            composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
-        }
-        else{
-            composeVC.body = "I need help!"
-        }
-        composeVC.messageComposeDelegate = self
-        composeVC.recipients = ["7788823644"]
-        if MFMessageComposeViewController.canSendText() {
-            self.present(composeVC, animated: true, completion: nil)
-        } else {
-            print("Can't send messages.")
         }
     }
 }
