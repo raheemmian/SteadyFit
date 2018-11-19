@@ -9,7 +9,8 @@
 //  Edited by: Dickson Chum
 //  List of Changes: added labels, table and arrays for table, created segues for table view, added emergency button and GPS related code
 //
-//  GroupProfileViewController.swift is linked to Group Profile of the UI, which shows group information.
+//  GroupProfileViewController.swift is linked to Group Profile of the UI, which shows group information, and add an event and
+//  go to a an event to see the information
 //  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
 //
 
@@ -134,6 +135,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
                 destination.memberList = userList
             }
             else{
+                /*sends event id to the user events view controller so we can see which event to display*/
                 let destination = segue.destination as! UserEventsViewController
                 destination.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
                 destination.eventId = groupTableEventID[indexPath.row]
@@ -146,6 +148,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         }
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        /*this adds a button in the section header on the right side so that a user can be redirected to add an event*/
         let headerView = UIView()
         headerView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
         let label = UILabel()
@@ -165,6 +168,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         return headerView
     }
     @objc func addEventsButtonPressed(sender: UIButton!){
+        /*performs a segue to the add event page once the button to add an event is pressed*/
         isAddEvent = true;
         performSegue(withIdentifier: "AddEvents" , sender: self)
     }
