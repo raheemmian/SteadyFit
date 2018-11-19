@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uq-t7-cGg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uq-t7-cGg">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -173,6 +173,15 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AaJ-aH-dox">
                                 <rect key="frame" x="0.0" y="295" width="414" height="477"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jge-6M-VQm">
+                                    <rect key="frame" x="0.0" y="72" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <state key="normal" title="Join Group"/>
+                                    <connections>
+                                        <action selector="joinGroup:" destination="wNr-fw-8la" eventType="touchUpInside" id="A1C-U4-DpO"/>
+                                    </connections>
+                                </button>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="memberCell" id="EN1-N6-bYE">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -206,6 +215,7 @@
                             <constraint firstItem="yxY-Tg-IOB" firstAttribute="trailing" secondItem="qGB-fg-KJf" secondAttribute="trailing" constant="20" id="cxP-xi-W4t"/>
                             <constraint firstItem="AaJ-aH-dox" firstAttribute="leading" secondItem="yxY-Tg-IOB" secondAttribute="leading" id="dWG-BD-eB8"/>
                             <constraint firstItem="AaJ-aH-dox" firstAttribute="top" secondItem="qGB-fg-KJf" secondAttribute="bottom" constant="20" id="hNT-gI-xzT"/>
+                            <constraint firstItem="AaJ-aH-dox" firstAttribute="top" secondItem="4hh-QS-icg" secondAttribute="bottom" constant="20" id="k3m-rw-b3T"/>
                             <constraint firstItem="Uyt-OR-869" firstAttribute="trailing" secondItem="yxY-Tg-IOB" secondAttribute="trailing" id="rFa-H0-2SH"/>
                             <constraint firstItem="Uyt-OR-869" firstAttribute="bottom" secondItem="yxY-Tg-IOB" secondAttribute="bottom" id="taS-FA-wYl"/>
                             <constraint firstItem="qGB-fg-KJf" firstAttribute="top" secondItem="yxY-Tg-IOB" secondAttribute="top" constant="20" id="vWP-iY-7yW"/>
@@ -370,6 +380,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="group" width="32" height="32"/>
+        <image name="group" width="24" height="24"/>
     </resources>
 </document>

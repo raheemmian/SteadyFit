@@ -116,7 +116,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else{
             let destination = segue.destination as! UserEventsViewController
             destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
-            //destination.eventId = eventIDs[indexPath.row] // Raheem, if you have a variable called eventId in the UserEventsViewController, just uncomment this line and it will set the variable to the correct value
+            destination.eventId = eventIDs[indexPath.row] // Raheem, if you have a variable called eventId in the UserEventsViewController, just uncomment this line and it will set the variable to the correct value
             
         }
     }
