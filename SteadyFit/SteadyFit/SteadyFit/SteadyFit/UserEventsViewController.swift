@@ -7,8 +7,9 @@
 //
 //  Team Daycar
 //  Edited by: Raheem Mian
-//  List of Changes: N/A - Work in Progress
-//
+//  grabs the information from the database about the event
+//  and displays it for the user
+//  also redirects to the participants view controller to show the paticipants of the events
 
 import UIKit
 import Firebase
@@ -46,7 +47,10 @@ class UserEventsViewController: UIViewController, UITableViewDelegate, UITableVi
         if going == true{
             self.goingButton.isHidden = true
         }
-  
+        /*grabs the users username from the database
+         grabs the event information
+         and grabs the participants and checks if the user is going
+         and if they are then the going button is not displayed*/
         ref?.child("Users").child(myUserID).child("name").observeSingleEvent(of: .value, with: {(snapshot) in
             self.myUserName = (snapshot.value as? String)!
         })
@@ -78,6 +82,8 @@ class UserEventsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func goingButtonAction(_ sender: Any) {
+        /*when this buttn is pressed, hide the button and then add the current user to the participant
+         to the event in the database*/
         goingButton.isHidden = true
         let newParticipantPost = ["name": myUserName] as [String: Any]
         let addParticipant = ["/Activities_Events/\(eventId)/Participants/\(myUserID)/" : newParticipantPost]
@@ -138,11 +144,10 @@ class EventModel {
     var eventName: String
     var location: String
     var date: String
-    //var participants: String?
     var duration: String
     var description: String
     init(){
-        eventName = "hi"
+        eventName = ""
         location = ""
         date = ""
         duration = ""
