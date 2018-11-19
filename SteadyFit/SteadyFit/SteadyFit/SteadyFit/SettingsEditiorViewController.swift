@@ -126,6 +126,7 @@ class SettingsEditiorViewController: UIViewController {
                                "/Users/\(currentuserID)/description": bioTextBox.text
                 ] as [String:Any]
             ref?.updateChildValues(newUserInfo)
+            navigationController?.popViewController(animated: true)
         }
         
         

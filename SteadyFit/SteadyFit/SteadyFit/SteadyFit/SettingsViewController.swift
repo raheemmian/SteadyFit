@@ -21,7 +21,7 @@ import CoreLocation
 class SettingsViewController: EmergencyButtonViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var settingTableView: UITableView!
-    var titleNameArr = ["John Doe", "Notification", "Emergency Button", "Help"]
+    var titleNameArr = ["Edit Profile", "Notification", "Emergency Button", "Help"]
     var detailArr = ["Edit profile, change password, or log out", "Toggle notfications for vents and groups", "Adjust the message sent to emergency contact", "How-to guides and support"]
     var imageNames = ["Profile", "Notification", "Ambulance", "Help"]
     @IBAction func EmergencyButton(_ sender: Any) {sendText()}

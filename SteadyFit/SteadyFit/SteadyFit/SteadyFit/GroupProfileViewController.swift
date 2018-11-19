@@ -155,7 +155,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         if section == 1{
             let image = UIImage(named: "plus")
             let button = UIButton()
-            button.frame = CGRect(x:350, y: 0, width: 22, height: 22)
+            button.frame = CGRect(x: view.bounds.maxX - 25, y: 0, width: 22, height: 22)
             button.setImage(image, for: .normal)
             button.layer.borderWidth = 1
             button.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
