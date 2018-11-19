@@ -7,10 +7,10 @@
 //
 //  Team Daycar
 //  Edited by: Dickson Chum, Raheem Mian, Alexa Chen
-//  List of Changes: added arrays, table for chat, added emergency button and GPS related code
+//  List of Changes: added arrays, table for chat, added emergency button and GPS related code, populated groups
 //
 //  ChatsViewController.swift is linked to a view controller which shows the list of chat group the user is in.
-// Edit: Alexa Chen, November 7th, populated groups
+//
 
 
 import UIKit
@@ -22,7 +22,6 @@ import FirebaseAuth
 class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
     
     var chatListTitle = ["Private Chats", "Group Chats"]
-    //var chatListContent = [[], ["Public: Vancouver, Light"]]
     var chatListContent = [[String](), [String]()]
     @IBOutlet weak var chatListTableView: UITableView!
     @IBAction func emergencyButton(_ sender: Any) {sendText()}
@@ -43,9 +42,8 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.hidesBottomBarWhenPushed = true
         // Do any additional setup after loading the view.
-        // get all the groups the current user has
+        // Get all the groups the current user has
         self.groupsRef?.child("Users").child(currentUserID).observe(DataEventType.value, with: {
             (snapshot) in
             print (snapshot)
@@ -101,12 +99,11 @@ class ChatsViewController: UIViewController, UITableViewDataSource, UITableViewD
         chatListTableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var indexPath = self.chatListTableView.indexPathForSelectedRow!
         let post = segue.destination as! GroupChatTableViewController
         post.navigationItem.title = chatListContent[indexPath.section][indexPath.row]
-        post.chatID = chatIDList[indexPath.row]//"Chat11"
+        post.chatID = chatIDList[indexPath.row]
         post.myUserName = currentUserName
         post.myUserID = currentUserID
     }

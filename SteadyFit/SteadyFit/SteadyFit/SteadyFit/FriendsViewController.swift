@@ -57,16 +57,8 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.emergencyMessage = userDictionary!["emergencymessage"] as? String
                 print(self.currentUserEmergencyNum)
             }
-            
         })
-        
-        
     }
-    
-    //func getEmergencyContact(){
-    //var emergencyContact =
-    
-    //}
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         /*return the number of rows in the table*/
@@ -109,7 +101,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         else{
             /*if location services is not enabled*/
-            composeVC.body = "I need help!"
+            composeVC.body = self.emergencyMessage!
         }
         composeVC.messageComposeDelegate = self
         composeVC.recipients = [self.currentUserEmergencyNum] as? [String]
@@ -120,4 +112,5 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             /*error message - cannot send text on simulator have to use a apple mobile device*/
             print("Can't send messages.")
         }
-    }}
+    }
+}
