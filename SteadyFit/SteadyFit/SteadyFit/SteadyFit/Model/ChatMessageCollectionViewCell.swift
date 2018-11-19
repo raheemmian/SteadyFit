@@ -22,13 +22,13 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         text.backgroundColor = UIColor.clear
         text.textColor = UIColor.white
         text.isEditable = false
+        text.isScrollEnabled = false
         return text
     }()
     
     var bubbleWidthAnchor: NSLayoutConstraint?
     var bubbleRightAnchor: NSLayoutConstraint?
     var bubbleLeftAnchor: NSLayoutConstraint?
-    //    static let blueForChatBox = UIColor(red: 0/255, green: 135/255, blue: 250/255, alpha: 0)
     
     let bubbleView: UIView = {
         let bubble = UIView()
@@ -46,7 +46,7 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         senderName.font = UIFont.systemFont(ofSize: 10)
         senderName.translatesAutoresizingMaskIntoConstraints = false
         senderName.backgroundColor = UIColor.clear
-        senderName.textColor = UIColor.lightGray
+        senderName.textColor = UIColor.gray
         return senderName
     }()
     
@@ -71,7 +71,7 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         // Set contrainst
         senderNameView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor).isActive = true
         senderNameView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor, constant: -5).isActive = true
-        senderNameView.bottomAnchor.constraint(equalTo: bubbleView.topAnchor, constant: -2).isActive = true
+        senderNameView.bottomAnchor.constraint(equalTo: bubbleView.topAnchor, constant: -0.5).isActive = true
         senderNameView.heightAnchor.constraint(equalToConstant: 10).isActive = true
         
         bubbleLeftAnchor = bubbleView.leftAnchor.constraint(equalTo: profilePicView.rightAnchor, constant: 8)
