@@ -45,7 +45,10 @@ class SettingsViewController: EmergencyButtonViewController, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2{
+        if indexPath.row == 1 || indexPath.row == 3{
+            performSegue(withIdentifier: "wip", sender: titleNameArr[indexPath.row])
+        }
+        else if indexPath.row == 2{
             performSegue(withIdentifier: "emergency" , sender: titleNameArr[indexPath.row])
         }
         else{

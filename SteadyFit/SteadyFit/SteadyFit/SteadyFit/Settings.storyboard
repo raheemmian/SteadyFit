@@ -10,6 +10,30 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="UTs-Yc-pat">
+            <objects>
+                <viewController id="5Z2-6F-bq7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p9E-ri-9Le">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="WIP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ws-Zm-OV5">
+                                <rect key="frame" x="71" y="379" width="233" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="55J-3l-gY9"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7P-an-7xt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="829.60000000000002" y="-46.551724137931039"/>
+        </scene>
         <!--Edit Profile-->
         <scene sceneID="Z19-KS-bSb">
             <objects>
@@ -378,6 +402,7 @@
                         <outlet property="emergencyButton" destination="Rra-MX-0Ot" id="WYK-yb-NIQ"/>
                         <outlet property="settingTableView" destination="41H-Nr-D5I" id="u11-lE-DOl"/>
                         <segue destination="At6-Qh-7os" kind="show" identifier="emergency" id="kIo-EC-Oxj"/>
+                        <segue destination="5Z2-6F-bq7" kind="show" identifier="wip" id="pvj-tb-PBR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDI-We-fzv" userLabel="First Responder" sceneMemberID="firstResponder"/>
