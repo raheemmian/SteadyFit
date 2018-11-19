@@ -188,7 +188,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency Contect Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5z-Oq-45p">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency Contact Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5z-Oq-45p">
                                 <rect key="frame" x="16" y="157" width="331" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="i4D-Vu-Mhi"/>
@@ -255,6 +255,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A3H-j7-K0H"/>
                     </view>
+                    <connections>
+                        <outlet property="emergencyContectNumberTextBox" destination="mMv-tl-7M5" id="i5T-bG-PgF"/>
+                        <outlet property="emergencyMessageTextBox" destination="c2P-r3-Bft" id="Thz-cy-ZN5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gZs-BK-Y3C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

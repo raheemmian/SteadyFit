@@ -7,15 +7,37 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class AddActivityEventViewController: UIViewController, UITextFieldDelegate {
 
     
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var DTAddActivitytextfield: UITextField!
     @IBOutlet weak var DurationActivitytextfield: UITextField!
     @IBOutlet weak var NameActivityTextField: UITextField!
     @IBOutlet weak var DescriptionActivitytextfield: UITextField!
-    
+    var ref:DatabaseReference? = Database.database().reference()
+    var refHandle:DatabaseHandle?
+    var myUserID = (Auth.auth().currentUser?.uid)!
+    var myUserName: String = ""
+    @IBAction func saveButton(_ sender: Any) {
+        if((DTAddActivitytextfield.text?.isEmpty)! || (DurationActivitytextfield.text?.isEmpty)! || (NameActivityTextField.text?.isEmpty)! || (DescriptionActivitytextfield.text?.isEmpty)!) {self.errorLabel.isHidden = false}
+        else{
+            let key:String = (ref!.child("Activities_Events").childByAutoId().key)!
+            let post = ["/Activities_Events/\(key)/Participants": [myUserID: ["name": myUserName]],
+                        "/Activities_Events/\(key)/date": DTAddActivitytextfield.text ?? "nothing",
+                        "/Activities_Events/\(key)/event_name": NameActivityTextField.text ?? "nothing",
+                        "/Activities_Events/\(key)/description": DescriptionActivitytextfield.text ?? "nothing",
+                        "/Activities_Events/\(key)/duration_minute": DurationActivitytextfield.text ?? "nothing",
+                        "/Activities_Events/\(key)/isPersonal": 1,
+                ] as [String : Any]
+            ref?.updateChildValues(post)        //goes back to previous view controller
+            navigationController?.popViewController(animated: true)
+        }
+    }
     
     
     let datePicker = UIDatePicker()
@@ -25,6 +47,7 @@ class AddActivityEventViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         NameActivityTextField.delegate = self
         DescriptionActivitytextfield.delegate = self
+        self.errorLabel.isHidden = true
         
         //DTfield
       //  datePicker=UIDatePicker()
@@ -55,6 +78,9 @@ class AddActivityEventViewController: UIViewController, UITextFieldDelegate {
         var Description: String? = DescriptionActivitytextfield.text
         var Datetime: String? = DTAddActivitytextfield.text
         var Duration: String? = DurationActivitytextfield.text
+        ref?.child("Users").child(myUserID).child("name").observeSingleEvent(of: .value, with: {(snapshot) in
+            self.myUserName = (snapshot.value as? String)!
+        })
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

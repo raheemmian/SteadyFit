@@ -31,6 +31,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var groupStatusInfo: UILabel!
     @IBOutlet weak var eventTableView: UITableView!
     
+    @IBAction func joinGroup(_ sender: UIButton) {joinThisGroup()}
     @IBAction func emergencyButton(_ sender: UIButton) {sendText()}
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
@@ -38,8 +39,10 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     var groupId : String!
     var groupTableSections = ["Members", "Events"]
     var groupTableContents = [["More"], []]
+    var groupTableEventID = [String]()
     var isAddEvent: Bool = false;
     var userList = [String]()
+    var groupInfo: GroupInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +63,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
                         myGroupEvents.sessionId = sessionSnapshot.key
                         myGroupEvents.eventName = sessionSnapshot.value as?String
                         myGroupInfo.events.append(myGroupEvents.eventName)
+                        self.groupTableEventID.append(myGroupEvents.sessionId as! String)
                     }
                 }
                 
@@ -83,6 +87,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
                         }
                     }
                 }
+                self.groupInfo = myGroupInfo
                 
                 self.userList = myGroupInfo.users as! [String]
                 
@@ -126,15 +131,19 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
         if isAddEvent == false {
             var indexPath = self.eventTableView.indexPathForSelectedRow!
             if(indexPath.section == 0){
-                let post = segue.destination as! GroupMemberListTableViewController
-                post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+                let destination = segue.destination as! GroupMemberListTableViewController
+                destination.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+                destination.memberList = userList
             }
             else{
-                let post = segue.destination as! UserEventsViewController
-                post.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+                let destination = segue.destination as! UserEventsViewController
+                destination.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+                destination.eventId = groupTableEventID[indexPath.row]
             }
         }
         else{
+            let destination = segue.destination as! AddEventViewController
+            destination.groupID = self.groupId
             isAddEvent = false
         }
     }
@@ -168,7 +177,20 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         controller.dismiss(animated: true, completion: nil)
     }
-    
+
+    func joinThisGroup() {
+        let currentuserID = Auth.auth().currentUser?.uid
+        self.ref?.child("Users").child(currentuserID!).child("name").observe(.value, with: { snapshot in
+            guard let userName = snapshot.value as? String else {
+                return
+            }
+            self.ref?.child("Groups").child(self.groupId).child("users")
+                .child(currentuserID!).setValue(["joined" : 1, "name" : userName])
+            self.ref?.child("Users").child(currentuserID!).child("Groups").child(self.groupId)
+                .setValue(["chatid": self.groupInfo?.chatId, "grouptype": self.groupInfo?.groupType, "name": self.groupInfo?.name])
+        })
+    }
+
     func sendText() {
         let composeVC = MFMessageComposeViewController()
         if(CLLocationManager.locationServicesEnabled()){

@@ -6,8 +6,8 @@
 //  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
-//  Edited by: Dickson Chum
-//  List of Changes: Work in Progress
+//  Edited by: Dickson Chum, Alexa Chen, Yimin Long
+//  List of Changes: User can edit their profile
 //
 
 import UIKit
@@ -16,8 +16,6 @@ import FirebaseDatabase
 
 class SettingsEditiorViewController: UIViewController {
     
-    //    var name: String!
-    //    name = "John Doe"
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
     let currentuserID = (Auth.auth().currentUser?.uid)!
@@ -29,9 +27,7 @@ class SettingsEditiorViewController: UIViewController {
     var currentUserBirthday: String?
     
     
-    
-    
-    
+
     @IBOutlet var editProfileDatePicker: UITextField!
     let datePicker = UIDatePicker()
     
@@ -78,18 +74,7 @@ class SettingsEditiorViewController: UIViewController {
         
     }
     
-    //@IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var nameLabel: UIStackView!
-    
-    
-    
-    //    func writeToFirebase(){
-    //
-    //
-    //    }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,8 +85,6 @@ class SettingsEditiorViewController: UIViewController {
         creatProvincePicker()
         creatLevelPicker()
         creatGenderPicker()
-        
-        
         
         // Do any additional setup after loading the view.
         ref = Database.database().reference()
@@ -166,22 +149,15 @@ class SettingsEditiorViewController: UIViewController {
     {
         let editDateFormatter = DateFormatter()
         editDateFormatter.dateFormat = "yyyy-MM-dd"
-        //editDateFormatter.dateStyle = .medium
-        //editDateFormatter.timeStyle = .none
-        
         editProfileDatePicker.text = editDateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
     
     
-    
-    
-    
-    //city picker
+    // City picker
     func creatCityPicker()
     {
-        //let cityPicker = UIPickerView()
-        cityPicker.delegate = self //as? UIPickerViewDelegate
+        cityPicker.delegate = self
         cityTextBox.inputView = cityPicker
     }
     
@@ -222,10 +198,7 @@ class SettingsEditiorViewController: UIViewController {
     {
         view.endEditing(true)
     }
-    
-    
 }
-
 
 extension SettingsEditiorViewController: UIPickerViewDelegate, UIPickerViewDataSource
 {
