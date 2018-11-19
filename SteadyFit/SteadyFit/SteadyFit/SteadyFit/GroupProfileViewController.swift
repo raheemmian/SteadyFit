@@ -39,6 +39,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
     var groupId : String!
     var groupTableSections = ["Members", "Events"]
     var groupTableContents = [["More"], []]
+    var groupTableEventID = [String]()
     var isAddEvent: Bool = false;
     var userList = [String]()
     var groupInfo: GroupInfo?
@@ -62,6 +63,7 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
                         myGroupEvents.sessionId = sessionSnapshot.key
                         myGroupEvents.eventName = sessionSnapshot.value as?String
                         myGroupInfo.events.append(myGroupEvents.eventName)
+                        self.groupTableEventID.append(myGroupEvents.sessionId as! String)
                     }
                 }
                 
@@ -136,9 +138,12 @@ class GroupProfileViewController: UIViewController, UITableViewDataSource, UITab
             else{
                 let destination = segue.destination as! UserEventsViewController
                 destination.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
+                destination.eventId = groupTableEventID[indexPath.row]
             }
         }
         else{
+            let destination = segue.destination as! AddEventViewController
+            destination.groupID = self.groupId
             isAddEvent = false
         }
     }
