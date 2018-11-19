@@ -14,23 +14,23 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class EmergencyButtonViewController: UIViewController, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
-    var ref:DatabaseReference?
-    var refHandle:DatabaseHandle?
-    let currentuserID = (Auth.auth().currentUser?.uid)!
+    var personalref:DatabaseReference?
+    var personalrefHandle:DatabaseHandle?
+    let personalcurrentuserID = (Auth.auth().currentUser?.uid)!
     var currentUserEmergencyNum: String?
     var emergencyMessage: String?
     var locationManager = CLLocationManager()
     @IBOutlet weak var emergencyButton: UIButton!
     
     @IBAction func emergencyButtonPressed(){
-        ref = Database.database().reference()
+        personalref = Database.database().reference()
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
-        self.ref!.child("Users").child(currentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
+        self.personalref!.child("Users").child(personalcurrentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
             
             let userDictionary = snapshot.value as? [String: AnyObject]
             print (snapshot)
