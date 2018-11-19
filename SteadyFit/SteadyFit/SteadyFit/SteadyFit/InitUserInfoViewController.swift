@@ -63,24 +63,41 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
         
     }
     
+    func createPicker(){
+        let pickerToolBar = UIToolbar()
+        pickerToolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneClicked))
+        pickerToolBar.setItems([doneButton], animated: true)
+        activityLevelTextField.inputAccessoryView = pickerToolBar
+        provinceTextField.inputAccessoryView = pickerToolBar
+        cityTextField.inputAccessoryView = pickerToolBar
+        genderTextField.inputAccessoryView = pickerToolBar
+    }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == activityLevelPicker {
+           
             activityLevelTextField.text = activityLevelList[row]
-            self.view.endEditing(true)
+//            self.view.endEditing(true)
         }
         else if pickerView == provincePicker{
+            
             provinceTextField.text = provinceList[row]
-            self.view.endEditing(true)
+//            self.view.endEditing(true)
         }
         else if pickerView == cityPicker{
+            
             cityTextField.text = cityList[row]
-            self.view.endEditing(true)
+//            self.view.endEditing(true)
         }
         else{
+            
             genderTextField.text = genderList[row]
-            self.view.endEditing(true)
+//            self.view.endEditing(true)
         }
     }
+    
+    
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == activityLevelPicker{
@@ -144,6 +161,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
         cityTextField.inputView = cityPicker
         activityLevelTextField.inputView = activityLevelPicker
         genderTextField.inputView = genderPicker
+        createPicker()
         createDatePicker()
         
         personalBioTextView.text = "personal bio"
@@ -152,7 +170,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
         personalBioTextView.layer.borderWidth = 1
         personalBioTextView.layer.borderWidth = 1
         personalBioTextView.layer.borderWidth = 1
-        
+        errorMessageLabel.text = ""
     }
     
     func createDatePicker(){
@@ -166,12 +184,13 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
     }
     
     @objc func doneClicked() {
-        let startDateFormat = DateFormatter()
-        startDateFormat.dateFormat = "yyyy-MM-dd"
-        birthDateTextField.text = startDateFormat.string(from: birthdatePicker.date)
+        if activeTextField == birthDateTextField{
+            let startDateFormat = DateFormatter()
+            startDateFormat.dateFormat = "yyyy-MM-dd"
+            birthDateTextField.text = startDateFormat.string(from: birthdatePicker.date)
+        }
         self.view.endEditing(true)
     }
-    
     
     //===================
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -215,17 +234,4 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
         self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
         UIView.commitAnimations()
     }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
