@@ -15,27 +15,24 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class UserEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UserEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyProtocol {
 
+    @IBOutlet weak var goingButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var eventsTableView: UITableView!
+    @IBOutlet weak var descriptionLabel: UILabel!
     /*------------------database stuff-----------*/
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
-    var groupID = ""
     var myUserID = (Auth.auth().currentUser?.uid)!
     var myUserName: String = ""
-    var eventID = "-LRYLUmfAD3YVboXHcbG"
+    var eventId:String = ""
+    var participantsCheckArr = [String]()
+    var going: Bool = false
     /*-----------------------------*/
-    var eventName: String = ""
-    var location:String = "Vancouver"
-    var date:String = "September 30 2018"
-    var startTime: String = "12:00"
-    var endTime: String = "3:00"
-    var participants: String = ""
-    var duration: String = " - "
-    var eventDescription = ["Location: " , "Date: ", "Duration: "]
-    var eventInfo = [EventModel]()
+    let sectionHeader = ["Event Information" , "Participants"]
+    let sectionContent = [["Location: ", "Date: ", "Duration: "], ["Event Members"]]
+    let myEventInfo = EventModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         eventsTableView.delegate = self
@@ -43,63 +40,113 @@ class UserEventsViewController: UIViewController, UITableViewDelegate, UITableVi
         descriptionTextView.layer.borderWidth = 0.5
         descriptionTextView.layer.borderColor = UIColor.black.cgColor
         descriptionTextView.isEditable = false
-        self.duration = startTime + " - " + endTime
-        self.descriptionTextView.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
-        
-        ref?.child("Activities_Events").observe(DataEventType.value, with: { (snapshot) in
-            print(snapshot.value)
-            print(snapshot.childrenCount)
-            if snapshot.childrenCount > 0 {
-                self.eventInfo.removeAll()
-                for events in snapshot.children.allObjects as! [DataSnapshot]{
-                    let eventObject = events.value as? [String: AnyObject]
-                    let eventNameObj = eventObject?["event_name"]
-                    let locationObj = eventObject?["location"]
-                    let dateObj = eventObject?["date"]
-                  //  let participants = eventObject[""]
-                    let durationObj = eventObject?["duration_minute"]
-                    let event = EventModel(eventName: eventNameObj as! String?, location: locationObj as! String?, date: dateObj as! String? ?? "nill", duration: durationObj as! String?)
-                    self.eventInfo.append(event)
-                }
-                
+        goingButton.layer.borderWidth = 1
+        goingButton.layer.borderColor = UIColor.blue.cgColor
+        descriptionLabel.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+        if going == true{
+            self.goingButton.isHidden = true
+        }
+  
+        ref?.child("Users").child(myUserID).child("name").observeSingleEvent(of: .value, with: {(snapshot) in
+            self.myUserName = (snapshot.value as? String)!
+        })
+        ref?.child("Activities_Events").child(eventId).observe(DataEventType.value, with: { (snapshot) in
+            if let eventInfo = snapshot.value as? [String: AnyObject]{
+                self.myEventInfo.date = eventInfo["date"] as! String
+                self.myEventInfo.duration = eventInfo["duration_minute"] as! String
+                self.myEventInfo.eventName = eventInfo["event_name"] as! String
+                self.myEventInfo.location = eventInfo["location"] as! String
+                self.myEventInfo.description = eventInfo["description"] as! String
+                self.descriptionTextView.text = self.myEventInfo.description
+                self.navigationItem.title = self.myEventInfo.eventName
+                self.eventsTableView.reloadData()
             }
         })
-        
-      //  self.date  = eventInfo[0].date!
+        refHandle = ref?.child("Activities_Events").child(eventId).child("Participants").observe(.value, with: { (snapshot) in
+            if(snapshot.childrenCount > 0){
+                for participant in snapshot.children.allObjects as! [DataSnapshot] {
+                    let nameObject = (participant.value as? [String: AnyObject])!
+                    let name = nameObject["name"] as! String
+                    if name == self.myUserName {
+                        self.going = true
+                        self.goingButton.isHidden = true
+                        break
+                    }
+                }
+            }
+        })
+    }
+    
+    @IBAction func goingButtonAction(_ sender: Any) {
+        goingButton.isHidden = true
+        let newParticipantPost = ["name": myUserName] as [String: Any]
+        let addParticipant = ["/Activities_Events/\(eventId)/Participants/\(myUserID)/" : newParticipantPost]
+        ref?.updateChildValues(addParticipant)
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        /*return table header name*/
+        return sectionHeader[section]
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         /*Location, Date, Duration*/
-        return 3
+        return sectionContent[section].count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         /*return the name for the cell*/
         let tableCell  = tableView.dequeueReusableCell(withIdentifier: "EventDescriptionTableCell", for:  indexPath)
-        tableCell.layer.borderWidth = 0.5
-        if indexPath.row == 0{
-            tableCell.textLabel?.text = eventDescription[indexPath.row] + location
+        //tableCell.layer.borderWidth = 0.5
+        if indexPath.row == 0 && indexPath.section == 0{
+            tableCell.textLabel?.text = sectionContent[0][indexPath.row] + self.myEventInfo.location
         }
         else if(indexPath.row == 1){
-            tableCell.textLabel?.text = eventDescription[indexPath.row] + date
+            tableCell.textLabel?.text = sectionContent[0][indexPath.row] + self.myEventInfo.date
         }
         else if indexPath.row == 2{
-            tableCell.textLabel?.text = eventDescription[indexPath.row] + duration
+            tableCell.textLabel?.text = sectionContent[0][indexPath.row] + self.myEventInfo.duration + " minutes"
+        }
+        else{
+            tableCell.textLabel?.text = sectionContent[indexPath.section][indexPath.row]
+            tableCell.accessoryType = .disclosureIndicator
         }
         return tableCell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 && indexPath.section == 1 {
+            performSegue(withIdentifier: sectionHeader[1] , sender: self)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! ParticipantsViewController
+        destination.eventId = eventId
+        destination.myProtocol = self
+    }
+    
+    func checkGoing(going: String){
+        
+    }
+    
 }
 
 class EventModel {
-    var eventName: String?
-    var location: String?
-    var date:String?
+    var eventName: String
+    var location: String
+    var date: String
     //var participants: String?
-    var duration: String?
-    init(eventName:String?, location:String?, date:String, /*participants:String,*/ duration:String?){
-        self.eventName = eventName
-        self.location = location
-        self.date = date
-        //self.participants = participants
-        self.duration = duration
+    var duration: String
+    var description: String
+    init(){
+        eventName = "hi"
+        location = ""
+        date = ""
+        duration = ""
+        description = ""
     }
+    
 }

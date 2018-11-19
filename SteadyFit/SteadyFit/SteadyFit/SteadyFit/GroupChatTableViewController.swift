@@ -49,26 +49,18 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-//        self.backgroundColor = UIColor.white
         // Hard code title
         navigationItem.title = "Public Group: Vancouver, light"
         tabBarController?.tabBar.isHidden = true
         collectionView.backgroundColor = UIColor.white
         collectionView?.register(ChatMessageCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
-        collectionView?.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 60, right: 0)
-        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 0, bottom: 60, right: 0)
+        collectionView?.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 65, right: 0)
+        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 10, left: 0, bottom: 65, right: 0)
         collectionView?.alwaysBounceVertical = true
+        collectionView?.bounces = true
         collectionView?.keyboardDismissMode = .interactive
         
-
-//        view.addSubview(msgInputContainerView)
-//        msgInputContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-//        msgInputContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-//        msgInputContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-//        msgInputContainerView.heightAnchor.constraint(equalToConstant: 60).isActive = true
         setupKeyboard()
-        
         setupInputComponents()
         
         getMessageHandle = self.ref?.child("Chats").child(chatID).child("Messages").observe(DataEventType.value, with: {
@@ -99,7 +91,8 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
                 self.collectionView?.reloadData()
             }
         })
-        
+        let indexPath = IndexPath(item: self.rawMessages.count - 1, section: 0)
+        self.collectionView?.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.bottom, animated: true)
     }
     
     /*
@@ -186,53 +179,34 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
 //
 //    }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == inputTextField{
+            return true
+        }
+        return false
+    }
+    
     func setupKeyboard(){
         NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
     
     @objc func showKeyboard(notification: NSNotification){
-        
         guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
         containerViewBottomAnchor?.constant = -keyboardRect.height
-        
-        let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-        
-        
-//        let keyboardHeight = keyboardFrame?.height
-//        var safeAreaHeight: CGFloat?
-//        if #available(iOS 11.0, *) {
-//            super.viewSafeAreaInsetsDidChange()
-////            var frameH = collectionView.adjustedContentInset.bottom - collectionView.contentInset.bottom
-//            safeAreaHeight = view.safeAreaInsets.top - view.safeAreaInsets.bottom
-////            let bottomAnchor = view.safeAreaLayoutGuide.bottomAnchor
-////            let topAnchor = view.safeAreaLayoutGuide.topAnchor
-////            let frameHeightAnchor = topAnchor.value(forKey: String) - bottomAnchor.value(forKey: String)
-//            print("frame height is %f", safeAreaHeight as Any)
-////            print("anchor height is %f", frameHeightAnchor)
-//        }
-//        else {
-//            safeAreaHeight = 0
-//        }
-//        let keyboardDuration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
-
-        
-//        containerViewBottomAnchor?.constant = 0 - keyboardHeight! + safeAreaHeight!
-//        print(containerViewBottomAnchor?.constant)
-        UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: {(completed) in
-            let indexPath = IndexPath(item: self.rawMessages.count - 1, section: 0)
-            self.collectionView?.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.bottom, animated: true)
-        })
+        showLatestMessage()
     }
     
     @objc func hideKeyboard(notification: NSNotification){
         containerViewBottomAnchor?.constant = 0
+        showLatestMessage()
+    }
+    
+    // Show latest message whenever inputTextField is clicked
+    private func showLatestMessage(){
         UIView.animate(withDuration: 0, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         }, completion: {(completed) in
@@ -252,9 +226,6 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! ChatMessageCollectionViewCell
         let msg = rawMessages[indexPath.item]
-        // print name per message
-        // need to get rid of the name part once done
-        //        cell.textView.text = String(msg.senderName!) + "\n" + String(msg.message!)
         cell.textView.text = String(msg.message!)
         cell.bubbleWidthAnchor?.constant = estimateFrameSize(text: msg.message!).width + 30
         setupCell(cell: cell, message: msg)
@@ -280,24 +251,27 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
             cell.bubbleLeftAnchor?.isActive = true
             cell.bubbleRightAnchor?.isActive = false
             cell.profilePicView.isHidden = false
+            cell.senderNameView.isHidden = false
             cell.senderNameView.text = message.senderName
             print(cell.senderNameView.text)
+
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var height: CGFloat = 60
         if let text = rawMessages[indexPath.item].message{
-            height = estimateFrameSize(text: text).height + 18
+            height = estimateFrameSize(text: text).height + 16
+            
         }
         return CGSize(width: view.frame.width, height: height)
     }
     
     // Work in progress, trying to get estimate height and width for each chat box
     private func estimateFrameSize(text: String) -> CGRect{
-        let size = CGSize(width: 200, height: 1000)
+        let size = CGSize(width: 200, height: 3000)
         let option = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        return NSString(string: text).boundingRect(with: size, options: option, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 18)], context: nil)
+        return NSString(string: text).boundingRect(with: size, options: option, attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)], context: nil)
     }
     
     func setupInputComponents(){
