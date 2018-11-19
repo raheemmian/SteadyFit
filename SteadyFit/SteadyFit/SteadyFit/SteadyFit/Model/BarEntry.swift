@@ -1,5 +1,10 @@
-
-
+//
+//  BarEntry.swift
+//  SteadyFit
+//
+//  Created by Akshay Kumar on 11/17/18.
+//  Copyright © 2018 Daycar. All rights reserved.
+//
 
 
 import Foundation

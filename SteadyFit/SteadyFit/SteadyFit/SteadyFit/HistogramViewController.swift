@@ -7,7 +7,7 @@
 //
 //  Team Daycar
 //  Edited by: Akshay Kumar
-//  List of Changes: N/A - Work in Progress
+//  List of Changes: Set up graph structure with hard code data
 //
 //  Edited by: Alexa Chen on 2018-11-19
 //  List of Changes: Change histogram bar height to dynamic height; populated histogram with data from firebase

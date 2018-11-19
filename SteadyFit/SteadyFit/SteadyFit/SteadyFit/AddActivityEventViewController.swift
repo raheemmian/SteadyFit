@@ -2,7 +2,7 @@
 //  AddActivityEventViewController.swift
 //  SteadyFit
 //
-//  Created by Maha Javed on 2018-11-09.
+//  Created by Akshay Kumar on 2018-11-09.
 //  Copyright © 2018 Daycar. All rights reserved.
 //
 
