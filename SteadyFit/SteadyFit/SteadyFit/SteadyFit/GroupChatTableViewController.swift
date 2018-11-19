@@ -60,9 +60,9 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         collectionView?.bounces = true
         collectionView?.keyboardDismissMode = .interactive
         
-        setupKeyboard()
+//        setupKeyboard()
         setupInputComponents()
-        
+        setupKeyboardEvents()
         getMessageHandle = self.ref?.child("Chats").child(chatID).child("Messages").observe(DataEventType.value, with: {
             (receivesnapshot) in
             // reset messages
@@ -186,9 +186,31 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         return false
     }
     
-    func setupKeyboard(){
-        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    func setupKeyboard(){
+//        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+    
+    func setupKeyboardEvents() {
+        NotificationCenter.default.addObserver(
+            forName: UIResponder.keyboardDidShowNotification,
+            object: nil,
+            queue: OperationQueue.main) { [weak self] notification in
+                let info = notification.userInfo!
+                let keyboardFrame: CGRect = (info[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+                
+                UIView.animate(withDuration: 0.2, animations: {
+                    self?.containerViewBottomAnchor?.constant = -keyboardFrame.size.height
+                    self?.view.layoutIfNeeded()
+                })
+        }
+        
+        NotificationCenter.default.addObserver(
+            forName: UIResponder.keyboardDidHideNotification,
+            object: nil,
+            queue: OperationQueue.main) { [weak self] notificaiton in
+                self?.containerViewBottomAnchor?.constant = 0
+        }
     }
     
     

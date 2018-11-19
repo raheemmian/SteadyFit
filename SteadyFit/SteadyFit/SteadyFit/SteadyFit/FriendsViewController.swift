@@ -26,6 +26,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
     var refHandle:DatabaseHandle?
     let currentuserID = (Auth.auth().currentUser?.uid)!
     var currentUserEmergencyNum: String?
+    var emergencyMessage: String?
     
     let friendList = ["Friend A", "Friend B", "Friend C", "Friend D"]
     @IBOutlet weak var friendTableView: UITableView!
@@ -53,6 +54,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             
             if userDictionary != nil{
                 self.currentUserEmergencyNum = userDictionary!["emergencycontact"] as? String
+                self.emergencyMessage = userDictionary!["emergencymessage"] as? String
                 print(self.currentUserEmergencyNum)
             }
             
@@ -103,7 +105,7 @@ class FriendsViewController: UIViewController, UITableViewDataSource, UITableVie
             /*get the coordinates for the person and put into a google link */
             locationManager.startUpdatingLocation()
             let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-            composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
+            composeVC.body = self.emergencyMessage! + "This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
         }
         else{
             /*if location services is not enabled*/
