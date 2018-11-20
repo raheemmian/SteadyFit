@@ -4,8 +4,10 @@
 //
 //  Created by Raheem Mian on 2018-11-19.
 //  Copyright © 2018 Daycar. All rights reserved.
-//This is a subclass for the emergency button, so all of the emergency buttons on other viewcontrollers
-//will inherit the methods from this class to check 
+//
+//  This is a subclass for the emergency button, so all of the emergency buttons on other viewcontrollers
+//  will inherit the methods from this class to check
+//
 
 import UIKit
 import MessageUI
@@ -32,10 +34,11 @@ class EmergencyButtonViewController: UIViewController, MFMessageComposeViewContr
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
         }
+        
         self.personalref!.child("Users").child(personalcurrentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
             
             let userDictionary = snapshot.value as? [String: AnyObject]
-
+            
             if userDictionary != nil{
                 self.currentUserEmergencyNum = userDictionary!["emergencycontact"] as? String
                 self.emergencyMessage = userDictionary!["emergencymessage"] as? String
@@ -43,6 +46,8 @@ class EmergencyButtonViewController: UIViewController, MFMessageComposeViewContr
             /*had to put sendtext function in here because the send text was happening before querying the database*/
             self.sendText()
         })
+        
+        
 
     }
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
@@ -73,7 +78,7 @@ class EmergencyButtonViewController: UIViewController, MFMessageComposeViewContr
             composeVC.body = "I need help!"
         }
         composeVC.messageComposeDelegate = self
-        composeVC.recipients = ["7788823644"]
+        composeVC.recipients = [self.currentUserEmergencyNum] as? [String]
         if MFMessageComposeViewController.canSendText() {
             /*if the message view controller is available then send the text*/
             self.present(composeVC, animated: true, completion: nil)
