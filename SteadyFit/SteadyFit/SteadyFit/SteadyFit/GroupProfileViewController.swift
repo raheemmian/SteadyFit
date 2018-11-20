@@ -6,13 +6,17 @@
 //  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
-//  Edited by: Dickson Chum
+//  Edited by: Dickson Chum, Calvin Liu, Alexa Chen, Raheem Mian
 //  List of Changes: added labels, table and arrays for table, created segues for table view, added emergency button and GPS related code
+//
+//  List of Bugs:
+//  Join Button does not hide when the user is in the group
 //
 //  GroupProfileViewController.swift is linked to Group Profile of the UI, which shows group information, and add an event and
 //  go to a an event to see the information
 //  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
 //
+
 
 import UIKit
 import MessageUI
@@ -49,7 +53,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         eventTableView.dataSource = self
         
         refHandle = self.ref?.child("Groups").child(groupId).observe(DataEventType.value, with: { (snapshot) in
-        
+            self.groupTableContents[1].removeAll()
             if let groupInfo = snapshot.value as? [String: AnyObject]{
                 let myGroupInfo = GroupInfo()
                 myGroupInfo.activityLevel = groupInfo["activitylevel"] as?String

@@ -131,20 +131,6 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
         }
     }
     
-   /* func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        let button = UIButton(type: .system)
-        button.frame = CGRect(x: 0, y: 0, width: tableView.frame.width - 30, height: 50)
-        button.setTitle("Open", for: .normal)
-        button.backgroundColor = .black
-        button.addTarget(self, action: Selector(("SegueToEvents:")), for: UIControl.Event.touchUpInside)
-        view.addSubview(button)
-        return view
-    }
-    func SegueToEvents(sender: AnyObject){
-        print("Hi")
-    }*/
-    
     func appendActivity(key: String, value: Int){
         
         let dateFormatter = DateFormatter()
