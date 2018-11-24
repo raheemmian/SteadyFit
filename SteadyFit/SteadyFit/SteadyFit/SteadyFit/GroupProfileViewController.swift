@@ -45,6 +45,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     var myUserID = (Auth.auth().currentUser?.uid)!
     var groupTableEventID = [String]()
     var isAddEvent: Bool = false
+    var isInviteUser: Bool = false
     var isUserInGroup: Bool = false
     var userList = [String]()
     var groupInfo: GroupInfo?
@@ -143,7 +144,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if isAddEvent == false {
+        if isAddEvent == false && isInviteUser == false{
             var indexPath = self.eventTableView.indexPathForSelectedRow!
             if(indexPath.section == 0){
                 let destination = segue.destination as! GroupMemberListTableViewController
@@ -157,10 +158,13 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
                 destination.eventId = groupTableEventID[indexPath.row]
             }
         }
-        else{
+        else if isAddEvent == true{
             let destination = segue.destination as! AddEventViewController
             destination.groupID = self.groupId
             isAddEvent = false
+        }
+        else if isInviteUser == true {
+            isInviteUser = false
         }
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -171,17 +175,34 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         label.text = groupTableSections[section]
         label.frame = CGRect(x: 10, y: 0, width: 100, height: 22)
         headerView.addSubview(label)
-        if section == 1 && isUserInGroup == true {
-            let image = UIImage(named: "plus")
+        if /*section == 1 &&*/ isUserInGroup == true {
+           // let image = UIImage(named: "plus")
             let button = UIButton()
-            button.frame = CGRect(x: view.bounds.maxX - 25, y: 0, width: 22, height: 22)
-            button.setImage(image, for: .normal)
+            if section == 0 {
+                button.frame = CGRect(x: view.bounds.maxX - 55, y: 0, width: 50, height: 22)
+                button.setTitle("Invite", for: .normal)
+                button.setTitleColor(.black, for: .normal)
+                button.addTarget(self, action: #selector(inviteButtonPressed), for: .touchUpInside)
+            }
+            else {
+                // button.frame = CGRect(x: view.bounds.maxX - 25, y: 0, width: 22, height: 22)
+                //  button.setImage(image, for: .normal)
+                button.frame = CGRect(x: view.bounds.maxX - 105, y: 0, width: 100, height: 22)
+                button.setTitle("Add Event", for: .normal)
+                button.setTitleColor(.black, for: .normal)
+                button.addTarget(self, action: #selector(addEventsButtonPressed), for: .touchUpInside)
+            }
             button.layer.borderWidth = 1
             button.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-            button.addTarget(self, action: #selector(addEventsButtonPressed), for: .touchUpInside)
+            button.showsTouchWhenHighlighted = true
             headerView.addSubview(button)
         }
         return headerView
+    }
+    @objc func inviteButtonPressed(sender: UIButton!){
+        /*performs segue when the invite button is pressed*/
+        isInviteUser = true
+        performSegue(withIdentifier: "inviteFriends", sender: self)
     }
     @objc func addEventsButtonPressed(sender: UIButton!){
         /*performs a segue to the add event page once the button to add an event is pressed*/
@@ -191,7 +212,6 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 22
     }
-    
 
     func joinThisGroup() {
         let currentuserID = Auth.auth().currentUser?.uid
