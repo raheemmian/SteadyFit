@@ -42,8 +42,10 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     var groupId : String!
     var groupTableSections = ["Members", "Events"]
     var groupTableContents = [["More"], []]
+    var myUserID = (Auth.auth().currentUser?.uid)!
     var groupTableEventID = [String]()
-    var isAddEvent: Bool = false;
+    var isAddEvent: Bool = false
+    var isUserInGroup: Bool = false
     var userList = [String]()
     var groupInfo: GroupInfo?
     
@@ -51,6 +53,16 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         super.viewDidLoad()
         eventTableView.delegate = self
         eventTableView.dataSource = self
+        // to check if the user is in the group
+        refHandle = ref?.child("Users").child(myUserID).child("Groups").observe(.value, with: { (snapshot) in
+            if(snapshot.childrenCount > 0){
+                for groups in snapshot.children.allObjects as! [DataSnapshot] {
+                    if groups.key == self.groupId {
+                        self.isUserInGroup = true
+                    }
+                }
+            }
+        })
         
         refHandle = self.ref?.child("Groups").child(groupId).observe(DataEventType.value, with: { (snapshot) in
             self.groupTableContents[1].removeAll()
@@ -159,7 +171,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         label.text = groupTableSections[section]
         label.frame = CGRect(x: 10, y: 0, width: 100, height: 22)
         headerView.addSubview(label)
-        if section == 1{
+        if section == 1 && isUserInGroup == true {
             let image = UIImage(named: "plus")
             let button = UIButton()
             button.frame = CGRect(x: view.bounds.maxX - 25, y: 0, width: 22, height: 22)
