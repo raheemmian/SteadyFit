@@ -41,6 +41,7 @@
 		B5BE5D222190C8B7009290C9 /* GroupInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE5D212190C8B7009290C9 /* GroupInterfaceTest.swift */; };
 		B5BE5D3E2190C9CB009290C9 /* FriendsInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE5D3D2190C9CB009290C9 /* FriendsInterfaceTest.swift */; };
 		B5BE5D4C2190CA6C009290C9 /* SettingInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE5D4B2190CA6C009290C9 /* SettingInterfaceTest.swift */; };
+		B5C24E9E21A905C100170192 /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C24E9D21A905C100170192 /* InviteFriendsViewController.swift */; };
 		B5F54D21218E48D000D0214D /* UserEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D20218E48D000D0214D /* UserEventsViewController.swift */; };
 		B5F54D23218E663400D0214D /* HistogramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D22218E663400D0214D /* HistogramViewController.swift */; };
 		B5F54D25218E6D5F00D0214D /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D24218E6D5F00D0214D /* FriendProfileViewController.swift */; };
@@ -213,6 +214,7 @@
 		B5BE5D492190CA6C009290C9 /* SettingInterfaceTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SettingInterfaceTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BE5D4B2190CA6C009290C9 /* SettingInterfaceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingInterfaceTest.swift; sourceTree = "<group>"; };
 		B5BE5D4D2190CA6C009290C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5C24E9D21A905C100170192 /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		B5F54D20218E48D000D0214D /* UserEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventsViewController.swift; sourceTree = "<group>"; };
 		B5F54D22218E663400D0214D /* HistogramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistogramViewController.swift; sourceTree = "<group>"; };
 		B5F54D24218E6D5F00D0214D /* FriendProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
@@ -437,24 +439,25 @@
 			children = (
 				12A6E645218D0B3B003ED258 /* Model */,
 				B5727A64217FEDED00AF9005 /* AppDelegate.swift */,
-				125AAD4C218D9A1800CC5FCD /* LoginViewController.swift */,
-				D44A89A621968CF200D760CE /* InitUserInfoViewController.swift */,
 				80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */,
 				B53F5B72219D48BC00A17265 /* AddEventViewController.swift */,
-				B5727A66217FEDED00AF9005 /* HomeViewController.swift */,
-				B5F54D22218E663400D0214D /* HistogramViewController.swift */,
 				60E6AD2921A0F15B00429419 /* BarChartActivityTracker.swift */,
-				B5114C3521A23474004E2CED /* ParticipantsViewController.swift */,
-				B5F54D20218E48D000D0214D /* UserEventsViewController.swift */,
-				B5727A68217FEDED00AF9005 /* GroupsViewController.swift */,
-				D4B0F1F52188D29E0060EA22 /* GroupProfileViewController.swift */,
-				D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */,
-				D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */,
+				D4CB0276218F94D500503EC3 /* ChatsViewController.swift */,
 				B5114C3721A33C06004E2CED /* EmergencyButtonViewController.swift */,
 				B5727A9A217FF71600AF9005 /* FriendsViewController.swift */,
 				B5F54D24218E6D5F00D0214D /* FriendProfileViewController.swift */,
-				D4CB0276218F94D500503EC3 /* ChatsViewController.swift */,
+				B5727A68217FEDED00AF9005 /* GroupsViewController.swift */,
+				D4B0F1F52188D29E0060EA22 /* GroupProfileViewController.swift */,
 				D41383E221902B950076031B /* GroupChatTableViewController.swift */,
+				D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */,
+				B5F54D22218E663400D0214D /* HistogramViewController.swift */,
+				B5727A66217FEDED00AF9005 /* HomeViewController.swift */,
+				D44A89A621968CF200D760CE /* InitUserInfoViewController.swift */,
+				B5C24E9D21A905C100170192 /* InviteFriendsViewController.swift */,
+				125AAD4C218D9A1800CC5FCD /* LoginViewController.swift */,
+				B5114C3521A23474004E2CED /* ParticipantsViewController.swift */,
+				B5F54D20218E48D000D0214D /* UserEventsViewController.swift */,
+				D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */,
 				B5F54D26218E75D200D0214D /* SettingsViewController.swift */,
 				B5F54D28218E85F500D0214D /* SettingsTableViewCell.swift */,
 				D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */,
@@ -1160,6 +1163,7 @@
 				B5114C3821A33C06004E2CED /* EmergencyButtonViewController.swift in Sources */,
 				60E6AD2421A0EE9800429419 /* GroupEvents.swift in Sources */,
 				125AAD4D218D9A1800CC5FCD /* LoginViewController.swift in Sources */,
+				B5C24E9E21A905C100170192 /* InviteFriendsViewController.swift in Sources */,
 				D4CB0277218F94D500503EC3 /* ChatsViewController.swift in Sources */,
 				B5F54D23218E663400D0214D /* HistogramViewController.swift in Sources */,
 				B5F54D21218E48D000D0214D /* UserEventsViewController.swift in Sources */,

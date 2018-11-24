@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uq-t7-cGg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uq-t7-cGg">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -235,6 +235,7 @@
                         <segue destination="BiE-8c-2XE" kind="show" identifier="Members" id="Xkd-V0-TXE"/>
                         <segue destination="ati-0J-zIT" kind="show" identifier="Events" id="mw7-hv-VFr"/>
                         <segue destination="a7v-Zh-tzd" kind="show" identifier="AddEvents" id="Wxt-hf-IOs"/>
+                        <segue destination="Jzk-fl-oSp" kind="show" identifier="inviteFriends" id="M1m-Xu-a8i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19y-gP-U2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,7 +248,7 @@
                 <viewControllerPlaceholder storyboardName="EventPage" id="ati-0J-zIT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQp-wx-HOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4338" y="391"/>
+            <point key="canvasLocation" x="4042" y="447"/>
         </scene>
         <!--Add Event-->
         <scene sceneID="ZQN-9z-XMw">
@@ -354,6 +355,46 @@
             </objects>
             <point key="canvasLocation" x="4273.913043478261" y="900.66964285714278"/>
         </scene>
+        <!--Invite-->
+        <scene sceneID="pvi-4W-4Ig">
+            <objects>
+                <viewController title="Invite" id="Jzk-fl-oSp" customClass="InviteFriendsViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Abr-e2-sqv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1UT-o6-jby">
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableCell" id="bct-JB-aNP">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bct-JB-aNP" id="h2H-nt-nsQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JNJ-PI-lDD" firstAttribute="trailing" secondItem="1UT-o6-jby" secondAttribute="trailing" id="ESH-pE-8eJ"/>
+                            <constraint firstItem="1UT-o6-jby" firstAttribute="top" secondItem="JNJ-PI-lDD" secondAttribute="top" id="LiZ-pk-PV7"/>
+                            <constraint firstItem="JNJ-PI-lDD" firstAttribute="bottom" secondItem="1UT-o6-jby" secondAttribute="bottom" id="i62-ZQ-EWw"/>
+                            <constraint firstItem="1UT-o6-jby" firstAttribute="leading" secondItem="JNJ-PI-lDD" secondAttribute="leading" id="l5W-sZ-ZgO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JNJ-PI-lDD"/>
+                    </view>
+                    <connections>
+                        <outlet property="inviteUserTableView" destination="1UT-o6-jby" id="fcp-c6-cHf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UFV-LI-jJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3551" y="-698"/>
+        </scene>
         <!--Group Member List Table View Controller-->
         <scene sceneID="s70-nr-USs">
             <objects>
@@ -384,7 +425,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRY-8V-zQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4388" y="-94"/>
+            <point key="canvasLocation" x="4520" y="80"/>
         </scene>
         <!--Profile-->
         <scene sceneID="iPF-TR-slb">
@@ -392,7 +433,7 @@
                 <viewControllerPlaceholder storyboardName="Profile" id="8cW-ov-Gi3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74e-2I-5lj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5085" y="-82"/>
+            <point key="canvasLocation" x="5525" y="80"/>
         </scene>
     </scenes>
     <resources>
