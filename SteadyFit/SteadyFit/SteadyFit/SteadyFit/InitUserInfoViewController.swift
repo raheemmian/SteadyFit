@@ -122,7 +122,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
         let currentUserID = (Auth.auth().currentUser?.uid)!
         
         if userNameTextField.text != nil && provinceTextField.text != nil && cityTextField.text != nil && activityLevelTextField.text != nil && birthDateTextField.text != nil && genderTextField.text != nil && emergencyContactTextField.text != nil && personalBioTextView.text != nil &&
-            userNameTextField.text != "user name" && provinceTextField.text != "province" && cityTextField.text != "city" && activityLevelTextField.text != "activity level" && birthDateTextField.text != "birth date" && genderTextField.text != "gender" && emergencyContactTextField.text != "emergency contact number" && personalBioTextView.text != "personal bio"{
+            userNameTextField.text != "Full name" && provinceTextField.text != "Province" && cityTextField.text != "City" && activityLevelTextField.text != "Activity level" && birthDateTextField.text != "Birth date" && genderTextField.text != "Gender" && emergencyContactTextField.text != "Emergency contact number" && personalBioTextView.text != "Personal bio"{
             errorMessageLabel.text = ""
             let post = ["/Users/\(currentUserID)/name": userNameTextField.text ?? "no name",
                         "/Users/\(currentUserID)/province": provinceTextField.text ?? "BC",

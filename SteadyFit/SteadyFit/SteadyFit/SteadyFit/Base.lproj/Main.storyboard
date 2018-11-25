@@ -85,43 +85,43 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0VX-pI-dtL" userLabel="userNameTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0VX-pI-dtL" userLabel="userNameTextField">
                                         <rect key="frame" x="0.0" y="60.666666666666657" width="315" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="province" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCf-0O-TPH" userLabel="provinceTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Province" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TCf-0O-TPH" userLabel="provinceTextField">
                                         <rect key="frame" x="0.0" y="110.66666666666666" width="315" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="city" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RzP-TL-Slv" userLabel="cityTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RzP-TL-Slv" userLabel="cityTextField">
                                         <rect key="frame" x="0.0" y="160.66666666666669" width="315" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="activity level" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDp-t5-AcE" userLabel="activityLevelTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Activity Level" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDp-t5-AcE" userLabel="activityLevelTextField">
                                         <rect key="frame" x="0.0" y="210.66666666666669" width="315" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="birth date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UIw-gs-e6P" userLabel="birthDateTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birth Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UIw-gs-e6P" userLabel="birthDateTextField">
                                         <rect key="frame" x="0.0" y="260.66666666666669" width="315" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="arZ-Ca-Xxm" userLabel="genderTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="arZ-Ca-Xxm" userLabel="genderTextField">
                                         <rect key="frame" x="0.0" y="310.66666666666669" width="315" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="emergency contact number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="63M-69-R5u" userLabel="emergencyContactTextField">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Emergency Contact Number" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="63M-69-R5u" userLabel="emergencyContactTextField">
                                         <rect key="frame" x="0.0" y="360.66666666666669" width="315" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -284,28 +284,27 @@
                                     <action selector="signInbutton:" destination="sqO-iD-YmF" eventType="touchUpInside" id="aAm-Nn-Jut"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJG-gl-W9I">
-                                <rect key="frame" x="50" y="228.66666666666666" width="275" height="20.333333333333343"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJG-gl-W9I">
+                                <rect key="frame" x="30" y="232.66666666666666" width="315" height="19.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1490499377" green="0.54758834840000004" blue="0.98500114679999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="AqR-Xt-XcJ" firstAttribute="trailing" secondItem="dJG-gl-W9I" secondAttribute="trailing" constant="30" id="3KO-Nm-l7o"/>
                             <constraint firstItem="AqR-Xt-XcJ" firstAttribute="trailing" secondItem="hQh-sU-FEd" secondAttribute="trailing" constant="30" id="DJH-2D-jKZ"/>
                             <constraint firstItem="AqR-Xt-XcJ" firstAttribute="trailing" secondItem="QqO-BA-6Qb" secondAttribute="trailing" constant="50" id="G5v-dZ-p5K"/>
                             <constraint firstItem="tES-sM-5Nw" firstAttribute="leading" secondItem="AqR-Xt-XcJ" secondAttribute="leading" constant="40" id="IcV-iY-DJj"/>
-                            <constraint firstItem="dJG-gl-W9I" firstAttribute="leading" secondItem="AqR-Xt-XcJ" secondAttribute="leading" constant="50" id="LSS-aG-8Df"/>
                             <constraint firstItem="QqO-BA-6Qb" firstAttribute="leading" secondItem="AqR-Xt-XcJ" secondAttribute="leading" constant="50" id="QAl-I4-8vp"/>
-                            <constraint firstItem="hQh-sU-FEd" firstAttribute="top" secondItem="dJG-gl-W9I" secondAttribute="bottom" constant="23" id="Qwy-SN-8aJ"/>
                             <constraint firstItem="tES-sM-5Nw" firstAttribute="top" secondItem="AqR-Xt-XcJ" secondAttribute="top" constant="50" id="SCp-IE-1Jd"/>
                             <constraint firstItem="AqR-Xt-XcJ" firstAttribute="trailing" secondItem="tES-sM-5Nw" secondAttribute="trailing" constant="40" id="ZN6-1W-yLp"/>
+                            <constraint firstItem="dJG-gl-W9I" firstAttribute="leading" secondItem="AqR-Xt-XcJ" secondAttribute="leading" constant="30" id="fKj-qd-zGW"/>
                             <constraint firstItem="hQh-sU-FEd" firstAttribute="leading" secondItem="AqR-Xt-XcJ" secondAttribute="leading" constant="30" id="ijS-3G-ru1"/>
+                            <constraint firstItem="hQh-sU-FEd" firstAttribute="top" secondItem="dJG-gl-W9I" secondAttribute="bottom" constant="20" id="iov-1F-Urs"/>
                             <constraint firstItem="QqO-BA-6Qb" firstAttribute="top" secondItem="hQh-sU-FEd" secondAttribute="bottom" constant="30" id="ivC-mt-NSF"/>
-                            <constraint firstItem="AqR-Xt-XcJ" firstAttribute="trailing" secondItem="dJG-gl-W9I" secondAttribute="trailing" constant="50" id="pTp-nE-DK4"/>
                             <constraint firstItem="hQh-sU-FEd" firstAttribute="top" secondItem="tES-sM-5Nw" secondAttribute="bottom" constant="150" id="tjl-st-d1c"/>
-                            <constraint firstItem="dJG-gl-W9I" firstAttribute="centerX" secondItem="AqR-Xt-XcJ" secondAttribute="centerX" id="vK8-fu-8Hi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AqR-Xt-XcJ"/>
                     </view>
@@ -327,7 +326,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2qb-Q8-DhT"/>
+        <segue reference="e5L-t9-FOy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96764737369999998" green="1" blue="0.93078654999999999" alpha="1" colorSpace="deviceRGB"/>
 </document>

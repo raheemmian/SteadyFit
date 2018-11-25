@@ -59,6 +59,8 @@
 		D4C471AF2190F087003C182B /* MessageLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C471AD2190F086003C182B /* MessageLine.swift */; };
 		D4C471B02190F087003C182B /* ChatMessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C471AE2190F087003C182B /* ChatMessageCollectionViewCell.swift */; };
 		D4CB0277218F94D500503EC3 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB0276218F94D500503EC3 /* ChatsViewController.swift */; };
+		D4CCACCD21AA2D4F00E6B829 /* PendingRequest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CCACCC21AA2D4F00E6B829 /* PendingRequest.storyboard */; };
+		D4CCACCF21AA2D8D00E6B829 /* PendingRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCACCE21AA2D8D00E6B829 /* PendingRequestViewController.swift */; };
 		D4F05D07218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */; };
 		D4F0EEFD218EDEC60053C1A8 /* SettingsEditiorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */; };
 		F8C3D1F1CFDE408C81CE4DA4 /* Pods_SteadyFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524F9EF2FBCDEC79B4A3191F /* Pods_SteadyFit.framework */; };
@@ -245,6 +247,8 @@
 		D4C471AD2190F086003C182B /* MessageLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLine.swift; sourceTree = "<group>"; };
 		D4C471AE2190F087003C182B /* ChatMessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCollectionViewCell.swift; sourceTree = "<group>"; };
 		D4CB0276218F94D500503EC3 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		D4CCACCC21AA2D4F00E6B829 /* PendingRequest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PendingRequest.storyboard; sourceTree = "<group>"; };
+		D4CCACCE21AA2D8D00E6B829 /* PendingRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestViewController.swift; sourceTree = "<group>"; };
 		D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberListTableViewController.swift; sourceTree = "<group>"; };
 		D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEditiorViewController.swift; sourceTree = "<group>"; };
 		FDB5663321A0E5560050C7B6 /* SettingsEmergencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEmergencyViewController.swift; sourceTree = "<group>"; };
@@ -469,6 +473,8 @@
 				B5727A6A217FEDED00AF9005 /* Main.storyboard */,
 				123B54A0218C1E7200646CEB /* Home.storyboard */,
 				123B549E218C17FC00646CEB /* Groups.storyboard */,
+				D4CCACCC21AA2D4F00E6B829 /* PendingRequest.storyboard */,
+				D4CCACCE21AA2D8D00E6B829 /* PendingRequestViewController.swift */,
 				12D1D507219589410051633F /* Profile.storyboard */,
 				12D1D5052195874B0051633F /* EventPage.storyboard */,
 				123B54A2218C1EA500646CEB /* Friends.storyboard */,
@@ -956,6 +962,7 @@
 				123B549F218C17FC00646CEB /* Groups.storyboard in Resources */,
 				12D1D50A21960B120051633F /* GoogleService-Info.plist in Resources */,
 				12A6E64B218D7442003ED258 /* Chats.storyboard in Resources */,
+				D4CCACCD21AA2D4F00E6B829 /* PendingRequest.storyboard in Resources */,
 				123B54A1218C1E7200646CEB /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1175,6 +1182,7 @@
 				60E6AD2821A0F13F00429419 /* BarEntry.swift in Sources */,
 				B5114C3621A23474004E2CED /* ParticipantsViewController.swift in Sources */,
 				D4A9CA4E219E54FB008E4A90 /* GroupInfo.swift in Sources */,
+				D4CCACCF21AA2D8D00E6B829 /* PendingRequestViewController.swift in Sources */,
 				12A6E647218D0BE2003ED258 /* UserGroup.swift in Sources */,
 				60E6AD2621A0EEC100429419 /* GroupUser.swift in Sources */,
 				D4C471B02190F087003C182B /* ChatMessageCollectionViewCell.swift in Sources */,

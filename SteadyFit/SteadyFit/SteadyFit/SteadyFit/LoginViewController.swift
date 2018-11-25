@@ -6,8 +6,12 @@
 //  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Modified by Raheem : added error message when the login fails
-//  This view controller is for email authetication to login into the application
 //
+//  Modified by Dickson : added error message when register fails, reset errorMessage whenever segmentedControl state is changed.
+//
+//  LoginViewController.swift is for email authetication to login or regitster on the application.
+//
+
 
 import UIKit
 import FirebaseAuth
@@ -34,50 +38,51 @@ class LoginViewController: UIViewController {
     @IBAction func SignInSelectorChanged(_ sender: UISegmentedControl) {
         isSignIn = !isSignIn
         if isSignIn {
+            self.errorMessage.isHidden = true
             btnSignIn.setTitle("Sign In", for: .normal)
         }
         else{
+            self.errorMessage.isHidden = true
             btnSignIn.setTitle("Register", for: .normal)
         }
     }
     
     @IBAction func signInButtonClicked(_ sender: UIButton) {
-        if let email = txtEmail.text, let pass = txtPassword.text{
-            if isSignIn{ // sign in user
+        if let email = txtEmail.text, let pass = txtPassword.text {
+            // Sign in
+            if isSignIn {
                 Auth.auth().signIn(withEmail: email, password: pass, completion: { (user, error) in
                     if user != nil {
-                        // user is found, go to home screen
+                        // Login successfully, go to home screen
                         self.performSegue(withIdentifier: "GoToHome", sender: self)
                     }
                     else{
-                        //error, no existing user
+                        // Login error occurs, prompt error message
                         self.errorMessage.isHidden = false
                         self.errorMessage.text = "Incorrect email or password"
-                        
                     }
-                    
                 })
             }
-            else{ // register user
+            // Register user
+            else{
                 Auth.auth().createUser(withEmail: email, password: pass) { (authResult, error) in
-                    // ...
-                    guard let u = authResult?.user else { return /*error, user is nil*/}
+                    // Check if email is existing account or not
+                    guard let u = authResult?.user else {
+                        self.errorMessage.text = "This email is already a SteadyFit account.\nPlease use a non-registered email."
+                        self.errorMessage.isHidden = false
+                        return
+                    }
                     
-                    //TO DO for version 2: create user in firebase database
                     let newUserID = (Auth.auth().currentUser?.uid)!
-
-//                    let key:String = (self.ref!.child("Users/\(newUserID)").key)!
-
                     let post = ["email": email,
                                 "password": pass] as [String : Any]
                     let childUpdates = ["/Users/\(newUserID)": post]
                     self.ref?.updateChildValues(childUpdates)
-
-                    // lead to next UI for inputting user info
+                    
+                    // Lead to next UI for inputting user info
                     self.performSegue(withIdentifier: "showInitUserInfo", sender: self)
                 }
             }
         }
     }
-
 }
