@@ -39,7 +39,6 @@ class AddActivityEventViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     let datePicker = UIDatePicker()
     let durationPicker = UIDatePicker()
     
