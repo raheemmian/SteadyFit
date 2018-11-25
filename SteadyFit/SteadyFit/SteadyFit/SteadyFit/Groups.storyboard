@@ -237,6 +237,7 @@
                         <segue destination="ati-0J-zIT" kind="show" identifier="Events" id="mw7-hv-VFr"/>
                         <segue destination="a7v-Zh-tzd" kind="show" identifier="AddEvents" id="Wxt-hf-IOs"/>
                         <segue destination="Jzk-fl-oSp" kind="show" identifier="inviteFriends" id="M1m-Xu-a8i"/>
+                        <segue destination="al8-NT-c1Z" kind="show" identifier="Requests" id="7J1-sh-rpB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19y-gP-U2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -364,36 +365,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7N-Ee-teu">
-                                <rect key="frame" x="0.0" y="461.5" width="414" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="86q-Mv-3eK"/>
-                                </constraints>
-                                <state key="normal" title="accept"/>
-                                <connections>
-                                    <action selector="acceptButtonAction:" destination="al8-NT-c1Z" eventType="touchUpInside" id="wVk-iZ-OJ7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akT-2L-z9p">
-                                <rect key="frame" x="0.0" y="491.5" width="414" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="2lq-qK-c5W"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akT-2L-z9p">
+                                <rect key="frame" x="107" y="580" width="200" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="decline"/>
                                 <connections>
                                     <action selector="declineButtonAction:" destination="al8-NT-c1Z" eventType="touchUpInside" id="fSe-NE-pj5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7N-Ee-teu">
+                                <rect key="frame" x="107" y="256" width="200" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="accept"/>
+                                <connections>
+                                    <action selector="acceptButtonAction:" destination="al8-NT-c1Z" eventType="touchUpInside" id="wVk-iZ-OJ7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="nzK-MG-hiO" firstAttribute="trailing" secondItem="P7N-Ee-teu" secondAttribute="trailing" id="029-pS-npV"/>
-                            <constraint firstItem="P7N-Ee-teu" firstAttribute="leading" secondItem="nzK-MG-hiO" secondAttribute="leading" id="1c0-fq-MmU"/>
-                            <constraint firstItem="P7N-Ee-teu" firstAttribute="centerY" secondItem="nzK-MG-hiO" secondAttribute="centerY" id="Ak6-Ch-0Ez"/>
-                            <constraint firstItem="akT-2L-z9p" firstAttribute="top" secondItem="P7N-Ee-teu" secondAttribute="bottom" id="Ltl-NN-Aph"/>
-                            <constraint firstItem="nzK-MG-hiO" firstAttribute="trailing" secondItem="akT-2L-z9p" secondAttribute="trailing" id="djf-BB-7Dp"/>
-                            <constraint firstItem="akT-2L-z9p" firstAttribute="leading" secondItem="nzK-MG-hiO" secondAttribute="leading" id="f09-fw-M5G"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nzK-MG-hiO"/>
                     </view>
                     <connections>
@@ -489,4 +478,7 @@
     <resources>
         <image name="group" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7J1-sh-rpB"/>
+    </inferredMetricsTieBreakers>
 </document>
