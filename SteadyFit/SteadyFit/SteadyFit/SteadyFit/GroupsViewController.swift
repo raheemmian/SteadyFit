@@ -33,7 +33,8 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
     var restoftheGroups = [UserGroup]()
     var p: Int!
     var sectionForGroup = ["Group Invites", "Groups"]
-    var groupInviteArr = ["Group A", "Group B"]
+    //var groupInviteArr = ["Group A", "Group B"]
+    var groupInviteArr = [String]()
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
     var groupsHandle:DatabaseHandle?
@@ -134,19 +135,33 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
         // End of Database initialization
         p = 0
     }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionForGroup.count
-    }
+    var isinviteArrAvailableNumberOfRows: Bool = false
+    var isinviteArrAvailableLabel: Bool = false
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if p == 0 && groupInviteArr.count > 0{
+            return 2
+        }
+        else {
+            return 1
+        }
+       
+    }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionForGroup[section]
+        if groupInviteArr.count > 0 && p == 0{
+            return sectionForGroup[section]
+        }
+        else {
+           return sectionForGroup[1]
+        }
+      
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-           return groupInviteArr.count
+        if section == 0 && p == 0 && groupInviteArr.count > 0{
+            return groupInviteArr.count
         }
-        else {
+       else {
             var returnValue = 0
             switch (p) {
             case 0:
@@ -165,7 +180,7 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = groupTableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && p == 0 && groupInviteArr.count > 0{
             cell.textLabel?.text = groupInviteArr[indexPath.row]
         }
         else {
@@ -184,7 +199,7 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
+        if  indexPath.section == 0 && p == 0 && groupInviteArr.count > 0 {
             performSegue(withIdentifier: "invitePage", sender: self)
         }
         else {
@@ -195,7 +210,11 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var indexPath = self.groupTableView.indexPathForSelectedRow!
-        if indexPath.section == 1 {
+        if indexPath.section == 0 && p == 0 && groupInviteArr.count > 0 {
+            let destination = segue.destination as! AcceptInviteViewController
+            destination.navigationItem.title = groupInviteArr[indexPath.row]
+        }
+        else {
             switch (p) {
             case 0:
                 let destination = segue.destination as! GroupProfileViewController
@@ -210,10 +229,6 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
             default:
                 break
             }
-        }
-        else {
-            let destination = segue.destination as! AcceptInviteViewController
-            destination.navigationItem.title = groupInviteArr[indexPath.row]
         }
     }
 }

@@ -12,6 +12,7 @@ class AcceptInviteViewController: UIViewController {
 
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
+    var groupID: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         acceptButton.setTitle("Accept", for: .normal)
@@ -22,8 +23,13 @@ class AcceptInviteViewController: UIViewController {
         declineButton.backgroundColor = UIColor.red
     }
     @IBAction func acceptButtonAction(_ sender: Any) {
+        //add user as a participant to the group in the database
+        //remove user from the invitation list
+        navigationController?.popViewController(animated: true)
     }
     @IBAction func declineButtonAction(_ sender: Any) {
+        //remove user from the invitation list
+        navigationController?.popViewController(animated: true)
     }
     
 }
