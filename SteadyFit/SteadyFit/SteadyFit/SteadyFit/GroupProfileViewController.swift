@@ -40,8 +40,9 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
     var groupId : String!
-    var groupTableSections = ["Members", "Events"]
-    var groupTableContents = [["More"], []]
+    var groupTableSections = ["Requests", "Members", "Events"]
+    var userRequestToJoin = ["User A", "User B"]
+    var groupTableContents = [["User A"],["More"], []]
     var myUserID = (Auth.auth().currentUser?.uid)!
     var groupTableEventID = [String]()
     var isAddEvent: Bool = false
@@ -66,7 +67,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         })
         
         refHandle = self.ref?.child("Groups").child(groupId).observe(DataEventType.value, with: { (snapshot) in
-            self.groupTableContents[1].removeAll()
+            self.groupTableContents[2].removeAll()
             if let groupInfo = snapshot.value as? [String: AnyObject]{
                 let myGroupInfo = GroupInfo()
                 myGroupInfo.activityLevel = groupInfo["activitylevel"] as?String
@@ -84,7 +85,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
                 }
                 
                 for events in myGroupInfo.events{
-                    self.groupTableContents[1].append((events)!)
+                    self.groupTableContents[2].append((events)!)
                 }
                 
                 myGroupInfo.groupType = groupInfo["grouptype"] as?String
@@ -121,15 +122,17 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return groupTableSections.count
+            return groupTableSections.count
+      
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return groupTableSections[section]
+            return groupTableSections[section]
+ 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupTableContents[section].count
+            return groupTableContents[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -146,16 +149,20 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if isAddEvent == false && isInviteUser == false{
             var indexPath = self.eventTableView.indexPathForSelectedRow!
-            if(indexPath.section == 0){
+            if(indexPath.section == 1){
                 let destination = segue.destination as! GroupMemberListTableViewController
                 destination.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
                 destination.memberList = userList
             }
-            else{
+            else if indexPath.section == 2{
                 /*sends event id to the user events view controller so we can see which event to display*/
                 let destination = segue.destination as! UserEventsViewController
                 destination.navigationItem.title = groupTableContents[indexPath.section][indexPath.row]
                 destination.eventId = groupTableEventID[indexPath.row]
+            }
+            else {
+                let destination = segue.destination as! AcceptInviteViewController
+                destination.navigationItem.title = groupTableContents[0][indexPath.row]
             }
         }
         else if isAddEvent == true{
@@ -175,28 +182,30 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         label.text = groupTableSections[section]
         label.frame = CGRect(x: 10, y: 0, width: 100, height: 22)
         headerView.addSubview(label)
-        if /*section == 1 &&*/ isUserInGroup == true {
-           // let image = UIImage(named: "plus")
-            let button = UIButton()
-            if section == 0 {
-                button.frame = CGRect(x: view.bounds.maxX - 55, y: 0, width: 50, height: 22)
-                button.setTitle("Invite", for: .normal)
-                button.setTitleColor(.black, for: .normal)
-                button.addTarget(self, action: #selector(inviteButtonPressed), for: .touchUpInside)
+       if section != 0 {
+            if /*section == 1 &&*/ isUserInGroup == true {
+                // let image = UIImage(named: "plus")
+                let button = UIButton()
+                if section == 1 {
+                    button.frame = CGRect(x: view.bounds.maxX - 55, y: 0, width: 50, height: 22)
+                    button.setTitle("Invite", for: .normal)
+                    button.setTitleColor(.black, for: .normal)
+                    button.addTarget(self, action: #selector(inviteButtonPressed), for: .touchUpInside)
+                }
+                else {
+                    // button.frame = CGRect(x: view.bounds.maxX - 25, y: 0, width: 22, height: 22)
+                    //  button.setImage(image, for: .normal)
+                    button.frame = CGRect(x: view.bounds.maxX - 105, y: 0, width: 100, height: 22)
+                    button.setTitle("Add Event", for: .normal)
+                    button.setTitleColor(.black, for: .normal)
+                    button.addTarget(self, action: #selector(addEventsButtonPressed), for: .touchUpInside)
+                }
+                button.layer.borderWidth = 1
+                button.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+                button.showsTouchWhenHighlighted = true
+                headerView.addSubview(button)
             }
-            else {
-                // button.frame = CGRect(x: view.bounds.maxX - 25, y: 0, width: 22, height: 22)
-                //  button.setImage(image, for: .normal)
-                button.frame = CGRect(x: view.bounds.maxX - 105, y: 0, width: 100, height: 22)
-                button.setTitle("Add Event", for: .normal)
-                button.setTitleColor(.black, for: .normal)
-                button.addTarget(self, action: #selector(addEventsButtonPressed), for: .touchUpInside)
-            }
-            button.layer.borderWidth = 1
-            button.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-            button.showsTouchWhenHighlighted = true
-            headerView.addSubview(button)
-        }
+       }
         return headerView
     }
     @objc func inviteButtonPressed(sender: UIButton!){

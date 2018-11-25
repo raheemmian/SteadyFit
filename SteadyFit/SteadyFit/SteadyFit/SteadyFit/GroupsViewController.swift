@@ -32,8 +32,9 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
     var sameActivityLevelGroups = [UserGroup]()
     var restoftheGroups = [UserGroup]()
     var p: Int!
-    
-    
+    var sectionForGroup = ["Group Invites", "Groups"]
+    //var groupInviteArr = ["Group A", "Group B"]
+    var groupInviteArr = [String]()
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
     var groupsHandle:DatabaseHandle?
@@ -46,9 +47,6 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
         groupTableView.reloadData()
     }
 
-    @IBAction func emergencyButton(_ sender: Any) {
-        sendText()
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         groupTableView.tableFooterView = UIView(frame: .zero)
@@ -137,57 +135,100 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
         // End of Database initialization
         p = 0
     }
+    var isinviteArrAvailableNumberOfRows: Bool = false
+    var isinviteArrAvailableLabel: Bool = false
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if p == 0 && groupInviteArr.count > 0{
+            return 2
+        }
+        else {
+            return 1
+        }
+       
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if groupInviteArr.count > 0 && p == 0{
+            return sectionForGroup[section]
+        }
+        else {
+           return sectionForGroup[1]
+        }
+      
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var returnValue = 0
-        switch (p) {
-        case 0:
-            returnValue = queryMyGroups.count
-            break
-        case 1:
-            returnValue = suggestedGroups.count
-            break
-        default:
-            break
+        if section == 0 && p == 0 && groupInviteArr.count > 0{
+            return groupInviteArr.count
         }
-        return returnValue
+       else {
+            var returnValue = 0
+            switch (p) {
+            case 0:
+                returnValue = queryMyGroups.count
+                break
+            case 1:
+                returnValue = suggestedGroups.count
+                break
+            default:
+                break
+            }
+            return returnValue
+        }
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = groupTableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        switch (p) {
-        case 0:
-            cell.textLabel?.text = queryMyGroups[indexPath.row].name
-            break
-        case 1:
-            cell.textLabel?.text = suggestedGroups[indexPath.row].name
-            break
-        default:
-            break
+        if indexPath.section == 0 && p == 0 && groupInviteArr.count > 0{
+            cell.textLabel?.text = groupInviteArr[indexPath.row]
+        }
+        else {
+            switch (p) {
+            case 0:
+                cell.textLabel?.text = queryMyGroups[indexPath.row].name
+                break
+            case 1:
+                cell.textLabel?.text = suggestedGroups[indexPath.row].name
+                break
+            default:
+                break
+            }
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showGroupDetail", sender: self)
+        if  indexPath.section == 0 && p == 0 && groupInviteArr.count > 0 {
+            performSegue(withIdentifier: "invitePage", sender: self)
+        }
+        else {
+            performSegue(withIdentifier: "showGroupDetail", sender: self)
+        }
         groupTableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var indexPath = self.groupTableView.indexPathForSelectedRow!
-        switch (p) {
-        case 0:
-            let destination = segue.destination as! GroupProfileViewController
-            destination.navigationItem.title = queryMyGroups[indexPath.row].name
-            destination.groupId = queryMyGroups[indexPath.row].groupID
-            break
-        case 1:
-            let destination = segue.destination as! GroupProfileViewController
-            destination.navigationItem.title = suggestedGroups[indexPath.row].name
-            destination.groupId = suggestedGroups[indexPath.row].groupID
-            break
-        default:
-            break
+        if indexPath.section == 0 && p == 0 && groupInviteArr.count > 0 {
+            let destination = segue.destination as! AcceptInviteViewController
+            destination.navigationItem.title = groupInviteArr[indexPath.row]
+        }
+        else {
+            switch (p) {
+            case 0:
+                let destination = segue.destination as! GroupProfileViewController
+                destination.navigationItem.title = queryMyGroups[indexPath.row].name
+                destination.groupId = queryMyGroups[indexPath.row].groupID
+                break
+            case 1:
+                let destination = segue.destination as! GroupProfileViewController
+                destination.navigationItem.title = suggestedGroups[indexPath.row].name
+                destination.groupId = suggestedGroups[indexPath.row].groupID
+                break
+            default:
+                break
+            }
         }
     }
 }

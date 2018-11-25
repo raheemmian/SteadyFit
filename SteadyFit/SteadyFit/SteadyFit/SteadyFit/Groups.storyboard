@@ -79,6 +79,7 @@
                         <outlet property="emergencyButton" destination="luo-lr-o7B" id="82Q-Us-miH"/>
                         <outlet property="groupTableView" destination="MmZ-BC-OAg" id="4Gt-kW-o5z"/>
                         <segue destination="wNr-fw-8la" kind="show" identifier="showGroupDetail" id="ODv-Kb-jVd"/>
+                        <segue destination="al8-NT-c1Z" kind="show" identifier="invitePage" id="451-5L-OdK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7uo-G1-Zes" sceneMemberID="firstResponder"/>
@@ -236,6 +237,7 @@
                         <segue destination="ati-0J-zIT" kind="show" identifier="Events" id="mw7-hv-VFr"/>
                         <segue destination="a7v-Zh-tzd" kind="show" identifier="AddEvents" id="Wxt-hf-IOs"/>
                         <segue destination="Jzk-fl-oSp" kind="show" identifier="inviteFriends" id="M1m-Xu-a8i"/>
+                        <segue destination="al8-NT-c1Z" kind="show" identifier="Requests" id="7J1-sh-rpB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19y-gP-U2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -355,6 +357,43 @@
             </objects>
             <point key="canvasLocation" x="4273.913043478261" y="900.66964285714278"/>
         </scene>
+        <!--Invite Request Page-->
+        <scene sceneID="btE-Qj-64m">
+            <objects>
+                <viewController title="Invite Request Page" id="al8-NT-c1Z" customClass="AcceptInviteViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y64-d9-mEr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akT-2L-z9p">
+                                <rect key="frame" x="107" y="580" width="200" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="decline"/>
+                                <connections>
+                                    <action selector="declineButtonAction:" destination="al8-NT-c1Z" eventType="touchUpInside" id="fSe-NE-pj5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7N-Ee-teu">
+                                <rect key="frame" x="107" y="256" width="200" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="accept"/>
+                                <connections>
+                                    <action selector="acceptButtonAction:" destination="al8-NT-c1Z" eventType="touchUpInside" id="wVk-iZ-OJ7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nzK-MG-hiO"/>
+                    </view>
+                    <connections>
+                        <outlet property="acceptButton" destination="P7N-Ee-teu" id="kvn-aa-999"/>
+                        <outlet property="declineButton" destination="akT-2L-z9p" id="FIq-tR-pxR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OoH-BL-7zX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2440.5797101449275" y="-609.375"/>
+        </scene>
         <!--Invite-->
         <scene sceneID="pvi-4W-4Ig">
             <objects>
@@ -439,4 +478,7 @@
     <resources>
         <image name="group" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7J1-sh-rpB"/>
+    </inferredMetricsTieBreakers>
 </document>
