@@ -36,6 +36,7 @@
 		B5727A87217FEDEE00AF9005 /* SteadyFitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A86217FEDEE00AF9005 /* SteadyFitUITests.swift */; };
 		B5727A9B217FF71600AF9005 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5727A9A217FF71600AF9005 /* FriendsViewController.swift */; };
 		B57302AD2186D0A300CD06D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57302AC2186D0A300CD06D3 /* Assets.xcassets */; };
+		B580F64721ABA87800F67C6D /* CreatePrivateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B580F64621ABA87800F67C6D /* CreatePrivateGroupViewController.swift */; };
 		B58574E321910CD1009AAB09 /* ChatInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58574E221910CD1009AAB09 /* ChatInterfaceTest.swift */; };
 		B5BE5D142190C7CA009290C9 /* HomePageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE5D132190C7CA009290C9 /* HomePageTest.swift */; };
 		B5BE5D222190C8B7009290C9 /* GroupInterfaceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE5D212190C8B7009290C9 /* GroupInterfaceTest.swift */; };
@@ -202,6 +203,7 @@
 		B5727A88217FEDEE00AF9005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5727A9A217FF71600AF9005 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		B57302AC2186D0A300CD06D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B580F64621ABA87800F67C6D /* CreatePrivateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePrivateGroupViewController.swift; sourceTree = "<group>"; };
 		B58574E021910CD1009AAB09 /* ChatInterfaceTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatInterfaceTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58574E221910CD1009AAB09 /* ChatInterfaceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceTest.swift; sourceTree = "<group>"; };
 		B58574E421910CD1009AAB09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				B5C24E9F21A9198D00170192 /* AcceptInviteViewController.swift */,
 				60E6AD2921A0F15B00429419 /* BarChartActivityTracker.swift */,
 				D4CB0276218F94D500503EC3 /* ChatsViewController.swift */,
+				B580F64621ABA87800F67C6D /* CreatePrivateGroupViewController.swift */,
 				B5114C3721A33C06004E2CED /* EmergencyButtonViewController.swift */,
 				B5727A9A217FF71600AF9005 /* FriendsViewController.swift */,
 				B5F54D24218E6D5F00D0214D /* FriendProfileViewController.swift */,
@@ -463,6 +466,7 @@
 				B5C24E9D21A905C100170192 /* InviteFriendsViewController.swift */,
 				125AAD4C218D9A1800CC5FCD /* LoginViewController.swift */,
 				B5114C3521A23474004E2CED /* ParticipantsViewController.swift */,
+				D4CCACCE21AA2D8D00E6B829 /* PendingRequestViewController.swift */,
 				B5F54D20218E48D000D0214D /* UserEventsViewController.swift */,
 				D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */,
 				B5F54D26218E75D200D0214D /* SettingsViewController.swift */,
@@ -477,7 +481,6 @@
 				123B54A0218C1E7200646CEB /* Home.storyboard */,
 				123B549E218C17FC00646CEB /* Groups.storyboard */,
 				D4CCACCC21AA2D4F00E6B829 /* PendingRequest.storyboard */,
-				D4CCACCE21AA2D8D00E6B829 /* PendingRequestViewController.swift */,
 				12D1D507219589410051633F /* Profile.storyboard */,
 				12D1D5052195874B0051633F /* EventPage.storyboard */,
 				123B54A2218C1EA500646CEB /* Friends.storyboard */,
@@ -1173,6 +1176,7 @@
 				B5114C3821A33C06004E2CED /* EmergencyButtonViewController.swift in Sources */,
 				60E6AD2421A0EE9800429419 /* GroupEvents.swift in Sources */,
 				125AAD4D218D9A1800CC5FCD /* LoginViewController.swift in Sources */,
+				B580F64721ABA87800F67C6D /* CreatePrivateGroupViewController.swift in Sources */,
 				B5C24E9E21A905C100170192 /* InviteFriendsViewController.swift in Sources */,
 				D4CB0277218F94D500503EC3 /* ChatsViewController.swift in Sources */,
 				B5F54D23218E663400D0214D /* HistogramViewController.swift in Sources */,
