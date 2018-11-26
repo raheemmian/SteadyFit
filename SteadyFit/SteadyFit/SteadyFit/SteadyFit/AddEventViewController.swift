@@ -58,12 +58,10 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
             /*if any of the fields are empty then the error label has to be displayed, otherwise it is hidden
              */
             self.errorLabel.isHidden = false
-            print(myUserID)
-            print(myUserName)
-            print(groupID)
         }
         else{
             let key:String = (ref!.child("Activities_Events").childByAutoId().key)!
+            print(key)
             let post = ["/Activities_Events/\(key)/Participants": [myUserID: ["name": myUserName]],
             "/Activities_Events/\(key)/date": startDateTextField.text ?? "nothing",
             "/Activities_Events/\(key)/event_name": eventNameTextField.text ?? "nothing",
