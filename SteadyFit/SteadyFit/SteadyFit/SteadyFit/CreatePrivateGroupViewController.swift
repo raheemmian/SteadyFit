@@ -36,6 +36,10 @@ class CreatePrivateGroupViewController: UIViewController, UITextFieldDelegate, U
         createPicker()
         activityLevelTextField.inputView = picker
         groupTypeTextField.inputView = picker
+        //get user name
+        ref?.child("Users").child(myUserID).child("name").observeSingleEvent(of: .value, with: {(snapshot) in
+            self.myUserName = (snapshot.value as? String)!
+        })
     }
     
     func setTextBoxes() {
@@ -59,7 +63,6 @@ class CreatePrivateGroupViewController: UIViewController, UITextFieldDelegate, U
         if (groupNameTextField.text?.isEmpty)! || (activityLevelTextField.text?.isEmpty)! || (groupTypeTextField.text?.isEmpty)! || (locationTextField.text?.isEmpty)! || (descriptionTextView.text.isEmpty) {errorLabel.isHidden = false}
         else{
             //write to database
-            //alexa will add the statements to make it also write the user to the groups
             let chatId: String = (ref?.child("Chats").childByAutoId().key)!
             let key: String = (ref?.child("Groups").childByAutoId().key)!
             let post = ["/Groups/\(key)/activitylevel": activityLevelTextField.text!,
@@ -68,7 +71,9 @@ class CreatePrivateGroupViewController: UIViewController, UITextFieldDelegate, U
                         "/Groups/\(key)/grouptype": groupTypeTextField.text!,
                         "/Groups/\(key)/location": locationTextField.text!,
                         "/Groups/\(key)/name": groupNameTextField.text!,
+                        "/Groups/\(key)/users": [myUserID: ["joined": 1, "name":myUserName]],
                         "/Chats/\(chatId)/groupID" : key,
+                        "/Users/\(myUserID)/Groups": [key:["chatid": chatId, "grouptype":groupTypeTextField.text!, "name": groupNameTextField.text!]]
                 ] as [String : Any]
             ref?.updateChildValues(post)
             navigationController?.popViewController(animated: true)
