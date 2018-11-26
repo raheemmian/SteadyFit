@@ -51,6 +51,7 @@
 		D41383E321902B950076031B /* GroupChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41383E221902B950076031B /* GroupChatTableViewController.swift */; };
 		D43B7CF4218E6E8C0099C159 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */; };
 		D44A89A721968CF200D760CE /* InitUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A89A621968CF200D760CE /* InitUserInfoViewController.swift */; };
+		D45235A121ABC9E60032AFF9 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45235A021ABC9E60032AFF9 /* RequestTableViewCell.swift */; };
 		D4A8667521A37B120084C62A /* HomePageTest_Version2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A8667421A37B120084C62A /* HomePageTest_Version2.swift */; };
 		D4A8668321A37C3D0084C62A /* GroupsInterfaceTest_Version2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A8668221A37C3D0084C62A /* GroupsInterfaceTest_Version2.swift */; };
 		D4A8669121A37F730084C62A /* ChatInterfaceTest_Version2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A8669021A37F730084C62A /* ChatInterfaceTest_Version2.swift */; };
@@ -230,6 +231,7 @@
 		D41383E221902B950076031B /* GroupChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatTableViewController.swift; sourceTree = "<group>"; };
 		D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		D44A89A621968CF200D760CE /* InitUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitUserInfoViewController.swift; sourceTree = "<group>"; };
+		D45235A021ABC9E60032AFF9 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		D4A8666421A377120084C62A /* SteadyFitUITests_Version2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SteadyFitUITests_Version2.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A8667221A37B120084C62A /* HomePageTest_Version2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomePageTest_Version2.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A8667421A37B120084C62A /* HomePageTest_Version2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTest_Version2.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				60E6AD2321A0EE9800429419 /* GroupEvents.swift */,
 				60E6AD2521A0EEC100429419 /* GroupUser.swift */,
 				60E6AD2721A0F13F00429419 /* BarEntry.swift */,
+				D45235A021ABC9E60032AFF9 /* RequestTableViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1198,6 +1201,7 @@
 				B5F54D27218E75D200D0214D /* SettingsViewController.swift in Sources */,
 				B5727A9B217FF71600AF9005 /* FriendsViewController.swift in Sources */,
 				B5727A67217FEDED00AF9005 /* HomeViewController.swift in Sources */,
+				D45235A121ABC9E60032AFF9 /* RequestTableViewCell.swift in Sources */,
 				D43B7CF4218E6E8C0099C159 /* UserProfileViewController.swift in Sources */,
 				D4F0EEFD218EDEC60053C1A8 /* SettingsEditiorViewController.swift in Sources */,
 			);

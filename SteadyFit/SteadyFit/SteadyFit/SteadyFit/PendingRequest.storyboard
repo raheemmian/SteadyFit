@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1s-BL-0DL">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,15 +15,44 @@
             <objects>
                 <viewController id="H1s-BL-0DL" customClass="PendingRequestViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fmn-BH-DbV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ltj-YU-hHQ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="requestCell" id="DVi-U6-OuB">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DVi-U6-OuB" id="daD-Se-1Zq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="H1s-BL-0DL" id="ydf-JG-F9Q"/>
+                                    <outlet property="delegate" destination="H1s-BL-0DL" id="8s6-KH-3FP"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PK0-3n-Jz4" firstAttribute="bottom" secondItem="Ltj-YU-hHQ" secondAttribute="bottom" id="Ekf-hM-H6n"/>
+                            <constraint firstItem="PK0-3n-Jz4" firstAttribute="trailing" secondItem="Ltj-YU-hHQ" secondAttribute="trailing" id="RRA-Vd-4rB"/>
+                            <constraint firstItem="Ltj-YU-hHQ" firstAttribute="leading" secondItem="PK0-3n-Jz4" secondAttribute="leading" id="oCW-ba-GXv"/>
+                            <constraint firstItem="Ltj-YU-hHQ" firstAttribute="top" secondItem="PK0-3n-Jz4" secondAttribute="top" id="rrS-ro-i4T"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PK0-3n-Jz4"/>
                     </view>
+                    <connections>
+                        <outlet property="requestTableView" destination="Ltj-YU-hHQ" id="a3b-Bk-0tJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GTe-5R-btz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-95" y="-357"/>
+            <point key="canvasLocation" x="25" y="-360"/>
         </scene>
     </scenes>
 </document>

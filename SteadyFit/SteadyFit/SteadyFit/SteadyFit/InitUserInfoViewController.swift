@@ -128,9 +128,9 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
                         "/Users/\(currentUserID)/province": provinceTextField.text ?? "BC",
                         "/Users/\(currentUserID)/city": cityTextField.text ?? "Vancouver",
                         "/Users/\(currentUserID)/activitylevel": activityLevelTextField.text ?? "Moderate",
-                        "/Users/\(currentUserID)/birthdate": birthDateTextField.text,
-                        "/Users/\(currentUserID)/gender": genderTextField.text,
-                        "/Users/\(currentUserID)/emergencycontact": emergencyContactTextField.text,
+                        "/Users/\(currentUserID)/birthdate": birthDateTextField.text as Any,
+                        "/Users/\(currentUserID)/gender": genderTextField.text as Any,
+                        "/Users/\(currentUserID)/emergencycontact": emergencyContactTextField.text as Any,
                         "/Users/\(currentUserID)/description": personalBioTextView.text
                 ] as [String : Any]
             
@@ -138,8 +138,9 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
             ref?.updateChildValues(post)
             self.performSegue(withIdentifier: "InitGoToHome", sender: self)
         }
-        errorMessageLabel.text = "*** MISSING INFO"
-        
+        else{
+            errorMessageLabel.text = "*MISSING INFO*"
+        }
     }
     
     override func viewDidLoad() {

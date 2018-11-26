@@ -26,6 +26,8 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
     var eventIDs = [String]()
     let currentuserID = (Auth.auth().currentUser?.uid)!
     var activity_day: [String: Int] = [:]
+    var isRequestButton: Bool = false
+    
     
     let homeTableSections = ["Activity Tracker", "Events"]
     var homeTableContents = [ ["Histogram"] , ["Event A", "Event B", "Event C"]]
@@ -33,6 +35,9 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var profilePictureImage: UIImageView!
+    @IBAction func requestButton(_ sender: UIButton) {
+        print("requestButton")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         /*initializing the tables and the locations*/
@@ -41,7 +46,6 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
         myTableView.dataSource = self
         profilePictureImage.layer.cornerRadius = profilePictureImage.frame.size.width / 2
         profilePictureImage.clipsToBounds = true
-        
         ref = Database.database().reference()
         self.ref?.child("Users/\(currentuserID)").observe(DataEventType.value, with: {
             (userSnapshot) in
@@ -115,19 +119,29 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        /*This function provides the header for the navigation bar in the histogram view controller and the
-         events view controller based on the name of the cell pressed*/
-        var indexPath = self.myTableView.indexPathForSelectedRow!
-        if(indexPath.section == 0){
-            let destination = segue.destination as! HistogramViewController
-            destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
-            destination.histogram_data = activity_day
+        /*This function provides the header for the navigation bar in the histogram view controller and
+         the events view controller based on the name of the cell pressed*/
+        if(segue.identifier == "showPendingRequest"){
+            print("button is clicked")
+            let destination = segue.destination as! PendingRequestViewController
+            destination.navigationItem.title = "Pending Requests"
+        }
+        else if(self.myTableView.indexPathForSelectedRow != nil){
+            var indexPath = self.myTableView.indexPathForSelectedRow!
+            
+            if(indexPath.section == 0){
+                let destination = segue.destination as! HistogramViewController
+                destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
+                destination.histogram_data = activity_day
+            }
+            else{
+                let destination = segue.destination as! UserEventsViewController
+                destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
+                destination.eventId = eventIDs[indexPath.row]
+            }
         }
         else{
-            let destination = segue.destination as! UserEventsViewController
-            destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
-            destination.eventId = eventIDs[indexPath.row] // Raheem, if you have a variable called eventId in the UserEventsViewController, just uncomment this line and it will set the variable to the correct value
-            
+            print("self.myTableView.indexPathForSelectedRow is nil")
         }
     }
     

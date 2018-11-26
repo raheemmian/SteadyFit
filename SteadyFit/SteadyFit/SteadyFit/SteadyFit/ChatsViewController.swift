@@ -64,7 +64,6 @@ class ChatsViewController: EmergencyButtonViewController, UITableViewDataSource,
                 else{
                     self.privateGroupList.append((dictionary["name"] as! String))
                 }
-                
             }
             self.chatListContent = [self.privateGroupList, self.publicGroupList]
             DispatchQueue.main.async() {

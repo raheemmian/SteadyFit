@@ -63,11 +63,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bam-Me-qcv">
-                                <rect key="frame" x="347" y="155" width="47" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="327" y="155" width="67" height="30"/>
+                                <state key="normal" title="Request"/>
                                 <connections>
-                                    <action selector="pendingRequestButton:" destination="iKh-5u-Nl5" eventType="touchUpInside" id="VBJ-bp-Y7L"/>
-                                    <segue destination="Ieq-0C-AtJ" kind="show" identifier="showPendingRequest" id="Qva-t3-aYh"/>
+                                    <action selector="requestButton:" destination="iKh-5u-Nl5" eventType="touchUpInside" id="Cmw-2N-z2B"/>
+                                    <segue destination="Ieq-0C-AtJ" kind="show" identifier="showPendingRequest" id="rzi-68-Tqg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -80,10 +80,10 @@
                             <constraint firstItem="MJG-4b-Tif" firstAttribute="bottom" secondItem="cDO-ay-zWA" secondAttribute="bottom" constant="40" id="6XP-iq-iUK"/>
                             <constraint firstItem="pnC-2I-mbV" firstAttribute="centerX" secondItem="MJG-4b-Tif" secondAttribute="centerX" id="ExC-eV-4AZ"/>
                             <constraint firstItem="fo9-DM-CCt" firstAttribute="bottom" secondItem="MJG-4b-Tif" secondAttribute="bottom" id="Hd3-2X-fuo"/>
+                            <constraint firstItem="bam-Me-qcv" firstAttribute="leading" secondItem="m6z-Vu-KrR" secondAttribute="trailing" constant="70" id="MnH-pg-GpT"/>
                             <constraint firstItem="m6z-Vu-KrR" firstAttribute="centerX" secondItem="MJG-4b-Tif" secondAttribute="centerX" id="NcI-t6-mh8"/>
                             <constraint firstItem="MJG-4b-Tif" firstAttribute="trailing" secondItem="bam-Me-qcv" secondAttribute="trailing" constant="20" id="Siq-KJ-Xkx"/>
                             <constraint firstItem="cDO-ay-zWA" firstAttribute="leading" secondItem="MJG-4b-Tif" secondAttribute="leading" id="VVP-39-Rey"/>
-                            <constraint firstItem="bam-Me-qcv" firstAttribute="leading" secondItem="m6z-Vu-KrR" secondAttribute="trailing" constant="90" id="XIj-TN-8ra"/>
                             <constraint firstItem="6Cd-cy-3WU" firstAttribute="top" secondItem="m6z-Vu-KrR" secondAttribute="bottom" constant="8" id="efG-rd-3Ur"/>
                             <constraint firstItem="6Cd-cy-3WU" firstAttribute="centerX" secondItem="MJG-4b-Tif" secondAttribute="centerX" id="fYi-st-Gaq"/>
                             <constraint firstItem="bam-Me-qcv" firstAttribute="top" secondItem="MJG-4b-Tif" secondAttribute="top" constant="15" id="gPR-91-sdZ"/>
@@ -334,7 +334,9 @@
         <!--PendingRequest-->
         <scene sceneID="v2Y-oN-j7a">
             <objects>
-                <viewControllerPlaceholder storyboardName="PendingRequest" id="Ieq-0C-AtJ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="PendingRequest" id="Ieq-0C-AtJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="3u2-ED-LIW"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csG-Zn-Z6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2888" y="-619"/>
