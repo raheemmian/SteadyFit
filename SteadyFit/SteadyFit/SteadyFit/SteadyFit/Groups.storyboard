@@ -80,12 +80,13 @@
                         <outlet property="groupTableView" destination="MmZ-BC-OAg" id="4Gt-kW-o5z"/>
                         <segue destination="wNr-fw-8la" kind="show" identifier="showGroupDetail" id="ODv-Kb-jVd"/>
                         <segue destination="al8-NT-c1Z" kind="show" identifier="invitePage" id="451-5L-OdK"/>
+                        <segue destination="gff-nJ-i4z" kind="show" identifier="createPrivateGroup" id="LD1-wN-EWm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7uo-G1-Zes" sceneMemberID="firstResponder"/>
                 <exit id="Fpd-VJ-MVH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2414.4927536231885" y="173.4375"/>
+            <point key="canvasLocation" x="1617" y="173"/>
         </scene>
         <!--Groups-->
         <scene sceneID="wmd-BU-E43">
@@ -106,7 +107,115 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gm2-sD-txK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1530" y="173"/>
+            <point key="canvasLocation" x="828" y="173"/>
+        </scene>
+        <!--Create Private Group-->
+        <scene sceneID="xSu-6R-ve5">
+            <objects>
+                <viewController title="Create Private Group" id="gff-nJ-i4z" customClass="CreatePrivateGroupViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cdc-eI-4tK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jvb-LV-fuT">
+                                <rect key="frame" x="20" y="190" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Activity Level" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SXQ-s4-2RA">
+                                <rect key="frame" x="20" y="250" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iY1-sz-6kM">
+                                <rect key="frame" x="20" y="310" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NGV-1H-cdZ">
+                                <rect key="frame" x="20" y="370" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sJx-cc-pQx">
+                                <rect key="frame" x="20" y="440" width="374" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="8TK-rF-sUc"/>
+                                    <constraint firstAttribute="width" constant="374" id="xbu-TY-pnT"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwb-RY-nKz">
+                                <rect key="frame" x="167" y="618" width="80" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="hfj-Dz-C0A"/>
+                                    <constraint firstAttribute="height" constant="36" id="md4-9E-3if"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButtonAction:" destination="gff-nJ-i4z" eventType="touchUpInside" id="X0E-pP-SjV"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: not all fields filled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vJ-ol-wwn">
+                                <rect key="frame" x="117" y="763" width="180" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="61I-08-fYM"/>
+                                    <constraint firstAttribute="height" constant="21" id="XXv-mU-OZW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iY1-sz-6kM" firstAttribute="top" secondItem="SXQ-s4-2RA" secondAttribute="bottom" constant="30" id="7ni-Jh-ib9"/>
+                            <constraint firstItem="iY1-sz-6kM" firstAttribute="top" secondItem="SXQ-s4-2RA" secondAttribute="bottom" constant="30" id="Ba8-9G-VnU"/>
+                            <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="SXQ-s4-2RA" secondAttribute="trailing" constant="20" id="CUe-HB-0uW"/>
+                            <constraint firstItem="SXQ-s4-2RA" firstAttribute="top" secondItem="jvb-LV-fuT" secondAttribute="bottom" constant="30" id="EfO-Er-6tk"/>
+                            <constraint firstItem="NGV-1H-cdZ" firstAttribute="top" secondItem="iY1-sz-6kM" secondAttribute="bottom" constant="30" id="G9P-Ky-umR"/>
+                            <constraint firstItem="sJx-cc-pQx" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="20" id="GkM-u1-sNZ"/>
+                            <constraint firstItem="4vJ-ol-wwn" firstAttribute="centerX" secondItem="q33-EQ-TGw" secondAttribute="centerX" id="Jtf-1J-8LW"/>
+                            <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="NGV-1H-cdZ" secondAttribute="trailing" constant="20" id="NzG-zo-Htj"/>
+                            <constraint firstItem="jvb-LV-fuT" firstAttribute="top" secondItem="q33-EQ-TGw" secondAttribute="top" constant="50" id="OtE-do-NJO"/>
+                            <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="jvb-LV-fuT" secondAttribute="trailing" constant="20" id="TDh-fB-NDv"/>
+                            <constraint firstItem="vwb-RY-nKz" firstAttribute="top" secondItem="sJx-cc-pQx" secondAttribute="bottom" constant="50" id="Vl9-L5-dak"/>
+                            <constraint firstItem="sJx-cc-pQx" firstAttribute="top" secondItem="NGV-1H-cdZ" secondAttribute="bottom" constant="40" id="WiD-iS-tIV"/>
+                            <constraint firstItem="NGV-1H-cdZ" firstAttribute="top" secondItem="iY1-sz-6kM" secondAttribute="bottom" constant="30" id="Xd5-x2-jt9"/>
+                            <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="iY1-sz-6kM" secondAttribute="trailing" constant="20" id="Xzk-Uv-VR2"/>
+                            <constraint firstItem="q33-EQ-TGw" firstAttribute="bottom" secondItem="4vJ-ol-wwn" secondAttribute="bottom" constant="29" id="YKm-7e-PbC"/>
+                            <constraint firstItem="SXQ-s4-2RA" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="20" id="Ynn-Sf-zeQ"/>
+                            <constraint firstItem="vwb-RY-nKz" firstAttribute="centerX" secondItem="q33-EQ-TGw" secondAttribute="centerX" id="aXd-oA-gnm"/>
+                            <constraint firstItem="iY1-sz-6kM" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="20" id="gBo-ST-RiO"/>
+                            <constraint firstItem="NGV-1H-cdZ" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="20" id="iGb-th-1wg"/>
+                            <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="sJx-cc-pQx" secondAttribute="trailing" constant="20" id="khd-2L-KHi"/>
+                            <constraint firstItem="jvb-LV-fuT" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="20" id="pco-ED-0rD"/>
+                            <constraint firstItem="SXQ-s4-2RA" firstAttribute="top" secondItem="jvb-LV-fuT" secondAttribute="bottom" constant="30" id="w13-oq-R2L"/>
+                            <constraint firstItem="sJx-cc-pQx" firstAttribute="top" secondItem="NGV-1H-cdZ" secondAttribute="bottom" constant="40" id="xjX-Lu-5Nv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q33-EQ-TGw"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityLevelTextField" destination="SXQ-s4-2RA" id="NjJ-jH-vtn"/>
+                        <outlet property="descriptionTextView" destination="sJx-cc-pQx" id="hFn-8y-zX4"/>
+                        <outlet property="errorLabel" destination="4vJ-ol-wwn" id="Zq1-1A-r9s"/>
+                        <outlet property="groupNameTextField" destination="jvb-LV-fuT" id="BAG-t1-NdH"/>
+                        <outlet property="groupTypeTextField" destination="iY1-sz-6kM" id="BIy-b2-exG"/>
+                        <outlet property="locationTextField" destination="NGV-1H-cdZ" id="AjX-dd-Jgp"/>
+                        <outlet property="saveButton" destination="vwb-RY-nKz" id="ZcI-gZ-rSM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hW2-4L-4HP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2032" y="-621"/>
         </scene>
         <!--Group Profile View Controller-->
         <scene sceneID="MgD-lk-l7c">
@@ -242,7 +351,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="19y-gP-U2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3471" y="173"/>
+            <point key="canvasLocation" x="2791" y="173"/>
         </scene>
         <!--EventPage-->
         <scene sceneID="kWa-zE-gu2">
@@ -250,7 +359,7 @@
                 <viewControllerPlaceholder storyboardName="EventPage" id="ati-0J-zIT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQp-wx-HOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4042" y="447"/>
+            <point key="canvasLocation" x="3901" y="464"/>
         </scene>
         <!--Add Event-->
         <scene sceneID="ZQN-9z-XMw">
@@ -355,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAB-ph-VrY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4273.913043478261" y="900.66964285714278"/>
+            <point key="canvasLocation" x="4593" y="-1279"/>
         </scene>
         <!--Invite Request Page-->
         <scene sceneID="btE-Qj-64m">
@@ -392,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OoH-BL-7zX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2440.5797101449275" y="-609.375"/>
+            <point key="canvasLocation" x="2645" y="1099"/>
         </scene>
         <!--Invite-->
         <scene sceneID="pvi-4W-4Ig">
@@ -432,7 +541,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFV-LI-jJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3551" y="-698"/>
+            <point key="canvasLocation" x="4625" y="-541"/>
         </scene>
         <!--Group Member List Table View Controller-->
         <scene sceneID="s70-nr-USs">
@@ -464,7 +573,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sRY-8V-zQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4520" y="80"/>
+            <point key="canvasLocation" x="4626" y="173"/>
         </scene>
         <!--Profile-->
         <scene sceneID="iPF-TR-slb">
@@ -472,13 +581,13 @@
                 <viewControllerPlaceholder storyboardName="Profile" id="8cW-ov-Gi3" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74e-2I-5lj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5525" y="80"/>
+            <point key="canvasLocation" x="5686" y="173"/>
         </scene>
     </scenes>
     <resources>
         <image name="group" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7J1-sh-rpB"/>
+        <segue reference="451-5L-OdK"/>
     </inferredMetricsTieBreakers>
 </document>
