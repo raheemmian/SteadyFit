@@ -25,7 +25,7 @@ class CreatePrivateGroupViewController: UIViewController, UITextFieldDelegate, U
     var myUserID = (Auth.auth().currentUser?.uid)!
     var myUserName: String = ""
     var picker = UIPickerView()
-    var activityLevelArr = ["Light", "Medium", "Hard"]
+    var activityLevelArr = ["Very Light","Light", "Moderate", "Intense", "Very Intense"]
     var groupTypeArr = ["Public", "Private"]
     var activeTextField: UITextField!
     override func viewDidLoad() {
@@ -59,14 +59,16 @@ class CreatePrivateGroupViewController: UIViewController, UITextFieldDelegate, U
         if (groupNameTextField.text?.isEmpty)! || (activityLevelTextField.text?.isEmpty)! || (groupTypeTextField.text?.isEmpty)! || (locationTextField.text?.isEmpty)! || (descriptionTextView.text.isEmpty) {errorLabel.isHidden = false}
         else{
             //write to database
-            //doesnt work yet
-            let key: String = "Group26"
+            //alexa will add the statements to make it also write the user to the groups
+            let chatId: String = (ref?.child("Chats").childByAutoId().key)!
+            let key: String = (ref?.child("Groups").childByAutoId().key)!
             let post = ["/Groups/\(key)/activitylevel": activityLevelTextField.text!,
-                        "/Groups/\(key)/chatid": "Chat26",
+                        "/Groups/\(key)/chatid": chatId,
                         "/Groups/\(key)/description": descriptionTextView.text,
                         "/Groups/\(key)/grouptype": groupTypeTextField.text!,
                         "/Groups/\(key)/location": locationTextField.text!,
                         "/Groups/\(key)/name": groupNameTextField.text!,
+                        "/Chats/\(chatId)/groupID" : key,
                 ] as [String : Any]
             ref?.updateChildValues(post)
             navigationController?.popViewController(animated: true)
