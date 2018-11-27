@@ -34,8 +34,12 @@ class AddActivityEventViewController: UIViewController, UITextFieldDelegate {
                         "/Activities_Events/\(key)/duration_minute": DurationActivitytextfield.text ?? "nothing",
                         "/Activities_Events/\(key)/isPersonal": 1,
                 ] as [String : Any]
-            ref?.updateChildValues(post)        //goes back to previous view controller
-            navigationController?.popViewController(animated: true)
+            ref?.updateChildValues(post)
+            /*
+            //goes back to previous view controller
+            navigationController?.popViewController(animated: true)*/
+            // go back to home
+            performSegue(withIdentifier: "goHomeAfterAddActivity", sender: self)
         }
     }
     
