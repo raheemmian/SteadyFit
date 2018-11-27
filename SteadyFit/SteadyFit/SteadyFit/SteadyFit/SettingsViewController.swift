@@ -22,7 +22,7 @@ class SettingsViewController: EmergencyButtonViewController, UITableViewDelegate
 
     @IBOutlet weak var settingTableView: UITableView!
     var titleNameArr = ["Edit Profile", "Notification", "Emergency Button", "Help"]
-    var detailArr = ["Edit profile, change password, or log out", "Toggle notfications for vents and groups", "Adjust the message sent to emergency contact", "How-to guides and support"]
+    var detailArr = ["Edit profile, change password, or log out", "Toggle notfications for vents and groups", "Adjust the message sent to emergency contact", "FAQ, Disclaimer"]
     var imageNames = ["Profile", "Notification", "Ambulance", "Help"]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,14 +44,17 @@ class SettingsViewController: EmergencyButtonViewController, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 || indexPath.row == 3{
-            performSegue(withIdentifier: "wip", sender: titleNameArr[indexPath.row])
+        if indexPath.row == 3{
+            performSegue(withIdentifier: "help", sender: titleNameArr[indexPath.row])
         }
         else if indexPath.row == 2{
             performSegue(withIdentifier: "emergency" , sender: titleNameArr[indexPath.row])
         }
-        else{
+        else if indexPath.row == 0{
             performSegue(withIdentifier: "settingNavigation" , sender: titleNameArr[indexPath.row])
+        }
+        else if indexPath.row == 1{
+            performSegue(withIdentifier: "notification" , sender: titleNameArr[indexPath.row])
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
