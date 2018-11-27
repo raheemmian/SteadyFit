@@ -26,7 +26,6 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
     var eventIDs = [String]()
     let currentuserID = (Auth.auth().currentUser?.uid)!
     var activity_day: [String: Int] = [:]
-    var isRequestButton: Bool = false
     
     
     let homeTableSections = ["Activity Tracker", "Events"]
@@ -35,9 +34,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var profilePictureImage: UIImageView!
-    @IBAction func requestButton(_ sender: UIButton) {
-        print("requestButton")
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         /*initializing the tables and the locations*/
@@ -122,7 +119,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
         /*This function provides the header for the navigation bar in the histogram view controller and
          the events view controller based on the name of the cell pressed*/
         if(segue.identifier == "showPendingRequest"){
-            print("button is clicked")
+            print("Request button is clicked")
             let destination = segue.destination as! PendingRequestViewController
             destination.navigationItem.title = "Pending Requests"
         }
