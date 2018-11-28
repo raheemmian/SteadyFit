@@ -11,6 +11,8 @@ import UIKit
 class SettingsHelpViewController: UIViewController {
     
     @IBOutlet weak var A1view: UIView!
+    @IBOutlet weak var A2view: UIView!
+    @IBOutlet weak var A3view: UIView!
     
     
     override func viewDidLoad() {
@@ -34,10 +36,27 @@ class SettingsHelpViewController: UIViewController {
     
     @IBOutlet weak var Q2Button: UIButton!
     @IBAction func Q2ButtonPressed(_ sender: Any) {
+        if(A2view.isHidden == true)
+        {
+            A2view.isHidden = false
+        }
+        else
+        {
+            A2view.isHidden = true
+        }
     }
     
     @IBOutlet weak var Q3Button: UIButton!
     @IBAction func Q3ButtonPressed(_ sender: Any) {
+        if(A3view.isHidden == true)
+        {
+            A3view.isHidden = false
+        }
+        else
+        {
+            A3view.isHidden = true
+        }
     }
+    
     
 }
