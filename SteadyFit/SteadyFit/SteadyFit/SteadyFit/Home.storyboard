@@ -69,6 +69,13 @@
                                     <segue destination="Ieq-0C-AtJ" kind="show" identifier="showPendingRequest" id="rzi-68-Tqg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yvd-fu-yTb" userLabel="Upload Image">
+                                <rect key="frame" x="20" y="59" width="95" height="30"/>
+                                <state key="normal" title="Upload Image"/>
+                                <connections>
+                                    <action selector="uploadProfilePic:" destination="iKh-5u-Nl5" eventType="touchUpInside" id="18Y-z8-hKu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -79,9 +86,11 @@
                             <constraint firstItem="MJG-4b-Tif" firstAttribute="bottom" secondItem="cDO-ay-zWA" secondAttribute="bottom" constant="40" id="6XP-iq-iUK"/>
                             <constraint firstItem="pnC-2I-mbV" firstAttribute="centerX" secondItem="MJG-4b-Tif" secondAttribute="centerX" id="ExC-eV-4AZ"/>
                             <constraint firstItem="fo9-DM-CCt" firstAttribute="bottom" secondItem="MJG-4b-Tif" secondAttribute="bottom" id="Hd3-2X-fuo"/>
+                            <constraint firstItem="m6z-Vu-KrR" firstAttribute="leading" secondItem="Yvd-fu-yTb" secondAttribute="trailing" constant="42" id="JBD-Gr-L6i"/>
                             <constraint firstItem="bam-Me-qcv" firstAttribute="leading" secondItem="m6z-Vu-KrR" secondAttribute="trailing" constant="70" id="MnH-pg-GpT"/>
                             <constraint firstItem="m6z-Vu-KrR" firstAttribute="centerX" secondItem="MJG-4b-Tif" secondAttribute="centerX" id="NcI-t6-mh8"/>
                             <constraint firstItem="MJG-4b-Tif" firstAttribute="trailing" secondItem="bam-Me-qcv" secondAttribute="trailing" constant="20" id="Siq-KJ-Xkx"/>
+                            <constraint firstItem="Yvd-fu-yTb" firstAttribute="top" secondItem="MJG-4b-Tif" secondAttribute="top" constant="15" id="TeI-gb-0oP"/>
                             <constraint firstItem="cDO-ay-zWA" firstAttribute="leading" secondItem="MJG-4b-Tif" secondAttribute="leading" id="VVP-39-Rey"/>
                             <constraint firstItem="6Cd-cy-3WU" firstAttribute="top" secondItem="m6z-Vu-KrR" secondAttribute="bottom" constant="8" id="efG-rd-3Ur"/>
                             <constraint firstItem="6Cd-cy-3WU" firstAttribute="centerX" secondItem="MJG-4b-Tif" secondAttribute="centerX" id="fYi-st-Gaq"/>
@@ -91,6 +100,7 @@
                             <constraint firstItem="m6z-Vu-KrR" firstAttribute="top" secondItem="MJG-4b-Tif" secondAttribute="top" constant="15" id="sES-Ai-SBw"/>
                             <constraint firstItem="pnC-2I-mbV" firstAttribute="centerX" secondItem="m6z-Vu-KrR" secondAttribute="centerX" id="vg8-Lc-EHM"/>
                             <constraint firstItem="fo9-DM-CCt" firstAttribute="bottom" secondItem="MJG-4b-Tif" secondAttribute="bottom" id="yhV-WI-xlL"/>
+                            <constraint firstItem="Yvd-fu-yTb" firstAttribute="leading" secondItem="MJG-4b-Tif" secondAttribute="leading" constant="20" id="yoA-Mu-FCI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MJG-4b-Tif"/>
                     </view>
@@ -371,6 +381,7 @@
         <image name="icons8-home-32" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="env-89-E9p"/>
         <segue reference="lby-8e-HCI"/>
     </inferredMetricsTieBreakers>
 </document>

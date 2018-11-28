@@ -20,21 +20,24 @@ import MessageUI
 import MapKit
 import CoreLocation
 import Firebase
+import FirebaseStorage
 
-class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, UITableViewDelegate{
+class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    //variables
     var ref:DatabaseReference?
     var eventIDs = [String]()
     let currentuserID = (Auth.auth().currentUser?.uid)!
     var activity_day: [String: Int] = [:]
-    
-    
+    let storageRef = Storage.storage().reference()
     let homeTableSections = ["Activity Tracker", "Events"]
     var homeTableContents = [ ["Histogram"] , ["Event A", "Event B", "Event C"]]
+    
+    //outlets
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var profilePictureImage: UIImageView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         /*initializing the tables and the locations*/
@@ -50,6 +53,20 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
                 let userDictionary = userSnapshot.value as? [String: AnyObject]
                 self.name.text = userDictionary!["name"] as? String
                 self.city.text = userDictionary!["city"] as? String
+                
+                // load profile
+                if let imageURL = userDictionary!["profilepic"] as? String{
+                    let url = URL(string: imageURL)
+                    URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                        if error != nil{
+                            print(error!)
+                            return
+                        }
+                        DispatchQueue.main.async() {
+                            self.profilePictureImage?.image = UIImage(data:data!)
+                        }
+                    }).resume()
+                }
             }
         })
         self.ref?.child("Activities_Events").queryOrdered(byChild: "date").observe(DataEventType.value, with: {
@@ -86,6 +103,67 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
             }
         })
     }
+    //============Profile picture picker==================
+    // code referenced from the following youtube video
+    // https://www.youtube.com/watch?v=XmyiRzeoSJE
+        //actions
+    @IBAction func uploadProfilePic(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        self.present(picker, animated: true, completion: nil)
+    }
+        //funcs
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:
+        [UIImagePickerController.InfoKey : Any]) {
+        var selectedImageFromPicker: UIImage?
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
+            selectedImageFromPicker = editedImage
+        }
+        else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            selectedImageFromPicker = originalImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker{
+            profilePictureImage.image = selectedImage
+            saveImageToDB()
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    func saveImageToDB(){
+        let imageName = NSUUID().uuidString
+        let storedImage = storageRef.child("profile_images").child(imageName)
+        
+        if let uploadData = self.profilePictureImage.image!.pngData(){
+            storedImage.putData(uploadData, metadata: nil, completion:{ (metadata, error) in
+                if error != nil{
+                    print(error!)
+                }
+                storedImage.downloadURL(completion: {(url, error) in
+                    if error != nil{
+                        print(error!)
+                        return
+                    }
+                    if let urlText = url?.absoluteString{
+                        self.ref?.child("Users").child(self.currentuserID).updateChildValues(["profilepic" : urlText], withCompletionBlock: {(error, ref) in
+                            if error != nil{
+                                print(error!)
+                                return
+                            }
+                        })
+                    }
+                })
+            })
+        }
+    }
+    //============Profile picture picker end==================
+    
+    
     /*-----------------------------------Location-------------------------------------------------------------*/
     /*-----------------------------------Table----------------------------------------------------------------*/
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -185,7 +263,6 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
             let tempDateString = dateFormatter.string(from: tempDate)
             activity_day[tempDateString] = 0
         }
-        print (activity_day)
     }
 
 }
