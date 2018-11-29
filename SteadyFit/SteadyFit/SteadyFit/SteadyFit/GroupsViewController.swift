@@ -32,9 +32,7 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
     var sameActivityLevelGroups = [UserGroup]()
     var restoftheGroups = [UserGroup]()
     var p: Int!
-    var sectionForGroup = ["Group Invites", "Groups"]
-    var groupInviteArr = ["Group A", "Group B"]
-    //var groupInviteArr = [String]()
+    var sectionForGroup = ["Groups"]
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
     var groupsHandle:DatabaseHandle?
@@ -135,33 +133,16 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
         // End of Database initialization
         p = 0
     }
-    var isinviteArrAvailableNumberOfRows: Bool = false
-    var isinviteArrAvailableLabel: Bool = false
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if p == 0 && groupInviteArr.count > 0{
-            return 2
-        }
-        else {
-            return 1
-        }
+     return sectionForGroup.count
        
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if groupInviteArr.count > 0 && p == 0{
-            return sectionForGroup[section]
-        }
-        else {
-           return sectionForGroup[1]
-        }
-      
+        return sectionForGroup[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 && p == 0 && groupInviteArr.count > 0{
-            return groupInviteArr.count
-        }
-       else {
             var returnValue = 0
             switch (p) {
             case 0:
@@ -174,16 +155,10 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
                 break
             }
             return returnValue
-        }
-
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = groupTableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
-        if indexPath.section == 0 && p == 0 && groupInviteArr.count > 0{
-            cell.textLabel?.text = groupInviteArr[indexPath.row]
-        }
-        else {
             switch (p) {
             case 0:
                 cell.textLabel?.text = queryMyGroups[indexPath.row].name
@@ -194,79 +169,29 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
             default:
                 break
             }
-        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if  indexPath.section == 0 && p == 0 && groupInviteArr.count > 0 {
-            performSegue(withIdentifier: "invitePage", sender: self)
-        }
-        else {
-            performSegue(withIdentifier: "showGroupDetail", sender: self)
-        }
+        performSegue(withIdentifier: "showGroupDetail", sender: self)
         groupTableView.deselectRow(at: indexPath, animated: true)
     }
-    var isAddGroup:Bool = false
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if isAddGroup == false {
-            var indexPath = self.groupTableView.indexPathForSelectedRow!
-            if indexPath.section == 0 && p == 0 && groupInviteArr.count > 0 {
-                let destination = segue.destination as! AcceptInviteViewController
-                destination.navigationItem.title = groupInviteArr[indexPath.row]
-            }
-            else {
-                switch (p) {
-                case 0:
-                    let destination = segue.destination as! GroupProfileViewController
-                    destination.navigationItem.title = queryMyGroups[indexPath.row].name
-                    destination.groupId = queryMyGroups[indexPath.row].groupID
-                    break
-                case 1:
-                    let destination = segue.destination as! GroupProfileViewController
-                    destination.navigationItem.title = suggestedGroups[indexPath.row].name
-                    destination.groupId = suggestedGroups[indexPath.row].groupID
-                    break
-                default:
-                    break
-                }
-            }
+        var indexPath = self.groupTableView.indexPathForSelectedRow!
+        switch (p) {
+        case 0:
+            let destination = segue.destination as! GroupProfileViewController
+            destination.navigationItem.title = queryMyGroups[indexPath.row].name
+            destination.groupId = queryMyGroups[indexPath.row].groupID
+            break
+        case 1:
+            let destination = segue.destination as! GroupProfileViewController
+            destination.navigationItem.title = suggestedGroups[indexPath.row].name
+            destination.groupId = suggestedGroups[indexPath.row].groupID
+            break
+        default:
+            break
         }
-        else {
-            isAddGroup = false
-        }
-
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        /*create new private group header for section*/
-        let headerView = UIView()
-        let label = UILabel()
-        headerView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-        if groupInviteArr.count > 0 && p == 0 {
-             label.text = sectionForGroup[section]
-        }
-        else {
-            label.text = sectionForGroup[1]
-        }
-        label.frame = CGRect(x: 10, y: 0, width: 150, height: 22)
-        headerView.addSubview(label)
-        if ((section == 1) || (section == 0 && groupInviteArr.count == 0)) && p == 0 {
-            let button = UIButton()
-            button.frame = CGRect(x: view.bounds.maxX - 55, y: 0, width: 50, height: 22)
-            button.setTitle("Add", for: .normal)
-            button.setTitleColor(.black, for: .normal)
-            button.addTarget(self, action: #selector(createPrivateGroupButtonPressed), for: .touchUpInside)
-            button.layer.borderWidth = 1
-            button.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
-            button.showsTouchWhenHighlighted = true
-            headerView.addSubview(button)
-        }
-        return headerView
-    }
-    
-    @objc func createPrivateGroupButtonPressed(sender: UIButton!){
-        isAddGroup = true
-        performSegue(withIdentifier: "createPrivateGroup", sender: self)
-    }
 }
