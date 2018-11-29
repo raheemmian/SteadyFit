@@ -35,6 +35,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     @IBOutlet weak var groupStatus: UILabel!
     @IBOutlet weak var groupStatusInfo: UILabel!
     @IBOutlet weak var eventTableView: UITableView!
+    @IBOutlet weak var joinGroupButton: UIButton!
     
     @IBAction func joinGroup(_ sender: UIButton) {joinThisGroup()}
     var ref:DatabaseReference? = Database.database().reference()
@@ -62,6 +63,15 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
                         self.isUserInGroup = true
                     }
                 }
+            }
+        })
+        
+        let currentuserID = Auth.auth().currentUser?.uid
+    self.ref?.child("Groups").child(groupId!).child("users").observe(.value, with: { snapshot in
+            if snapshot.hasChild(currentuserID!){
+                self.joinGroupButton.isHidden = true
+            } else {
+                self.joinGroupButton.isHidden = false
             }
         })
         
@@ -215,7 +225,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 22
     }
-
+    
     func joinThisGroup() {
         let currentuserID = Auth.auth().currentUser?.uid
         self.ref?.child("Users").child(currentuserID!).child("name").observe(.value, with: { snapshot in
