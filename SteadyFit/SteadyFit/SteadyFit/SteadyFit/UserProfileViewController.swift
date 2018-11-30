@@ -142,8 +142,8 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
                  self.ref?.child("Chats").child(chatName).setValue(["groupID" : groupName])*/
                 let post = [ "/Groups/\(key)/chatid": chatId,
                              "/Groups/\(key)/grouptype": groupType,
-                             "/Groups/\(key)/user1": [currentuserID: ["joined": 1, "name": myName]],
-                             "/Groups/\(key)/user2": [self.friendUserId: ["joined": 0, "name": friendName]],
+                             "/Groups/\(key)/users": [currentuserID: ["joined": 1, "name": myName],
+                    self.friendUserId: ["joined": 0, "name": friendName]],
                              "/Chats/\(chatId)/groupID" : key] as [String : Any]
                 self.ref?.updateChildValues(post)
             })
