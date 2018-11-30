@@ -19,4 +19,5 @@ class MessageLine: NSObject {
     var timeStamp: String?  // yyyy-mm-dd hh:mm:ss
     var senderName: String?
     var senderID: String?
+    var senderProfile: UIImage?
 }
