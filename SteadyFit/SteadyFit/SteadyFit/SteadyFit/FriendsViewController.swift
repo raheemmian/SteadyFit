@@ -26,7 +26,8 @@ class FriendsViewController: EmergencyButtonViewController, UITableViewDataSourc
     var refHandle:DatabaseHandle?
     let currentuserID = (Auth.auth().currentUser?.uid)!
     
-    let friendList = ["Friend A", "Friend B", "Friend C", "Friend D"]
+    var friendList = ["Calvin", "Alexa", "Raheem"]
+    var friendIdList = ["OA7uMU3QTghSwI9EfLdZ4rbGIv53", "yBuEgsEneWRldo0eR2MwCUmUi762", "h3NW0XtSE4crau6QIllAkkSnKgu1"]
     @IBOutlet weak var friendTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +70,8 @@ class FriendsViewController: EmergencyButtonViewController, UITableViewDataSourc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         /*provide the title for the navigation bar based on the row selected*/
         var indexPath = self.friendTableView.indexPathForSelectedRow!
-        let post = segue.destination as! UserProfileViewController
-        post.navigationItem.title = friendList[indexPath.row]
+        let destination = segue.destination as! UserProfileViewController
+        destination.navigationItem.title = friendList[indexPath.row]
+        destination.friendUserId = friendIdList[indexPath.row]
     }
 }
