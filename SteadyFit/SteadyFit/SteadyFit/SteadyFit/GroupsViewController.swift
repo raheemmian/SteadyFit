@@ -68,7 +68,9 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
                 myGroup.name = dictionary["name"] as?String
                 myGroup.chatid = dictionary["chatid"] as?String
                 myGroup.grouptype = dictionary["GroupType"] as?String
-                self.queryMyGroups.append(myGroup)
+                if myGroup.grouptype != "Friends"{
+                    self.queryMyGroups.append(myGroup)
+                }
             }
             // Get user city and activity level for recommending algorithm
             if let dictionary2 = snapshot.value as? [String: AnyObject]{

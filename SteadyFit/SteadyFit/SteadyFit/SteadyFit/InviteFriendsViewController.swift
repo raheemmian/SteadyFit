@@ -7,15 +7,38 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var inviteUserTableView: UITableView!
-    var friendsInviteList = ["Friend A", "Friend B"]
+    var ref:DatabaseReference? = Database.database().reference()
+    var friendsInviteList: [String] = []
+    var friendsIdList: [String] = []
+    var groupId = ""
+    let currentuserID = Auth.auth().currentUser?.uid
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         inviteUserTableView.delegate = self
         inviteUserTableView.dataSource = self
         inviteUserTableView.tableFooterView = UIView()
+        
+        if currentuserID != nil {
+            //friendsInviteList.removeAll()
+            //friendsIdList.removeAll()
+            ref?.child("Users").child(currentuserID!).child("Friends").observeSingleEvent(of: .value, with: {(snapshot) in
+                for rest in snapshot.children.allObjects as! [DataSnapshot]{
+                    guard let dictionary = rest.value as? [String: AnyObject] else {continue}
+                    let friendName = dictionary["name"] as?String
+                    let friendId = rest.key
+                    if (friendName != nil && friendId != ""){
+                        self.friendsInviteList.append(friendName!)
+                        self.friendsIdList.append(friendId)
+                    }
+                }
+            })
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,6 +51,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         let button = UIButton()
         button.frame = CGRect(x: view.bounds.maxX - 44, y: 0, width: 44, height: 44)
         button.setImage(image, for: .normal)
+        button.tag = indexPath.row
         button.addTarget(self, action: #selector(inviteButtonPressed), for: .touchUpInside)
         button.showsTouchWhenHighlighted = true
         cell.textLabel?.text = friendsInviteList[indexPath.row]
@@ -39,8 +63,14 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         //sender.isHidden = true
         let image = UIImage(named: "checkmark")
         sender.setImage(image, for: .normal)
-        /*need to add the functionality everytime the button is pressed
-         then an invite request is sent to a user
+        /* alexa look here, uncomment this when requests are done
+        let invitedUserId = friendsIdList[sender.tag]
+        let invitedUserName = friendsInviteList[sender.tag]
+        if (groupId != "" && invitedUserId != "" && invitedUserName != ""){
+            let post = [ "/Groups/\(groupId)/users/\(invitedUserId)":
+                ["name":invitedUserName, "joined":0]] as [String : Any]
+            ref?.updateChildValues(post)
+        }
         */
     }
 }
