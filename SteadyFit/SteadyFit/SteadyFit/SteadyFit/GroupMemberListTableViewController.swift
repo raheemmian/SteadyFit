@@ -17,6 +17,7 @@ import UIKit
 class GroupMemberListTableViewController: UITableViewController {
     
     var memberList = [String]()
+    var memberIdList = [String]()
     
     @IBOutlet weak var memberListTableView: UITableView!
     
@@ -25,11 +26,11 @@ class GroupMemberListTableViewController: UITableViewController {
         memberListTableView.delegate = self
         memberListTableView.dataSource = self
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memberList.count
     }
@@ -45,4 +46,9 @@ class GroupMemberListTableViewController: UITableViewController {
         memberListTableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var indexPath = self.memberListTableView.indexPathForSelectedRow!
+        let destination = segue.destination as! UserProfileViewController
+        destination.friendUserId = memberIdList[indexPath.row]
+    }
 }

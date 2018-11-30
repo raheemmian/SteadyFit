@@ -13,7 +13,6 @@
         <!--Profile-->
         <scene sceneID="XFA-Dw-fxx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QaQ-Hi-bUb" sceneMemberID="firstResponder"/>
                 <viewController wantsFullScreenLayout="YES" extendedLayoutIncludesOpaqueBars="YES" id="scA-XJ-Bbz" customClass="UserProfileViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hYO-VR-XUe" userLabel="UserProfileView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -38,12 +37,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Profile - Work in Progress" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEm-TN-4C6">
-                                <rect key="frame" x="110" y="438" width="195" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Teg-VZ-NHz">
                                 <rect key="frame" x="0.0" y="582" width="375" height="41"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,6 +48,33 @@
                                     <action selector="emergencyButton:" destination="scA-XJ-Bbz" eventType="touchUpInside" id="Vvc-yf-7wf"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s2m-Rb-luc">
+                                <rect key="frame" x="-0.5" y="212" width="376" height="350"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="CgS-Vi-Eff"/>
+                                    <constraint firstAttribute="width" constant="376" id="MkS-Vb-aQ5"/>
+                                </constraints>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bNi-TK-fqd">
+                                    <rect key="frame" x="0.0" y="72" width="376" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <state key="normal" title="Send Friend Request"/>
+                                    <connections>
+                                        <action selector="sendFriendRequest:" destination="scA-XJ-Bbz" eventType="touchUpInside" id="vQm-61-Rea"/>
+                                    </connections>
+                                </button>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="friendTableCell" id="jTB-G8-0LZ">
+                                        <rect key="frame" x="0.0" y="28" width="376" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jTB-G8-0LZ" id="ddQ-UM-H6D">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -63,14 +83,14 @@
                             <constraint firstItem="VKg-ao-jUl" firstAttribute="centerX" secondItem="4t7-wD-1lV" secondAttribute="centerX" id="6M8-Wt-Qjv"/>
                             <constraint firstItem="jU9-7M-MRp" firstAttribute="top" secondItem="VKg-ao-jUl" secondAttribute="bottom" constant="8" id="9D9-nH-0ad"/>
                             <constraint firstItem="jU9-7M-MRp" firstAttribute="centerX" secondItem="VKg-ao-jUl" secondAttribute="centerX" id="Frg-nw-HrU"/>
-                            <constraint firstItem="UEm-TN-4C6" firstAttribute="centerX" secondItem="4t7-wD-1lV" secondAttribute="centerX" id="JcV-FA-LpW"/>
+                            <constraint firstItem="s2m-Rb-luc" firstAttribute="centerX" secondItem="4t7-wD-1lV" secondAttribute="centerX" id="GtU-QW-Qci"/>
                             <constraint firstItem="4t7-wD-1lV" firstAttribute="bottom" secondItem="Teg-VZ-NHz" secondAttribute="bottom" id="Q6s-gv-TVl"/>
                             <constraint firstItem="VKg-ao-jUl" firstAttribute="top" secondItem="4t7-wD-1lV" secondAttribute="top" constant="15" id="QnB-kt-JSs"/>
                             <constraint firstItem="mrx-3T-JMM" firstAttribute="top" secondItem="jU9-7M-MRp" secondAttribute="bottom" constant="8" id="U6c-By-4LI"/>
                             <constraint firstItem="Teg-VZ-NHz" firstAttribute="leading" secondItem="hYO-VR-XUe" secondAttribute="leading" id="W15-NR-1hY"/>
                             <constraint firstItem="mrx-3T-JMM" firstAttribute="centerX" secondItem="4t7-wD-1lV" secondAttribute="centerX" id="bRK-0d-Vuj"/>
-                            <constraint firstItem="UEm-TN-4C6" firstAttribute="centerY" secondItem="4t7-wD-1lV" secondAttribute="centerY" id="e2N-Bg-seP"/>
                             <constraint firstItem="4t7-wD-1lV" firstAttribute="trailing" secondItem="Teg-VZ-NHz" secondAttribute="trailing" id="pQB-ll-iKJ"/>
+                            <constraint firstItem="s2m-Rb-luc" firstAttribute="top" secondItem="mrx-3T-JMM" secondAttribute="bottom" constant="8" id="rRL-wj-8AY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4t7-wD-1lV"/>
                     </view>
@@ -79,12 +99,15 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="location" destination="mrx-3T-JMM" id="gmU-Ld-3iY"/>
+                        <outlet property="myTableView" destination="s2m-Rb-luc" id="E68-PW-rq6"/>
                         <outlet property="name" destination="jU9-7M-MRp" id="0eU-ax-Sy7"/>
                         <outlet property="profilePic" destination="VKg-ao-jUl" id="g2p-ci-NVC"/>
+                        <outlet property="sendFriendRequestButton" destination="bNi-TK-fqd" id="yY9-0s-s0T"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QaQ-Hi-bUb" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5304" y="-94"/>
+            <point key="canvasLocation" x="5303.1999999999998" y="-94.002998500749626"/>
         </scene>
     </scenes>
     <resources>

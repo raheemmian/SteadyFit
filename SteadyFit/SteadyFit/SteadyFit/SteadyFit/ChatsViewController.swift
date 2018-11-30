@@ -56,12 +56,12 @@ class ChatsViewController: EmergencyButtonViewController, UITableViewDataSource,
                 print (groupsSnapshot)
                 guard let dictionary = groupsSnapshot.value as? [String: AnyObject] else {continue}
                 self.chatIDList.append((dictionary["chatid"] as! String))
-                var grouptype = dictionary["grouptype"] as!String
+                let grouptype = dictionary["grouptype"] as!String
                 // assign the groups to the correct categories
                 if  grouptype == "public" || grouptype == "Public"{
                     self.publicGroupList.append((dictionary["name"] as! String))
                 }
-                else{
+                else if grouptype == "Private" || grouptype == "private"{
                     self.privateGroupList.append((dictionary["name"] as! String))
                 }
             }
