@@ -6,7 +6,7 @@
 //  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
-//  Edited by: Dickson Chum
+//  Edited by: Dickson Chum, Calvin Liu
 //  List of Changes: Work in Progress
 //  Added labels and image view, added emergency button and GPS related code
 //
@@ -22,7 +22,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class UserProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
-
+    
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var location: UILabel!
@@ -34,7 +34,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     @IBAction func sendFriendRequest(_ sender: Any) {addFriend()}
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
-    var friendUserId : String = "h3NW0XtSE4crau6QIllAkkSnKgu1"
+    var friendUserId : String = ""
     var newGroupId : Int = 0
     let friendTableSections = ["Gender", "Birthday", "Bio"]
     var friendTableContents = ["M", "Nov 5", "WOW"]
@@ -127,6 +127,26 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     
     func addFriend() {
         let currentuserID = Auth.auth().currentUser?.uid
-        self.ref?.child("Users").child(currentuserID!).child("Friends").setValue(["friendId": friendUserId, "groupId": newGroupId, "accepted" : 0])
+        self.ref?.child("Users").child(currentuserID!).child("name").observe(.value, with: { mysnapshot in
+            guard let myName = mysnapshot.value as? String else {return}
+            self.ref?.child("Users").child(self.friendUserId).child("name").observe(.value, with: { friendsnapshot in
+                guard let friendName = friendsnapshot.value as? String else {return}
+                
+                let key = "Group" + currentuserID! + self.friendUserId
+                let chatId = "Chat" + currentuserID! + self.friendUserId
+                let groupType = "Friends"
+                /*
+                 self.ref?.child("Groups").child(groupName).setValue(["chatid" : chatName, "grouptype" : groupType])
+                 self.ref?.child("Groups").child(groupName).child("users").child(currentuserID!).setValue(["joined" : 1, "name" : myName])
+                 self.ref?.child("Groups").child(groupName).child("users").child(self.friendUserId).setValue(["joined" : 0, "name" : friendName])
+                 self.ref?.child("Chats").child(chatName).setValue(["groupID" : groupName])*/
+                let post = [ "/Groups/\(key)/chatid": chatId,
+                             "/Groups/\(key)/grouptype": groupType,
+                             "/Groups/\(key)/user1": [currentuserID: ["joined": 1, "name": myName]],
+                             "/Groups/\(key)/user2": [self.friendUserId: ["joined": 0, "name": friendName]],
+                             "/Chats/\(chatId)/groupID" : key] as [String : Any]
+                self.ref?.updateChildValues(post)
+            })
+        })
     }
 }
