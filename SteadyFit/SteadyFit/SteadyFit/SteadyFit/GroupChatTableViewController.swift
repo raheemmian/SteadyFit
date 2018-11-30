@@ -80,7 +80,36 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
                 myChatLine.senderName = myline["senderName"] as?String
                 myChatLine.message = myline["message"] as?String
                 myChatLine.timeStamp = myline["date"] as?String
+                
                 self.rawMessages.append(myChatLine)
+                
+                self.ref?.child("Users").child(myChatLine.senderID!).child("profilepic").observe(DataEventType.value, with: {
+                    (userSnapshot) in
+                    if userSnapshot.value != nil{
+                        let userPic = (userSnapshot.value as? String)
+                        print("!!!!!!!!!!!!!!!!!")
+                        print(userPic)
+                        // load profile
+                            if let imageURL = userPic{
+                                let url = URL(string: imageURL)
+                                URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                                    if error != nil{
+                                        print(error!)
+                                        return
+                                    }
+                                    myChatLine.senderProfile = UIImage(data:data!)
+                                    
+                                    //                                DispatchQueue.main.async() {
+                                    //                                    self.profilePictureImage?.image = UIImage(data:data!)
+                                    //                                }
+                                }).resume()
+                            }
+                    }
+                })
+                
+                
+                
+                
             }
             
             // Sort message by time stamp
@@ -94,6 +123,11 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
                 self.collectionView?.reloadData()
             }
         })
+        
+        
+        
+        
+        
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -169,6 +203,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
             cell.profilePicView.isHidden = false
             cell.senderNameView.isHidden = false
             cell.senderNameView.text = message.senderName
+            cell.profilePicView.image = message.senderProfile
         }
     }
     

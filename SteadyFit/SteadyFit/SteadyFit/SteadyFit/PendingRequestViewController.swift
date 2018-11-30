@@ -13,7 +13,7 @@ class PendingRequestViewController: UIViewController, UITableViewDelegate, UITab
     var requestTableSections = ["Friend Request", "Group Request"]
     var requestTableContents = [["Friend 1", "Friend 2","Friend 3"],["Group 1", "Group 2","Group 3"]]
     
-//    let cellID = "cellID"
+    let cellID = "requestCell"
     @IBOutlet weak var requestTableView: UITableView!
     
     override func viewDidLoad() {
@@ -29,10 +29,10 @@ class PendingRequestViewController: UIViewController, UITableViewDelegate, UITab
 //        let frameWidth: CGFloat = self.view.frame.width
 //        let frameHeight: CGFloat = self.view.frame.height
 //        requestTableView.frame = CGRect(x: 0, y: barHeight, width: frameWidth, height: frameHeight - barHeight)
-//        requestTableView.register(RequestTableViewCell.self, forCellReuseIdentifier: cellID)
+        requestTableView.register(RequestTableViewCell.self, forCellReuseIdentifier: cellID)
         requestTableView.dataSource = self
         requestTableView.delegate = self
-//        self.view.addSubview(requestTableView)
+        self.view.addSubview(requestTableView)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -71,30 +71,18 @@ class PendingRequestViewController: UIViewController, UITableViewDelegate, UITab
     }()
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = requestTableView.dequeueReusableCell(withIdentifier: "requestCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! RequestTableViewCell
         
-        cell.contentView.addSubview(acceptButton)
-        cell.contentView.addSubview(declineButton)
-        
-        
-        acceptButton.rightAnchor.constraint(equalTo: declineButton.leftAnchor, constant: -15).isActive = true
-        acceptButton.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
-        acceptButton.widthAnchor.constraint(equalTo: self.acceptButton.widthAnchor).isActive = true
-        acceptButton.heightAnchor.constraint(equalToConstant: cell.frame.height).isActive = true
-        
-        declineButton.rightAnchor.constraint(equalTo: cell.rightAnchor, constant: -10).isActive = true
-        declineButton.topAnchor.constraint(equalTo: cell.topAnchor).isActive = true
-        declineButton.widthAnchor.constraint(equalTo: self.acceptButton.widthAnchor).isActive = true
-        declineButton.heightAnchor.constraint(equalToConstant: cell.frame.height).isActive = true
-        
-        acceptButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        declineButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
-        
+        cell.acceptButton.addTarget(self, action: #selector(buttonAction(sender: )), for: .touchUpInside)
+        cell.declineButton.addTarget(self, action: #selector(buttonAction(sender: )), for: .touchUpInside)
         cell.textLabel?.text = requestTableContents[indexPath.section][indexPath.row]
+        
         return cell
     }
     
+    
+    // has bugg
+    // the button doesnt react when it is clicked
     @objc func buttonAction(sender: UIButton!){
         acceptButton.isEnabled = false
         declineButton.isEnabled = false
@@ -106,6 +94,9 @@ class PendingRequestViewController: UIViewController, UITableViewDelegate, UITab
             // update database regarding to which button is clicked
             // potentially refresh view so the group disappear from this view
             
+            
+            
+            
         }
         else if(sender == declineButton){
             print("Decline button is clicked")
@@ -115,18 +106,11 @@ class PendingRequestViewController: UIViewController, UITableViewDelegate, UITab
             // update database regarding to which button is clicked
             // potentially refresh view so the group disappear from this view
             
+            
+            
+            
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
