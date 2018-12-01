@@ -25,9 +25,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         inviteUserTableView.tableFooterView = UIView()
         
         if currentuserID != nil {
-            //friendsInviteList.removeAll()
-            //friendsIdList.removeAll()
             ref?.child("Users").child(currentuserID!).child("Friends").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.friendsInviteList.removeAll()
+                self.friendsIdList.removeAll()
                 for rest in snapshot.children.allObjects as! [DataSnapshot]{
                     guard let dictionary = rest.value as? [String: AnyObject] else {continue}
                     let friendName = dictionary["name"] as?String
@@ -36,6 +36,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                         self.friendsInviteList.append(friendName!)
                         self.friendsIdList.append(friendId)
                     }
+                }
+                DispatchQueue.main.async() {
+                    self.inviteUserTableView.reloadData()
                 }
             })
         }
