@@ -25,6 +25,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         inviteUserTableView.tableFooterView = UIView()
         
         if currentuserID != nil {
+            // load friend list
             ref?.child("Users").child(currentuserID!).child("Friends").observeSingleEvent(of: .value, with: {(snapshot) in
                 self.friendsInviteList.removeAll()
                 self.friendsIdList.removeAll()
