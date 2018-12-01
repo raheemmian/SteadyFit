@@ -35,8 +35,27 @@ class FriendsViewController: EmergencyButtonViewController, UITableViewDataSourc
         friendTableView.tableFooterView = UIView(frame: .zero)
         friendTableView.delegate = self
         friendTableView.dataSource = self
-       
+        
         ref = Database.database().reference()
+            // load friend list
+            ref?.child("Users").child(currentuserID).child("Friends").observeSingleEvent(of: .value, with: {(snapshot) in
+                self.friendList.removeAll()
+                self.friendIdList.removeAll()
+                for rest in snapshot.children.allObjects as! [DataSnapshot]{
+                    guard let dictionary = rest.value as? [String: AnyObject] else {continue}
+                    let friendName = dictionary["name"] as?String
+                    let friendId = rest.key
+                    if (friendName != nil && friendId != ""){
+                        self.friendList.append(friendName!)
+                        self.friendIdList.append(friendId)
+                    }
+                }
+                DispatchQueue.main.async() {
+                    self.friendTableView.reloadData()
+                }
+            })
+        
+        
         self.ref!.child("Users").child(currentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
             
             let userDictionary = snapshot.value as? [String: AnyObject]
