@@ -38,6 +38,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     var newGroupId : Int = 0
     let friendTableSections = ["Gender", "Birthday", "Bio"]
     var friendTableContents = ["M", "Nov 5", "WOW"]
+    let currentuserID = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,15 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         myTableView.dataSource = self
         profilePic.layer.cornerRadius = profilePic.frame.size.width / 2
         profilePic.clipsToBounds = true
+        
+        self.ref?.child("Users").child(self.currentuserID!).child("Friends").observeSingleEvent(of: .value, with: {(snapshot) in
+            if snapshot.hasChild(self.friendUserId){
+                self.sendFriendRequestButton.isHidden = true
+            } else {
+                self.sendFriendRequestButton.isHidden = false
+            }
+        })
+        
         self.ref?.child("Users").child(friendUserId).observe(DataEventType.value, with: {(userSnapshot) in
             if userSnapshot.value != nil{
                 let userDictionary = userSnapshot.value as? [String: AnyObject]
@@ -126,27 +136,22 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func addFriend() {
-        let currentuserID = Auth.auth().currentUser?.uid
         self.ref?.child("Users").child(currentuserID!).child("name").observe(.value, with: { mysnapshot in
             guard let myName = mysnapshot.value as? String else {return}
             self.ref?.child("Users").child(self.friendUserId).child("name").observe(.value, with: { friendsnapshot in
                 guard let friendName = friendsnapshot.value as? String else {return}
                 
-                let key = "Group" + currentuserID! + self.friendUserId
-                let chatId = "Chat" + currentuserID! + self.friendUserId
+                let key = "Group" + self.currentuserID! + self.friendUserId
+                let chatId = "Chat" + self.currentuserID! + self.friendUserId
                 let groupType = "Friends"
-                /*
-                 self.ref?.child("Groups").child(groupName).setValue(["chatid" : chatName, "grouptype" : groupType])
-                 self.ref?.child("Groups").child(groupName).child("users").child(currentuserID!).setValue(["joined" : 1, "name" : myName])
-                 self.ref?.child("Groups").child(groupName).child("users").child(self.friendUserId).setValue(["joined" : 0, "name" : friendName])
-                 self.ref?.child("Chats").child(chatName).setValue(["groupID" : groupName])*/
                 let post = [ "/Groups/\(key)/chatid": chatId,
                              "/Groups/\(key)/grouptype": groupType,
-                             "/Groups/\(key)/user1": [currentuserID: ["joined": 1, "name": myName]],
+                             "/Groups/\(key)/user1": [self.currentuserID: ["joined": 1, "name": myName]],
                              "/Groups/\(key)/user2": [self.friendUserId: ["joined": 0, "name": friendName]],
                              "/Chats/\(chatId)/groupID" : key] as [String : Any]
                 self.ref?.updateChildValues(post)
             })
         })
+        self.sendFriendRequestButton.isHidden = true
     }
 }
