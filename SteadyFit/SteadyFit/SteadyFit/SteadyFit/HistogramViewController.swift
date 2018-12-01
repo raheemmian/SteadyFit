@@ -21,6 +21,8 @@
 //  monthly view's text is squished together
 //  naming of the view switch buttons inconsistent and confusing
 
+// this view controller is for the histogram to showcase the progress of the activity time, so that users can see their progress visually
+
 
 import UIKit
 
@@ -38,6 +40,7 @@ class HistogramViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        // difference modes depending on how the user wants to see the activity progress
         if histogram_mode == 1{
             dataEntries = generateWeeklyEntries()
         }
@@ -51,6 +54,7 @@ class HistogramViewController: UIViewController {
     }
     
     func generateDataEntries() -> [BarEntry] {
+        //creates an array of data for daily minute tracking for the histogram
         var result: [BarEntry] = []
         if histogram_data.count != 0{
             let sorted_data = histogram_data.sorted { (aDic, bDic) -> Bool in
@@ -87,6 +91,7 @@ class HistogramViewController: UIViewController {
     }
     
     func generateWeeklyEntries() -> [BarEntry] {
+        //creates an array of data for weekly minute tracking for the current month
         var result: [BarEntry] = []
         if histogram_data.count != 0{
             
@@ -154,6 +159,7 @@ class HistogramViewController: UIViewController {
     }
     
     func generateMonthlyEntries() -> [BarEntry] {
+        //creates an array of data for monthly minute tracking for the histogram
         var result: [BarEntry] = []
         if histogram_data.count != 0{
             let sorted_data = histogram_data.sorted { (aDic, bDic) -> Bool in
@@ -217,18 +223,21 @@ class HistogramViewController: UIViewController {
     }
     
     @IBAction func week_click(_ sender: Any) {
+        // user clicks on the button to show weekly view
         histogram_mode = 1
         dataEntries = generateWeeklyEntries()
         ATBarweekly.dataEntries = dataEntries
     }
     
     @IBAction func month_click(_ sender: Any) {
+        // user clicks on the button to show montly view
         histogram_mode = 2
         dataEntries = generateMonthlyEntries()
         ATBarweekly.dataEntries = dataEntries
     }
     
     @IBAction func day_click(_ sender: Any) {
+        // user clicks on the button to show daily view
         histogram_mode = 0
         dataEntries = generateDataEntries()
         ATBarweekly.dataEntries = dataEntries
