@@ -273,11 +273,12 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
         let today = Date()
         let components = Calendar.current.dateComponents([.day], from: oldest!, to: today)
         let activity_day_count = (components.day ?? 0)
-        
-        for i in 0...activity_day_count{
-            let tempDate:Date = Calendar.current.date(byAdding: .day, value: i, to: oldest!)!
-            let tempDateString = dateFormatter.string(from: tempDate)
-            activity_day[tempDateString] = 0
+        if activity_day_count >= 0{
+            for i in 0...activity_day_count{
+                let tempDate:Date = Calendar.current.date(byAdding: .day, value: i, to: oldest!)!
+                let tempDateString = dateFormatter.string(from: tempDate)
+                activity_day[tempDateString] = 0
+            }
         }
     }
 
