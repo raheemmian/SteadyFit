@@ -51,6 +51,7 @@
 		B5F54D29218E85F500D0214D /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F54D28218E85F500D0214D /* SettingsTableViewCell.swift */; };
 		D41383E321902B950076031B /* GroupChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41383E221902B950076031B /* GroupChatTableViewController.swift */; };
 		D43B7CF4218E6E8C0099C159 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */; };
+		D43CAB7021B335C800FE4860 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43CAB6E21B335C800FE4860 /* RequestTableViewCell.swift */; };
 		D44A89A721968CF200D760CE /* InitUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44A89A621968CF200D760CE /* InitUserInfoViewController.swift */; };
 		D4A8667521A37B120084C62A /* HomePageTest_Version2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A8667421A37B120084C62A /* HomePageTest_Version2.swift */; };
 		D4A8668321A37C3D0084C62A /* GroupsInterfaceTest_Version2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A8668221A37C3D0084C62A /* GroupsInterfaceTest_Version2.swift */; };
@@ -65,7 +66,6 @@
 		D4CCACCF21AA2D8D00E6B829 /* PendingRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCACCE21AA2D8D00E6B829 /* PendingRequestViewController.swift */; };
 		D4F05D07218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */; };
 		D4F0EEFD218EDEC60053C1A8 /* SettingsEditiorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */; };
-		D4F363C421B1247D00D9E319 /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F363C321B1247D00D9E319 /* RequestTableViewCell.swift */; };
 		F8C3D1F1CFDE408C81CE4DA4 /* Pods_SteadyFit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524F9EF2FBCDEC79B4A3191F /* Pods_SteadyFit.framework */; };
 		FDB5663421A0E5560050C7B6 /* SettingsEmergencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5663321A0E5560050C7B6 /* SettingsEmergencyViewController.swift */; };
 		FDDD8C3121ADE7EC00A1D4BF /* SettingsHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDD8C3021ADE7EC00A1D4BF /* SettingsHelpViewController.swift */; };
@@ -233,6 +233,7 @@
 		C9E952BF25F86290D84D1FDC /* Pods-SteadyFitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitTests/Pods-SteadyFitTests.release.xcconfig"; sourceTree = "<group>"; };
 		D41383E221902B950076031B /* GroupChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChatTableViewController.swift; sourceTree = "<group>"; };
 		D43B7CF3218E6E8C0099C159 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		D43CAB6E21B335C800FE4860 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		D44A89A621968CF200D760CE /* InitUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitUserInfoViewController.swift; sourceTree = "<group>"; };
 		D4A8666421A377120084C62A /* SteadyFitUITests_Version2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SteadyFitUITests_Version2.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4A8667221A37B120084C62A /* HomePageTest_Version2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomePageTest_Version2.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -257,7 +258,6 @@
 		D4CCACCE21AA2D8D00E6B829 /* PendingRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestViewController.swift; sourceTree = "<group>"; };
 		D4F05D06218E4F0000F0ABF0 /* GroupMemberListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberListTableViewController.swift; sourceTree = "<group>"; };
 		D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEditiorViewController.swift; sourceTree = "<group>"; };
-		D4F363C321B1247D00D9E319 /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		FDB5663321A0E5560050C7B6 /* SettingsEmergencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEmergencyViewController.swift; sourceTree = "<group>"; };
 		FDDD8C3021ADE7EC00A1D4BF /* SettingsHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHelpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -377,7 +377,7 @@
 				60E6AD2321A0EE9800429419 /* GroupEvents.swift */,
 				60E6AD2521A0EEC100429419 /* GroupUser.swift */,
 				60E6AD2721A0F13F00429419 /* BarEntry.swift */,
-				D4F363C321B1247D00D9E319 /* RequestTableViewCell.swift */,
+				D43CAB6E21B335C800FE4860 /* RequestTableViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1181,7 +1181,7 @@
 				D4C471AF2190F087003C182B /* MessageLine.swift in Sources */,
 				B5114C3821A33C06004E2CED /* EmergencyButtonViewController.swift in Sources */,
 				FDDD8C3121ADE7EC00A1D4BF /* SettingsHelpViewController.swift in Sources */,
-				D4F363C421B1247D00D9E319 /* RequestTableViewCell.swift in Sources */,
+				D43CAB7021B335C800FE4860 /* RequestTableViewCell.swift in Sources */,
 				60E6AD2421A0EE9800429419 /* GroupEvents.swift in Sources */,
 				125AAD4D218D9A1800CC5FCD /* LoginViewController.swift in Sources */,
 				B580F64721ABA87800F67C6D /* CreatePrivateGroupViewController.swift in Sources */,
