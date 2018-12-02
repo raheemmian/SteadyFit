@@ -56,8 +56,8 @@ class SettingsEmergencyViewController: EmergencyButtonViewController {
     // Update Emergency contact and message to database
     @IBAction func emergencySaveButton(_ sender: UIButton) {
         if emergencyContectNumberTextBox.text != nil && emergencyMessageTextBox.text != nil {
-            let newUserInfo = ["/Users/\(currentuserID)/emergencycontact": emergencyContectNumberTextBox.text,
-                               "/Users/\(currentuserID)/emergencymessage": emergencyMessageTextBox.text] as [String:Any]
+            let newUserInfo = ["/Users/\(currentuserID)/emergencycontact": emergencyContectNumberTextBox.text!,
+                               "/Users/\(currentuserID)/emergencymessage": emergencyMessageTextBox.text!] as [String:Any]
             ref?.updateChildValues(newUserInfo)
             navigationController?.popViewController(animated: true)
         }

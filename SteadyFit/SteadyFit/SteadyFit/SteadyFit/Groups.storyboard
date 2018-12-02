@@ -281,14 +281,17 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DFd-qz-zAV">
                                                 <rect key="frame" x="257.5" y="0.0" width="116.5" height="53"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="(activity level)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSv-Ad-jFu">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(activity level)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSv-Ad-jFu">
                                                         <rect key="frame" x="0.0" y="0.0" width="116.5" height="22.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="(public/private)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ed-Ku-ps1">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(public/private)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ed-Ku-ps1">
                                                         <rect key="frame" x="0.0" y="32.5" width="116.5" height="20.5"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20.5" id="QcD-oL-Eju"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -337,7 +340,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Uyt-OR-869" firstAttribute="top" secondItem="AaJ-aH-dox" secondAttribute="bottom" id="CNg-sp-Wmv"/>
-                            <constraint firstItem="AaJ-aH-dox" firstAttribute="top" secondItem="qGB-fg-KJf" secondAttribute="bottom" id="Don-m1-Rd1"/>
                             <constraint firstItem="yxY-Tg-IOB" firstAttribute="trailing" secondItem="AaJ-aH-dox" secondAttribute="trailing" id="HA9-Hl-t9J"/>
                             <constraint firstItem="Uyt-OR-869" firstAttribute="leading" secondItem="yxY-Tg-IOB" secondAttribute="leading" id="VG0-bR-r2c"/>
                             <constraint firstItem="yxY-Tg-IOB" firstAttribute="trailing" secondItem="qGB-fg-KJf" secondAttribute="trailing" constant="20" id="cxP-xi-W4t"/>
@@ -640,6 +642,6 @@
         <image name="group" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="451-5L-OdK"/>
+        <segue reference="7J1-sh-rpB"/>
     </inferredMetricsTieBreakers>
 </document>

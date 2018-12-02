@@ -77,10 +77,10 @@ class AddActivityEventViewController: EmergencyButtonViewController, UITextField
         
     //Durationfield
     //Inputs in String format
-        var name: String? = NameActivityTextField.text
+        /*var name: String? = NameActivityTextField.text
         var Description: String? = DescriptionActivitytextfield.text
         var Datetime: String? = DTAddActivitytextfield.text
-        var Duration: String? = DurationActivitytextfield.text
+        var Duration: String? = DurationActivitytextfield.text*/
         ref?.child("Users").child(myUserID).child("name").observeSingleEvent(of: .value, with: {(snapshot) in
             self.myUserName = (snapshot.value as? String)!
         })

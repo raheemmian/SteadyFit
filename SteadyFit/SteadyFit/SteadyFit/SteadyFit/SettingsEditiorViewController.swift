@@ -131,12 +131,12 @@ class SettingsEditiorViewController: EmergencyButtonViewController {
     @IBAction func saveButton(_ sender: UIButton) {
         //        writeToFirebace()
         if cityTextBox.text != nil && editProfileDatePicker.text != nil && provinceTextBox.text != nil && activityLevelTextBox.text != nil && genderTextBox.text != nil && bioTextBox.text != nil{
-            let newUserInfo = ["/Users/\(currentuserID)/birthdate": editProfileDatePicker.text,
-                               "/Users/\(currentuserID)/city": cityTextBox.text,
-                               "/Users/\(currentuserID)/province": provinceTextBox.text,
-                               "/Users/\(currentuserID)/activitylevel": activityLevelTextBox.text,
-                               "/Users/\(currentuserID)/gender": genderTextBox.text,
-                               "/Users/\(currentuserID)/description": bioTextBox.text
+            let newUserInfo = ["/Users/\(currentuserID)/birthdate": editProfileDatePicker.text!,
+                               "/Users/\(currentuserID)/city": cityTextBox.text!,
+                               "/Users/\(currentuserID)/province": provinceTextBox.text!,
+                               "/Users/\(currentuserID)/activitylevel": activityLevelTextBox.text!,
+                               "/Users/\(currentuserID)/gender": genderTextBox.text!,
+                               "/Users/\(currentuserID)/description": bioTextBox.text!
                 ] as [String:Any]
             ref?.updateChildValues(newUserInfo)
             navigationController?.popViewController(animated: true)
