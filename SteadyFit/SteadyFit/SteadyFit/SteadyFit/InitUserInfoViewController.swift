@@ -51,6 +51,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        /* returns the number of rows in the specified picker view*/
         if pickerView == activityLevelPicker{
             return activityLevelList.count
         }
@@ -67,6 +68,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
     }
     
     func createPicker(){
+        /*create UI picker lists for data inputs with restricted format*/
         let pickerToolBar = UIToolbar()
         pickerToolBar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneClicked))
@@ -78,6 +80,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        /*load the selected data from the pickers to the corresponding text fields*/
         if pickerView == activityLevelPicker {
            
             activityLevelTextField.text = activityLevelList[row]
@@ -103,6 +106,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
     
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        /*returns the selected data for the corresponding picker - specified by the input param pickerView*/
         if pickerView == activityLevelPicker{
             return activityLevelList[row]
         }
@@ -119,6 +123,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
     
     
     @IBAction func saveInitUserInfo(_ sender: Any) {
+        /*save the necessary information of the newly registered user into database*/
         let currentUserID = (Auth.auth().currentUser?.uid)!
         
         if userNameTextField.text != nil && provinceTextField.text != nil && cityTextField.text != nil && activityLevelTextField.text != nil && birthDateTextField.text != nil && genderTextField.text != nil && emergencyContactTextField.text != nil && personalBioTextView.text != nil &&
@@ -133,8 +138,6 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
                         "/Users/\(currentUserID)/emergencycontact": emergencyContactTextField.text as Any,
                         "/Users/\(currentUserID)/description": personalBioTextView.text
                 ] as [String : Any]
-            
-            //let childUpdates = ["/Users/\(currentUserID)/": post]
             ref?.updateChildValues(post)
             self.performSegue(withIdentifier: "InitGoToHome", sender: self)
         }
@@ -178,6 +181,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
     }
     
     func createDatePicker(){
+        /*create the date picker for birthday text field*/
         birthdatePicker.datePickerMode = .date
         birthDateTextField.inputView = birthdatePicker
         let datePickerToolBar = UIToolbar()
@@ -188,6 +192,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
     }
     
     @objc func doneClicked() {
+        /*executed when "Done" button is clicked for the birth date picker*/
         if activeTextField == birthDateTextField{
             let startDateFormat = DateFormatter()
             startDateFormat.dateFormat = "yyyy-MM-dd"
