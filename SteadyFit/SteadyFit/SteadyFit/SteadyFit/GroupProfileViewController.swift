@@ -111,16 +111,14 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
                 if (groupInfo["users"] != nil){
                     for userSnapshot in snapshot.childSnapshot(forPath: "users").children.allObjects as![DataSnapshot]{
                         if let groupUser = userSnapshot.value as? [String : AnyObject] {
-                            if userSnapshot.key != self.myUserID{
-                                let myGroupUser = GroupUser()
-                                myGroupUser.joined = (groupUser["joined"] as!Int)
-                                myGroupUser.userName = groupUser["name"] as?String
-                                if (myGroupUser.joined == 1){
-                                    myGroupInfo.users.append(myGroupUser.userName)
-                                    self.userIdList.append(userSnapshot.key)
-                                }
-                                self.userIdList_ingroup_and_invited.append(userSnapshot.key)
+                            let myGroupUser = GroupUser()
+                            myGroupUser.joined = (groupUser["joined"] as!Int)
+                            myGroupUser.userName = groupUser["name"] as?String
+                            if (myGroupUser.joined == 1){
+                                myGroupInfo.users.append(myGroupUser.userName)
+                                self.userIdList.append(userSnapshot.key)
                             }
+                            self.userIdList_ingroup_and_invited.append(userSnapshot.key)
                         }
                     }
                 }
