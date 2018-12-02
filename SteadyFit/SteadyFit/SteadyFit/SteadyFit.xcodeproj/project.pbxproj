@@ -23,6 +23,7 @@
 		60E6AD2A21A0F15B00429419 /* BarChartActivityTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E6AD2921A0F15B00429419 /* BarChartActivityTracker.swift */; };
 		6BEB4CE86D25B9F25E19AB27 /* Pods_SteadyFitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345E59685D91B020FFE70273 /* Pods_SteadyFitTests.framework */; };
 		80CDBC54219641E600642D46 /* AddActivityEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */; };
+		80F4649121B36B2300D9B2F9 /* SettingsNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F4649021B36B2300D9B2F9 /* SettingsNotificationViewController.swift */; };
 		874B8185AEFA6EA89DC330A7 /* Pods_SteadyFitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B965C2595CF769777BB4CC17 /* Pods_SteadyFitUITests.framework */; };
 		B5114C3621A23474004E2CED /* ParticipantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5114C3521A23474004E2CED /* ParticipantsViewController.swift */; };
 		B5114C3821A33C06004E2CED /* EmergencyButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5114C3721A33C06004E2CED /* EmergencyButtonViewController.swift */; };
@@ -183,6 +184,7 @@
 		60E6AD2721A0F13F00429419 /* BarEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarEntry.swift; sourceTree = "<group>"; };
 		60E6AD2921A0F15B00429419 /* BarChartActivityTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarChartActivityTracker.swift; path = SteadyFit/BarChartActivityTracker.swift; sourceTree = SOURCE_ROOT; };
 		80CDBC53219641E600642D46 /* AddActivityEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityEventViewController.swift; sourceTree = "<group>"; };
+		80F4649021B36B2300D9B2F9 /* SettingsNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotificationViewController.swift; sourceTree = "<group>"; };
 		87E321E553C0E12A38F689D4 /* Pods-SteadyFit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFit/Pods-SteadyFit.debug.xcconfig"; sourceTree = "<group>"; };
 		99421C9E7AC24DBBF3447B92 /* Pods-SteadyFitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFitUITests/Pods-SteadyFitUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9DCB980D16CCE1AAF00B2201 /* Pods-SteadyFit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SteadyFit.release.xcconfig"; path = "Pods/Target Support Files/Pods-SteadyFit/Pods-SteadyFit.release.xcconfig"; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				D4F0EEFC218EDEC60053C1A8 /* SettingsEditiorViewController.swift */,
 				FDB5663321A0E5560050C7B6 /* SettingsEmergencyViewController.swift */,
 				FDDD8C3021ADE7EC00A1D4BF /* SettingsHelpViewController.swift */,
+				80F4649021B36B2300D9B2F9 /* SettingsNotificationViewController.swift */,
 				B57302AC2186D0A300CD06D3 /* Assets.xcassets */,
 				B5727A72217FEDEE00AF9005 /* Info.plist */,
 				12D1D50921960B120051633F /* GoogleService-Info.plist */,
@@ -1200,6 +1203,7 @@
 				D4CCACCF21AA2D8D00E6B829 /* PendingRequestViewController.swift in Sources */,
 				B5C24EA021A9198D00170192 /* AcceptInviteViewController.swift in Sources */,
 				12A6E647218D0BE2003ED258 /* UserGroup.swift in Sources */,
+				80F4649121B36B2300D9B2F9 /* SettingsNotificationViewController.swift in Sources */,
 				60E6AD2621A0EEC100429419 /* GroupUser.swift in Sources */,
 				D4C471B02190F087003C182B /* ChatMessageCollectionViewCell.swift in Sources */,
 				D41383E321902B950076031B /* GroupChatTableViewController.swift in Sources */,

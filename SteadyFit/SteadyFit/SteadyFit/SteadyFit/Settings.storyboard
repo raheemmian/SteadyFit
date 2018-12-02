@@ -344,29 +344,46 @@
             </objects>
             <point key="canvasLocation" x="920.79999999999995" y="625.86206896551732"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings Notification View Controller-->
         <scene sceneID="fL3-a4-bcS">
             <objects>
-                <viewController id="540-mu-eEK" sceneMemberID="viewController">
+                <viewController id="540-mu-eEK" customClass="SettingsNotificationViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O6V-FU-ntL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="notification" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFI-Bx-a0q">
-                                <rect key="frame" x="103" y="237" width="134" height="52"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFI-Bx-a0q">
+                                <rect key="frame" x="20" y="157" width="184" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="A notification will be sent to your phone 1 hour before the event start time." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="to5-tk-EwI">
+                                <rect key="frame" x="20" y="184" width="319" height="49.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NVX-yn-KkW">
+                                <rect key="frame" x="347" y="169" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="Switch:" destination="540-mu-eEK" eventType="valueChanged" id="ZHz-e3-kJz"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Yeb-F1-fa1"/>
                     </view>
+                    <connections>
+                        <outlet property="output" destination="to5-tk-EwI" id="JLf-ow-ceZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XH4-tZ-vXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7.2000000000000002" y="1353.6945812807883"/>
+            <point key="canvasLocation" x="-7.2463768115942031" y="1353.3482142857142"/>
         </scene>
         <!--Edit Emergency-->
         <scene sceneID="iWs-TH-WSc">
@@ -576,6 +593,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="setting" width="32" height="32"/>
+        <image name="setting" width="24" height="24"/>
     </resources>
 </document>
