@@ -38,7 +38,7 @@ class FriendsViewController: EmergencyButtonViewController, UITableViewDataSourc
         
         ref = Database.database().reference()
             // load friend list
-            ref?.child("Users").child(currentuserID).child("Friends").observeSingleEvent(of: .value, with: {(snapshot) in
+            ref?.child("Users").child(currentuserID).child("Friends").observe(DataEventType.value, with: {(snapshot) in
                 self.friendList.removeAll()
                 self.friendIdList.removeAll()
                 for rest in snapshot.children.allObjects as! [DataSnapshot]{
@@ -64,7 +64,6 @@ class FriendsViewController: EmergencyButtonViewController, UITableViewDataSourc
             if userDictionary != nil{
                 self.currentUserEmergencyNum = userDictionary!["emergencycontact"] as? String
                 self.emergencyMessage = userDictionary!["emergencymessage"] as? String
-                print(self.currentUserEmergencyNum)
             }
         })
     }
