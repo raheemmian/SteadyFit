@@ -17,7 +17,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class PendingRequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PendingRequestViewController: EmergencyButtonViewController, UITableViewDelegate, UITableViewDataSource {
     //  Variables declaration
     var requestTableSections = ["Friend Request", "Group Request"]
     var requestTableContents: [[String]] = [[],[]]

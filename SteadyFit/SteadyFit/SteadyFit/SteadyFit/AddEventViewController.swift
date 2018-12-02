@@ -13,7 +13,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
 
-class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class AddEventViewController: EmergencyButtonViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var eventNameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!

@@ -14,7 +14,7 @@ struct NotificationBool {
     var state = true
 }
 
-class SettingsNotificationViewController: UIViewController {
+class SettingsNotificationViewController: EmergencyButtonViewController {
     
 
     @IBOutlet weak var output: UITextView!

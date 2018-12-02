@@ -26,7 +26,7 @@
 
 import UIKit
 
-class HistogramViewController: UIViewController {
+class HistogramViewController: EmergencyButtonViewController {
     @IBOutlet weak var ATBarweekly: BarChartActivityTracker!
     var histogramMode: Int = 0 // 0-daily, 1-weekly, 2-monthly
     var dataEntries:[BarEntry] = []

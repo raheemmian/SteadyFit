@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsHelpViewController: UIViewController {
+class SettingsHelpViewController: EmergencyButtonViewController {
     
     @IBOutlet weak var A1view: UIView!
     @IBOutlet weak var A2view: UIView!

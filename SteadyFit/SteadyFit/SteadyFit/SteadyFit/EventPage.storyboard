@@ -55,11 +55,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ylq-JY-pI4">
+                                <rect key="frame" x="0.0" y="821" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButtonPressed" destination="fKa-yW-XVt" eventType="touchUpInside" id="uqy-3r-Ug9"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oM5-fN-OgK">
-                                <rect key="frame" x="167" y="732" width="80" height="30"/>
+                                <rect key="frame" x="167" y="708" width="80" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="C1d-jO-RdS"/>
-                                    <constraint firstAttribute="width" constant="80" id="Twf-FW-YJ1"/>
+                                    <constraint firstAttribute="height" constant="30" id="4re-xF-uMq"/>
+                                    <constraint firstAttribute="width" constant="80" id="h3y-cb-67h"/>
                                 </constraints>
                                 <state key="normal" title="Going"/>
                                 <connections>
@@ -72,14 +83,18 @@
                             <constraint firstItem="kBe-jA-Vc5" firstAttribute="top" secondItem="DP5-F3-OhZ" secondAttribute="top" id="4dE-Ji-r0b"/>
                             <constraint firstItem="YD8-sc-Itc" firstAttribute="top" secondItem="Jm1-4r-bXf" secondAttribute="bottom" id="5KB-g3-2uJ"/>
                             <constraint firstItem="Jm1-4r-bXf" firstAttribute="top" secondItem="kBe-jA-Vc5" secondAttribute="bottom" id="8Dh-at-IdB"/>
+                            <constraint firstItem="oM5-fN-OgK" firstAttribute="leading" secondItem="DP5-F3-OhZ" secondAttribute="leading" constant="167" id="9Kb-P1-uNc"/>
                             <constraint firstItem="YD8-sc-Itc" firstAttribute="leading" secondItem="DP5-F3-OhZ" secondAttribute="leading" id="CqB-bM-F2t"/>
                             <constraint firstItem="kBe-jA-Vc5" firstAttribute="trailing" secondItem="DP5-F3-OhZ" secondAttribute="trailing" id="J7L-CC-Vdk"/>
-                            <constraint firstItem="DP5-F3-OhZ" firstAttribute="bottom" secondItem="oM5-fN-OgK" secondAttribute="bottom" constant="100" id="U2C-wp-fz3"/>
+                            <constraint firstItem="DP5-F3-OhZ" firstAttribute="trailing" secondItem="oM5-fN-OgK" secondAttribute="trailing" constant="167" id="Lrj-EZ-H2G"/>
+                            <constraint firstItem="Ylq-JY-pI4" firstAttribute="trailing" secondItem="DP5-F3-OhZ" secondAttribute="trailing" id="MoP-tB-pht"/>
                             <constraint firstItem="YD8-sc-Itc" firstAttribute="trailing" secondItem="DP5-F3-OhZ" secondAttribute="trailing" id="Xww-eX-gdS"/>
+                            <constraint firstItem="Ylq-JY-pI4" firstAttribute="top" secondItem="oM5-fN-OgK" secondAttribute="bottom" constant="83" id="Zkx-QB-1YQ"/>
                             <constraint firstItem="Jm1-4r-bXf" firstAttribute="trailing" secondItem="DP5-F3-OhZ" secondAttribute="trailing" id="cyM-gM-jYL"/>
                             <constraint firstItem="kBe-jA-Vc5" firstAttribute="leading" secondItem="DP5-F3-OhZ" secondAttribute="leading" id="exQ-QV-bde"/>
+                            <constraint firstItem="DP5-F3-OhZ" firstAttribute="bottom" secondItem="Ylq-JY-pI4" secondAttribute="bottom" id="mr5-OQ-98a"/>
                             <constraint firstItem="Jm1-4r-bXf" firstAttribute="leading" secondItem="DP5-F3-OhZ" secondAttribute="leading" id="nZF-sb-pNd"/>
-                            <constraint firstItem="oM5-fN-OgK" firstAttribute="centerX" secondItem="iwJ-s6-P34" secondAttribute="centerX" id="sT4-FT-Zid"/>
+                            <constraint firstItem="Ylq-JY-pI4" firstAttribute="leading" secondItem="DP5-F3-OhZ" secondAttribute="leading" id="xiL-gT-T6o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DP5-F3-OhZ"/>
                     </view>
@@ -87,6 +102,7 @@
                     <connections>
                         <outlet property="descriptionLabel" destination="Jm1-4r-bXf" id="1Wc-0B-qLz"/>
                         <outlet property="descriptionTextView" destination="YD8-sc-Itc" id="pgl-pJ-Q8V"/>
+                        <outlet property="emergencyButton" destination="Ylq-JY-pI4" id="wmA-QS-rVA"/>
                         <outlet property="eventsTableView" destination="kBe-jA-Vc5" id="ZUF-fk-BlB"/>
                         <outlet property="goingButton" destination="oM5-fN-OgK" id="Rc6-B7-IwS"/>
                         <segue destination="Qbz-OF-X7a" kind="show" identifier="Participants" id="bcJ-KD-f4K"/>
@@ -105,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vhz-uy-PzE">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="777"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="participantCell" id="rOf-8C-COr">
@@ -118,17 +134,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNn-ze-vH6">
+                                <rect key="frame" x="0.0" y="821" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButtonPressed" destination="Qbz-OF-X7a" eventType="touchUpInside" id="rnY-CI-GqS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vhz-uy-PzE" firstAttribute="leading" secondItem="eJ6-LK-gQR" secondAttribute="leading" id="9ML-Io-omY"/>
                             <constraint firstItem="vhz-uy-PzE" firstAttribute="top" secondItem="eJ6-LK-gQR" secondAttribute="top" id="Jss-zA-iG4"/>
                             <constraint firstItem="vhz-uy-PzE" firstAttribute="trailing" secondItem="eJ6-LK-gQR" secondAttribute="trailing" id="MFP-gT-zgU"/>
-                            <constraint firstItem="eJ6-LK-gQR" firstAttribute="bottom" secondItem="vhz-uy-PzE" secondAttribute="bottom" id="PSy-p1-iJy"/>
+                            <constraint firstItem="DNn-ze-vH6" firstAttribute="trailing" secondItem="eJ6-LK-gQR" secondAttribute="trailing" id="dTC-Sb-Y8T"/>
+                            <constraint firstItem="DNn-ze-vH6" firstAttribute="top" secondItem="vhz-uy-PzE" secondAttribute="bottom" id="dys-qt-aSQ"/>
+                            <constraint firstItem="DNn-ze-vH6" firstAttribute="leading" secondItem="eJ6-LK-gQR" secondAttribute="leading" id="nEc-m3-Je5"/>
+                            <constraint firstItem="eJ6-LK-gQR" firstAttribute="bottom" secondItem="DNn-ze-vH6" secondAttribute="bottom" id="tkD-EL-iIm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eJ6-LK-gQR"/>
                     </view>
                     <connections>
+                        <outlet property="emergencyButton" destination="DNn-ze-vH6" id="uBn-KZ-qzS"/>
                         <outlet property="participantTableView" destination="vhz-uy-PzE" id="Vo2-U4-BiC"/>
                     </connections>
                 </viewController>

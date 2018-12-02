@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class CreatePrivateGroupViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var activityLevelTextField: UITextField!

@@ -18,7 +18,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class SettingsEditiorViewController: UIViewController {
+class SettingsEditiorViewController: EmergencyButtonViewController {
     
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
