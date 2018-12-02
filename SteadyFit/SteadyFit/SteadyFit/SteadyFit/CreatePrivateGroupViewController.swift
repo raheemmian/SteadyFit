@@ -43,6 +43,7 @@ class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFie
     }
     
     func setTextBoxes() {
+        //initializes all text boxes
         descriptionTextView.text = "Description"
         descriptionTextView.textColor = UIColor.lightGray
         descriptionTextView.layer.borderWidth = 1
@@ -60,9 +61,11 @@ class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFie
     }
     
     @IBAction func saveButtonAction(_ sender: Any) {
+        //checks if any of the fields are left empty
+        //if all fields are filled then it posts the information to the database
+        //
         if (groupNameTextField.text?.isEmpty)! || (activityLevelTextField.text?.isEmpty)! || (groupTypeTextField.text?.isEmpty)! || (locationTextField.text?.isEmpty)! || (descriptionTextView.text.isEmpty) {errorLabel.isHidden = false}
         else{
-            //write to database
             let chatId: String = (ref?.child("Chats").childByAutoId().key)!
             let key: String = (ref?.child("Groups").childByAutoId().key)!
             let post = ["/Groups/\(key)/activitylevel": activityLevelTextField.text!,
@@ -79,6 +82,11 @@ class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFie
             navigationController?.popViewController(animated: true)
         }
     }
+    /*there are two picker views
+     one for the different activity levels: very light, light, moderate, intense, very intense
+     and one for the different group types : private or public
+     below functions just differentiate which one shows up based on the textfield pressed
+     */
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -107,6 +115,8 @@ class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFie
         }
     }
     func createPicker(){
+        //creates the picker view toolbar
+        //adding a done button to resign the picker view
         let PickerToolBar = UIToolbar()
         PickerToolBar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneClicked))
