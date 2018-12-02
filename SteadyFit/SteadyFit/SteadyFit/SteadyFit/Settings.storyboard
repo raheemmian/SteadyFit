@@ -344,10 +344,10 @@
             </objects>
             <point key="canvasLocation" x="920.79999999999995" y="625.86206896551732"/>
         </scene>
-        <!--Settings Notification View Controller-->
+        <!--Notification Settings-->
         <scene sceneID="fL3-a4-bcS">
             <objects>
-                <viewController id="540-mu-eEK" customClass="SettingsNotificationViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Notification Settings" id="540-mu-eEK" customClass="SettingsNotificationViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O6V-FU-ntL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -377,9 +377,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Yeb-F1-fa1"/>
                     </view>
-                    <connections>
-                        <outlet property="output" destination="to5-tk-EwI" id="JLf-ow-ceZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XH4-tZ-vXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
