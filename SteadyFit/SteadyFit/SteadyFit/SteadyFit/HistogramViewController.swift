@@ -126,7 +126,7 @@ class HistogramViewController: EmergencyButtonViewController {
             }
             
             
-            for each in histogramData{
+            for each in sortedData{
                 let weekValue = dateFormatter.date(from: each.key)
                 var tempComponents = Calendar.current.dateComponents([.weekOfMonth,.year,.month], from: weekValue!)
                 let formattedKey = "Week" + String(tempComponents.weekOfMonth!) + " of " + String(tempComponents.month!)+"," + String(tempComponents.year!)

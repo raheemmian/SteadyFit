@@ -144,12 +144,14 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
                 let key = "Group" + self.currentuserID! + self.friendUserId
                 let chatId = "Chat" + self.currentuserID! + self.friendUserId
                 let groupType = "Friends"
-                let post = [ "/Groups/\(key)/chatid": chatId,
-                             "/Groups/\(key)/grouptype": groupType,
-                             "/Groups/\(key)/user1": [self.currentuserID: ["joined": 1, "name": myName]],
-                             "/Groups/\(key)/user2": [self.friendUserId: ["joined": 0, "name": friendName]],
-                             "/Chats/\(chatId)/groupID" : key] as [String : Any]
-                self.ref?.updateChildValues(post)
+                if (self.currentuserID != self.friendUserId){
+                    let post = [ "/Groups/\(key)/chatid": chatId,
+                                 "/Groups/\(key)/grouptype": groupType,
+                                 "/Groups/\(key)/user1": [self.currentuserID: ["joined": 1, "name": myName]],
+                                 "/Groups/\(key)/user2": [self.friendUserId: ["joined": 0, "name": friendName]],
+                                 "/Chats/\(chatId)/groupID" : key] as [String : Any]
+                    self.ref?.updateChildValues(post)
+                }
             })
         })
         self.sendFriendRequestButton.isHidden = true
