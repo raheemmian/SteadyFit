@@ -11,7 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class AddActivityEventViewController: UIViewController, UITextFieldDelegate {
+class AddActivityEventViewController: EmergencyButtonViewController, UITextFieldDelegate {
 
     
     @IBOutlet weak var errorLabel: UILabel!

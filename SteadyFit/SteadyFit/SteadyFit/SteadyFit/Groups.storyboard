@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uq-t7-cGg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Uq-t7-cGg">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -164,26 +164,42 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: not all fields filled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vJ-ol-wwn">
-                                <rect key="frame" x="117" y="763" width="180" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="61I-08-fYM"/>
-                                    <constraint firstAttribute="height" constant="21" id="XXv-mU-OZW"/>
-                                </constraints>
+                                <rect key="frame" x="117" y="711" width="180" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaX-ot-mzR">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="8Db-U4-FQ8"/>
+                                    <constraint firstAttribute="width" constant="414" id="zvS-te-pef"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButtonPressed" destination="Vpa-yR-Th3" eventType="touchUpInside" id="IoW-vz-6Yh"/>
+                                    <action selector="emergencyButtonPressed" destination="gff-nJ-i4z" eventType="touchUpInside" id="vIW-aj-Op9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="4vJ-ol-wwn" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="117" id="2wY-nx-3c8"/>
+                            <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="4vJ-ol-wwn" secondAttribute="trailing" constant="117" id="4HN-8l-U4D"/>
+                            <constraint firstItem="kaX-ot-mzR" firstAttribute="trailing" secondItem="q33-EQ-TGw" secondAttribute="trailing" id="5eh-f3-Ayg"/>
                             <constraint firstItem="iY1-sz-6kM" firstAttribute="top" secondItem="SXQ-s4-2RA" secondAttribute="bottom" constant="30" id="7ni-Jh-ib9"/>
+                            <constraint firstItem="kaX-ot-mzR" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" id="B7u-z8-h5X"/>
                             <constraint firstItem="iY1-sz-6kM" firstAttribute="top" secondItem="SXQ-s4-2RA" secondAttribute="bottom" constant="30" id="Ba8-9G-VnU"/>
                             <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="SXQ-s4-2RA" secondAttribute="trailing" constant="20" id="CUe-HB-0uW"/>
                             <constraint firstItem="SXQ-s4-2RA" firstAttribute="top" secondItem="jvb-LV-fuT" secondAttribute="bottom" constant="30" id="EfO-Er-6tk"/>
+                            <constraint firstItem="kaX-ot-mzR" firstAttribute="bottom" secondItem="q33-EQ-TGw" secondAttribute="bottom" id="FsR-Le-ODX"/>
                             <constraint firstItem="NGV-1H-cdZ" firstAttribute="top" secondItem="iY1-sz-6kM" secondAttribute="bottom" constant="30" id="G9P-Ky-umR"/>
                             <constraint firstItem="sJx-cc-pQx" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="20" id="GkM-u1-sNZ"/>
-                            <constraint firstItem="4vJ-ol-wwn" firstAttribute="centerX" secondItem="q33-EQ-TGw" secondAttribute="centerX" id="Jtf-1J-8LW"/>
                             <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="NGV-1H-cdZ" secondAttribute="trailing" constant="20" id="NzG-zo-Htj"/>
                             <constraint firstItem="jvb-LV-fuT" firstAttribute="top" secondItem="q33-EQ-TGw" secondAttribute="top" constant="50" id="OtE-do-NJO"/>
                             <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="jvb-LV-fuT" secondAttribute="trailing" constant="20" id="TDh-fB-NDv"/>
@@ -191,14 +207,15 @@
                             <constraint firstItem="sJx-cc-pQx" firstAttribute="top" secondItem="NGV-1H-cdZ" secondAttribute="bottom" constant="40" id="WiD-iS-tIV"/>
                             <constraint firstItem="NGV-1H-cdZ" firstAttribute="top" secondItem="iY1-sz-6kM" secondAttribute="bottom" constant="30" id="Xd5-x2-jt9"/>
                             <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="iY1-sz-6kM" secondAttribute="trailing" constant="20" id="Xzk-Uv-VR2"/>
-                            <constraint firstItem="q33-EQ-TGw" firstAttribute="bottom" secondItem="4vJ-ol-wwn" secondAttribute="bottom" constant="29" id="YKm-7e-PbC"/>
                             <constraint firstItem="SXQ-s4-2RA" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="20" id="Ynn-Sf-zeQ"/>
                             <constraint firstItem="vwb-RY-nKz" firstAttribute="centerX" secondItem="q33-EQ-TGw" secondAttribute="centerX" id="aXd-oA-gnm"/>
                             <constraint firstItem="iY1-sz-6kM" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="20" id="gBo-ST-RiO"/>
                             <constraint firstItem="NGV-1H-cdZ" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="20" id="iGb-th-1wg"/>
                             <constraint firstItem="q33-EQ-TGw" firstAttribute="trailing" secondItem="sJx-cc-pQx" secondAttribute="trailing" constant="20" id="khd-2L-KHi"/>
+                            <constraint firstItem="kaX-ot-mzR" firstAttribute="top" secondItem="4vJ-ol-wwn" secondAttribute="bottom" constant="40" id="mu4-ah-QeQ"/>
                             <constraint firstItem="jvb-LV-fuT" firstAttribute="leading" secondItem="q33-EQ-TGw" secondAttribute="leading" constant="20" id="pco-ED-0rD"/>
                             <constraint firstItem="SXQ-s4-2RA" firstAttribute="top" secondItem="jvb-LV-fuT" secondAttribute="bottom" constant="30" id="w13-oq-R2L"/>
+                            <constraint firstItem="4vJ-ol-wwn" firstAttribute="top" secondItem="vwb-RY-nKz" secondAttribute="bottom" constant="57" id="xHD-Ke-O63"/>
                             <constraint firstItem="sJx-cc-pQx" firstAttribute="top" secondItem="NGV-1H-cdZ" secondAttribute="bottom" constant="40" id="xjX-Lu-5Nv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q33-EQ-TGw"/>
@@ -206,6 +223,7 @@
                     <connections>
                         <outlet property="activityLevelTextField" destination="SXQ-s4-2RA" id="NjJ-jH-vtn"/>
                         <outlet property="descriptionTextView" destination="sJx-cc-pQx" id="hFn-8y-zX4"/>
+                        <outlet property="emergencyButton" destination="kaX-ot-mzR" id="wCg-NT-Lyk"/>
                         <outlet property="errorLabel" destination="4vJ-ol-wwn" id="Zq1-1A-r9s"/>
                         <outlet property="groupNameTextField" destination="jvb-LV-fuT" id="BAG-t1-NdH"/>
                         <outlet property="groupTypeTextField" destination="iY1-sz-6kM" id="BIy-b2-exG"/>
@@ -416,29 +434,42 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error: not all fields filled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDq-x9-qcS">
-                                <rect key="frame" x="117" y="763" width="180" height="21"/>
+                                <rect key="frame" x="117" y="704" width="180" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="JnK-4W-Myc"/>
-                                    <constraint firstAttribute="width" constant="180" id="sxv-ud-1nw"/>
+                                    <constraint firstAttribute="height" constant="21" id="f3k-gM-qQy"/>
+                                    <constraint firstAttribute="width" constant="180" id="sHG-4a-6Qf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfw-Zd-CwL">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButtonPressed" destination="a7v-Zh-tzd" eventType="touchUpInside" id="P28-4P-S3h"/>
+                                    <action selector="emergencyButtonPressed" destination="Vpa-yR-Th3" eventType="touchUpInside" id="c1Z-xV-STj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4cl-Gf-7aH" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" constant="20" id="2Am-qW-lG3"/>
                             <constraint firstItem="szg-FP-hBl" firstAttribute="trailing" secondItem="iIj-Xm-g4h" secondAttribute="trailing" constant="20" id="32K-1q-Tcp"/>
-                            <constraint firstItem="MDq-x9-qcS" firstAttribute="centerX" secondItem="mjx-KX-Ks9" secondAttribute="centerX" id="3X8-2c-JSL"/>
+                            <constraint firstItem="szg-FP-hBl" firstAttribute="trailing" secondItem="MDq-x9-qcS" secondAttribute="trailing" constant="117" id="4bh-Xw-FfZ"/>
                             <constraint firstItem="25J-d8-IPD" firstAttribute="top" secondItem="2j9-qO-uF6" secondAttribute="bottom" constant="30" id="8qS-e3-8ie"/>
                             <constraint firstItem="Dhc-ZH-vrH" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" constant="20" id="8zU-Kl-QcG"/>
                             <constraint firstItem="iIj-Xm-g4h" firstAttribute="top" secondItem="Dhc-ZH-vrH" secondAttribute="bottom" constant="30" id="9Aw-Vi-CFu"/>
                             <constraint firstItem="4cl-Gf-7aH" firstAttribute="top" secondItem="iIj-Xm-g4h" secondAttribute="bottom" constant="42" id="BtA-uF-mEK"/>
                             <constraint firstItem="SN8-Cq-6gM" firstAttribute="top" secondItem="4cl-Gf-7aH" secondAttribute="bottom" constant="50" id="CuS-yP-ja1"/>
-                            <constraint firstItem="szg-FP-hBl" firstAttribute="bottom" secondItem="MDq-x9-qcS" secondAttribute="bottom" constant="29" id="Div-ah-DD2"/>
+                            <constraint firstItem="MDq-x9-qcS" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" constant="117" id="DNt-4e-pbj"/>
                             <constraint firstItem="2j9-qO-uF6" firstAttribute="top" secondItem="szg-FP-hBl" secondAttribute="top" constant="53" id="FWn-ah-f3B"/>
                             <constraint firstItem="25J-d8-IPD" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" constant="20" id="I94-i7-QUY"/>
+                            <constraint firstItem="pfw-Zd-CwL" firstAttribute="bottom" secondItem="szg-FP-hBl" secondAttribute="bottom" id="JOK-Fq-rwR"/>
                             <constraint firstItem="Dhc-ZH-vrH" firstAttribute="top" secondItem="25J-d8-IPD" secondAttribute="bottom" constant="30" id="LL9-OP-URS"/>
                             <constraint firstItem="szg-FP-hBl" firstAttribute="trailing" secondItem="25J-d8-IPD" secondAttribute="trailing" constant="20" id="Mna-Hg-Am0"/>
                             <constraint firstItem="szg-FP-hBl" firstAttribute="trailing" secondItem="Dhc-ZH-vrH" secondAttribute="trailing" constant="20" id="NkO-gA-WOO"/>
@@ -447,7 +478,10 @@
                             <constraint firstItem="iIj-Xm-g4h" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" constant="20" id="XmN-8g-i0e"/>
                             <constraint firstItem="4cl-Gf-7aH" firstAttribute="top" secondItem="iIj-Xm-g4h" secondAttribute="bottom" constant="42" id="bZe-rs-NEc"/>
                             <constraint firstItem="iIj-Xm-g4h" firstAttribute="top" secondItem="Dhc-ZH-vrH" secondAttribute="bottom" constant="30" id="dw9-9j-KcZ"/>
+                            <constraint firstItem="pfw-Zd-CwL" firstAttribute="trailing" secondItem="szg-FP-hBl" secondAttribute="trailing" id="jhV-12-lGM"/>
+                            <constraint firstItem="pfw-Zd-CwL" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" id="kno-fn-RQX"/>
                             <constraint firstItem="2j9-qO-uF6" firstAttribute="leading" secondItem="szg-FP-hBl" secondAttribute="leading" constant="20" id="nU5-BH-5S4"/>
+                            <constraint firstItem="pfw-Zd-CwL" firstAttribute="top" secondItem="MDq-x9-qcS" secondAttribute="bottom" constant="47" id="q2a-tU-kWh"/>
                             <constraint firstItem="SN8-Cq-6gM" firstAttribute="centerX" secondItem="mjx-KX-Ks9" secondAttribute="centerX" id="qLI-uw-sQY"/>
                             <constraint firstItem="Dhc-ZH-vrH" firstAttribute="top" secondItem="25J-d8-IPD" secondAttribute="bottom" constant="30" id="qZ3-8L-7Jb"/>
                             <constraint firstItem="25J-d8-IPD" firstAttribute="top" secondItem="2j9-qO-uF6" secondAttribute="bottom" constant="30" id="v0O-cd-Lqd"/>
@@ -457,6 +491,7 @@
                     <connections>
                         <outlet property="descriptionTextView" destination="4cl-Gf-7aH" id="1Qw-KM-h3I"/>
                         <outlet property="durationTextField" destination="iIj-Xm-g4h" id="WkP-Ae-bvv"/>
+                        <outlet property="emergencyButton" destination="pfw-Zd-CwL" id="XSb-Sq-MmD"/>
                         <outlet property="errorLabel" destination="MDq-x9-qcS" id="pZX-DS-otc"/>
                         <outlet property="eventNameTextField" destination="2j9-qO-uF6" id="JVo-Y7-nlT"/>
                         <outlet property="locationTextField" destination="25J-d8-IPD" id="deB-KL-alp"/>
@@ -513,7 +548,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1UT-o6-jby">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="632"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableCell" id="bct-JB-aNP">
@@ -526,23 +561,39 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ke5-lt-iVS">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButtonPressed" destination="Vpa-yR-Th3" eventType="touchUpInside" id="SEt-Vv-xOZ"/>
+                                    <action selector="emergencyButtonPressed" destination="Jzk-fl-oSp" eventType="touchUpInside" id="tim-5S-XNv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="JNJ-PI-lDD" firstAttribute="trailing" secondItem="1UT-o6-jby" secondAttribute="trailing" id="ESH-pE-8eJ"/>
                             <constraint firstItem="1UT-o6-jby" firstAttribute="top" secondItem="JNJ-PI-lDD" secondAttribute="top" id="LiZ-pk-PV7"/>
-                            <constraint firstItem="JNJ-PI-lDD" firstAttribute="bottom" secondItem="1UT-o6-jby" secondAttribute="bottom" id="i62-ZQ-EWw"/>
+                            <constraint firstItem="Ke5-lt-iVS" firstAttribute="trailing" secondItem="JNJ-PI-lDD" secondAttribute="trailing" id="QlP-Oh-eNw"/>
+                            <constraint firstItem="Ke5-lt-iVS" firstAttribute="leading" secondItem="JNJ-PI-lDD" secondAttribute="leading" id="V1v-du-SfF"/>
+                            <constraint firstItem="Ke5-lt-iVS" firstAttribute="top" secondItem="1UT-o6-jby" secondAttribute="bottom" id="Vbu-WW-JLA"/>
+                            <constraint firstItem="Ke5-lt-iVS" firstAttribute="bottom" secondItem="JNJ-PI-lDD" secondAttribute="bottom" id="fcj-dO-nn4"/>
                             <constraint firstItem="1UT-o6-jby" firstAttribute="leading" secondItem="JNJ-PI-lDD" secondAttribute="leading" id="l5W-sZ-ZgO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JNJ-PI-lDD"/>
                     </view>
                     <connections>
+                        <outlet property="emergencyButton" destination="Ke5-lt-iVS" id="1r4-95-VUE"/>
                         <outlet property="inviteUserTableView" destination="1UT-o6-jby" id="fcp-c6-cHf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFV-LI-jJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4625" y="-541"/>
+            <point key="canvasLocation" x="4624.6376811594209" y="-541.07142857142856"/>
         </scene>
         <!--Group Member List Table View Controller-->
         <scene sceneID="s70-nr-USs">
@@ -589,6 +640,6 @@
         <image name="group" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7J1-sh-rpB"/>
+        <segue reference="451-5L-OdK"/>
     </inferredMetricsTieBreakers>
 </document>

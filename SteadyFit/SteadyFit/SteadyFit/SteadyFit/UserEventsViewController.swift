@@ -20,7 +20,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
 
-class UserEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyProtocol {
+class UserEventsViewController: EmergencyButtonViewController, UITableViewDelegate, UITableViewDataSource, MyProtocol {
 
     @IBOutlet weak var goingButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!

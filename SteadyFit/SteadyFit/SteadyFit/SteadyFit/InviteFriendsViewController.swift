@@ -12,7 +12,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseAuth
 
-class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class InviteFriendsViewController: EmergencyButtonViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var inviteUserTableView: UITableView!
     var ref:DatabaseReference? = Database.database().reference()
     var friendsInviteList: [String] = []

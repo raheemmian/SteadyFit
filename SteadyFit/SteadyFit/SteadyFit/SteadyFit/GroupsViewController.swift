@@ -32,6 +32,7 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
     var sameActivityLevelGroups = [UserGroup]()
     var restoftheGroups = [UserGroup]()
     var p: Int!
+    var isAddButtonPressed: Bool = false
     var sectionForGroup = ["Groups"]
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
@@ -179,21 +180,53 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
         groupTableView.deselectRow(at: indexPath, animated: true)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var indexPath = self.groupTableView.indexPathForSelectedRow!
-        switch (p) {
-        case 0:
-            let destination = segue.destination as! GroupProfileViewController
-            destination.navigationItem.title = queryMyGroups[indexPath.row].name
-            destination.groupId = queryMyGroups[indexPath.row].groupID
-            break
-        case 1:
-            let destination = segue.destination as! GroupProfileViewController
-            destination.navigationItem.title = suggestedGroups[indexPath.row].name
-            destination.groupId = suggestedGroups[indexPath.row].groupID
-            break
-        default:
-            break
+        if isAddButtonPressed == false {
+            var indexPath = self.groupTableView.indexPathForSelectedRow!
+            switch (p) {
+            case 0:
+                let destination = segue.destination as! GroupProfileViewController
+                destination.navigationItem.title = queryMyGroups[indexPath.row].name
+                destination.groupId = queryMyGroups[indexPath.row].groupID
+                break
+            case 1:
+                let destination = segue.destination as! GroupProfileViewController
+                destination.navigationItem.title = suggestedGroups[indexPath.row].name
+                destination.groupId = suggestedGroups[indexPath.row].groupID
+                break
+            default:
+                break
+            }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        /*this adds a button in the section header on the right side so that a user can be redirected to add an event and invite button*/
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+        let label = UILabel()
+        label.text = sectionForGroup[section]
+        label.frame = CGRect(x: 10, y: 0, width: 100, height: 22)
+        headerView.addSubview(label)
+        if p == 0 {
+            let button = UIButton()
+            button.frame = CGRect(x: view.bounds.maxX - 55, y: 0, width: 50, height: 22)
+            button.setTitle("Add", for: .normal)
+            button.setTitleColor(.black, for: .normal)
+            button.addTarget(self, action: #selector(AddButtonPressed), for: .touchUpInside)
+            button.layer.borderWidth = 1
+            button.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+            button.showsTouchWhenHighlighted = true
+            headerView.addSubview(button)
+        }
+        return headerView
+    }
+    
+
+    @objc func AddButtonPressed() {
+        isAddButtonPressed = true
+        performSegue(withIdentifier: "createPrivateGroup", sender: self)
+        print("hi")
+        isAddButtonPressed = false
     }
     
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U7g-Bv-fzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U7g-Bv-fzg">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zkg-zO-E3s">
-                                <rect key="frame" x="-4" y="140" width="418" height="673"/>
+                                <rect key="frame" x="-4" y="140" width="418" height="632"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FAQ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGs-Hg-drw">
                                         <rect key="frame" x="20" y="20" width="38" height="24"/>
@@ -151,12 +151,26 @@
                                     <constraint firstItem="CGs-Hg-drw" firstAttribute="top" secondItem="Zkg-zO-E3s" secondAttribute="top" constant="20" id="ywp-Bc-g1Y"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vC-mF-CqN">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButtonPressed" destination="5Z2-6F-bq7" eventType="touchUpInside" id="wmq-1m-4Oc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Zkg-zO-E3s" firstAttribute="leading" secondItem="p9E-ri-9Le" secondAttribute="leadingMargin" constant="-24" id="1cw-lt-rtX"/>
-                            <constraint firstItem="Zkg-zO-E3s" firstAttribute="bottom" secondItem="55J-3l-gY9" secondAttribute="bottom" id="7oA-5U-6bZ"/>
+                            <constraint firstItem="7vC-mF-CqN" firstAttribute="leading" secondItem="55J-3l-gY9" secondAttribute="leading" id="6pv-5S-IGd"/>
+                            <constraint firstItem="7vC-mF-CqN" firstAttribute="trailing" secondItem="55J-3l-gY9" secondAttribute="trailing" id="Cqi-lM-Ul1"/>
                             <constraint firstAttribute="trailing" secondItem="Zkg-zO-E3s" secondAttribute="trailing" id="LP2-61-0BK"/>
+                            <constraint firstItem="7vC-mF-CqN" firstAttribute="bottom" secondItem="55J-3l-gY9" secondAttribute="bottom" id="Qc2-3Q-izA"/>
+                            <constraint firstItem="7vC-mF-CqN" firstAttribute="top" secondItem="Zkg-zO-E3s" secondAttribute="bottom" id="Rvz-So-0RF"/>
                             <constraint firstItem="Zkg-zO-E3s" firstAttribute="top" secondItem="55J-3l-gY9" secondAttribute="top" id="uBA-aP-7DJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="55J-3l-gY9"/>
@@ -168,6 +182,7 @@
                         <outlet property="Q1Button" destination="IgI-eH-G53" id="2Ni-WV-rd8"/>
                         <outlet property="Q2Button" destination="rjr-lg-UN8" id="3Cn-KB-3FP"/>
                         <outlet property="Q3Button" destination="Dah-dt-xNa" id="YpE-01-aNn"/>
+                        <outlet property="emergencyButton" destination="7vC-mF-CqN" id="NXx-wA-Lik"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7P-an-7xt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -183,7 +198,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSe-LI-x6S">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="632"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACd-k6-Z8f">
                                 <rect key="frame" x="101" y="668" width="231" height="30"/>
@@ -311,22 +326,36 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6A0-qF-ssh">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButtonPressed" destination="JHu-S5-a6R" eventType="touchUpInside" id="75O-Zr-lzh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ACd-k6-Z8f" firstAttribute="trailing" secondItem="GaR-ad-HCN" secondAttribute="trailing" id="1ei-AW-dvc"/>
                             <constraint firstItem="GaR-ad-HCN" firstAttribute="top" secondItem="ACd-k6-Z8f" secondAttribute="bottom" constant="21" id="2JU-li-a0q"/>
-                            <constraint firstItem="bSe-LI-x6S" firstAttribute="bottom" secondItem="fux-3d-n2R" secondAttribute="bottom" id="6Q6-rt-oI3"/>
+                            <constraint firstItem="6A0-qF-ssh" firstAttribute="top" secondItem="bSe-LI-x6S" secondAttribute="bottom" id="6WE-lY-8K1"/>
                             <constraint firstItem="dCM-96-p9O" firstAttribute="leading" secondItem="fux-3d-n2R" secondAttribute="leading" constant="20" id="Hp0-L5-zRI"/>
                             <constraint firstItem="bSe-LI-x6S" firstAttribute="top" secondItem="fux-3d-n2R" secondAttribute="top" id="J2v-WW-sd8"/>
                             <constraint firstItem="bSe-LI-x6S" firstAttribute="leading" secondItem="fux-3d-n2R" secondAttribute="leading" id="KYX-lv-vTj"/>
                             <constraint firstItem="ACd-k6-Z8f" firstAttribute="leading" secondItem="GaR-ad-HCN" secondAttribute="leading" id="Lk5-Oo-YTM"/>
+                            <constraint firstItem="fux-3d-n2R" firstAttribute="bottom" secondItem="6A0-qF-ssh" secondAttribute="bottom" id="YJo-WA-V76"/>
                             <constraint firstItem="fux-3d-n2R" firstAttribute="trailing" secondItem="ACd-k6-Z8f" secondAttribute="trailing" constant="82" id="aIA-ja-TSv"/>
                             <constraint firstItem="dCM-96-p9O" firstAttribute="top" secondItem="fux-3d-n2R" secondAttribute="top" constant="8" id="aqQ-Ws-spq"/>
+                            <constraint firstItem="6A0-qF-ssh" firstAttribute="trailing" secondItem="fux-3d-n2R" secondAttribute="trailing" id="f65-ey-MhI"/>
                             <constraint firstAttribute="bottom" secondItem="ACd-k6-Z8f" secondAttribute="bottom" constant="198" id="gar-Lp-XPt"/>
                             <constraint firstItem="fux-3d-n2R" firstAttribute="trailing" secondItem="dCM-96-p9O" secondAttribute="trailing" constant="20" id="gu2-xB-CrX"/>
                             <constraint firstItem="ACd-k6-Z8f" firstAttribute="leading" secondItem="fux-3d-n2R" secondAttribute="leading" constant="101" id="hUn-4P-mQH"/>
                             <constraint firstItem="bSe-LI-x6S" firstAttribute="trailing" secondItem="fux-3d-n2R" secondAttribute="trailing" id="kz5-zC-U2k"/>
+                            <constraint firstItem="6A0-qF-ssh" firstAttribute="leading" secondItem="fux-3d-n2R" secondAttribute="leading" id="oEI-qx-ll6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fux-3d-n2R"/>
                     </view>
@@ -335,6 +364,7 @@
                         <outlet property="bioTextBox" destination="SQX-AS-4ly" id="EYu-rK-DoP"/>
                         <outlet property="cityTextBox" destination="Whj-xJ-4kA" id="MRi-rY-lNw"/>
                         <outlet property="editProfileDatePicker" destination="Q5A-ed-jqD" id="ifi-3N-fQ3"/>
+                        <outlet property="emergencyButton" destination="6A0-qF-ssh" id="B4R-NJ-aAB"/>
                         <outlet property="genderTextBox" destination="fRT-Xu-XZZ" id="l36-oi-HLy"/>
                         <outlet property="nameLabel" destination="bic-jz-FCA" id="Ol3-L3-5my"/>
                         <outlet property="provinceTextBox" destination="48B-av-rBH" id="GQb-2c-hkh"/>
@@ -342,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOa-oJ-p6E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="920.79999999999995" y="625.86206896551732"/>
+            <point key="canvasLocation" x="920.28985507246387" y="625.44642857142856"/>
         </scene>
         <!--Notification Settings-->
         <scene sceneID="fL3-a4-bcS">
@@ -373,11 +403,28 @@
                                     <action selector="Switch:" destination="540-mu-eEK" eventType="valueChanged" id="ZHz-e3-kJz"/>
                                 </connections>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Osw-th-JgY">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButtonPressed" destination="540-mu-eEK" eventType="touchUpInside" id="QHK-0s-syk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Osw-th-JgY" firstAttribute="bottom" secondItem="Yeb-F1-fa1" secondAttribute="bottom" id="4Mm-u0-IqT"/>
+                            <constraint firstItem="Osw-th-JgY" firstAttribute="leading" secondItem="Yeb-F1-fa1" secondAttribute="leading" id="nR4-ce-ipv"/>
+                            <constraint firstItem="Osw-th-JgY" firstAttribute="trailing" secondItem="Yeb-F1-fa1" secondAttribute="trailing" id="ubr-to-5ys"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Yeb-F1-fa1"/>
                     </view>
                     <connections>
+                        <outlet property="emergencyButton" destination="Osw-th-JgY" id="Of6-UT-wzU"/>
                         <outlet property="output" destination="to5-tk-EwI" id="qY7-qJ-SWI"/>
                     </connections>
                 </viewController>
@@ -439,6 +486,17 @@
                                     <action selector="emergencySaveButton:" destination="At6-Qh-7os" eventType="touchUpInside" id="rpU-gd-Sa7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="279-X3-TLh">
+                                <rect key="frame" x="0.0" y="772" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButtonPressed" destination="At6-Qh-7os" eventType="touchUpInside" id="umG-U2-RHH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -449,10 +507,13 @@
                             <constraint firstItem="A3H-j7-K0H" firstAttribute="bottom" secondItem="cuH-UF-Gaw" secondAttribute="bottom" constant="298" id="Ehh-42-ggO"/>
                             <constraint firstItem="c2P-r3-Bft" firstAttribute="leading" secondItem="vbG-HI-CVT" secondAttribute="leading" id="HIs-Me-0vA"/>
                             <constraint firstItem="mMv-tl-7M5" firstAttribute="trailing" secondItem="I5z-Oq-45p" secondAttribute="trailing" id="I0B-ul-UnX"/>
+                            <constraint firstItem="279-X3-TLh" firstAttribute="bottom" secondItem="A3H-j7-K0H" secondAttribute="bottom" id="Xht-jV-ub2"/>
                             <constraint firstItem="c2P-r3-Bft" firstAttribute="trailing" secondItem="vbG-HI-CVT" secondAttribute="trailing" id="XlC-hX-aVh"/>
                             <constraint firstItem="cuH-UF-Gaw" firstAttribute="top" secondItem="c2P-r3-Bft" secondAttribute="bottom" constant="57" id="bQp-3A-XWy"/>
                             <constraint firstItem="c2P-r3-Bft" firstAttribute="top" secondItem="vbG-HI-CVT" secondAttribute="bottom" constant="25" id="buu-Hu-YkQ"/>
+                            <constraint firstItem="279-X3-TLh" firstAttribute="leading" secondItem="A3H-j7-K0H" secondAttribute="leading" id="el5-vE-qDu"/>
                             <constraint firstItem="cuH-UF-Gaw" firstAttribute="leading" secondItem="A3H-j7-K0H" secondAttribute="leading" constant="60" id="gFl-Bi-S8B"/>
+                            <constraint firstItem="279-X3-TLh" firstAttribute="trailing" secondItem="A3H-j7-K0H" secondAttribute="trailing" id="jFZ-NO-1oa"/>
                             <constraint firstItem="A3H-j7-K0H" firstAttribute="trailing" secondItem="I5z-Oq-45p" secondAttribute="trailing" constant="28" id="kah-Jz-Zq5"/>
                             <constraint firstItem="mMv-tl-7M5" firstAttribute="leading" secondItem="I5z-Oq-45p" secondAttribute="leading" id="o3S-d5-t8M"/>
                             <constraint firstItem="c2P-r3-Bft" firstAttribute="leading" secondItem="mMv-tl-7M5" secondAttribute="leading" id="tYD-AF-Mom"/>
@@ -461,6 +522,7 @@
                         <viewLayoutGuide key="safeArea" id="A3H-j7-K0H"/>
                     </view>
                     <connections>
+                        <outlet property="emergencyButton" destination="279-X3-TLh" id="alK-Nr-Snh"/>
                         <outlet property="emergencyContectNumberTextBox" destination="mMv-tl-7M5" id="i5T-bG-PgF"/>
                         <outlet property="emergencyMessageTextBox" destination="c2P-r3-Bft" id="Thz-cy-ZN5"/>
                     </connections>

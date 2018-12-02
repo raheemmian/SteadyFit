@@ -15,7 +15,7 @@ protocol MyProtocol{
 }
 
 
-class ParticipantsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ParticipantsViewController: EmergencyButtonViewController, UITableViewDelegate, UITableViewDataSource {
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
     var eventId:String = ""

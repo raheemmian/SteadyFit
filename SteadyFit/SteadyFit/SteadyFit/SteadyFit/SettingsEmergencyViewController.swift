@@ -12,13 +12,13 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class SettingsEmergencyViewController: UIViewController {
+class SettingsEmergencyViewController: EmergencyButtonViewController {
     
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
     let currentuserID = (Auth.auth().currentUser?.uid)!
     var currentUserEmergencyContact: String?
-    var emergencyMessage: String?
+    var EmergencyMessage: String?
     
     @IBAction func emergencyContectNumberTextField(_ sender: UITextField) {
     }
@@ -43,11 +43,11 @@ class SettingsEmergencyViewController: UIViewController {
             
             if userDictionary != nil{
                 self.currentUserEmergencyContact = userDictionary!["emergencycontact"] as? String
-                self.emergencyMessage = userDictionary!["emergencymessage"] as? String
+                self.EmergencyMessage = userDictionary!["emergencymessage"] as? String
             }
             DispatchQueue.main.async{
                 self.emergencyContectNumberTextBox.text = self.currentUserEmergencyContact
-                self.emergencyMessageTextBox.text = self.emergencyMessage
+                self.emergencyMessageTextBox.text = self.EmergencyMessage
             }
             
         })
