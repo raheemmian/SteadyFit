@@ -180,6 +180,8 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
         groupTableView.deselectRow(at: indexPath, animated: true)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //checks if the add button is pressed otherwise prepares different segues based on
+        //page and row
         if isAddButtonPressed == false {
             var indexPath = self.groupTableView.indexPathForSelectedRow!
             switch (p) {
@@ -200,7 +202,7 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        /*this adds a button in the section header on the right side so that a user can be redirected to add an event and invite button*/
+        /*this adds a button in the section header on the right side so that a user can be redirected to add a private group*/
         let headerView = UIView()
         headerView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
         let label = UILabel()
@@ -223,9 +225,9 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
     
 
     @objc func AddButtonPressed() {
+        //goes to the tempplate page for adding a private group
         isAddButtonPressed = true
         performSegue(withIdentifier: "createPrivateGroup", sender: self)
-        print("hi")
         isAddButtonPressed = false
     }
     

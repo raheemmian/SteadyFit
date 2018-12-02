@@ -54,6 +54,7 @@ class InviteFriendsViewController: EmergencyButtonViewController, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Creating the plus sign in the table view cell to indicate that a user can be invited
         let cell = inviteUserTableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath)
         let image = UIImage(named: "plus")
         let button = UIButton()
@@ -68,12 +69,12 @@ class InviteFriendsViewController: EmergencyButtonViewController, UITableViewDel
     }
     
     @objc func inviteButtonPressed(sender: UIButton!){
-        //sender.isHidden = true
+        // When the invite button is pressed then the original image
+        //of a checkmark is changed to a checkmark and the user is written to the database
         let image = UIImage(named: "checkmark")
         sender.setImage(image, for: .normal)
         let invitedUserId = friendsIdList[sender.tag]
         let invitedUserName = friendsInviteList[sender.tag]
-        // write to database
         if (groupId != "" && invitedUserId != "" && invitedUserName != ""){
             let post = [ "/Groups/\(groupId)/users/\(invitedUserId)":
                 ["name":invitedUserName, "joined":0]] as [String : Any]
