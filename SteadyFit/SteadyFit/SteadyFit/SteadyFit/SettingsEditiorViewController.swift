@@ -71,7 +71,13 @@ class SettingsEditiorViewController: UIViewController {
     
     @IBAction func logoutButton(_ sender: UIButton) {
         // logout function
-        
+        print("before logout ", Auth.auth().currentUser)
+        do{
+            try Auth.auth().signOut()
+        } catch let logoutError {
+            print(logoutError)
+        }
+        print("after logout", Auth.auth().currentUser)
     }
     
     @IBOutlet weak var nameLabel: UIStackView!

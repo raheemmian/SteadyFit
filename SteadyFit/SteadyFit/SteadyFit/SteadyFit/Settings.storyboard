@@ -377,6 +377,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Yeb-F1-fa1"/>
                     </view>
+                    <connections>
+                        <outlet property="output" destination="to5-tk-EwI" id="qY7-qJ-SWI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XH4-tZ-vXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -590,6 +593,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="setting" width="24" height="24"/>
+        <image name="setting" width="32" height="32"/>
     </resources>
 </document>
