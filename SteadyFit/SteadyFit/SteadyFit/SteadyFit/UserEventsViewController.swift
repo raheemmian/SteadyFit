@@ -63,7 +63,9 @@ class UserEventsViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.myEventInfo.description = eventInfo["description"] as! String
                 self.descriptionTextView.text = self.myEventInfo.description
                 self.navigationItem.title = self.myEventInfo.eventName
-                self.eventsTableView.reloadData()
+                DispatchQueue.main.async() {
+                    self.eventsTableView.reloadData()
+                }
             }
         })
         refHandle = ref?.child("Activities_Events").child(eventId).child("Participants").observe(.value, with: { (snapshot) in
