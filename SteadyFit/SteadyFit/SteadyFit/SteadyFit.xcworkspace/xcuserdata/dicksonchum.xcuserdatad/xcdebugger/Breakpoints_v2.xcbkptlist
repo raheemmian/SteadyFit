@@ -39,11 +39,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SteadyFit/GroupChatTableViewController.swift"
-            timestampString = "565260158.320174"
+            timestampString = "565410273.157338"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -55,11 +55,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SteadyFit/GroupChatTableViewController.swift"
-            timestampString = "565260158.320308"
+            timestampString = "565410273.157403"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -71,11 +71,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SteadyFit/GroupChatTableViewController.swift"
-            timestampString = "565260158.3203681"
+            timestampString = "565410273.15747"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -87,11 +87,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SteadyFit/GroupChatTableViewController.swift"
-            timestampString = "565260158.32043"
+            timestampString = "565410273.157528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
@@ -103,11 +103,11 @@
                   moduleName = "SteadyFit"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dicksonchum/Documents/GitHub/SteadyFit/SteadyFit/SteadyFit/SteadyFit/SteadyFit/GroupChatTableViewController.swift"
-                  timestampString = "565262299.81885"
+                  timestampString = "565417832.4635659"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
                   offsetFromSymbolStart = "1369">
                </Location>
                <Location
@@ -118,11 +118,11 @@
                   moduleName = "SteadyFit"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dicksonchum/Documents/GitHub/SteadyFit/SteadyFit/SteadyFit/SteadyFit/SteadyFit/GroupChatTableViewController.swift"
-                  timestampString = "565262299.822631"
+                  timestampString = "565417832.466537"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
                   offsetFromSymbolStart = "61">
                </Location>
             </Locations>
