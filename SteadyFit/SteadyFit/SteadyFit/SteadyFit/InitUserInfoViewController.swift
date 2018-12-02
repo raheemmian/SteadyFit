@@ -203,6 +203,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
     
     //===================
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //resigning the keyboard if something outside of the text field that is active is pressed
         userNameTextField.resignFirstResponder()
         provinceTextField.resignFirstResponder()
         cityTextField.resignFirstResponder()
@@ -213,6 +214,7 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
         personalBioTextView.resignFirstResponder()
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        //pressing return resigns the keyboard
         if(text == "\n") {
             personalBioTextView.resignFirstResponder()
             return false
@@ -223,18 +225,23 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
         self.activeTextField = textField
     }
     func textViewDidBeginEditing(_ textView: UITextView) {
+        //getting rid of the place holder text in the text view
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
             textView.textColor = UIColor.black
         }
+        //moving the text view above the keyboard
         if(textView == personalBioTextView){
             moveTextView(textView, moveDistance: -250, up: true)
         }
     }
     func textViewDidEndEditing(_ textView: UITextView) {
+        //move the scene back down to original place
         moveTextView(textView, moveDistance: -250, up: false)
     }
     func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
+        //provides the animation of moving the page up so that both keyboard
+        //and the text view are scene
         let moveDuration = 0.3
         let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
         UIView.beginAnimations("animateTextField", context: nil)
