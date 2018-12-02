@@ -79,7 +79,7 @@ class LoginViewController: UIViewController {
             else{
                 Auth.auth().createUser(withEmail: email, password: pass) { (authResult, error) in
                     // Check if email is existing account or not
-                    guard let u = authResult?.user else {
+                    guard (authResult?.user) != nil else {
                         self.errorMessage.text = "This email is already a SteadyFit account.\nPlease use a non-registered email."
                         self.errorMessage.isHidden = false
                         return
