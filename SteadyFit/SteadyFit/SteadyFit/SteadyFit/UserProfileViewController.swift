@@ -6,9 +6,11 @@
 //  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
-//  Edited by: Dickson Chum, Calvin Liu
-//  List of Changes: Work in Progress
-//  Added labels and image view, added emergency button and GPS related code
+//  Edited by: Dickson Chum
+//  Added labels and image view, added emergency button and GPS related code, hide friend request button when the profile is current user
+//
+//  Edited by: Calvin Liu
+//
 //
 //  UserProfileViewController.swift is linked to an User Profile Page, which shows the user's information.
 //  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
@@ -37,7 +39,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     var friendUserId : String = ""
     var newGroupId : Int = 0
     let friendTableSections = ["Gender", "Birthday", "Bio"]
-    var friendTableContents = ["M", "Nov 5", "WOW"]
+    var friendTableContents: [String] = ["", "", ""]
     let currentuserID = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
@@ -48,7 +50,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         profilePic.clipsToBounds = true
         
         self.ref?.child("Users").child(self.currentuserID!).child("Friends").observeSingleEvent(of: .value, with: {(snapshot) in
-            if snapshot.hasChild(self.friendUserId){
+            if (snapshot.hasChild(self.friendUserId) || self.friendUserId == self.currentuserID) {
                 self.sendFriendRequestButton.isHidden = true
             } else {
                 self.sendFriendRequestButton.isHidden = false
@@ -107,7 +109,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell  = tableView.dequeueReusableCell(withIdentifier: "friendTableCell", for:  indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendTableCell", for:  indexPath)
         cell.textLabel?.text = friendTableContents[indexPath.section]
         return cell
     }

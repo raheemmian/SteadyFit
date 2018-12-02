@@ -62,38 +62,6 @@
             endingLineNumber = "101"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in SteadyFit.GroupChatTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "SteadyFit"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dicksonchum/Documents/GitHub/SteadyFit/SteadyFit/SteadyFit/SteadyFit/SteadyFit/GroupChatTableViewController.swift"
-                  timestampString = "565426371.599948"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "1924">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in closure #1 (__C.FIRDataSnapshot) -&gt; () in SteadyFit.GroupChatTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "SteadyFit"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dicksonchum/Documents/GitHub/SteadyFit/SteadyFit/SteadyFit/SteadyFit/SteadyFit/GroupChatTableViewController.swift"
-                  timestampString = "565426371.602069"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "898">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
