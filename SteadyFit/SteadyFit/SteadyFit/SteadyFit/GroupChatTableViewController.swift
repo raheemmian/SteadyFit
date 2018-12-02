@@ -168,7 +168,6 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         }
         else{
             // Incoming message
-            // load profile
             cell.bubbleView.backgroundColor = UIColor.lightGray
             cell.textView.textColor = UIColor.black
             cell.bubbleLeftAnchor?.isActive = true
@@ -176,6 +175,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
             cell.profilePicView.isHidden = false
             cell.senderNameView.isHidden = false
             cell.senderNameView.text = message.senderName
+            // load profile picture from db
             self.ref?.child("Users").child(message.senderID!).child("profilepic").observe(DataEventType.value, with: {
                 (userSnapshot) in
                 if userSnapshot.value != nil{
@@ -186,7 +186,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
                                 print(error!)
                                 return
                             }
-                            if UIImage(data:data!) != nil{
+                            if UIImage(data:data!) != nil{// overwrites default pic if profile found in db
                                 DispatchQueue.main.async(){
                                     cell.profilePicView.image = UIImage(data:data!)
                                 }
