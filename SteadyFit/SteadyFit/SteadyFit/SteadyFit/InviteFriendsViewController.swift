@@ -5,6 +5,8 @@
 //  Created by Raheem Mian on 2018-11-23.
 //  Copyright © 2018 Daycar. All rights reserved.
 //
+// Edited by: Alexa Chen
+// read and write from database (load friends who are not in the group, invite friend)
 
 import UIKit
 import FirebaseDatabase
@@ -16,6 +18,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var friendsInviteList: [String] = []
     var friendsIdList: [String] = []
     var groupId = ""
+    var usersInCurrentGroup: [String] = []
     let currentuserID = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
@@ -25,17 +28,22 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         inviteUserTableView.tableFooterView = UIView()
         
         if currentuserID != nil {
-            //friendsInviteList.removeAll()
-            //friendsIdList.removeAll()
-            ref?.child("Users").child(currentuserID!).child("Friends").observeSingleEvent(of: .value, with: {(snapshot) in
+            // load friends who are not already in the group
+            ref?.child("Users").child(currentuserID!).child("Friends").observe(.value, with: { (snapshot) in
+                self.friendsInviteList.removeAll()
+                self.friendsIdList.removeAll()
                 for rest in snapshot.children.allObjects as! [DataSnapshot]{
                     guard let dictionary = rest.value as? [String: AnyObject] else {continue}
                     let friendName = dictionary["name"] as?String
                     let friendId = rest.key
-                    if (friendName != nil && friendId != ""){
+                    let isUserAlreadyInGroup = self.usersInCurrentGroup.contains(friendId)
+                    if (friendName != nil && friendId != "" && !isUserAlreadyInGroup){
                         self.friendsInviteList.append(friendName!)
                         self.friendsIdList.append(friendId)
                     }
+                }
+                DispatchQueue.main.async() {
+                    self.inviteUserTableView.reloadData()
                 }
             })
         }
@@ -63,14 +71,13 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         //sender.isHidden = true
         let image = UIImage(named: "checkmark")
         sender.setImage(image, for: .normal)
-        /* alexa look here, uncomment this when requests are done
         let invitedUserId = friendsIdList[sender.tag]
         let invitedUserName = friendsInviteList[sender.tag]
+        // write to database
         if (groupId != "" && invitedUserId != "" && invitedUserName != ""){
             let post = [ "/Groups/\(groupId)/users/\(invitedUserId)":
                 ["name":invitedUserName, "joined":0]] as [String : Any]
             ref?.updateChildValues(post)
         }
-        */
     }
 }

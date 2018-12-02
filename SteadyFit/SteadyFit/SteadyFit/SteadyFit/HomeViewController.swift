@@ -54,7 +54,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
                 self.name.text = userDictionary!["name"] as? String
                 self.city.text = userDictionary!["city"] as? String
                 
-                // load profile
+                // load profile picture
                 if let imageURL = userDictionary!["profilepic"] as? String{
                     let url = URL(string: imageURL)
                     URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
@@ -69,6 +69,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
                 }
             }
         })
+        // load upcoming events
         self.ref?.child("Activities_Events").queryOrdered(byChild: "date").observe(DataEventType.value, with: {
             (snapshot) in
             self.eventIDs.removeAll()
@@ -78,6 +79,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
                 
             for sessionSnapshot in snapshot.children.allObjects as! [DataSnapshot] {
                 guard let isUserInEvent = sessionSnapshot.childSnapshot(forPath: "Participants/\(self.currentuserID)").value as? [String:AnyObject] else {continue}
+                // filtering
                 if  isUserInEvent.count>0{
                     firstChildMatch += 1
                     if firstChildMatch == 1 {
@@ -88,13 +90,19 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
                     
                     guard let sessionDictionary = sessionSnapshot.value as? [String: AnyObject] else {continue}
                     guard let isPersonal = sessionDictionary["isPersonal"] as? Int else {continue}
-                    if isPersonal == 0{
-                        self.homeTableContents[1].append((sessionDictionary["event_name"] as? String)!)
-                        self.eventIDs.append(sessionSnapshot.key)
-                    }
                     guard let tempEventDate = sessionDictionary["date"] as? String else {continue}
                     guard let tempEventDuration = sessionDictionary["duration_minute"] as? String else {continue}
-                    self.appendActivity(key: tempEventDate, value: Int(tempEventDuration)!)
+                    let today = Date()
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd HH:mm"
+                    let todayString = formatter.string(from: today)
+                        if isPersonal == 0 && todayString <= tempEventDate { // check if event has passed, if so go put into activity tracker
+                            self.homeTableContents[1].append((sessionDictionary["event_name"] as? String)!)
+                            self.eventIDs.append(sessionSnapshot.key)
+                        }
+                        else if todayString > tempEventDate{
+                            self.appendActivity(key: tempEventDate, value: Int(tempEventDuration)!)
+                        }
                 }
             }
             print (self.activity_day)
@@ -108,6 +116,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
     // https://www.youtube.com/watch?v=XmyiRzeoSJE
         //actions
     @IBAction func uploadProfilePic(_ sender: Any) {
+        // "upload image" button clicked
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
@@ -117,6 +126,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
         //funcs
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info:
         [UIImagePickerController.InfoKey : Any]) {
+        // lets user pick image from their photo album
         var selectedImageFromPicker: UIImage?
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage{
             selectedImageFromPicker = editedImage
@@ -136,6 +146,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
         dismiss(animated: true, completion: nil)
     }
     func saveImageToDB(){
+        // upload the profile to database
         let imageName = NSUUID().uuidString
         let storedImage = storageRef.child("profile_images").child(imageName)
         
@@ -221,6 +232,9 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
     }
     
     func appendActivity(key: String, value: Int){
+        // add time to a certain day
+        // key is the day
+        // value is the activity minutes
         
         let dateFormatter = DateFormatter()
         if key.count > 10 {
@@ -243,6 +257,8 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
     }
     
     func createActivityArrays(oldestDate :String){
+        // set up for the histogram page, create an array with place holders for each day
+        // array size will be the date difference between today's date and the oldest activity
         activity_day.removeAll()
         
         var oldestDate_formatted:String = oldestDate
@@ -257,11 +273,12 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
         let today = Date()
         let components = Calendar.current.dateComponents([.day], from: oldest!, to: today)
         let activity_day_count = (components.day ?? 0)
-        
-        for i in 0...activity_day_count{
-            let tempDate:Date = Calendar.current.date(byAdding: .day, value: i, to: oldest!)!
-            let tempDateString = dateFormatter.string(from: tempDate)
-            activity_day[tempDateString] = 0
+        if activity_day_count >= 0{
+            for i in 0...activity_day_count{
+                let tempDate:Date = Calendar.current.date(byAdding: .day, value: i, to: oldest!)!
+                let tempDateString = dateFormatter.string(from: tempDate)
+                activity_day[tempDateString] = 0
+            }
         }
     }
 

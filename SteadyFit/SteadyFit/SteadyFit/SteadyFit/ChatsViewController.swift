@@ -11,6 +11,8 @@
 //
 //  ChatsViewController.swift is linked to a view controller which shows the list of chat group the user is in.
 //
+// Edited by: Alexa Chen
+// List of changes: populated chat for friends
 
 
 import UIKit
@@ -27,7 +29,8 @@ class ChatsViewController: EmergencyButtonViewController, UITableViewDataSource,
     @IBAction func emergencyButton(_ sender: Any) {sendText()}
 
     
-    var chatIDList = [String]()
+    var privateChatIDList = [String]()
+    var publicChatIDList = [String]()
     var publicGroupList = [String]()
     var privateGroupList = [String]()
     let currentUserID = (Auth.auth().currentUser?.uid)!
@@ -48,22 +51,29 @@ class ChatsViewController: EmergencyButtonViewController, UITableViewDataSource,
             (snapshot) in
             print (snapshot)
             self.chatListContent.removeAll()
-            self.chatIDList.removeAll()
+            self.privateChatIDList.removeAll()
+            self.publicChatIDList.removeAll()
             self.publicGroupList.removeAll()
             self.privateGroupList.removeAll()
             self.currentUserName = snapshot.childSnapshot(forPath: "name").value as!String
             for groupsSnapshot in snapshot.childSnapshot(forPath: "Groups").children.allObjects as! [DataSnapshot] {
-                print (groupsSnapshot)
                 guard let dictionary = groupsSnapshot.value as? [String: AnyObject] else {continue}
-                self.chatIDList.append((dictionary["chatid"] as! String))
                 let grouptype = dictionary["grouptype"] as!String
                 // assign the groups to the correct categories
                 if  grouptype == "public" || grouptype == "Public"{
                     self.publicGroupList.append((dictionary["name"] as! String))
+                    self.publicChatIDList.append((dictionary["chatid"] as! String))
                 }
                 else if grouptype == "Private" || grouptype == "private"{
                     self.privateGroupList.append((dictionary["name"] as! String))
+                    self.privateChatIDList.append((dictionary["chatid"] as! String))
                 }
+            }
+            // loop through the "Friends" node
+            for friendSnapshot in snapshot.childSnapshot(forPath: "Friends").children.allObjects as! [DataSnapshot] {
+                guard let frienddictionary = friendSnapshot.value as? [String: AnyObject] else {continue}
+                self.privateGroupList.append(frienddictionary["name"] as! String)
+                self.privateChatIDList.append(frienddictionary["chatid"] as! String)
             }
             self.chatListContent = [self.privateGroupList, self.publicGroupList]
             DispatchQueue.main.async() {
@@ -102,7 +112,12 @@ class ChatsViewController: EmergencyButtonViewController, UITableViewDataSource,
         var indexPath = self.chatListTableView.indexPathForSelectedRow!
         let post = segue.destination as! GroupChatTableViewController
         post.navigationItem.title = chatListContent[indexPath.section][indexPath.row]
-        post.chatID = chatIDList[indexPath.row]
+        if (indexPath.section == 0){ // private chats
+            post.chatID = privateChatIDList[indexPath.row]
+        }
+        else{ // public chats
+            post.chatID = publicChatIDList[indexPath.row]
+        }
         post.myUserName = currentUserName
         post.myUserID = currentUserID
     }

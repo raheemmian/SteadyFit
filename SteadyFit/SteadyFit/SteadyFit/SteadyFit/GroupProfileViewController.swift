@@ -50,6 +50,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
     var isUserInGroup: Bool = false
     var userList = [String]()
     var userIdList = [String]()
+    var userIdList_ingroup_and_invited = [String]()
     var groupInfo: GroupInfo?
     
     override func viewDidLoad() {
@@ -78,6 +79,11 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         
         refHandle = self.ref?.child("Groups").child(groupId).observe(DataEventType.value, with: { (snapshot) in
             self.groupTableContents[1].removeAll()
+            self.userIdList_ingroup_and_invited.removeAll()
+            self.groupTableEventID.removeAll()
+            self.userList.removeAll()
+            self.userIdList.removeAll()
+            self.userIdList_ingroup_and_invited.removeAll()
             if let groupInfo = snapshot.value as? [String: AnyObject]{
                 let myGroupInfo = GroupInfo()
                 myGroupInfo.activityLevel = groupInfo["activitylevel"] as?String
@@ -90,7 +96,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
                         myGroupEvents.sessionId = sessionSnapshot.key
                         myGroupEvents.eventName = sessionSnapshot.value as?String
                         myGroupInfo.events.append(myGroupEvents.eventName)
-                        self.groupTableEventID.append(myGroupEvents.sessionId as! String)
+                        self.groupTableEventID.append(myGroupEvents.sessionId ?? "")
                     }
                 }
                 
@@ -112,6 +118,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
                                 myGroupInfo.users.append(myGroupUser.userName)
                                 self.userIdList.append(userSnapshot.key)
                             }
+                            self.userIdList_ingroup_and_invited.append(userSnapshot.key)
                         }
                     }
                 }
@@ -164,6 +171,9 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
             isAddEvent = false
         }
         else if isInviteUser == true {
+            let destination = segue.destination as! InviteFriendsViewController
+            destination.groupId = self.groupId
+            destination.usersInCurrentGroup = self.userIdList_ingroup_and_invited
             isInviteUser = false
         }
         else{
