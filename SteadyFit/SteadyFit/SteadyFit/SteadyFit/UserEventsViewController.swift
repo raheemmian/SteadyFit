@@ -11,10 +11,14 @@
 //  and displays it for the user
 //  also redirects to the participants view controller to show the paticipants of the events
 
+//Edited by: Akshay Kumar (30/11/2018)
+//Added support for notfication event creation upon joining an event
+
 import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import UserNotifications
 
 class UserEventsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MyProtocol {
 
@@ -90,6 +94,50 @@ class UserEventsViewController: UIViewController, UITableViewDelegate, UITableVi
         let newParticipantPost = ["name": myUserName] as [String: Any]
         let addParticipant = ["/Activities_Events/\(eventId)/Participants/\(myUserID)/" : newParticipantPost]
         ref?.updateChildValues(addParticipant)
+        
+        //Creating a request for a notification
+        //Checking if notificaitons are turned on in settings using a boolean varibale
+        if(NotificationBool.shared.state == true)
+        {
+        //Obtaining Authorization again in case
+        UNUserNotificationCenter.current().requestAuthorization(options:
+        [.alert, .badge, .sound]) { (granted, error) in
+        }
+        
+        //Creating Notification content
+        let content = UNMutableNotificationContent()
+        content.title = self.myEventInfo.eventName
+        content.body = self.myEventInfo.description
+        content.sound = UNNotificationSound.default
+        
+        //Date string
+        let dstring = self.myEventInfo.date
+        
+        //Convert date from String to Date format
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let date = dateFormatter.date(from: dstring)
+        
+        //Subtract an hour from the Date so notfication arrives an hour early
+        let datesubhour = date!.addingTimeInterval(-3600)
+        
+        //Break date into components so Notification can be scheduled by iOS Notfication centre
+        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: datesubhour)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+        
+        //use the trigger below to show a notfication in 5 seconds, for testing purponses. (comment trigger above)
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        //Each Notification needs a unique String ID, I chose it to be event name
+        let identifier = self.myEventInfo.eventName
+        
+        //Creating and sending requests to iOS notification centre
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+        
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2

@@ -11,6 +11,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import UserNotifications
 
 class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
@@ -73,6 +74,51 @@ class AddEventViewController: UIViewController, UITextFieldDelegate, UITextViewD
             "/Groups/\(groupID)/events/\(key)" : eventNameTextField.text ?? "nothing"
             ] as [String : Any]
             ref?.updateChildValues(post)
+            
+            //Creating a request for a notification
+            //Checking if notificaitons are turned on in settings using a boolean varibale
+            if(NotificationBool.shared.state == true)
+            {
+            //Obtaining Authorization again in case
+            UNUserNotificationCenter.current().requestAuthorization(options:
+            [.alert, .badge, .sound]) { (granted, error) in
+            }
+            
+            //Creating Notification content
+            let content = UNMutableNotificationContent()
+            content.title = eventNameTextField.text!
+            content.body = descriptionTextView.text!
+            
+            content.sound = UNNotificationSound.default
+            
+            //Date string
+            let dstring = startDateTextField.text
+            
+            //Convert date from String to Date format
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let date = dateFormatter.date(from: dstring!)
+            
+            //Subtract an hour from the Date so notfication arrives an hour early
+            let datesubhour = date!.addingTimeInterval(-3600)
+            
+            //Break date into components so Notification can be scheduled by iOS Notfication centre
+            let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: datesubhour)
+            
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+            
+            //use the trigger below to show a notfication in 5 seconds, for testing purponses. (comment trigger above)
+            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            
+            //Each Notification needs a unique String ID, I chose it to be event name
+            let identifier = eventNameTextField.text!
+            
+            //Creating and sending requests to iOS notification centre
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            }
+            
             //goes back to previous view controller
             navigationController?.popViewController(animated: true)
         }
