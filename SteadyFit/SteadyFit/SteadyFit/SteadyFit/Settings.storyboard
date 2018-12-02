@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U7g-Bv-fzg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U7g-Bv-fzg">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -383,23 +383,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFI-Bx-a0q">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFI-Bx-a0q">
                                 <rect key="frame" x="20" y="157" width="184" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="VF7-SO-o9G"/>
+                                    <constraint firstAttribute="width" constant="184" id="X22-TJ-rDw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="A notification will be sent to your phone 1 hour before the event start time." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="to5-tk-EwI">
-                                <rect key="frame" x="20" y="184" width="319" height="49.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NVX-yn-KkW">
-                                <rect key="frame" x="347" y="169" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NVX-yn-KkW">
+                                <rect key="frame" x="345" y="157" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="49" id="H7A-v5-LzY"/>
+                                    <constraint firstAttribute="height" constant="31" id="xmp-FT-5Zd"/>
+                                </constraints>
                                 <connections>
                                     <action selector="Switch:" destination="540-mu-eEK" eventType="valueChanged" id="ZHz-e3-kJz"/>
                                 </connections>
@@ -415,17 +414,34 @@
                                     <action selector="emergencyButtonPressed" destination="540-mu-eEK" eventType="touchUpInside" id="QHK-0s-syk"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="A notification will be sent to your phone 1 hour before the event start time." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="to5-tk-EwI">
+                                <rect key="frame" x="20" y="193" width="319" height="49.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="319" id="ULg-Yj-Un1"/>
+                                    <constraint firstAttribute="height" constant="49.5" id="o2z-Ux-MA0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Osw-th-JgY" firstAttribute="bottom" secondItem="Yeb-F1-fa1" secondAttribute="bottom" id="4Mm-u0-IqT"/>
+                            <constraint firstItem="vFI-Bx-a0q" firstAttribute="leading" secondItem="Yeb-F1-fa1" secondAttribute="leading" constant="20" id="6ii-sm-YM8"/>
+                            <constraint firstItem="to5-tk-EwI" firstAttribute="top" secondItem="vFI-Bx-a0q" secondAttribute="bottom" id="FW4-70-Eab"/>
+                            <constraint firstItem="NVX-yn-KkW" firstAttribute="top" secondItem="Yeb-F1-fa1" secondAttribute="top" constant="17" id="GO7-a3-0bL"/>
+                            <constraint firstItem="to5-tk-EwI" firstAttribute="leading" secondItem="Yeb-F1-fa1" secondAttribute="leading" constant="20" id="RGG-3N-ypu"/>
+                            <constraint firstItem="Yeb-F1-fa1" firstAttribute="trailing" secondItem="NVX-yn-KkW" secondAttribute="trailing" constant="20" id="evq-Hw-6OW"/>
                             <constraint firstItem="Osw-th-JgY" firstAttribute="leading" secondItem="Yeb-F1-fa1" secondAttribute="leading" id="nR4-ce-ipv"/>
                             <constraint firstItem="Osw-th-JgY" firstAttribute="trailing" secondItem="Yeb-F1-fa1" secondAttribute="trailing" id="ubr-to-5ys"/>
+                            <constraint firstItem="vFI-Bx-a0q" firstAttribute="top" secondItem="Yeb-F1-fa1" secondAttribute="top" constant="17" id="y1r-ao-S6V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Yeb-F1-fa1"/>
                     </view>
                     <connections>
                         <outlet property="emergencyButton" destination="Osw-th-JgY" id="Of6-UT-wzU"/>
+                        <outlet property="eventNotificationTextField" destination="vFI-Bx-a0q" id="mag-fY-BlK"/>
                         <outlet property="output" destination="to5-tk-EwI" id="qY7-qJ-SWI"/>
                     </connections>
                 </viewController>

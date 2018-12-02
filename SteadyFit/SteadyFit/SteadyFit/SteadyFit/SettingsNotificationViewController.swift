@@ -16,7 +16,8 @@ struct NotificationBool {
 
 class SettingsNotificationViewController: EmergencyButtonViewController {
     
-
+    @IBOutlet weak var eventNotificationTextField: UILabel!
+    
     @IBOutlet weak var output: UITextView!
     
     @IBAction func Switch(_ sender: UISwitch) {
@@ -35,6 +36,5 @@ class SettingsNotificationViewController: EmergencyButtonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
     }
 }
