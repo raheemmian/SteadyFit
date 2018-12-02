@@ -210,7 +210,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
         if(segue.identifier == "showPendingRequest"){
             print("Request button is clicked")
             let destination = segue.destination as! PendingRequestViewController
-            destination.navigationItem.title = "Pending Requests"
+//            destination.navigationItem.title = "Pending Requests"
         }
         else if(self.myTableView.indexPathForSelectedRow != nil){
             var indexPath = self.myTableView.indexPathForSelectedRow!
