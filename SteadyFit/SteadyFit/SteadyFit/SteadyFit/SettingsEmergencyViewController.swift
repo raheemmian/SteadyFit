@@ -27,13 +27,12 @@ class SettingsEmergencyViewController: EmergencyButtonViewController {
     
     @IBAction func EmergencyMessageTextField(_ sender: UITextField) {
     }
-    
-    //    @IBOutlet weak var emergencyMessageTextBox: UITextField!
     @IBOutlet weak var emergencyMessageTextBox: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+        // Loading current data from database 
         ref = Database.database().reference()
         
         self.ref!.child("Users").child(currentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
@@ -51,11 +50,10 @@ class SettingsEmergencyViewController: EmergencyButtonViewController {
             }
             
         })
-        
-        // Do any additional setup after loading the view.
+
     }
     
-    // Update Emergency contact and message
+    // Update Emergency contact and message to database
     @IBAction func emergencySaveButton(_ sender: UIButton) {
         if emergencyContectNumberTextBox.text != nil && emergencyMessageTextBox.text != nil {
             let newUserInfo = ["/Users/\(currentuserID)/emergencycontact": emergencyContectNumberTextBox.text,
