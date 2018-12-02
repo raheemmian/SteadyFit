@@ -5,15 +5,15 @@
 //  Created by Akshay Kumar on 11/17/18.
 //  Copyright © 2018 Daycar. All rights reserved.
 //
-//This class works on generating the graph and drawing it in the activity tracker and associated views.
-//This functionality was implemented with the help of Minh Nguyen's tutorial at medium along with
-//modifications to suit our implemention, the tutorial can be found at:
-//https://medium.com/@leonardnguyen/build-your-own-chart-in-ios-part-1-bar-chart-e1b7f4789d70
+//  This class works on generating the graph and drawing it in the activity tracker and associated views.
+//  This functionality was implemented with the help of Minh Nguyen's tutorial at medium along with
+//  modifications to suit our implemention, the tutorial can be found at:
+//  https://medium.com/@leonardnguyen/build-your-own-chart-in-ios-part-1-bar-chart-e1b7f4789d70
+//
 
 import UIKit
 
 class BarChartActivityTracker: UIView {
-    
     ///width
     let barWidth: CGFloat = 31.0
     
@@ -29,26 +29,16 @@ class BarChartActivityTracker: UIView {
     /// contain all layers of the chart
     private let mainLayer: CALayer = CALayer()
     
-  
-    
     /// contain mainLayer to support scrolling
     private let scrollView: UIScrollView = UIScrollView()
-    
-    
-        
-
     
     var dataEntries: [BarEntry]? = nil {
         didSet {
             mainLayer.sublayers?.forEach({$0.removeFromSuperlayer()})
-            
-            
             if let dataEntries = dataEntries {
                 scrollView.contentSize = CGSize(width: (barWidth + space)*CGFloat(dataEntries.count), height: self.frame.size.height)
                 mainLayer.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
-                
                 drawHorizontalLines()
-                
                 for i in 0..<dataEntries.count {
                     showEntry(index: i, entry: dataEntries[i])
                 }
@@ -74,7 +64,6 @@ class BarChartActivityTracker: UIView {
     private func setupView() {
         scrollView.layer.addSublayer(mainLayer)
         self.addSubview(scrollView)
-        
     }
     
     override func layoutSubviews() {
@@ -102,7 +91,6 @@ class BarChartActivityTracker: UIView {
         barLayer.frame = CGRect(x: xPos, y: yPos, width: barWidth, height: mainLayer.frame.height - bottomSpace - yPos)
         barLayer.backgroundColor = color.cgColor
         mainLayer.addSublayer(barLayer)
-        
     }
     
     private func drawHorizontalLines() {
@@ -153,16 +141,11 @@ class BarChartActivityTracker: UIView {
         textLayer.fontSize = 14
         textLayer.string = title
         mainLayer.addSublayer(textLayer)
-        
     }
     
     private func translateHeightValueToYPosition(value: Float) -> CGFloat {
         let height: CGFloat = CGFloat(value) * (mainLayer.frame.height - bottomSpace - topSpace)
         return mainLayer.frame.height - bottomSpace - height
-        
-        
-        
     }
     
 }
-

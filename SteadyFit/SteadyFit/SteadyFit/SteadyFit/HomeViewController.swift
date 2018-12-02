@@ -218,7 +218,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
             if(indexPath.section == 0){
                 let destination = segue.destination as! HistogramViewController
                 destination.navigationItem.title = homeTableContents[indexPath.section][indexPath.row]
-                destination.histogram_data = activity_day
+                destination.histogramData = activity_day
             }
             else{
                 let destination = segue.destination as! UserEventsViewController

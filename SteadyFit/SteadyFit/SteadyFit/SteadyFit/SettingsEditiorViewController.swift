@@ -6,8 +6,12 @@
 //  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
-//  Edited by: Dickson Chum, Alexa Chen, Yimin Long
+//  Edited by: Alexa Chen, Yimin Long
 //  List of Changes: User can edit their profile
+//
+//  Edited by: Dickson Chum
+//  List of Changes: implemented logout feature with Firebase
+//
 //
 
 import UIKit
@@ -68,16 +72,18 @@ class SettingsEditiorViewController: UIViewController {
     var selectGender: String?
     let genderPicker = UIPickerView()
     
-    
+    // Logout action when logoutButton is clicked, present loginViewController when user is logged out
     @IBAction func logoutButton(_ sender: UIButton) {
-        // logout function
-        print("before logout ", Auth.auth().currentUser)
+        print("Before logout, User is ", Auth.auth().currentUser as Any)
         do{
             try Auth.auth().signOut()
         } catch let logoutError {
             print(logoutError)
         }
-        print("after logout", Auth.auth().currentUser)
+        print("After logout, User is ", Auth.auth().currentUser as Any)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        self.present(loginViewController, animated: true, completion: nil)
     }
     
     @IBOutlet weak var nameLabel: UIStackView!

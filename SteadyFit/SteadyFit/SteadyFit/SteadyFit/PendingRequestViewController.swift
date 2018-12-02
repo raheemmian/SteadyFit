@@ -119,6 +119,7 @@ class PendingRequestViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! RequestTableViewCell
         cell.textLabel?.text = requestTableContents[indexPath.section][indexPath.row]
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         setupCell(cell: cell, section: indexPath.section, row: indexPath.row)
         return cell
     }

@@ -20,31 +20,31 @@
 //  List of known bugs:
 //  monthly view's text is squished together
 //  naming of the view switch buttons inconsistent and confusing
-
-// this view controller is for the histogram to showcase the progress of the activity time, so that users can see their progress visually
-
+//
+//  HistogramViewController.swift is for the histogram to showcase the progress of the activity time, so that users can see their progress visually
+//
 
 import UIKit
 
 class HistogramViewController: UIViewController {
     @IBOutlet weak var ATBarweekly: BarChartActivityTracker!
-    var histogram_mode: Int = 0 // 0-daily, 1-weekly, 2-monthly
+    var histogramMode: Int = 0 // 0-daily, 1-weekly, 2-monthly
     var dataEntries:[BarEntry] = []
     @IBOutlet weak var sortbyweekButton: UIButton!
     @IBOutlet weak var sortbymonthButton: UIButton!
     
-    var histogram_data: [String: Int] = [:]
+    var histogramData: [String: Int] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // difference modes depending on how the user wants to see the activity progress
-        if histogram_mode == 1{
+        // Difference modes depending on how the user wants to see the activity progress
+        if histogramMode == 1{
             dataEntries = generateWeeklyEntries()
         }
-        else if histogram_mode == 2{
+        else if histogramMode == 2{
             dataEntries = generateMonthlyEntries()
         }
         else{
@@ -56,17 +56,17 @@ class HistogramViewController: UIViewController {
     func generateDataEntries() -> [BarEntry] {
         //creates an array of data for daily minute tracking for the histogram
         var result: [BarEntry] = []
-        if histogram_data.count != 0{
-            let sorted_data = histogram_data.sorted { (aDic, bDic) -> Bool in
+        if histogramData.count != 0{
+            let sortedData = histogramData.sorted { (aDic, bDic) -> Bool in
                 return aDic.key > bDic.key
             }
-            let find_max_value = histogram_data.sorted { (aDic, bDic) -> Bool in
+            let find_max_value = histogramData.sorted { (aDic, bDic) -> Bool in
                 return aDic.value > bDic.value
             }
             
             let colors = [#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)]
             var i:Int = 0
-            for data in sorted_data {
+            for data in sortedData {
                 var date = Date()
                 let currentDateFormatter = DateFormatter()
                 currentDateFormatter.dateFormat = "yyyy-MM-dd"
@@ -93,9 +93,9 @@ class HistogramViewController: UIViewController {
     func generateWeeklyEntries() -> [BarEntry] {
         //creates an array of data for weekly minute tracking for the current month
         var result: [BarEntry] = []
-        if histogram_data.count != 0{
+        if histogramData.count != 0{
             
-            let sorted_data = histogram_data.sorted { (aDic, bDic) -> Bool in
+            let sortedData = histogramData.sorted { (aDic, bDic) -> Bool in
                 return aDic.key > bDic.key
             }
             
@@ -121,15 +121,15 @@ class HistogramViewController: UIViewController {
                 if (tempComponents.year! >= todayComponents.year! && tempComponents.month! >= todayComponents.month! && tempComponents.weekOfMonth! > todayComponents.weekOfMonth!){
                     break;
                 }
-                let tempDateString = "week" + String(tempComponents.weekOfMonth!) + " of " + String(tempComponents.month!)+"," + String(tempComponents.year!)
+                let tempDateString = "Week" + String(tempComponents.weekOfMonth!) + " of " + String(tempComponents.month!)+"," + String(tempComponents.year!)
                 weekly_data[tempDateString] = 0
             }
             
             
-            for each in histogram_data{
+            for each in histogramData{
                 let weekValue = dateFormatter.date(from: each.key)
                 var tempComponents = Calendar.current.dateComponents([.weekOfMonth,.year,.month], from: weekValue!)
-                let formattedKey = "week" + String(tempComponents.weekOfMonth!) + " of " + String(tempComponents.month!)+"," + String(tempComponents.year!)
+                let formattedKey = "Week" + String(tempComponents.weekOfMonth!) + " of " + String(tempComponents.month!)+"," + String(tempComponents.year!)
                 if weekly_data[formattedKey] != nil{
                     let appendValue = each.value
                     weekly_data[formattedKey] = Int(weekly_data[formattedKey]!) + Int(appendValue)
@@ -161,12 +161,12 @@ class HistogramViewController: UIViewController {
     func generateMonthlyEntries() -> [BarEntry] {
         //creates an array of data for monthly minute tracking for the histogram
         var result: [BarEntry] = []
-        if histogram_data.count != 0{
-            let sorted_data = histogram_data.sorted { (aDic, bDic) -> Bool in
+        if histogramData.count != 0{
+            let sortedData = histogramData.sorted { (aDic, bDic) -> Bool in
                 return aDic.key > bDic.key
             }
             
-            let oldest_month = sorted_data[sorted_data.count-1].key as String
+            let oldest_month = sortedData[sortedData.count-1].key as String
             var month_count:Int = 0
             
             let dateFormatter = DateFormatter()
@@ -178,7 +178,7 @@ class HistogramViewController: UIViewController {
             let components = Calendar.current.dateComponents([.month], from: oldest!, to: today)
             month_count = (components.month ?? 0) + 1
             
-            var monthly_data : [String: Int] = [:]
+            var monthlyData : [String: Int] = [:]
             for i in 0...month_count{
                 let tempMonth:Date = Calendar.current.date(byAdding: .month, value: i, to: oldest!)!
                 let tempComponents = Calendar.current.dateComponents([.year,.month], from: tempMonth)
@@ -186,31 +186,27 @@ class HistogramViewController: UIViewController {
                     break;
                 }
                 let tempDateString = String(tempComponents.year!) + "," + String(format: "%02d",tempComponents.month!)
-                monthly_data[tempDateString] = 0
+                monthlyData[tempDateString] = 0
             }
 
-            for each in histogram_data{
+            for each in histogramData{
                 let appendValue = each.value
                 let monthValue = dateFormatter.date(from: each.key)
                 var tempComponents = Calendar.current.dateComponents([.year,.month], from: monthValue!)
                 let formattedKey = String(tempComponents.year!) + "," + String(format: "%02d",tempComponents.month!)
-                monthly_data[formattedKey] = Int(monthly_data[formattedKey]!) + Int(appendValue)
+                monthlyData[formattedKey] = Int(monthlyData[formattedKey]!) + Int(appendValue)
             }
             
             
-            let find_max_value = monthly_data.sorted { (aDic, bDic) -> Bool in
+            let find_max_value = monthlyData.sorted { (aDic, bDic) -> Bool in
                 return aDic.value > bDic.value
             }
             
-            let sorted_monthly_data = monthly_data.sorted {$0.key.localizedStandardCompare($1.key) == .orderedDescending}
-            /*{ (aDic, bDic) -> Bool in
-                return aDic.key > bDic.key
-            }*/
-            
+            let sortedMonthlyData = monthlyData.sorted {$0.key.localizedStandardCompare($1.key) == .orderedDescending}
             
             let colors = [#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1), #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)]
             var i:Int = 0
-            for data in sorted_monthly_data {
+            for data in sortedMonthlyData {
                 let val = data.value
                 let height: Float = Float(val) / Float(find_max_value[0].value)
                 result.append(BarEntry(color: colors[i % colors.count], height: height, textValue: "\(val)", title: data.key))
@@ -224,21 +220,21 @@ class HistogramViewController: UIViewController {
     
     @IBAction func week_click(_ sender: Any) {
         // user clicks on the button to show weekly view
-        histogram_mode = 1
+        histogramMode = 1
         dataEntries = generateWeeklyEntries()
         ATBarweekly.dataEntries = dataEntries
     }
     
     @IBAction func month_click(_ sender: Any) {
-        // user clicks on the button to show montly view
-        histogram_mode = 2
+        // user clicks on the button to show monthly view
+        histogramMode = 2
         dataEntries = generateMonthlyEntries()
         ATBarweekly.dataEntries = dataEntries
     }
     
     @IBAction func day_click(_ sender: Any) {
         // user clicks on the button to show daily view
-        histogram_mode = 0
+        histogramMode = 0
         dataEntries = generateDataEntries()
         ATBarweekly.dataEntries = dataEntries
     }

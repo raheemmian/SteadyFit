@@ -22,7 +22,7 @@ class SettingsViewController: EmergencyButtonViewController, UITableViewDelegate
 
     @IBOutlet weak var settingTableView: UITableView!
     var titleNameArr = ["Edit Profile", "Notification", "Emergency Button", "Help"]
-    var detailArr = ["Edit profile, change password, or log out", "Toggle notfications for vents and groups", "Adjust the message sent to emergency contact", "FAQ, Disclaimer"]
+    var detailArr = ["Edit personal info, change password, or log out", "Toggle notfications for Events", "Edit the message being sent to emergency contact", "FAQ, Disclaimer"]
     var imageNames = ["Profile", "Notification", "Ambulance", "Help"]
     override func viewDidLoad() {
         super.viewDidLoad()

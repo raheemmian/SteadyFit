@@ -7,7 +7,8 @@
 //
 //  Modified by Raheem : added error message when the login fails
 //
-//  Modified by Dickson : added error message when register fails, reset errorMessage whenever segmentedControl state is changed.
+//  Modified by Dickson : added error message when register fails, reset errorMessage whenever segmentedControl state is changed
+//  User will automatically log in and bring to Home if he/she didnt log out when the app was closed.
 //
 //  LoginViewController.swift is for email authetication to login or regitster on the application.
 //
@@ -26,15 +27,25 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var errorMessage: UILabel!
     
-    var isSignIn:Bool = true;
+    var isSignIn: Bool = true
     
+    //  Load view
     override func viewDidLoad() {
         super.viewDidLoad()
         errorMessage.isHidden = true
         ref = Database.database().reference()
-        // Do any additional setup after loading the view.
     }
     
+    //  User automatically log in if he/she didnt log out when the app was closed
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if(Auth.auth().currentUser != nil) {
+            print("current User: ", Auth.auth().currentUser as Any)
+            self.performSegue(withIdentifier: "GoToHome", sender: nil)
+        }
+    }
+    
+    //  Refresh view when segmentedControl is changed
     @IBAction func SignInSelectorChanged(_ sender: UISegmentedControl) {
         isSignIn = !isSignIn
         if isSignIn {
@@ -47,6 +58,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // Sign in button action when it is clicked
     @IBAction func signInButtonClicked(_ sender: UIButton) {
         if let email = txtEmail.text, let pass = txtPassword.text {
             // Sign in

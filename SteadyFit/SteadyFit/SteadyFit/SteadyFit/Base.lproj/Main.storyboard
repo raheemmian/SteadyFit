@@ -216,7 +216,7 @@
         <!--Login-->
         <scene sceneID="VRw-L3-DRM">
             <objects>
-                <viewController title="Login" id="3lh-tW-YIg" customClass="LoginViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="Login" id="3lh-tW-YIg" customClass="LoginViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W8Z-jt-eaM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
