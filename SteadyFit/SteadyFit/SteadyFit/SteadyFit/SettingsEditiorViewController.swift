@@ -159,6 +159,7 @@ class SettingsEditiorViewController: EmergencyButtonViewController {
         datePicker.datePickerMode = .date
     }
     
+    // Date picker done button and format for date
     @objc func doneClick()
     {
         let editDateFormatter = DateFormatter()
@@ -175,24 +176,28 @@ class SettingsEditiorViewController: EmergencyButtonViewController {
         cityTextBox.inputView = cityPicker
     }
     
+    // Province picker
     func creatProvincePicker()
     {
         provincePicker.delegate = self
         provinceTextBox.inputView = provincePicker
     }
     
+    // Activity level picker
     func creatLevelPicker()
     {
         levelPicker.delegate = self
         activityLevelTextBox.inputView = levelPicker
     }
     
+    // Gender picker
     func creatGenderPicker()
     {
         genderPicker.delegate = self
         genderTextBox.inputView = genderPicker
     }
     
+    // Done button for city, province, gender, level pickers
     func creatCityToolBar()
     {
         let toolBar = UIToolbar()
@@ -208,12 +213,15 @@ class SettingsEditiorViewController: EmergencyButtonViewController {
         activityLevelTextBox.inputAccessoryView = toolBar
         genderTextBox.inputAccessoryView = toolBar
     }
+    
+    // Hide keyboard after editing text
     @objc func dismissKeyboard()
     {
         view.endEditing(true)
     }
 }
 
+// Pickers view
 extension SettingsEditiorViewController: UIPickerViewDelegate, UIPickerViewDataSource
 {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
