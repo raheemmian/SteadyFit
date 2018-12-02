@@ -5,8 +5,10 @@
 //  Created by Raheem Mian on 2018-11-19.
 //  Copyright © 2018 Daycar. All rights reserved.
 //
-//  This is a subclass for the emergency button, so all of the emergency buttons on other viewcontrollers
-//  will inherit the methods from this class to check
+//  This is a subclass for the emergency button, so all of the emergency buttons on other ViewControllers.
+//  will inherit the methods from this class to check.
+//
+//  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with default or customize message.
 //
 
 import UIKit
@@ -15,6 +17,7 @@ import MapKit
 import CoreLocation
 import FirebaseAuth
 import FirebaseDatabase
+
 class EmergencyButtonViewController: UIViewController, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
     var personalref:DatabaseReference?
     var personalrefHandle:DatabaseHandle?
