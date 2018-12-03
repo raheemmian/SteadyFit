@@ -245,11 +245,12 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
             guard let userName = snapshot.value as? String else {
                 return
             }
-            self.ref?.child("Groups").child(self.groupId).child("users")
-                .child(currentuserID!).setValue(["joined" : 1, "name" : userName])
-            self.ref?.child("Users").child(currentuserID!).child("Groups").child(self.groupId)
-                .setValue(["chatid": self.groupInfo?.chatId, "grouptype": self.groupInfo?.groupType, "name": self.groupInfo?.name])
+            let currentgroup = self.groupId as String
+            let post = ["/Groups/\(currentgroup)/users": [currentuserID!: ["joined": 1, "name" : userName]],
+                        "/Users/\(currentuserID!)/Groups/\(currentgroup)": ["chatid": self.groupInfo?.chatId, "grouptype": self.groupInfo?.groupType, "name": self.groupInfo?.name]] as [String : Any]
+            self.ref?.updateChildValues(post)
         })
+        
     }
     
 }
