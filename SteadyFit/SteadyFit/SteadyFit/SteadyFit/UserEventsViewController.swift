@@ -21,7 +21,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
 
-class UserEventsViewController: EmergencyButtonViewController, UITableViewDelegate, UITableViewDataSource, MyProtocol {
+class UserEventsViewController: EmergencyButtonViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var goingButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
@@ -182,7 +182,7 @@ class UserEventsViewController: EmergencyButtonViewController, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as! ParticipantsViewController
         destination.eventId = eventId
-        destination.myProtocol = self
+    
     }
     
     func checkGoing(going: String){
