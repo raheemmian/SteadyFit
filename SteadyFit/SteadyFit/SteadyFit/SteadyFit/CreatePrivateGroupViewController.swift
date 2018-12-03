@@ -75,9 +75,9 @@ class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFie
                         "/Groups/\(key)/grouptype": groupTypeTextField.text!,
                         "/Groups/\(key)/location": locationTextField.text!,
                         "/Groups/\(key)/name": groupNameTextField.text!,
-                        "/Groups/\(key)/users": [myUserID: ["joined": 1, "name":myUserName]],
+                        "/Groups/\(key)/users/\(myUserID)": ["joined": 1, "name":myUserName],
                         "/Chats/\(chatId)/groupID" : key,
-                        "/Users/\(myUserID)/Groups": [key:["chatid": chatId, "grouptype":groupTypeTextField.text!, "name": groupNameTextField.text!]]
+                        "/Users/\(myUserID)/Groups/\(key)": ["chatid": chatId, "grouptype":groupTypeTextField.text!, "name": groupNameTextField.text!]
                 ] as [String : Any]
             ref?.updateChildValues(post)
             navigationController?.popViewController(animated: true)

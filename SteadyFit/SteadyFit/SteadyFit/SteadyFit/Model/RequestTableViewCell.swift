@@ -92,23 +92,15 @@ class RequestTableViewCell: UITableViewCell {
     // Add or delete node in database based on the button is clicked
     @objc func buttonAction(sender: UIButton){
         print(sender.tag)
-        acceptButton.isEnabled = false
-        declineButton.isEnabled = false
         // Accept button action
         if(sender.tag == 0){
             print("Section ", section, ", Row ", row, "\nAccept button is clicked")
-            acceptButton.setTitle("Accepted", for: .normal)
-            declineButton.isHidden = true
-
             ref?.updateChildValues(post)
         }
         
         // Decline button action
         else if(sender.tag == 1){
             print("Section ", section, ", Row ", row, "\nDecline button is clicked")
-            declineButton.setTitle("Declined", for: .normal)
-            acceptButton.isHidden = true
-
             if(section == 0){
                 let removeFriendRef = self.ref?.child("Groups").child(friendGroupID)
                 removeFriendRef!.removeValue { error, _ in
