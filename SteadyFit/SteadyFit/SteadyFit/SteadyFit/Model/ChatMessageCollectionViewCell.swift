@@ -13,7 +13,12 @@
 import UIKit
 
 class ChatMessageCollectionViewCell: UICollectionViewCell {
+    // Anchor references declaration
+    var bubbleWidthAnchor: NSLayoutConstraint?
+    var bubbleRightAnchor: NSLayoutConstraint?
+    var bubbleLeftAnchor: NSLayoutConstraint?
     
+    // Setup text view
     let textView: UITextView = {
         let text = UITextView()
         text.text = "Sample Message"
@@ -26,10 +31,7 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         return text
     }()
     
-    var bubbleWidthAnchor: NSLayoutConstraint?
-    var bubbleRightAnchor: NSLayoutConstraint?
-    var bubbleLeftAnchor: NSLayoutConstraint?
-    
+    // Setup bubble view of each message
     let bubbleView: UIView = {
         let bubble = UIView()
         bubble.backgroundColor = UIColor.blue
@@ -39,6 +41,7 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         return bubble
     }()
     
+    // Set up sender name
     let senderNameView: UILabel = {
         let senderName = UILabel()
         senderName.text = "John Doe"
@@ -50,6 +53,7 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         return senderName
     }()
     
+    // Setup profile pic
     let profilePicView: UIImageView = {
         let profilePic = UIImageView()
         profilePic.image = UIImage(named: "ProfilePic")
@@ -59,8 +63,8 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         profilePic.contentMode = .scaleAspectFill
         return profilePic
     }()
-    var testContrainst: NSLayoutConstraint?
     
+    // View initiation
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(senderNameView)
@@ -68,7 +72,7 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         addSubview(textView)
         addSubview(profilePicView)
         
-        // Set contrainst
+        // Set contrainsts
         senderNameView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor).isActive = true
         senderNameView.widthAnchor.constraint(equalTo: bubbleView.widthAnchor, constant: -5).isActive = true
         senderNameView.bottomAnchor.constraint(equalTo: bubbleView.topAnchor, constant: -0.5).isActive = true
@@ -94,8 +98,8 @@ class ChatMessageCollectionViewCell: UICollectionViewCell {
         profilePicView.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
     
+    // Error catching function by Xcode
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

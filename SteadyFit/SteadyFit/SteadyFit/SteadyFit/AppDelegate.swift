@@ -6,8 +6,11 @@
 //  Copyright © 2018 Daycar. All rights reserved.
 //
 //  Team Daycar
-//  Edited by: Raheem Mian, Alexa Chen, Akshay Kumar
-//  List of Changes: created along with project creation, added Firebase needed code for connection, Added permission request for notification and added support for displaying notifications when in-app.
+//  Edited by: Raheem Mian, Alexa Chen,
+//  List of Changes: created along with project creation, added Firebase needed code for connection
+//
+//  Edited by: Akshay Kumar
+//  Added permission request for notification and added support for displaying notifications when in-app.
 //
 //  AppDelegate.swift is created along with project creation. It is needed for the app to launch properly.
 //
@@ -19,20 +22,20 @@ import UserNotifications
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var window: UIWindow?
-  
+    
+    // Added permission request for notification and added support for displaying notifications when in-app.
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert, .sound])
     }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        //Asking for Notification Authorization
-        //Note: This propmt only asks the first time, after which settings will be changed from the settings menu
-        UNUserNotificationCenter.current().requestAuthorization(options:
-        [.alert, .badge, .sound]) { (granted, error) in
-            //Making sure Notifications show even when in-app
+        // Asking for Notification Authorization
+        // Note: This propmt only asks the first time, after which settings will be changed from the settings menu
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            // Making sure Notifications show even when in-app
             UNUserNotificationCenter.current().delegate = self
-        
         }
         return true
     }

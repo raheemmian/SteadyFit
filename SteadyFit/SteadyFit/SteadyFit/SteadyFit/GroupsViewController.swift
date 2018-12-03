@@ -120,9 +120,9 @@ class GroupsViewController: EmergencyButtonViewController, UITableViewDataSource
                         }
                     }
                 }
-                self.sameProvinceGroups.sort(by: { $0.acivitylevelInt! < $1.acivitylevelInt!})
+                self.sameProvinceGroups.sort(by: { $0.activityLevelInt! < $1.activityLevelInt!})
                 self.sameActivityLevelGroups.sort(by: { $0.city!.compare($1.city!) == .orderedAscending })
-                self.restoftheGroups.sort(by: { ($0.city! == $1.city!) ? ($0.acivitylevelInt! < $1.acivitylevelInt!) : ($0.city!.compare($1.city!) == .orderedAscending) })
+                self.restoftheGroups.sort(by: { ($0.city! == $1.city!) ? ($0.activityLevelInt! < $1.activityLevelInt!) : ($0.city!.compare($1.city!) == .orderedAscending) })
                 self.suggestedGroups.append(contentsOf: self.sameProvinceGroups)
                 self.suggestedGroups.append(contentsOf: self.sameActivityLevelGroups)
                 self.suggestedGroups.append(contentsOf: self.restoftheGroups)

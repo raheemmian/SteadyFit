@@ -13,7 +13,7 @@
 
 import UIKit
 
-//Class that sets the dimensions for the graph to be drawn
+//  Class that sets the dimensions for the graph to be drawn
 class BarChartActivityTracker: UIView {
     ///width
     let barWidth: CGFloat = 31.0
@@ -117,6 +117,7 @@ class BarChartActivityTracker: UIView {
             self.layer.insertSublayer(lineLayer, at: 0)
         }
     }
+    
     //Adds the text labels (datapoints)
     private func drawTextValue(xPos: CGFloat, yPos: CGFloat, textValue: String, color: UIColor) {
         let textLayer = CATextLayer()
@@ -130,6 +131,7 @@ class BarChartActivityTracker: UIView {
         textLayer.string = textValue
         mainLayer.addSublayer(textLayer)
     }
+    
     //Adds the titles
     private func drawTitle(xPos: CGFloat, yPos: CGFloat, title: String, color: UIColor) {
         let textLayer = CATextLayer()

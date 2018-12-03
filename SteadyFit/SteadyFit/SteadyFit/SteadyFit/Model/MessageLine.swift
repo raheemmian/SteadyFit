@@ -11,7 +11,6 @@
 //  MessageLine.swift is the structure of a message for Firebase.
 //
 
-
 import UIKit
 
 class MessageLine: NSObject {
@@ -19,5 +18,4 @@ class MessageLine: NSObject {
     var timeStamp: String?  // yyyy-mm-dd hh:mm:ss
     var senderName: String?
     var senderID: String?
-    var senderProfile: UIImage?
 }

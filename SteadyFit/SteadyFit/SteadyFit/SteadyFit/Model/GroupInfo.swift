@@ -5,6 +5,11 @@
 //  Created by Calvin Liu on 11/15/18.
 //  Copyright © 2018 Daycar. All rights reserved.
 //
+//  Team Daycar
+//  Edited by: Alexa Chen
+//
+//  GroupInfo.swift is a structure of group info for group profile.
+//
 
 import UIKit
 

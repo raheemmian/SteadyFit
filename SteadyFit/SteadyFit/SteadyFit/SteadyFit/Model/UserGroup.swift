@@ -9,7 +9,7 @@
 //  Edited by: Alexa Chen
 //  List of Changes: created UserGroup as NSObject.
 //
-//  AppDelegate.swift is created along with project creation. It is needed for the app to launch properly.
+//  UserGroup.swift is a structure of a group.
 //
 
 import UIKit
@@ -20,28 +20,29 @@ class UserGroup: NSObject {
     var chatid: String?
     var grouptype: String?
     var activitylevel: String?
-    var acivitylevelInt: Int?
+    var activityLevelInt: Int?
     var city: String?
     
+    // Define activityLevelInt based on different level
     func setActivityLevel (level:String){
         activitylevel = level
         if level == "Very light"{
-            acivitylevelInt = 1
+            activityLevelInt = 1
         }
         else if level == "Light"{
-            acivitylevelInt = 2
+            activityLevelInt = 2
         }
         else if level == "Moderate"{
-            acivitylevelInt = 3
+            activityLevelInt = 3
         }
         else if level == "Intense"{
-            acivitylevelInt = 4
+            activityLevelInt = 4
         }
         else if level == "Very Intense"{
-            acivitylevelInt = 5
+            activityLevelInt = 5
         }
         else{
-            acivitylevelInt = 6
+            activityLevelInt = 6
         }
     }
 }

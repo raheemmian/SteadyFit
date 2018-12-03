@@ -14,23 +14,23 @@ import FirebaseAuth
 import UserNotifications
 
 class AddEventViewController: EmergencyButtonViewController, UITextFieldDelegate, UITextViewDelegate {
-
+    // Variables and objects declaration
     @IBOutlet weak var eventNameTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var durationTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
-    /*------------------database stuff-----------*/
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
     var groupID: String = ""
     var myUserID = (Auth.auth().currentUser?.uid)!
     var myUserName: String = ""
-    /*-----------------------------*/
     let startDatePicker = UIDatePicker()
     let endDatePicker = UIDatePicker()
     var activeTextField : UITextField!
+    
+    // Load and initialize view
     override func viewDidLoad() {
         super.viewDidLoad()
         startDateTextField.delegate = self
@@ -56,13 +56,11 @@ class AddEventViewController: EmergencyButtonViewController, UITextFieldDelegate
         /*function: save the information into the database
           redirect to the group page*/
         if((startDateTextField.text?.isEmpty)! || (eventNameTextField.text?.isEmpty)! || groupID == "" || (durationTextField.text?.isEmpty)! || descriptionTextView.text.isEmpty || (locationTextField.text?.isEmpty)!) {
-            /*if any of the fields are empty then the error label has to be displayed, otherwise it is hidden
-             */
+            // If any of the fields is empty, then the error label has to be displayed, otherwise it is hidden
             self.errorLabel.isHidden = false
         }
         else{
             let key:String = (ref!.child("Activities_Events").childByAutoId().key)!
-            print(key)
             let post = ["/Activities_Events/\(key)/Participants": [myUserID: ["name": myUserName]],
             "/Activities_Events/\(key)/date": startDateTextField.text ?? "nothing",
             "/Activities_Events/\(key)/event_name": eventNameTextField.text ?? "nothing",
@@ -75,60 +73,52 @@ class AddEventViewController: EmergencyButtonViewController, UITextFieldDelegate
             ] as [String : Any]
             ref?.updateChildValues(post)
             
-            //Creating a request for a notification
-            //Checking if notificaitons are turned on in settings using a boolean varibale
-            if(NotificationBool.shared.state == true)
-            {
-            //Obtaining Authorization again in case
-            UNUserNotificationCenter.current().requestAuthorization(options:
-            [.alert, .badge, .sound]) { (granted, error) in
+            // Creating a request for a notification
+            // Checking if notificaitons are turned on in settings using a boolean varibale
+            if(NotificationBool.shared.state == true){
+                // Obtaining Authorization again in case
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
+                    (granted, error) in
+                }
+            
+                // Creating Notification content
+                let content = UNMutableNotificationContent()
+                content.title = eventNameTextField.text!
+                content.body = descriptionTextView.text!
+                content.sound = UNNotificationSound.default
+                
+                // Date string
+                let dstring = startDateTextField.text
+                
+                // Convert date from String to Date format
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                let date = dateFormatter.date(from: dstring!)
+                
+                // Subtract an hour from the Date so notfication arrives an hour early
+                let datesubhour = date!.addingTimeInterval(-3600)
+                
+                // Break date into components so Notification can be scheduled by iOS Notfication centre
+                let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: datesubhour)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+                
+                // Each Notification needs a unique String ID, I chose it to be event name
+                let identifier = eventNameTextField.text!
+                
+                //Creating and sending requests to iOS notification centre
+                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             }
-            
-            //Creating Notification content
-            let content = UNMutableNotificationContent()
-            content.title = eventNameTextField.text!
-            content.body = descriptionTextView.text!
-            
-            content.sound = UNNotificationSound.default
-            
-            //Date string
-            let dstring = startDateTextField.text
-            
-            //Convert date from String to Date format
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-            let date = dateFormatter.date(from: dstring!)
-            
-            //Subtract an hour from the Date so notfication arrives an hour early
-            let datesubhour = date!.addingTimeInterval(-3600)
-            
-            //Break date into components so Notification can be scheduled by iOS Notfication centre
-            let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: datesubhour)
-            
-            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-            
-            //use the trigger below to show a notfication in 5 seconds, for testing purponses. (comment trigger above)
-            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            
-            //Each Notification needs a unique String ID, I chose it to be event name
-            let identifier = eventNameTextField.text!
-            
-            //Creating and sending requests to iOS notification centre
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            }
-            
-            //goes back to previous view controller
+            // Goes back to previous view controller
             navigationController?.popViewController(animated: true)
         }
     }
 
     func createDatePicker(){
-        /*this is for the duration and date text fields,
+        /* This is for the duration and date text fields,
          duration has a countdowntimer scroll view
          and date has a date and time scroll view
-         also added a done button for the user to press once the time has been chosen*/
+         also added a done button for the user to press once the time has been chosen. */
         startDateTextField.inputView = startDatePicker
         endDatePicker.datePickerMode = .countDownTimer
         durationTextField.inputView = endDatePicker
@@ -141,7 +131,7 @@ class AddEventViewController: EmergencyButtonViewController, UITextFieldDelegate
     }
     
    @objc func doneClicked() {
-    /*when the done button is clicked the time and date will be displayed in the text field*/
+    /*When the done button is clicked the time and date will be displayed in the text field*/
         let startDateFormat = DateFormatter()
         let durationDateFormat = DateFormatter()
         durationDateFormat.timeStyle = .medium
@@ -154,7 +144,8 @@ class AddEventViewController: EmergencyButtonViewController, UITextFieldDelegate
         }
         self.view.endEditing(true)
     }
-    /*these functions beliw are for bringing the keyboard done once the user has completed what they wanted to write*/
+    
+    /*These functions below are for bringing the keyboard done once the user has completed what they wanted to write*/
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if(textField == durationTextField){
@@ -179,11 +170,13 @@ class AddEventViewController: EmergencyButtonViewController, UITextFieldDelegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
         activeTextField = textField
     }
-    /*add a animation to move the description text view above the keyboard
+    
+    
+    /*Add an animation to move the description text view above the keyboard,
      therefore keyboard is no longer hiding the text view
-     since there are no placeholders for textview
-     have text in the colour of placeholder text in the view
-     and then the text is nil once the user starts editing the text view*/
+     since there are no placeholders for textview.
+     Have text in the colour of placeholder text in the view
+     and then the text is nil once the user starts editing the text view.*/
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
@@ -196,7 +189,6 @@ class AddEventViewController: EmergencyButtonViewController, UITextFieldDelegate
     func textViewDidEndEditing(_ textView: UITextView) {
         moveTextView(textView, moveDistance: -250, up: false)
     }
-
     func moveTextView(_ textView: UITextView, moveDistance: Int, up: Bool) {
         let moveDuration = 0.3
         let movement: CGFloat = CGFloat(up ? moveDistance : -moveDistance)
@@ -206,4 +198,5 @@ class AddEventViewController: EmergencyButtonViewController, UITextFieldDelegate
         self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
         UIView.commitAnimations()
     }
+    
 }

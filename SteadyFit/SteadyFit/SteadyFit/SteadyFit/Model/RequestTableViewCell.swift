@@ -12,7 +12,6 @@
 //  RequestTableViewCell.swift is the structure for tableViewCell in PendingRequestViewConstroller.
 //
 
-
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
@@ -68,10 +67,12 @@ class RequestTableViewCell: UITableViewCell {
         addSubview(declineButton)
         acceptButton.tag = 0
         declineButton.tag = 1
+        
+        // Call buttonAction when button is clicked
         acceptButton.addTarget(self, action: #selector(buttonAction), for: UIControl.Event.touchUpInside)
         declineButton.addTarget(self, action: #selector(buttonAction), for: UIControl.Event.touchUpInside)
         
-        //  Set constraints
+        // Set constraints
         acceptButton.rightAnchor.constraint(equalTo: declineButton.leftAnchor, constant: -15).isActive = true
         acceptButton.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         acceptButton.widthAnchor.constraint(equalTo: acceptButton.widthAnchor).isActive = true
@@ -91,16 +92,12 @@ class RequestTableViewCell: UITableViewCell {
     // Button action when accept or decline button is clicked
     // Add or delete node in database based on the button is clicked
     @objc func buttonAction(sender: UIButton){
-        print(sender.tag)
         // Accept button action
         if(sender.tag == 0){
-            print("Section ", section, ", Row ", row, "\nAccept button is clicked")
             ref?.updateChildValues(post)
         }
-        
         // Decline button action
         else if(sender.tag == 1){
-            print("Section ", section, ", Row ", row, "\nDecline button is clicked")
             if(section == 0){
                 let removeFriendRef = self.ref?.child("Groups").child(friendGroupID)
                 removeFriendRef!.removeValue { error, _ in
@@ -123,7 +120,4 @@ class RequestTableViewCell: UITableViewCell {
             }
         }
     }
-    
 }
-
-
