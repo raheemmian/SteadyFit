@@ -239,6 +239,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
         return 22
     }
     
+    // clicking the join group button will now allow put the group as one of the user's groups
     func joinThisGroup() {
         let currentuserID = Auth.auth().currentUser?.uid
         self.ref?.child("Users").child(currentuserID!).child("name").observe(.value, with: { snapshot in
