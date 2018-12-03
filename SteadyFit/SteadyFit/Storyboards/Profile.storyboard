@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="scA-XJ-Bbz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="scA-XJ-Bbz">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,7 +45,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="emergencyButton:" destination="scA-XJ-Bbz" eventType="touchUpInside" id="Vvc-yf-7wf"/>
+                                    <action selector="emergencyButtonPressed" destination="scA-XJ-Bbz" eventType="touchUpInside" id="TOT-rN-bkP"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s2m-Rb-luc">
@@ -98,6 +98,7 @@
                     <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="always" id="WVW-Ot-HCK" colorLabel="IBBuiltInLabel-Blue"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="emergencyButton" destination="Teg-VZ-NHz" id="dZl-K1-k55"/>
                         <outlet property="location" destination="mrx-3T-JMM" id="gmU-Ld-3iY"/>
                         <outlet property="myTableView" destination="s2m-Rb-luc" id="E68-PW-rq6"/>
                         <outlet property="name" destination="jU9-7M-MRp" id="0eU-ax-Sy7"/>
