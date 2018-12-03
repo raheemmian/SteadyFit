@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H1s-BL-0DL">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pending Requests-->
+        <scene sceneID="Bc4-Hd-jUJ">
+            <objects>
+                <viewController title="Pending Requests" id="H1s-BL-0DL" customClass="PendingRequestViewController" customModule="SteadyFit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fmn-BH-DbV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ltj-YU-hHQ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="777"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pendingRequest" id="Kio-Zf-K1F">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kio-Zf-K1F" id="pSK-bC-yj8" customClass="RequestTableViewCell" customModule="SteadyFit" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="H1s-BL-0DL" id="ydf-JG-F9Q"/>
+                                    <outlet property="delegate" destination="H1s-BL-0DL" id="8s6-KH-3FP"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S5o-CK-dA1">
+                                <rect key="frame" x="0.0" y="821" width="414" height="41"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="EMERGENCY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="emergencyButtonPressed" destination="H1s-BL-0DL" eventType="touchUpInside" id="6cL-ch-F6I"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="S5o-CK-dA1" firstAttribute="trailing" secondItem="PK0-3n-Jz4" secondAttribute="trailing" id="2cS-aH-0H6"/>
+                            <constraint firstItem="S5o-CK-dA1" firstAttribute="top" secondItem="Ltj-YU-hHQ" secondAttribute="bottom" id="LVq-xe-HDT"/>
+                            <constraint firstItem="PK0-3n-Jz4" firstAttribute="bottom" secondItem="S5o-CK-dA1" secondAttribute="bottom" id="Mmc-ZI-1wY"/>
+                            <constraint firstItem="PK0-3n-Jz4" firstAttribute="trailing" secondItem="Ltj-YU-hHQ" secondAttribute="trailing" id="RRA-Vd-4rB"/>
+                            <constraint firstItem="S5o-CK-dA1" firstAttribute="leading" secondItem="PK0-3n-Jz4" secondAttribute="leading" id="S7r-Vp-b9D"/>
+                            <constraint firstItem="Ltj-YU-hHQ" firstAttribute="leading" secondItem="PK0-3n-Jz4" secondAttribute="leading" id="oCW-ba-GXv"/>
+                            <constraint firstItem="Ltj-YU-hHQ" firstAttribute="top" secondItem="PK0-3n-Jz4" secondAttribute="top" id="rrS-ro-i4T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PK0-3n-Jz4"/>
+                    </view>
+                    <connections>
+                        <outlet property="emergencyButton" destination="S5o-CK-dA1" id="EFO-Il-FE5"/>
+                        <outlet property="requestTableView" destination="Ltj-YU-hHQ" id="a3b-Bk-0tJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GTe-5R-btz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="24.637681159420293" y="-360.26785714285711"/>
+        </scene>
+    </scenes>
+</document>
