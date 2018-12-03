@@ -13,6 +13,7 @@
 
 import UIKit
 
+//Class that sets the dimensions for the graph to be drawn
 class BarChartActivityTracker: UIView {
     ///width
     let barWidth: CGFloat = 31.0
@@ -69,7 +70,7 @@ class BarChartActivityTracker: UIView {
     override func layoutSubviews() {
         scrollView.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
     }
-    
+    //Function to setup the variables for each bar and it's label in the histogram
     private func showEntry(index: Int, entry: BarEntry) {
         /// Starting x postion of the bar
         let xPos: CGFloat = space + CGFloat(index) * (barWidth + space)
@@ -85,14 +86,14 @@ class BarChartActivityTracker: UIView {
         /// Draw text below the bar
         drawTitle(xPos: xPos - space/2, yPos: mainLayer.frame.height - bottomSpace + 10, title: entry.title, color: entry.color)
     }
-    
+    //Draws the bars
     private func drawBar(xPos: CGFloat, yPos: CGFloat, color: UIColor) {
         let barLayer = CALayer()
         barLayer.frame = CGRect(x: xPos, y: yPos, width: barWidth, height: mainLayer.frame.height - bottomSpace - yPos)
         barLayer.backgroundColor = color.cgColor
         mainLayer.addSublayer(barLayer)
     }
-    
+    //Draws the Horizontal lines
     private func drawHorizontalLines() {
         self.layer.sublayers?.forEach({
             if $0 is CAShapeLayer {
@@ -116,7 +117,7 @@ class BarChartActivityTracker: UIView {
             self.layer.insertSublayer(lineLayer, at: 0)
         }
     }
-    
+    //Adds the text labels (datapoints)
     private func drawTextValue(xPos: CGFloat, yPos: CGFloat, textValue: String, color: UIColor) {
         let textLayer = CATextLayer()
         textLayer.frame = CGRect(x: xPos, y: yPos, width: barWidth+space, height: 22)
@@ -129,7 +130,7 @@ class BarChartActivityTracker: UIView {
         textLayer.string = textValue
         mainLayer.addSublayer(textLayer)
     }
-    
+    //Adds the titles
     private func drawTitle(xPos: CGFloat, yPos: CGFloat, title: String, color: UIColor) {
         let textLayer = CATextLayer()
         textLayer.frame = CGRect(x: xPos, y: yPos, width: barWidth + space, height: 22)
@@ -142,7 +143,7 @@ class BarChartActivityTracker: UIView {
         textLayer.string = title
         mainLayer.addSublayer(textLayer)
     }
-    
+    //Figures out the position
     private func translateHeightValueToYPosition(value: Float) -> CGFloat {
         let height: CGFloat = CGFloat(value) * (mainLayer.frame.height - bottomSpace - topSpace)
         return mainLayer.frame.height - bottomSpace - height
