@@ -339,7 +339,7 @@
 		B5727A63217FEDED00AF9005 /* SteadyFit */ = {
 			isa = PBXGroup;
 			children = (
-				D422660021B53ED3008C1D69 /* ViewController Source Code */,
+				D422660021B53ED3008C1D69 /* ViewControllerSourceCode */,
 				D42265FF21B53DE2008C1D69 /* Storyboards */,
 				12A6E645218D0B3B003ED258 /* Model */,
 				B57302AC2186D0A300CD06D3 /* Assets.xcassets */,
@@ -366,7 +366,7 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		D422660021B53ED3008C1D69 /* ViewController Source Code */ = {
+		D422660021B53ED3008C1D69 /* ViewControllerSourceCode */ = {
 			isa = PBXGroup;
 			children = (
 				B5727A64217FEDED00AF9005 /* AppDelegate.swift */,
@@ -395,7 +395,7 @@
 				FDDD8C3021ADE7EC00A1D4BF /* SettingsHelpViewController.swift */,
 				80F4649021B36B2300D9B2F9 /* SettingsNotificationViewController.swift */,
 			);
-			path = "ViewController Source Code";
+			path = ViewControllerSourceCode;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
