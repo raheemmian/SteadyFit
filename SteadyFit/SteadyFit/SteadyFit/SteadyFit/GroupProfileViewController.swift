@@ -246,7 +246,7 @@ class GroupProfileViewController: EmergencyButtonViewController, UITableViewData
                 return
             }
             let currentgroup = self.groupId as String
-            let post = ["/Groups/\(currentgroup)/users": [currentuserID!: ["joined": 1, "name" : userName]],
+            let post = ["/Groups/\(currentgroup)/users/\(currentuserID!)":  ["joined": 1, "name" : userName],
                         "/Users/\(currentuserID!)/Groups/\(currentgroup)": ["chatid": self.groupInfo?.chatId, "grouptype": self.groupInfo?.groupType, "name": self.groupInfo?.name]] as [String : Any]
             self.ref?.updateChildValues(post)
         })
