@@ -10,7 +10,7 @@
 //  Added labels and image view, added emergency button and GPS related code, hide friend request button when the profile is current user
 //
 //  Edited by: Calvin Liu
-//
+//  Friend's profile now load from the database rather than being hardcoded
 //
 //  UserProfileViewController.swift is linked to an User Profile Page, which shows the user's information.
 //  The emergency button is implemented to obtain iPhone's GPS location and bring up iPhone's messaging app with a default message.
@@ -57,6 +57,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
             }
         })
         
+        // load the friend profile from database
         self.ref?.child("Users").child(friendUserId).observe(DataEventType.value, with: {(userSnapshot) in
             if userSnapshot.value != nil{
                 let userDictionary = userSnapshot.value as? [String: AnyObject]
@@ -137,6 +138,7 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    // will generate nodes on the database for friend request when the send friend request is clicked
     func addFriend() {
         self.ref?.child("Users").child(currentuserID!).child("name").observe(.value, with: { mysnapshot in
             guard let myName = mysnapshot.value as? String else {return}
