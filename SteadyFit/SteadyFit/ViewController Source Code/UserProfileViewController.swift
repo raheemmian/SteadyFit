@@ -18,19 +18,16 @@
 //
 
 import UIKit
-import MessageUI
-import CoreLocation
+
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class UserProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMessageComposeViewControllerDelegate, CLLocationManagerDelegate {
+class UserProfileViewController: EmergencyButtonViewController, UITableViewDataSource, UITableViewDelegate {
     // Variables and IB objects declaration
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var location: UILabel!
-    var locationManager = CLLocationManager()
-    @IBAction func emergencyButton(_ sender: Any) {sendText()}
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var sendFriendRequestButton: UIButton!
     
@@ -118,28 +115,6 @@ class UserProfileViewController: UIViewController, UITableViewDataSource, UITabl
         return cell
     }
     
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-    
-    func sendText() {
-        let composeVC = MFMessageComposeViewController()
-        if(CLLocationManager.locationServicesEnabled()){
-            locationManager.startUpdatingLocation()
-            let locValue:CLLocationCoordinate2D = locationManager.location!.coordinate
-            composeVC.body = "I need help! This is my current location: " + "http://maps.google.com/maps?q=\(locValue.latitude),\(locValue.longitude)&ll=\(locValue.latitude),\(locValue.longitude)&z=17"
-        }
-        else{
-            composeVC.body = "I need help!"
-        }
-        composeVC.messageComposeDelegate = self
-        composeVC.recipients = ["7788823644"]
-        if MFMessageComposeViewController.canSendText() {
-            self.present(composeVC, animated: true, completion: nil)
-        } else {
-            print("Can't send messages.")
-        }
-    }
     
     // will generate nodes on the database for friend request when the send friend request is clicked
     func addFriend() {
