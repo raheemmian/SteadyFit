@@ -1,6 +1,0 @@
-framework module Pods_SteadyFit {
-  umbrella header "Pods-SteadyFit-umbrella.h"
-
-  export *
-  module * { export * }
-}
