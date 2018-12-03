@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="98z-qN-5le">
-                                <rect key="frame" x="56.5" y="170" width="301" height="29"/>
+                                <rect key="frame" x="53.5" y="170" width="307" height="29"/>
                                 <segments>
                                     <segment title="My Groups"/>
-                                    <segment title="Recommented Groups"/>
+                                    <segment title="Recommended Groups"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
