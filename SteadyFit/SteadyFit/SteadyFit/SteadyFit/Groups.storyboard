@@ -226,7 +226,7 @@
                         <outlet property="emergencyButton" destination="kaX-ot-mzR" id="wCg-NT-Lyk"/>
                         <outlet property="errorLabel" destination="4vJ-ol-wwn" id="Zq1-1A-r9s"/>
                         <outlet property="groupNameTextField" destination="jvb-LV-fuT" id="BAG-t1-NdH"/>
-                        <outlet property="groupTypeTextField" destination="iY1-sz-6kM" id="BIy-b2-exG"/>
+                        <outlet property="groupTypeTextField" destination="iY1-sz-6kM" id="Fkt-sI-BVa"/>
                         <outlet property="locationTextField" destination="NGV-1H-cdZ" id="AjX-dd-Jgp"/>
                         <outlet property="saveButton" destination="vwb-RY-nKz" id="ZcI-gZ-rSM"/>
                     </connections>

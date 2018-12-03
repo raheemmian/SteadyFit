@@ -35,7 +35,6 @@ class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFie
         picker.dataSource = self
         createPicker()
         activityLevelTextField.inputView = picker
-        groupTypeTextField.inputView = picker
         //get user name
         ref?.child("Users").child(myUserID).child("name").observeSingleEvent(of: .value, with: {(snapshot) in
             self.myUserName = (snapshot.value as? String)!
@@ -50,6 +49,8 @@ class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFie
         groupNameTextField.layer.borderWidth = 1
         activityLevelTextField.layer.borderWidth = 1
         groupTypeTextField.layer.borderWidth = 1
+        groupTypeTextField.isEnabled = false
+        groupTypeTextField.text = "Private"
         locationTextField.layer.borderWidth = 1
         descriptionTextView.delegate = self
         groupNameTextField.delegate = self
@@ -91,28 +92,13 @@ class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFie
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if activeTextField == activityLevelTextField {
-            return activityLevelArr.count
-        }
-        else {
-            return groupTypeArr.count
-        }
+        return activityLevelArr.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if activeTextField == activityLevelTextField {
-            return activityLevelArr[row]
-        }
-        else {
-            return groupTypeArr[row]
-        }
+        return activityLevelArr[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if activeTextField == activityLevelTextField {
-            activityLevelTextField.text = activityLevelArr[row]
-        }
-        else {
-             groupTypeTextField.text = groupTypeArr[row]
-        }
+        activityLevelTextField.text = activityLevelArr[row]
     }
     func createPicker(){
         //creates the picker view toolbar
@@ -122,7 +108,6 @@ class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFie
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneClicked))
         PickerToolBar.setItems([doneButton], animated: true)
         activityLevelTextField.inputAccessoryView = PickerToolBar
-        groupTypeTextField.inputAccessoryView = PickerToolBar
     }
     
     @objc func doneClicked() {
@@ -138,6 +123,7 @@ class CreatePrivateGroupViewController: EmergencyButtonViewController, UITextFie
         groupNameTextField.resignFirstResponder()
         locationTextField.resignFirstResponder()
         descriptionTextView.resignFirstResponder()
+        groupTypeTextField.resignFirstResponder()
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
