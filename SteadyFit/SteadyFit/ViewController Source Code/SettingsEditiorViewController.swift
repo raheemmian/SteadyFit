@@ -19,7 +19,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class SettingsEditiorViewController: EmergencyButtonViewController {
+class SettingsEditiorViewController: EmergencyButtonViewController, UITextFieldDelegate {
     // Variables and objects declaration
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
@@ -79,14 +79,15 @@ class SettingsEditiorViewController: EmergencyButtonViewController {
     // Load view
     override func viewDidLoad() {
         super.viewDidLoad()
-        creatDatePicker()
-        creatCityPicker()
-        creatCityToolBar()
-        creatProvincePicker()
-        creatLevelPicker()
-        creatGenderPicker()
-        
+        createDatePicker()
+        createCityPicker()
+        createCityToolBar()
+        createProvincePicker()
+        createLevelPicker()
+        createGenderPicker()
+        self.bioTextBox.delegate = self
         ref = Database.database().reference()
+        
         self.ref!.child("Users").child(currentuserID).observeSingleEvent(of: .value, with: {(snapshot) in
             let userDictionary = snapshot.value as? [String: AnyObject]
             print (snapshot)
@@ -125,7 +126,7 @@ class SettingsEditiorViewController: EmergencyButtonViewController {
     }
     
     // Birthday date picker
-    func creatDatePicker()
+    func createDatePicker()
     {
         editProfileDatePicker.inputView = datePicker
         let toolbar = UIToolbar()
@@ -134,7 +135,6 @@ class SettingsEditiorViewController: EmergencyButtonViewController {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneClick))
         toolbar.setItems([doneButton], animated: true)
         editProfileDatePicker.inputAccessoryView = toolbar
-        
         datePicker.datePickerMode = .date
     }
     
@@ -149,35 +149,41 @@ class SettingsEditiorViewController: EmergencyButtonViewController {
     
     
     // City picker
-    func creatCityPicker()
+    func createCityPicker()
     {
         cityPicker.delegate = self
         cityTextBox.inputView = cityPicker
     }
     
     // Province picker
-    func creatProvincePicker()
+    func createProvincePicker()
     {
         provincePicker.delegate = self
         provinceTextBox.inputView = provincePicker
     }
     
     // Activity level picker
-    func creatLevelPicker()
+    func createLevelPicker()
     {
         levelPicker.delegate = self
         activityLevelTextBox.inputView = levelPicker
     }
     
     // Gender picker
-    func creatGenderPicker()
+    func createGenderPicker()
     {
         genderPicker.delegate = self
         genderTextBox.inputView = genderPicker
     }
     
+    // Click return button on keyboard would hide keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     // Done button for city, province, gender, level pickers
-    func creatCityToolBar()
+    func createCityToolBar()
     {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
@@ -284,4 +290,3 @@ extension SettingsEditiorViewController: UIPickerViewDelegate, UIPickerViewDataS
         }
     }
 }
-

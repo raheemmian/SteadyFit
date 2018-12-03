@@ -31,7 +31,7 @@ class HomeViewController: EmergencyButtonViewController, UITableViewDataSource, 
     var activity_day: [String: Int] = [:]
     let storageRef = Storage.storage().reference()
     let homeTableSections = ["Activity Tracker", "Events"]
-    var homeTableContents = [ ["Histogram"] , ["Event A", "Event B", "Event C"]]
+    var homeTableContents = [ ["Histogram"] , ["", "", ""]]
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var name: UILabel!

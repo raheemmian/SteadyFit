@@ -54,6 +54,7 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.hideKeyboardWhenTappedAround()
         tabBarController?.tabBar.isHidden = true
         collectionView.backgroundColor = UIColor.white
         collectionView?.register(ChatMessageCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
@@ -279,5 +280,18 @@ class GroupChatTableViewController: UICollectionViewController, UITextFieldDeleg
         let second = components.second
         let today_string = String(year!) + "-" + String(format: "%02d",month!) + "-" + String(format: "%02d",day!) + " " + String(format: "%02d",hour!)  + ":" + String(format: "%02d",minute!) + ":" +  String(format: "%02d",second!)
         return today_string
+    }
+}
+
+// Extension to hide keyboard when tapped on View Controller
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.hideKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func hideKeyboard() {
+        view.endEditing(true)
     }
 }

@@ -18,7 +18,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class SettingsEmergencyViewController: EmergencyButtonViewController {
-    
+    // Variables and objects declaration
     var ref:DatabaseReference?
     var refHandle:DatabaseHandle?
     let currentuserID = (Auth.auth().currentUser?.uid)!
@@ -53,9 +53,7 @@ class SettingsEmergencyViewController: EmergencyButtonViewController {
                 self.emergencyContectNumberTextBox.text = self.currentUserEmergencyContact
                 self.emergencyMessageTextBox.text = self.EmergencyMessage
             }
-            
         })
-
     }
     
     // Update Emergency contact and message to database
