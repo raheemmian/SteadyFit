@@ -22,6 +22,7 @@ class ParticipantsViewController: EmergencyButtonViewController, UITableViewDele
     var refHandle:DatabaseHandle?
     var eventId:String = ""
     var participants = [String]()
+    var participantsIdList = [String]()
     @IBOutlet weak var participantTableView: UITableView!
     
     override func viewDidLoad() {
@@ -50,9 +51,9 @@ class ParticipantsViewController: EmergencyButtonViewController, UITableViewDele
         return participants.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tableCell  = tableView.dequeueReusableCell(withIdentifier: "participantCell", for:  indexPath)
+        let tableCell  = tableView.dequeueReusableCell(withIdentifier: "participantCell", for: indexPath)
+        tableCell.selectionStyle = UITableViewCell.SelectionStyle.none
         tableCell.textLabel?.text = participants[indexPath.row]
         return tableCell
     }
-
 }

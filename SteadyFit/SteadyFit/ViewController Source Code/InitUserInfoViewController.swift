@@ -34,13 +34,13 @@ class InitUserInfoViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBOutlet weak var errorMessageLabel: UILabel!
     var currentUserPassword: String?
     var currentUserEmail: String?
-    var activityLevelList = ["Very light", "Light", "Moderate", "Intense", "Very intense"]
+    var activityLevelList = ["", "Very light", "Light", "Moderate", "Intense", "Very intense"]
     var activityLevelPicker = UIPickerView()
-    var provinceList = ["BC"]
+    var provinceList = ["", "BC"]
     var provincePicker = UIPickerView()
-    var cityList = ["Vancouver", "Burnaby", "Coquitlam", "Surrey", "Richmond"]
+    var cityList = ["", "Vancouver", "Burnaby", "Coquitlam", "Surrey", "Richmond"]
     var cityPicker = UIPickerView()
-    var genderList = ["Male", "Female", "Prefer not to say"]
+    var genderList = ["", "Male", "Female", "Prefer not to say"]
     var genderPicker = UIPickerView()
     var birthdatePicker = UIDatePicker()
     

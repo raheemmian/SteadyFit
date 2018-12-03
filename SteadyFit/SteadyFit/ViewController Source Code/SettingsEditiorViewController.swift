@@ -43,22 +43,22 @@ class SettingsEditiorViewController: EmergencyButtonViewController, UITextFieldD
     @IBOutlet weak var nameLabel: UIStackView!
     
     @IBOutlet weak var cityTextBox: UITextField!
-    let cityList = ["Burnaby", "Vancouver", "Surrey", "Coquitlam", "Richmond"]
+    let cityList = ["", "Vancouver", "Burnaby", "Coquitlam", "Surrey", "Richmond"]
     var selectCity: String?
     let cityPicker = UIPickerView()
     
     @IBOutlet weak var bioTextBox: UITextField!
-    let provinceList = ["BC"]
+    let provinceList = ["", "BC"]
     var selectProvince: String?
     let provincePicker = UIPickerView()
     
     @IBOutlet weak var activityLevelTextBox: UITextField!
-    let levelList = ["Light", "Very light", "Moderate", "Intense", "Very intense"]
+    let levelList = ["", "Very light", "Light", "Moderate", "Intense", "Very intense"]
     var selectLevel: String?
     let levelPicker = UIPickerView()
     
     @IBOutlet weak var genderTextBox: UITextField!
-    let genderList = ["Female", "Male", "Prefer not to say"]
+    let genderList = ["", "Male", "Female", "Prefer not to say"]
     var selectGender: String?
     let genderPicker = UIPickerView()
     
