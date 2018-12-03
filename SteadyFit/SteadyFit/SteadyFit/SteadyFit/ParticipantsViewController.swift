@@ -4,27 +4,25 @@
 //
 //  Created by Raheem Mian on 2018-11-18.
 //  Copyright © 2018 Daycar. All rights reserved.
-//
+//This view controller is strictly for checking the database for the participants of a specific
+//event
 
 import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
-protocol MyProtocol{
-    func checkGoing(going: String)
-}
-
 
 class ParticipantsViewController: EmergencyButtonViewController, UITableViewDelegate, UITableViewDataSource {
     var ref:DatabaseReference? = Database.database().reference()
     var refHandle:DatabaseHandle?
     var eventId:String = ""
     var participants = [String]()
-    var myProtocol: MyProtocol?
     @IBOutlet weak var participantTableView: UITableView!
     
     
     override func viewDidLoad() {
+        //checks the participants list for the clicked on event
+        //and loads it to the table view
         super.viewDidLoad()
         self.navigationItem.title = "Participants"
         participantTableView.delegate = self
@@ -43,7 +41,7 @@ class ParticipantsViewController: EmergencyButtonViewController, UITableViewDele
             
         })
     }
-    
+    //table functions loading the participants of the event
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return participants.count
     }
