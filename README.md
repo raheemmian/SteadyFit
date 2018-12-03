@@ -56,7 +56,7 @@ Team DAYCAR:
 More about us and our project development:
 
     For more details about our team, meeting minutes, and documentations, please visit our website:
-    (insert website here)
+    https://sites.google.com/view/cmpt275-daycar
 
 References:
 
