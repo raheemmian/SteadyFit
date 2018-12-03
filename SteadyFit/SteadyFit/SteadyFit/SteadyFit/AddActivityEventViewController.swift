@@ -4,7 +4,7 @@
 //
 //  Created by Akshay Kumar on 2018-11-09.
 //  Copyright © 2018 Daycar. All rights reserved.
-//
+//This is the view controller for adding a new event. It allows you to select a name, description, duration and date and saves it to the database.
 
 import UIKit
 import Firebase
@@ -23,6 +23,8 @@ class AddActivityEventViewController: EmergencyButtonViewController, UITextField
     var refHandle:DatabaseHandle?
     var myUserID = (Auth.auth().currentUser?.uid)!
     var myUserName: String = ""
+    
+    //Displays an error if any field is left empty, otherwise sends all the entered data to the database
     @IBAction func saveButton(_ sender: Any) {
         if((DTAddActivitytextfield.text?.isEmpty)! || (DurationActivitytextfield.text?.isEmpty)! || (NameActivityTextField.text?.isEmpty)! || (DescriptionActivitytextfield.text?.isEmpty)!) {self.errorLabel.isHidden = false}
         else{
