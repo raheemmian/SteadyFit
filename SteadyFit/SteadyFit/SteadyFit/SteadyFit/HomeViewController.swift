@@ -8,6 +8,7 @@
 //  Team Daycar
 //  Edited by: Raheem Mian, Akshay Kumar, Dickson Chum
 //  List of Changes: added labels, table and arrays for table, created segues for table view, implemented to obtain GPS coordinate from device and bring up iPhone Messages with default message.
+//
 //  Edited by: Alexa Chen on 2018-11-19
 //  List of Changes: populated home page with current user info and user events. Also set up necessary activity data for activity tracker histogram
 //

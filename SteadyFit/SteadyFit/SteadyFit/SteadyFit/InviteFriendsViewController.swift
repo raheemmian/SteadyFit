@@ -5,8 +5,8 @@
 //  Created by Raheem Mian on 2018-11-23.
 //  Copyright © 2018 Daycar. All rights reserved.
 //
-// Edited by: Alexa Chen
-// read and write from database (load friends who are not in the group, invite friend)
+//  Edited by: Alexa Chen
+//  Read and write from database (load friends who are not in the group, invite friend)
 
 import UIKit
 import FirebaseDatabase

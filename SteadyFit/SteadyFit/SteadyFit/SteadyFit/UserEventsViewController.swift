@@ -10,9 +10,10 @@
 //  grabs the information from the database about the event
 //  and displays it for the user
 //  also redirects to the participants view controller to show the paticipants of the events
-
-//Edited by: Akshay Kumar (30/11/2018)
-//Added support for notfication event creation upon joining an event
+//
+//  Edited by: Akshay Kumar (30/11/2018)
+//  Added support for notfication event creation upon joining an event
+//
 
 import UIKit
 import Firebase

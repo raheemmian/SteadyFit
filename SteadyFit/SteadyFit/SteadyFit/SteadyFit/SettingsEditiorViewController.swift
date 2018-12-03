@@ -129,7 +129,7 @@ class SettingsEditiorViewController: EmergencyButtonViewController {
     }
     
     @IBAction func saveButton(_ sender: UIButton) {
-        //        writeToFirebace()
+        //  writeToFirebase()
         if cityTextBox.text != nil && editProfileDatePicker.text != nil && provinceTextBox.text != nil && activityLevelTextBox.text != nil && genderTextBox.text != nil && bioTextBox.text != nil{
             let newUserInfo = ["/Users/\(currentuserID)/birthdate": editProfileDatePicker.text!,
                                "/Users/\(currentuserID)/city": cityTextBox.text!,
