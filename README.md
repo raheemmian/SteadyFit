@@ -1,5 +1,15 @@
 # SteadyFit
 
+Demonstration of SteadyFit:
+
+    https://www.youtube.com/watch?v=ejN20lxx6Z4
+
+Project Website:
+
+    For more details about our team, meeting minutes, and documentations, please visit our website:
+    https://sites.google.com/view/cmpt275-daycar
+    
+
 Description:
 
     Parkinson’s patients suffer from physical and phsychological symptoms which interfere with their daily lives. Many medical or surgical treatments cannot resolve those symptoms, as it is a progressive disease. However, studies show regular exercise has shown to be effective in managing these symptoms.[1][2][3][4][5][6][7][8]
@@ -52,11 +62,6 @@ Team DAYCAR:
     Raheem Mian
     rmian@sfu.ca
 
-
-More about us and our project development:
-
-    For more details about our team, meeting minutes, and documentations, please visit our website:
-    https://sites.google.com/view/cmpt275-daycar
 
 References:
 
